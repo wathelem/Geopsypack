@@ -1,0 +1,240 @@
+[submodule "mseed"]
+	path = mseed
+	url = git://geopsy.org/mseed
+[submodule "slink"]
+	path = slink
+	url = git://geopsy.org/slink
+[submodule "QGpCoreTools"]
+	path = QGpCoreTools
+	url = git://geopsy.org/QGpCoreTools
+[submodule "QGpGuiTools"]
+	path = QGpGuiTools
+	url = git://geopsy.org/QGpGuiTools
+[submodule "QGpCoreMath"]
+	path = QGpCoreMath
+	url = git://geopsy.org/QGpCoreMath
+[submodule "SciFigs"]
+	path = SciFigs
+	url = git://geopsy.org/SciFigs
+[submodule "QGpGuiMath"]
+	path = QGpGuiMath
+	url = git://geopsy.org/QGpGuiMath
+[submodule "figue"]
+	path = figue
+	url = git://geopsy.org/figue
+[submodule "QGpCoreWave"]
+	path = QGpCoreWave
+	url = git://geopsy.org/QGpCoreWave
+[submodule "QGpGuiWave"]
+	path = QGpGuiWave
+	url = git://geopsy.org/QGpGuiWave
+[submodule "QGpCompatibility"]
+	path = QGpCompatibility
+	url = git://geopsy.org/QGpCompatibility
+[submodule "GeopsyCore"]
+	path = GeopsyCore
+	url = git://geopsy.org/GeopsyCore
+[submodule "GeopsyGui"]
+	path = GeopsyGui
+	url = git://geopsy.org/GeopsyGui
+[submodule "geopsyfigs"]
+	path = geopsyfigs
+	url = git://geopsy.org/geopsyfigs
+[submodule "GeopsySLink"]
+	path = GeopsySLink
+	url = git://geopsy.org/GeopsySLink
+[submodule "GeopsySLinkGui"]
+	path = GeopsySLinkGui
+	url = git://geopsy.org/GeopsySLinkGui
+[submodule "DinverCore"]
+	path = DinverCore
+	url = git://geopsy.org/DinverCore
+[submodule "DinverGui"]
+	path = DinverGui
+	url = git://geopsy.org/DinverGui
+[submodule "DinverDCCore"]
+	path = DinverDCCore
+	url = git://geopsy.org/DinverDCCore
+[submodule "DinverDCGui"]
+	path = DinverDCGui
+	url = git://geopsy.org/DinverDCGui
+[submodule "QGpCoreStat"]
+	path = QGpCoreStat
+	url = git://geopsy.org/QGpCoreStat
+[submodule "ArrayCore"]
+	path = ArrayCore
+	url = git://geopsy.org/ArrayCore
+[submodule "ArrayGui"]
+	path = ArrayGui
+	url = git://geopsy.org/ArrayGui
+[submodule "MonoStation"]
+	path = MonoStation
+	url = git://geopsy.org/MonoStation
+[submodule "geopsy-fk"]
+	path = geopsy-fk
+	url = git://geopsy.org/geopsy-fk
+[submodule "geopsy-spac"]
+	path = geopsy-spac
+	url = git://geopsy.org/geopsy-spac
+[submodule "geopsy-hv"]
+	path = geopsy-hv
+	url = git://geopsy.org/geopsy-hv
+[submodule "geopsy"]
+	path = geopsy
+	url = git://geopsy.org/geopsy
+[submodule "vslarray"]
+	path = vslarray
+	url = git://geopsy.org/vslarray
+[submodule "dinver"]
+	path = dinver
+	url = git://geopsy.org/dinver
+[submodule "WaranCore"]
+	path = WaranCore
+	url = git://geopsy.org/WaranCore
+[submodule "TapePositioningSystem"]
+	path = TapePositioningSystem
+	url = git://geopsy.org/TapePositioningSystem
+[submodule "waran"]
+	path = waran
+	url = git://geopsy.org/waran
+[submodule "warangps"]
+	path = warangps
+	url = git://geopsy.org/warangps
+[submodule "geopsyarray"]
+	path = geopsyarray
+	url = git://geopsy.org/geopsyarray
+[submodule "geopsyhv"]
+	path = geopsyhv
+	url = git://geopsy.org/geopsyhv
+[submodule "geopsydamping"]
+	path = geopsydamping
+	url = git://geopsy.org/geopsydamping
+[submodule "geopsytfa"]
+	path = geopsytfa
+	url = git://geopsy.org/geopsytfa
+[submodule "geopsynr"]
+	path = geopsynr
+	url = git://geopsy.org/geopsynr
+[submodule "geopsyptmotion"]
+	path = geopsyptmotion
+	url = git://geopsy.org/geopsyptmotion
+[submodule "geopsyrefra"]
+	path = geopsyrefra
+	url = git://geopsy.org/geopsyrefra
+[submodule "hvtfa"]
+	path = hvtfa
+	url = git://geopsy.org/hvtfa
+[submodule "campbelltob3"]
+	path = campbelltob3
+	url = git://geopsy.org/campbelltob3
+[submodule "dinverdc"]
+	path = dinverdc
+	url = git://geopsy.org/dinverdc
+[submodule "dinverext"]
+	path = dinverext
+	url = git://geopsy.org/dinverext
+[submodule "spac2disp"]
+	path = spac2disp
+	url = git://geopsy.org/spac2disp
+[submodule "max2curve"]
+	path = max2curve
+	url = git://geopsy.org/max2curve
+[submodule "gppoisson"]
+	path = gppoisson
+	url = git://geopsy.org/gppoisson
+[submodule "gpprofile"]
+	path = gpprofile
+	url = git://geopsy.org/gpprofile
+[submodule "gpdc"]
+	path = gpdc
+	url = git://geopsy.org/gpdc
+[submodule "gplivemodel"]
+	path = gplivemodel
+	url = git://geopsy.org/gplivemodel
+[submodule "gpec8"]
+	path = gpec8
+	url = git://geopsy.org/gpec8
+[submodule "gpdcreport"]
+	path = gpdcreport
+	url = git://geopsy.org/gpdcreport
+[submodule "gptarget"]
+	path = gptarget
+	url = git://geopsy.org/gptarget
+[submodule "gpviewdcreport"]
+	path = gpviewdcreport
+	url = git://geopsy.org/gpviewdcreport
+[submodule "gpdcmisfit"]
+	path = gpdcmisfit
+	url = git://geopsy.org/gpdcmisfit
+[submodule "gpell"]
+	path = gpell
+	url = git://geopsy.org/gpell
+[submodule "gpgroup2phase"]
+	path = gpgroup2phase
+	url = git://geopsy.org/gpgroup2phase
+[submodule "gpmodel2param"]
+	path = gpmodel2param
+	url = git://geopsy.org/gpmodel2param
+[submodule "gpparam2model"]
+	path = gpparam2model
+	url = git://geopsy.org/gpparam2model
+[submodule "gpdepths"]
+	path = gpdepths
+	url = git://geopsy.org/gpdepths
+[submodule "gpsort"]
+	path = gpsort
+	url = git://geopsy.org/gpsort
+[submodule "gpcurve"]
+	path = gpcurve
+	url = git://geopsy.org/gpcurve
+[submodule "gprandom"]
+	path = gprandom
+	url = git://geopsy.org/gprandom
+[submodule "gpspac"]
+	path = gpspac
+	url = git://geopsy.org/gpspac
+[submodule "gprefra"]
+	path = gprefra
+	url = git://geopsy.org/gprefra
+[submodule "gpsignal"]
+	path = gpsignal
+	url = git://geopsy.org/gpsignal
+[submodule "gphistogram"]
+	path = gphistogram
+	url = git://geopsy.org/gphistogram
+[submodule "gpviewmax"]
+	path = gpviewmax
+	url = git://geopsy.org/gpviewmax
+[submodule "gpdistance"]
+	path = gpdistance
+	url = git://geopsy.org/gpdistance
+[submodule "gptime"]
+	path = gptime
+	url = git://geopsy.org/gptime
+[submodule "gpcoord"]
+	path = gpcoord
+	url = git://geopsy.org/gpcoord
+[submodule "gpreplace"]
+	path = gpreplace
+	url = git://geopsy.org/gpreplace
+[submodule "gpsh"]
+	path = gpsh
+	url = git://geopsy.org/gpsh
+[submodule "gpmt"]
+	path = gpmt
+	url = git://geopsy.org/gpmt
+[submodule "gpgridsearch"]
+	path = gpgridsearch
+	url = git://geopsy.org/gpgridsearch
+[submodule "gpfksimulator"]
+	path = gpfksimulator
+	url = git://geopsy.org/gpfksimulator
+[submodule "gpmaplayer"]
+	path = gpmaplayer
+	url = git://geopsy.org/gpmaplayer
+[submodule "dinvermatlab"]
+	path = dinvermatlab
+	url = git://geopsy.org/dinvermatlab
+[submodule "matfiles"]
+	path = matfiles
+	url = git://geopsy.org/matfiles
