@@ -1,0 +1,17 @@
+
+For more information visit http://www.geopsy.org
+
+Start configure script. To get the list of available options add option "-h".
+For instance you can change the base directory for installation with "-prefix".
+Use "-builddir" option to generate binaries outside the source directory.
+
+  $ ./configure -builddir /path/where/you/want/to/build -pch
+
+When done, build package
+
+  $ make -j 8 -C /path/where/you/want/to/build
+
+It can be installed by starting (eventually with sudo)
+
+  $ make install -C /path/where/you/want/to/build
+
