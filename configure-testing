@@ -279,7 +279,7 @@ cat <<ENDVERSION > $BUILD_DIR/slink/src/slinkVersion.h
 #define SLINK_VERSION_TYPE "testing"
 #define SLINK_AUTHORS ""
 #define SLINK_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define SLINK_GIT_COMMIT "3acd61d1a04882125db91930f0bad366196c045a"
+#define SLINK_GIT_COMMIT "4f04f9af21ae555ad490f25dd36dbd0b5b0490f9"
 #endif // SLINK_VERSION
 ENDVERSION
 echo "Configure slink"
