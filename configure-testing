@@ -248,7 +248,7 @@ TEMP_FILE="/tmp/configure_output_$RANDOM"
 while [ -e $TEMP_FILE ]; do
   TEMP_FILE="/tmp/configure_output_$RANDOM"
 done
-test -d $BUILD_DIR/mseed/src || mkdir $BUILD_DIR/mseed/src
+test -d $BUILD_DIR/mseed/src || mkdir -p $BUILD_DIR/mseed/src
 cat <<ENDVERSION > $BUILD_DIR/mseed/src/mseedVersion.h
 #ifndef MSEED_VERSION
 #define MSEED_VERSION "2.5.1"
@@ -273,7 +273,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          mseed \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/slink/src || mkdir $BUILD_DIR/slink/src
+test -d $BUILD_DIR/slink/src || mkdir -p $BUILD_DIR/slink/src
 cat <<ENDVERSION > $BUILD_DIR/slink/src/slinkVersion.h
 #ifndef SLINK_VERSION
 #define SLINK_VERSION "1.6.0"
@@ -298,7 +298,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          slink \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/QGpCoreTools/src || mkdir $BUILD_DIR/QGpCoreTools/src
+test -d $BUILD_DIR/QGpCoreTools/src || mkdir -p $BUILD_DIR/QGpCoreTools/src
 cat <<ENDVERSION > $BUILD_DIR/QGpCoreTools/src/QGpCoreToolsVersion.h
 #ifndef QGPCORETOOLS_VERSION
 #define QGPCORETOOLS_VERSION "2.2.2"
@@ -323,7 +323,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          QGpCoreTools \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/QGpGuiTools/src || mkdir $BUILD_DIR/QGpGuiTools/src
+test -d $BUILD_DIR/QGpGuiTools/src || mkdir -p $BUILD_DIR/QGpGuiTools/src
 cat <<ENDVERSION > $BUILD_DIR/QGpGuiTools/src/QGpGuiToolsVersion.h
 #ifndef QGPGUITOOLS_VERSION
 #define QGPGUITOOLS_VERSION "2.2.0"
@@ -348,7 +348,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          QGpGuiTools \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/QGpCoreMath/src || mkdir $BUILD_DIR/QGpCoreMath/src
+test -d $BUILD_DIR/QGpCoreMath/src || mkdir -p $BUILD_DIR/QGpCoreMath/src
 cat <<ENDVERSION > $BUILD_DIR/QGpCoreMath/src/QGpCoreMathVersion.h
 #ifndef QGPCOREMATH_VERSION
 #define QGPCOREMATH_VERSION "1.2.1"
@@ -373,7 +373,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          QGpCoreMath \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/SciFigs/src || mkdir $BUILD_DIR/SciFigs/src
+test -d $BUILD_DIR/SciFigs/src || mkdir -p $BUILD_DIR/SciFigs/src
 cat <<ENDVERSION > $BUILD_DIR/SciFigs/src/SciFigsVersion.h
 #ifndef SCIFIGS_VERSION
 #define SCIFIGS_VERSION "3.1.1"
@@ -398,7 +398,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          SciFigs \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/QGpGuiMath/src || mkdir $BUILD_DIR/QGpGuiMath/src
+test -d $BUILD_DIR/QGpGuiMath/src || mkdir -p $BUILD_DIR/QGpGuiMath/src
 cat <<ENDVERSION > $BUILD_DIR/QGpGuiMath/src/QGpGuiMathVersion.h
 #ifndef QGPGUIMATH_VERSION
 #define QGPGUIMATH_VERSION "1.1.2"
@@ -423,7 +423,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          QGpGuiMath \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/figue/src || mkdir $BUILD_DIR/figue/src
+test -d $BUILD_DIR/figue/src || mkdir -p $BUILD_DIR/figue/src
 cat <<ENDVERSION > $BUILD_DIR/figue/src/figueVersion.h
 #ifndef FIGUE_VERSION
 #define FIGUE_VERSION "2.0.2"
@@ -448,7 +448,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          figue \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/QGpCoreWave/src || mkdir $BUILD_DIR/QGpCoreWave/src
+test -d $BUILD_DIR/QGpCoreWave/src || mkdir -p $BUILD_DIR/QGpCoreWave/src
 cat <<ENDVERSION > $BUILD_DIR/QGpCoreWave/src/QGpCoreWaveVersion.h
 #ifndef QGPCOREWAVE_VERSION
 #define QGPCOREWAVE_VERSION "2.0.2"
@@ -473,7 +473,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          QGpCoreWave \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/QGpGuiWave/src || mkdir $BUILD_DIR/QGpGuiWave/src
+test -d $BUILD_DIR/QGpGuiWave/src || mkdir -p $BUILD_DIR/QGpGuiWave/src
 cat <<ENDVERSION > $BUILD_DIR/QGpGuiWave/src/QGpGuiWaveVersion.h
 #ifndef QGPGUIWAVE_VERSION
 #define QGPGUIWAVE_VERSION "1.0.0"
@@ -498,7 +498,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          QGpGuiWave \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/QGpCompatibility/src || mkdir $BUILD_DIR/QGpCompatibility/src
+test -d $BUILD_DIR/QGpCompatibility/src || mkdir -p $BUILD_DIR/QGpCompatibility/src
 cat <<ENDVERSION > $BUILD_DIR/QGpCompatibility/src/QGpCompatibilityVersion.h
 #ifndef QGPCOMPATIBILITY_VERSION
 #define QGPCOMPATIBILITY_VERSION "1.0.1"
@@ -523,7 +523,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          QGpCompatibility \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/GeopsyCore/src || mkdir $BUILD_DIR/GeopsyCore/src
+test -d $BUILD_DIR/GeopsyCore/src || mkdir -p $BUILD_DIR/GeopsyCore/src
 cat <<ENDVERSION > $BUILD_DIR/GeopsyCore/src/GeopsyCoreVersion.h
 #ifndef GEOPSYCORE_VERSION
 #define GEOPSYCORE_VERSION "4.2.1"
@@ -548,7 +548,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          GeopsyCore \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/GeopsyGui/src || mkdir $BUILD_DIR/GeopsyGui/src
+test -d $BUILD_DIR/GeopsyGui/src || mkdir -p $BUILD_DIR/GeopsyGui/src
 cat <<ENDVERSION > $BUILD_DIR/GeopsyGui/src/GeopsyGuiVersion.h
 #ifndef GEOPSYGUI_VERSION
 #define GEOPSYGUI_VERSION "3.2.1"
@@ -573,7 +573,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          GeopsyGui \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/geopsyfigs/src || mkdir $BUILD_DIR/geopsyfigs/src
+test -d $BUILD_DIR/geopsyfigs/src || mkdir -p $BUILD_DIR/geopsyfigs/src
 cat <<ENDVERSION > $BUILD_DIR/geopsyfigs/src/geopsyfigsVersion.h
 #ifndef GEOPSYFIGS_VERSION
 #define GEOPSYFIGS_VERSION "1.0.0"
@@ -598,7 +598,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          geopsyfigs \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/GeopsySLink/src || mkdir $BUILD_DIR/GeopsySLink/src
+test -d $BUILD_DIR/GeopsySLink/src || mkdir -p $BUILD_DIR/GeopsySLink/src
 cat <<ENDVERSION > $BUILD_DIR/GeopsySLink/src/GeopsySLinkVersion.h
 #ifndef GEOPSYSLINK_VERSION
 #define GEOPSYSLINK_VERSION "2.0.1"
@@ -623,7 +623,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          GeopsySLink \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/GeopsySLinkGui/src || mkdir $BUILD_DIR/GeopsySLinkGui/src
+test -d $BUILD_DIR/GeopsySLinkGui/src || mkdir -p $BUILD_DIR/GeopsySLinkGui/src
 cat <<ENDVERSION > $BUILD_DIR/GeopsySLinkGui/src/GeopsySLinkGuiVersion.h
 #ifndef GEOPSYSLINKGUI_VERSION
 #define GEOPSYSLINKGUI_VERSION "2.0.1"
@@ -648,7 +648,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          GeopsySLinkGui \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/DinverCore/src || mkdir $BUILD_DIR/DinverCore/src
+test -d $BUILD_DIR/DinverCore/src || mkdir -p $BUILD_DIR/DinverCore/src
 cat <<ENDVERSION > $BUILD_DIR/DinverCore/src/DinverCoreVersion.h
 #ifndef DINVERCORE_VERSION
 #define DINVERCORE_VERSION "1.1.0"
@@ -673,7 +673,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          DinverCore \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/DinverGui/src || mkdir $BUILD_DIR/DinverGui/src
+test -d $BUILD_DIR/DinverGui/src || mkdir -p $BUILD_DIR/DinverGui/src
 cat <<ENDVERSION > $BUILD_DIR/DinverGui/src/DinverGuiVersion.h
 #ifndef DINVERGUI_VERSION
 #define DINVERGUI_VERSION "1.0.0"
@@ -698,7 +698,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          DinverGui \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/DinverDCCore/src || mkdir $BUILD_DIR/DinverDCCore/src
+test -d $BUILD_DIR/DinverDCCore/src || mkdir -p $BUILD_DIR/DinverDCCore/src
 cat <<ENDVERSION > $BUILD_DIR/DinverDCCore/src/DinverDCCoreVersion.h
 #ifndef DINVERDCCORE_VERSION
 #define DINVERDCCORE_VERSION "2.0.2"
@@ -723,7 +723,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          DinverDCCore \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/DinverDCGui/src || mkdir $BUILD_DIR/DinverDCGui/src
+test -d $BUILD_DIR/DinverDCGui/src || mkdir -p $BUILD_DIR/DinverDCGui/src
 cat <<ENDVERSION > $BUILD_DIR/DinverDCGui/src/DinverDCGuiVersion.h
 #ifndef DINVERDCGUI_VERSION
 #define DINVERDCGUI_VERSION "1.0.0"
@@ -748,7 +748,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          DinverDCGui \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/QGpCoreStat/src || mkdir $BUILD_DIR/QGpCoreStat/src
+test -d $BUILD_DIR/QGpCoreStat/src || mkdir -p $BUILD_DIR/QGpCoreStat/src
 cat <<ENDVERSION > $BUILD_DIR/QGpCoreStat/src/QGpCoreStatVersion.h
 #ifndef QGPCORESTAT_VERSION
 #define QGPCORESTAT_VERSION "1.0.1"
@@ -773,7 +773,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          QGpCoreStat \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/ArrayCore/src || mkdir $BUILD_DIR/ArrayCore/src
+test -d $BUILD_DIR/ArrayCore/src || mkdir -p $BUILD_DIR/ArrayCore/src
 cat <<ENDVERSION > $BUILD_DIR/ArrayCore/src/ArrayCoreVersion.h
 #ifndef ARRAYCORE_VERSION
 #define ARRAYCORE_VERSION "3.2.0"
@@ -798,7 +798,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          ArrayCore \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/ArrayGui/src || mkdir $BUILD_DIR/ArrayGui/src
+test -d $BUILD_DIR/ArrayGui/src || mkdir -p $BUILD_DIR/ArrayGui/src
 cat <<ENDVERSION > $BUILD_DIR/ArrayGui/src/ArrayGuiVersion.h
 #ifndef ARRAYGUI_VERSION
 #define ARRAYGUI_VERSION "1.1.0"
@@ -823,7 +823,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          ArrayGui \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/MonoStation/src || mkdir $BUILD_DIR/MonoStation/src
+test -d $BUILD_DIR/MonoStation/src || mkdir -p $BUILD_DIR/MonoStation/src
 cat <<ENDVERSION > $BUILD_DIR/MonoStation/src/MonoStationVersion.h
 #ifndef MONOSTATION_VERSION
 #define MONOSTATION_VERSION "2.1.1"
@@ -848,7 +848,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          MonoStation \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/geopsy-fk/src || mkdir $BUILD_DIR/geopsy-fk/src
+test -d $BUILD_DIR/geopsy-fk/src || mkdir -p $BUILD_DIR/geopsy-fk/src
 cat <<ENDVERSION > $BUILD_DIR/geopsy-fk/src/geopsy-fkVersion.h
 #ifndef GEOPSY_FK_VERSION
 #define GEOPSY_FK_VERSION "1.0.0"
@@ -873,7 +873,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          geopsy-fk \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/geopsy-spac/src || mkdir $BUILD_DIR/geopsy-spac/src
+test -d $BUILD_DIR/geopsy-spac/src || mkdir -p $BUILD_DIR/geopsy-spac/src
 cat <<ENDVERSION > $BUILD_DIR/geopsy-spac/src/geopsy-spacVersion.h
 #ifndef GEOPSY_SPAC_VERSION
 #define GEOPSY_SPAC_VERSION "1.0.0"
@@ -898,7 +898,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          geopsy-spac \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/geopsy-hv/src || mkdir $BUILD_DIR/geopsy-hv/src
+test -d $BUILD_DIR/geopsy-hv/src || mkdir -p $BUILD_DIR/geopsy-hv/src
 cat <<ENDVERSION > $BUILD_DIR/geopsy-hv/src/geopsy-hvVersion.h
 #ifndef GEOPSY_HV_VERSION
 #define GEOPSY_HV_VERSION "0.1.0"
@@ -923,7 +923,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          geopsy-hv \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/geopsy/src || mkdir $BUILD_DIR/geopsy/src
+test -d $BUILD_DIR/geopsy/src || mkdir -p $BUILD_DIR/geopsy/src
 cat <<ENDVERSION > $BUILD_DIR/geopsy/src/geopsyVersion.h
 #ifndef GEOPSY_VERSION
 #define GEOPSY_VERSION "3.2.0"
@@ -948,7 +948,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          geopsy \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/vslarray/src || mkdir $BUILD_DIR/vslarray/src
+test -d $BUILD_DIR/vslarray/src || mkdir -p $BUILD_DIR/vslarray/src
 cat <<ENDVERSION > $BUILD_DIR/vslarray/src/vslarrayVersion.h
 #ifndef VSLARRAY_VERSION
 #define VSLARRAY_VERSION "1.0.0"
@@ -973,7 +973,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          vslarray \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/dinver/src || mkdir $BUILD_DIR/dinver/src
+test -d $BUILD_DIR/dinver/src || mkdir -p $BUILD_DIR/dinver/src
 cat <<ENDVERSION > $BUILD_DIR/dinver/src/dinverVersion.h
 #ifndef DINVER_VERSION
 #define DINVER_VERSION "1.0.2"
@@ -998,7 +998,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          dinver \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/WaranCore/src || mkdir $BUILD_DIR/WaranCore/src
+test -d $BUILD_DIR/WaranCore/src || mkdir -p $BUILD_DIR/WaranCore/src
 cat <<ENDVERSION > $BUILD_DIR/WaranCore/src/WaranCoreVersion.h
 #ifndef WARANCORE_VERSION
 #define WARANCORE_VERSION "1.0.0"
@@ -1023,7 +1023,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          WaranCore \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/TapePositioningSystem/src || mkdir $BUILD_DIR/TapePositioningSystem/src
+test -d $BUILD_DIR/TapePositioningSystem/src || mkdir -p $BUILD_DIR/TapePositioningSystem/src
 cat <<ENDVERSION > $BUILD_DIR/TapePositioningSystem/src/TapePositioningSystemVersion.h
 #ifndef TAPEPOSITIONINGSYSTEM_VERSION
 #define TAPEPOSITIONINGSYSTEM_VERSION "1.0.0"
@@ -1048,7 +1048,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          TapePositioningSystem \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/waran/src || mkdir $BUILD_DIR/waran/src
+test -d $BUILD_DIR/waran/src || mkdir -p $BUILD_DIR/waran/src
 cat <<ENDVERSION > $BUILD_DIR/waran/src/waranVersion.h
 #ifndef WARAN_VERSION
 #define WARAN_VERSION "1.1.0"
@@ -1073,7 +1073,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          waran \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/warangps/src || mkdir $BUILD_DIR/warangps/src
+test -d $BUILD_DIR/warangps/src || mkdir -p $BUILD_DIR/warangps/src
 cat <<ENDVERSION > $BUILD_DIR/warangps/src/warangpsVersion.h
 #ifndef WARANGPS_VERSION
 #define WARANGPS_VERSION "1.1.0"
@@ -1098,7 +1098,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          warangps \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/geopsyarray/src || mkdir $BUILD_DIR/geopsyarray/src
+test -d $BUILD_DIR/geopsyarray/src || mkdir -p $BUILD_DIR/geopsyarray/src
 cat <<ENDVERSION > $BUILD_DIR/geopsyarray/src/geopsyarrayVersion.h
 #ifndef GEOPSYARRAY_VERSION
 #define GEOPSYARRAY_VERSION "3.1.2"
@@ -1123,7 +1123,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          geopsyarray \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/geopsyhv/src || mkdir $BUILD_DIR/geopsyhv/src
+test -d $BUILD_DIR/geopsyhv/src || mkdir -p $BUILD_DIR/geopsyhv/src
 cat <<ENDVERSION > $BUILD_DIR/geopsyhv/src/geopsyhvVersion.h
 #ifndef GEOPSYHV_VERSION
 #define GEOPSYHV_VERSION "3.0.2"
@@ -1148,7 +1148,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          geopsyhv \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/geopsydamping/src || mkdir $BUILD_DIR/geopsydamping/src
+test -d $BUILD_DIR/geopsydamping/src || mkdir -p $BUILD_DIR/geopsydamping/src
 cat <<ENDVERSION > $BUILD_DIR/geopsydamping/src/geopsydampingVersion.h
 #ifndef GEOPSYDAMPING_VERSION
 #define GEOPSYDAMPING_VERSION "2.0.0"
@@ -1173,7 +1173,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          geopsydamping \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/geopsytfa/src || mkdir $BUILD_DIR/geopsytfa/src
+test -d $BUILD_DIR/geopsytfa/src || mkdir -p $BUILD_DIR/geopsytfa/src
 cat <<ENDVERSION > $BUILD_DIR/geopsytfa/src/geopsytfaVersion.h
 #ifndef GEOPSYTFA_VERSION
 #define GEOPSYTFA_VERSION "2.0.0"
@@ -1198,7 +1198,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          geopsytfa \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/geopsynr/src || mkdir $BUILD_DIR/geopsynr/src
+test -d $BUILD_DIR/geopsynr/src || mkdir -p $BUILD_DIR/geopsynr/src
 cat <<ENDVERSION > $BUILD_DIR/geopsynr/src/geopsynrVersion.h
 #ifndef GEOPSYNR_VERSION
 #define GEOPSYNR_VERSION "1.0.0"
@@ -1223,7 +1223,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          geopsynr \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/geopsyptmotion/src || mkdir $BUILD_DIR/geopsyptmotion/src
+test -d $BUILD_DIR/geopsyptmotion/src || mkdir -p $BUILD_DIR/geopsyptmotion/src
 cat <<ENDVERSION > $BUILD_DIR/geopsyptmotion/src/geopsyptmotionVersion.h
 #ifndef GEOPSYPTMOTION_VERSION
 #define GEOPSYPTMOTION_VERSION "2.0.0"
@@ -1248,7 +1248,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          geopsyptmotion \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/geopsyrefra/src || mkdir $BUILD_DIR/geopsyrefra/src
+test -d $BUILD_DIR/geopsyrefra/src || mkdir -p $BUILD_DIR/geopsyrefra/src
 cat <<ENDVERSION > $BUILD_DIR/geopsyrefra/src/geopsyrefraVersion.h
 #ifndef GEOPSYREFRA_VERSION
 #define GEOPSYREFRA_VERSION "2.0.0"
@@ -1273,7 +1273,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          geopsyrefra \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/hvtfa/src || mkdir $BUILD_DIR/hvtfa/src
+test -d $BUILD_DIR/hvtfa/src || mkdir -p $BUILD_DIR/hvtfa/src
 cat <<ENDVERSION > $BUILD_DIR/hvtfa/src/hvtfaVersion.h
 #ifndef HVTFA_VERSION
 #define HVTFA_VERSION "2.0.0"
@@ -1298,7 +1298,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          hvtfa \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/campbelltob3/src || mkdir $BUILD_DIR/campbelltob3/src
+test -d $BUILD_DIR/campbelltob3/src || mkdir -p $BUILD_DIR/campbelltob3/src
 cat <<ENDVERSION > $BUILD_DIR/campbelltob3/src/campbelltob3Version.h
 #ifndef CAMPBELLTOB3_VERSION
 #define CAMPBELLTOB3_VERSION "1.0.0"
@@ -1323,7 +1323,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          campbelltob3 \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/dinverdc/src || mkdir $BUILD_DIR/dinverdc/src
+test -d $BUILD_DIR/dinverdc/src || mkdir -p $BUILD_DIR/dinverdc/src
 cat <<ENDVERSION > $BUILD_DIR/dinverdc/src/dinverdcVersion.h
 #ifndef DINVERDC_VERSION
 #define DINVERDC_VERSION "2.0.0"
@@ -1348,7 +1348,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          dinverdc \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/dinverext/src || mkdir $BUILD_DIR/dinverext/src
+test -d $BUILD_DIR/dinverext/src || mkdir -p $BUILD_DIR/dinverext/src
 cat <<ENDVERSION > $BUILD_DIR/dinverext/src/dinverextVersion.h
 #ifndef DINVEREXT_VERSION
 #define DINVEREXT_VERSION "1.0.2"
@@ -1373,7 +1373,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          dinverext \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/spac2disp/src || mkdir $BUILD_DIR/spac2disp/src
+test -d $BUILD_DIR/spac2disp/src || mkdir -p $BUILD_DIR/spac2disp/src
 cat <<ENDVERSION > $BUILD_DIR/spac2disp/src/spac2dispVersion.h
 #ifndef SPAC2DISP_VERSION
 #define SPAC2DISP_VERSION "1.0.0"
@@ -1398,7 +1398,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          spac2disp \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/max2curve/src || mkdir $BUILD_DIR/max2curve/src
+test -d $BUILD_DIR/max2curve/src || mkdir -p $BUILD_DIR/max2curve/src
 cat <<ENDVERSION > $BUILD_DIR/max2curve/src/max2curveVersion.h
 #ifndef MAX2CURVE_VERSION
 #define MAX2CURVE_VERSION "1.1.0"
@@ -1423,7 +1423,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          max2curve \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/gppoisson/src || mkdir $BUILD_DIR/gppoisson/src
+test -d $BUILD_DIR/gppoisson/src || mkdir -p $BUILD_DIR/gppoisson/src
 cat <<ENDVERSION > $BUILD_DIR/gppoisson/src/gppoissonVersion.h
 #ifndef GPPOISSON_VERSION
 #define GPPOISSON_VERSION "2.0.0"
@@ -1448,7 +1448,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gppoisson \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/gpprofile/src || mkdir $BUILD_DIR/gpprofile/src
+test -d $BUILD_DIR/gpprofile/src || mkdir -p $BUILD_DIR/gpprofile/src
 cat <<ENDVERSION > $BUILD_DIR/gpprofile/src/gpprofileVersion.h
 #ifndef GPPROFILE_VERSION
 #define GPPROFILE_VERSION "1.1.0"
@@ -1473,7 +1473,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpprofile \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/gpdc/src || mkdir $BUILD_DIR/gpdc/src
+test -d $BUILD_DIR/gpdc/src || mkdir -p $BUILD_DIR/gpdc/src
 cat <<ENDVERSION > $BUILD_DIR/gpdc/src/gpdcVersion.h
 #ifndef GPDC_VERSION
 #define GPDC_VERSION "1.0.1"
@@ -1498,7 +1498,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpdc \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/gplivemodel/src || mkdir $BUILD_DIR/gplivemodel/src
+test -d $BUILD_DIR/gplivemodel/src || mkdir -p $BUILD_DIR/gplivemodel/src
 cat <<ENDVERSION > $BUILD_DIR/gplivemodel/src/gplivemodelVersion.h
 #ifndef GPLIVEMODEL_VERSION
 #define GPLIVEMODEL_VERSION "1.0.1"
@@ -1523,7 +1523,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gplivemodel \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/gpec8/src || mkdir $BUILD_DIR/gpec8/src
+test -d $BUILD_DIR/gpec8/src || mkdir -p $BUILD_DIR/gpec8/src
 cat <<ENDVERSION > $BUILD_DIR/gpec8/src/gpec8Version.h
 #ifndef GPEC8_VERSION
 #define GPEC8_VERSION "1.0.0"
@@ -1548,7 +1548,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpec8 \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/gpdcreport/src || mkdir $BUILD_DIR/gpdcreport/src
+test -d $BUILD_DIR/gpdcreport/src || mkdir -p $BUILD_DIR/gpdcreport/src
 cat <<ENDVERSION > $BUILD_DIR/gpdcreport/src/gpdcreportVersion.h
 #ifndef GPDCREPORT_VERSION
 #define GPDCREPORT_VERSION "1.0.2"
@@ -1573,7 +1573,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpdcreport \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/gptarget/src || mkdir $BUILD_DIR/gptarget/src
+test -d $BUILD_DIR/gptarget/src || mkdir -p $BUILD_DIR/gptarget/src
 cat <<ENDVERSION > $BUILD_DIR/gptarget/src/gptargetVersion.h
 #ifndef GPTARGET_VERSION
 #define GPTARGET_VERSION "1.0.1"
@@ -1598,7 +1598,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gptarget \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/gpviewdcreport/src || mkdir $BUILD_DIR/gpviewdcreport/src
+test -d $BUILD_DIR/gpviewdcreport/src || mkdir -p $BUILD_DIR/gpviewdcreport/src
 cat <<ENDVERSION > $BUILD_DIR/gpviewdcreport/src/gpviewdcreportVersion.h
 #ifndef GPVIEWDCREPORT_VERSION
 #define GPVIEWDCREPORT_VERSION "1.0.0"
@@ -1623,7 +1623,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpviewdcreport \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/gpdcmisfit/src || mkdir $BUILD_DIR/gpdcmisfit/src
+test -d $BUILD_DIR/gpdcmisfit/src || mkdir -p $BUILD_DIR/gpdcmisfit/src
 cat <<ENDVERSION > $BUILD_DIR/gpdcmisfit/src/gpdcmisfitVersion.h
 #ifndef GPDCMISFIT_VERSION
 #define GPDCMISFIT_VERSION "1.0.0"
@@ -1648,7 +1648,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpdcmisfit \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/gpell/src || mkdir $BUILD_DIR/gpell/src
+test -d $BUILD_DIR/gpell/src || mkdir -p $BUILD_DIR/gpell/src
 cat <<ENDVERSION > $BUILD_DIR/gpell/src/gpellVersion.h
 #ifndef GPELL_VERSION
 #define GPELL_VERSION "1.0.0"
@@ -1673,7 +1673,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpell \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/gpgroup2phase/src || mkdir $BUILD_DIR/gpgroup2phase/src
+test -d $BUILD_DIR/gpgroup2phase/src || mkdir -p $BUILD_DIR/gpgroup2phase/src
 cat <<ENDVERSION > $BUILD_DIR/gpgroup2phase/src/gpgroup2phaseVersion.h
 #ifndef GPGROUP2PHASE_VERSION
 #define GPGROUP2PHASE_VERSION "1.0.0"
@@ -1698,7 +1698,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpgroup2phase \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/gpmodel2param/src || mkdir $BUILD_DIR/gpmodel2param/src
+test -d $BUILD_DIR/gpmodel2param/src || mkdir -p $BUILD_DIR/gpmodel2param/src
 cat <<ENDVERSION > $BUILD_DIR/gpmodel2param/src/gpmodel2paramVersion.h
 #ifndef GPMODEL2PARAM_VERSION
 #define GPMODEL2PARAM_VERSION "1.0.0"
@@ -1723,7 +1723,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpmodel2param \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/gpparam2model/src || mkdir $BUILD_DIR/gpparam2model/src
+test -d $BUILD_DIR/gpparam2model/src || mkdir -p $BUILD_DIR/gpparam2model/src
 cat <<ENDVERSION > $BUILD_DIR/gpparam2model/src/gpparam2modelVersion.h
 #ifndef GPPARAM2MODEL_VERSION
 #define GPPARAM2MODEL_VERSION "1.0.0"
@@ -1748,7 +1748,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpparam2model \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/gpdepths/src || mkdir $BUILD_DIR/gpdepths/src
+test -d $BUILD_DIR/gpdepths/src || mkdir -p $BUILD_DIR/gpdepths/src
 cat <<ENDVERSION > $BUILD_DIR/gpdepths/src/gpdepthsVersion.h
 #ifndef GPDEPTHS_VERSION
 #define GPDEPTHS_VERSION "1.0.0"
@@ -1773,7 +1773,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpdepths \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/gpsort/src || mkdir $BUILD_DIR/gpsort/src
+test -d $BUILD_DIR/gpsort/src || mkdir -p $BUILD_DIR/gpsort/src
 cat <<ENDVERSION > $BUILD_DIR/gpsort/src/gpsortVersion.h
 #ifndef GPSORT_VERSION
 #define GPSORT_VERSION "1.0.0"
@@ -1798,7 +1798,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpsort \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/gpcurve/src || mkdir $BUILD_DIR/gpcurve/src
+test -d $BUILD_DIR/gpcurve/src || mkdir -p $BUILD_DIR/gpcurve/src
 cat <<ENDVERSION > $BUILD_DIR/gpcurve/src/gpcurveVersion.h
 #ifndef GPCURVE_VERSION
 #define GPCURVE_VERSION "1.0.0"
@@ -1823,7 +1823,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpcurve \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/gprandom/src || mkdir $BUILD_DIR/gprandom/src
+test -d $BUILD_DIR/gprandom/src || mkdir -p $BUILD_DIR/gprandom/src
 cat <<ENDVERSION > $BUILD_DIR/gprandom/src/gprandomVersion.h
 #ifndef GPRANDOM_VERSION
 #define GPRANDOM_VERSION "1.0.0"
@@ -1848,7 +1848,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gprandom \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/gpspac/src || mkdir $BUILD_DIR/gpspac/src
+test -d $BUILD_DIR/gpspac/src || mkdir -p $BUILD_DIR/gpspac/src
 cat <<ENDVERSION > $BUILD_DIR/gpspac/src/gpspacVersion.h
 #ifndef GPSPAC_VERSION
 #define GPSPAC_VERSION "1.0.0"
@@ -1873,7 +1873,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpspac \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/gprefra/src || mkdir $BUILD_DIR/gprefra/src
+test -d $BUILD_DIR/gprefra/src || mkdir -p $BUILD_DIR/gprefra/src
 cat <<ENDVERSION > $BUILD_DIR/gprefra/src/gprefraVersion.h
 #ifndef GPREFRA_VERSION
 #define GPREFRA_VERSION "1.0.0"
@@ -1898,7 +1898,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gprefra \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/gpsignal/src || mkdir $BUILD_DIR/gpsignal/src
+test -d $BUILD_DIR/gpsignal/src || mkdir -p $BUILD_DIR/gpsignal/src
 cat <<ENDVERSION > $BUILD_DIR/gpsignal/src/gpsignalVersion.h
 #ifndef GPSIGNAL_VERSION
 #define GPSIGNAL_VERSION "2.0.0"
@@ -1923,7 +1923,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpsignal \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/gphistogram/src || mkdir $BUILD_DIR/gphistogram/src
+test -d $BUILD_DIR/gphistogram/src || mkdir -p $BUILD_DIR/gphistogram/src
 cat <<ENDVERSION > $BUILD_DIR/gphistogram/src/gphistogramVersion.h
 #ifndef GPHISTOGRAM_VERSION
 #define GPHISTOGRAM_VERSION "1.1.0"
@@ -1948,7 +1948,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gphistogram \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/gpviewmax/src || mkdir $BUILD_DIR/gpviewmax/src
+test -d $BUILD_DIR/gpviewmax/src || mkdir -p $BUILD_DIR/gpviewmax/src
 cat <<ENDVERSION > $BUILD_DIR/gpviewmax/src/gpviewmaxVersion.h
 #ifndef GPVIEWMAX_VERSION
 #define GPVIEWMAX_VERSION "1.0.1"
@@ -1973,7 +1973,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpviewmax \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/gpdistance/src || mkdir $BUILD_DIR/gpdistance/src
+test -d $BUILD_DIR/gpdistance/src || mkdir -p $BUILD_DIR/gpdistance/src
 cat <<ENDVERSION > $BUILD_DIR/gpdistance/src/gpdistanceVersion.h
 #ifndef GPDISTANCE_VERSION
 #define GPDISTANCE_VERSION "1.0.0"
@@ -1998,7 +1998,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpdistance \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/gptime/src || mkdir $BUILD_DIR/gptime/src
+test -d $BUILD_DIR/gptime/src || mkdir -p $BUILD_DIR/gptime/src
 cat <<ENDVERSION > $BUILD_DIR/gptime/src/gptimeVersion.h
 #ifndef GPTIME_VERSION
 #define GPTIME_VERSION "1.0.0"
@@ -2023,7 +2023,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gptime \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/gpcoord/src || mkdir $BUILD_DIR/gpcoord/src
+test -d $BUILD_DIR/gpcoord/src || mkdir -p $BUILD_DIR/gpcoord/src
 cat <<ENDVERSION > $BUILD_DIR/gpcoord/src/gpcoordVersion.h
 #ifndef GPCOORD_VERSION
 #define GPCOORD_VERSION "1.0.0"
@@ -2048,7 +2048,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpcoord \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/gpreplace/src || mkdir $BUILD_DIR/gpreplace/src
+test -d $BUILD_DIR/gpreplace/src || mkdir -p $BUILD_DIR/gpreplace/src
 cat <<ENDVERSION > $BUILD_DIR/gpreplace/src/gpreplaceVersion.h
 #ifndef GPREPLACE_VERSION
 #define GPREPLACE_VERSION "1.0.0"
@@ -2073,7 +2073,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpreplace \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/gpsh/src || mkdir $BUILD_DIR/gpsh/src
+test -d $BUILD_DIR/gpsh/src || mkdir -p $BUILD_DIR/gpsh/src
 cat <<ENDVERSION > $BUILD_DIR/gpsh/src/gpshVersion.h
 #ifndef GPSH_VERSION
 #define GPSH_VERSION "1.0.0"
@@ -2098,7 +2098,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpsh \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/gpmt/src || mkdir $BUILD_DIR/gpmt/src
+test -d $BUILD_DIR/gpmt/src || mkdir -p $BUILD_DIR/gpmt/src
 cat <<ENDVERSION > $BUILD_DIR/gpmt/src/gpmtVersion.h
 #ifndef GPMT_VERSION
 #define GPMT_VERSION "1.0.0"
@@ -2123,7 +2123,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpmt \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/gpgridsearch/src || mkdir $BUILD_DIR/gpgridsearch/src
+test -d $BUILD_DIR/gpgridsearch/src || mkdir -p $BUILD_DIR/gpgridsearch/src
 cat <<ENDVERSION > $BUILD_DIR/gpgridsearch/src/gpgridsearchVersion.h
 #ifndef GPGRIDSEARCH_VERSION
 #define GPGRIDSEARCH_VERSION "1.0.0"
@@ -2148,7 +2148,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpgridsearch \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/gpfksimulator/src || mkdir $BUILD_DIR/gpfksimulator/src
+test -d $BUILD_DIR/gpfksimulator/src || mkdir -p $BUILD_DIR/gpfksimulator/src
 cat <<ENDVERSION > $BUILD_DIR/gpfksimulator/src/gpfksimulatorVersion.h
 #ifndef GPFKSIMULATOR_VERSION
 #define GPFKSIMULATOR_VERSION "1.0.2"
@@ -2173,7 +2173,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpfksimulator \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/gpmaplayer/src || mkdir $BUILD_DIR/gpmaplayer/src
+test -d $BUILD_DIR/gpmaplayer/src || mkdir -p $BUILD_DIR/gpmaplayer/src
 cat <<ENDVERSION > $BUILD_DIR/gpmaplayer/src/gpmaplayerVersion.h
 #ifndef GPMAPLAYER_VERSION
 #define GPMAPLAYER_VERSION "1.0.0"
@@ -2198,7 +2198,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpmaplayer \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/dinvermatlab/src || mkdir $BUILD_DIR/dinvermatlab/src
+test -d $BUILD_DIR/dinvermatlab/src || mkdir -p $BUILD_DIR/dinvermatlab/src
 cat <<ENDVERSION > $BUILD_DIR/dinvermatlab/src/dinvermatlabVersion.h
 #ifndef DINVERMATLAB_VERSION
 #define DINVERMATLAB_VERSION "1.0.1"
@@ -2223,7 +2223,7 @@ rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          dinvermatlab \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/matfiles/src || mkdir $BUILD_DIR/matfiles/src
+test -d $BUILD_DIR/matfiles/src || mkdir -p $BUILD_DIR/matfiles/src
 cat <<ENDVERSION > $BUILD_DIR/matfiles/src/matfilesVersion.h
 #ifndef MATFILES_VERSION
 #define MATFILES_VERSION "1.0.1"
