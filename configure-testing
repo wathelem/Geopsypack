@@ -244,10 +244,8 @@ echo "SUBDIRS=\\"
 ) > $BUILD_DIR/geopsypack.pro
 
 # Temporary file for configure output of individual projects
-TEMP_FILE="/tmp/configure_output_$RANDOM"
-while [ -e $TEMP_FILE ]; do
-  TEMP_FILE="/tmp/configure_output_$RANDOM"
-done
+TEMP_LOG=$(mktmp /tmp/devpro-)
+TEMP_SCRIPT=$(mktmp /tmp/devpro-)
 test -d $BUILD_DIR/mseed/src || mkdir -p $BUILD_DIR/mseed/src
 cat <<ENDVERSION > $BUILD_DIR/mseed/src/mseedVersion.h
 #ifndef MSEED_VERSION
@@ -261,15 +259,15 @@ cat <<ENDVERSION > $BUILD_DIR/mseed/src/mseedVersion.h
 ENDVERSION
 echo "Configure mseed"
 cd "mseed"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir mseed -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir mseed -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          mseed \\" >> $BUILD_DIR/geopsypack.pro
@@ -286,15 +284,15 @@ cat <<ENDVERSION > $BUILD_DIR/slink/src/slinkVersion.h
 ENDVERSION
 echo "Configure slink"
 cd "slink"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir slink -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir slink -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          slink \\" >> $BUILD_DIR/geopsypack.pro
@@ -311,15 +309,15 @@ cat <<ENDVERSION > $BUILD_DIR/QGpCoreTools/src/QGpCoreToolsVersion.h
 ENDVERSION
 echo "Configure QGpCoreTools"
 cd "QGpCoreTools"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir QGpCoreTools -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir QGpCoreTools -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          QGpCoreTools \\" >> $BUILD_DIR/geopsypack.pro
@@ -336,15 +334,15 @@ cat <<ENDVERSION > $BUILD_DIR/QGpGuiTools/src/QGpGuiToolsVersion.h
 ENDVERSION
 echo "Configure QGpGuiTools"
 cd "QGpGuiTools"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir QGpGuiTools -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir QGpGuiTools -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          QGpGuiTools \\" >> $BUILD_DIR/geopsypack.pro
@@ -361,15 +359,15 @@ cat <<ENDVERSION > $BUILD_DIR/QGpCoreMath/src/QGpCoreMathVersion.h
 ENDVERSION
 echo "Configure QGpCoreMath"
 cd "QGpCoreMath"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir QGpCoreMath -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir QGpCoreMath -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          QGpCoreMath \\" >> $BUILD_DIR/geopsypack.pro
@@ -386,15 +384,15 @@ cat <<ENDVERSION > $BUILD_DIR/SciFigs/src/SciFigsVersion.h
 ENDVERSION
 echo "Configure SciFigs"
 cd "SciFigs"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir SciFigs -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir SciFigs -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          SciFigs \\" >> $BUILD_DIR/geopsypack.pro
@@ -411,15 +409,15 @@ cat <<ENDVERSION > $BUILD_DIR/QGpGuiMath/src/QGpGuiMathVersion.h
 ENDVERSION
 echo "Configure QGpGuiMath"
 cd "QGpGuiMath"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir QGpGuiMath -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir QGpGuiMath -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          QGpGuiMath \\" >> $BUILD_DIR/geopsypack.pro
@@ -436,15 +434,15 @@ cat <<ENDVERSION > $BUILD_DIR/figue/src/figueVersion.h
 ENDVERSION
 echo "Configure figue"
 cd "figue"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir figue -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir figue -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          figue \\" >> $BUILD_DIR/geopsypack.pro
@@ -461,15 +459,15 @@ cat <<ENDVERSION > $BUILD_DIR/QGpCoreWave/src/QGpCoreWaveVersion.h
 ENDVERSION
 echo "Configure QGpCoreWave"
 cd "QGpCoreWave"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir QGpCoreWave -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir QGpCoreWave -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          QGpCoreWave \\" >> $BUILD_DIR/geopsypack.pro
@@ -486,15 +484,15 @@ cat <<ENDVERSION > $BUILD_DIR/QGpGuiWave/src/QGpGuiWaveVersion.h
 ENDVERSION
 echo "Configure QGpGuiWave"
 cd "QGpGuiWave"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir QGpGuiWave -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir QGpGuiWave -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          QGpGuiWave \\" >> $BUILD_DIR/geopsypack.pro
@@ -511,15 +509,15 @@ cat <<ENDVERSION > $BUILD_DIR/QGpCompatibility/src/QGpCompatibilityVersion.h
 ENDVERSION
 echo "Configure QGpCompatibility"
 cd "QGpCompatibility"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir QGpCompatibility -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir QGpCompatibility -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          QGpCompatibility \\" >> $BUILD_DIR/geopsypack.pro
@@ -536,15 +534,15 @@ cat <<ENDVERSION > $BUILD_DIR/GeopsyCore/src/GeopsyCoreVersion.h
 ENDVERSION
 echo "Configure GeopsyCore"
 cd "GeopsyCore"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir GeopsyCore -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir GeopsyCore -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          GeopsyCore \\" >> $BUILD_DIR/geopsypack.pro
@@ -561,15 +559,15 @@ cat <<ENDVERSION > $BUILD_DIR/GeopsyGui/src/GeopsyGuiVersion.h
 ENDVERSION
 echo "Configure GeopsyGui"
 cd "GeopsyGui"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir GeopsyGui -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir GeopsyGui -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          GeopsyGui \\" >> $BUILD_DIR/geopsypack.pro
@@ -586,15 +584,15 @@ cat <<ENDVERSION > $BUILD_DIR/geopsyfigs/src/geopsyfigsVersion.h
 ENDVERSION
 echo "Configure geopsyfigs"
 cd "geopsyfigs"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsyfigs -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsyfigs -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          geopsyfigs \\" >> $BUILD_DIR/geopsypack.pro
@@ -611,15 +609,15 @@ cat <<ENDVERSION > $BUILD_DIR/GeopsySLink/src/GeopsySLinkVersion.h
 ENDVERSION
 echo "Configure GeopsySLink"
 cd "GeopsySLink"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir GeopsySLink -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir GeopsySLink -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          GeopsySLink \\" >> $BUILD_DIR/geopsypack.pro
@@ -636,15 +634,15 @@ cat <<ENDVERSION > $BUILD_DIR/GeopsySLinkGui/src/GeopsySLinkGuiVersion.h
 ENDVERSION
 echo "Configure GeopsySLinkGui"
 cd "GeopsySLinkGui"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir GeopsySLinkGui -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir GeopsySLinkGui -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          GeopsySLinkGui \\" >> $BUILD_DIR/geopsypack.pro
@@ -661,15 +659,15 @@ cat <<ENDVERSION > $BUILD_DIR/DinverCore/src/DinverCoreVersion.h
 ENDVERSION
 echo "Configure DinverCore"
 cd "DinverCore"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir DinverCore -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir DinverCore -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          DinverCore \\" >> $BUILD_DIR/geopsypack.pro
@@ -686,15 +684,15 @@ cat <<ENDVERSION > $BUILD_DIR/DinverGui/src/DinverGuiVersion.h
 ENDVERSION
 echo "Configure DinverGui"
 cd "DinverGui"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir DinverGui -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir DinverGui -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          DinverGui \\" >> $BUILD_DIR/geopsypack.pro
@@ -711,15 +709,15 @@ cat <<ENDVERSION > $BUILD_DIR/DinverDCCore/src/DinverDCCoreVersion.h
 ENDVERSION
 echo "Configure DinverDCCore"
 cd "DinverDCCore"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir DinverDCCore -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir DinverDCCore -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          DinverDCCore \\" >> $BUILD_DIR/geopsypack.pro
@@ -736,15 +734,15 @@ cat <<ENDVERSION > $BUILD_DIR/DinverDCGui/src/DinverDCGuiVersion.h
 ENDVERSION
 echo "Configure DinverDCGui"
 cd "DinverDCGui"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir DinverDCGui -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir DinverDCGui -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          DinverDCGui \\" >> $BUILD_DIR/geopsypack.pro
@@ -761,15 +759,15 @@ cat <<ENDVERSION > $BUILD_DIR/QGpCoreStat/src/QGpCoreStatVersion.h
 ENDVERSION
 echo "Configure QGpCoreStat"
 cd "QGpCoreStat"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir QGpCoreStat -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir QGpCoreStat -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          QGpCoreStat \\" >> $BUILD_DIR/geopsypack.pro
@@ -786,15 +784,15 @@ cat <<ENDVERSION > $BUILD_DIR/ArrayCore/src/ArrayCoreVersion.h
 ENDVERSION
 echo "Configure ArrayCore"
 cd "ArrayCore"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir ArrayCore -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir ArrayCore -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          ArrayCore \\" >> $BUILD_DIR/geopsypack.pro
@@ -811,15 +809,15 @@ cat <<ENDVERSION > $BUILD_DIR/ArrayGui/src/ArrayGuiVersion.h
 ENDVERSION
 echo "Configure ArrayGui"
 cd "ArrayGui"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir ArrayGui -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir ArrayGui -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          ArrayGui \\" >> $BUILD_DIR/geopsypack.pro
@@ -836,15 +834,15 @@ cat <<ENDVERSION > $BUILD_DIR/MonoStation/src/MonoStationVersion.h
 ENDVERSION
 echo "Configure MonoStation"
 cd "MonoStation"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir MonoStation -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir MonoStation -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          MonoStation \\" >> $BUILD_DIR/geopsypack.pro
@@ -861,15 +859,15 @@ cat <<ENDVERSION > $BUILD_DIR/geopsy-fk/src/geopsy-fkVersion.h
 ENDVERSION
 echo "Configure geopsy-fk"
 cd "geopsy-fk"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsy-fk -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsy-fk -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          geopsy-fk \\" >> $BUILD_DIR/geopsypack.pro
@@ -886,15 +884,15 @@ cat <<ENDVERSION > $BUILD_DIR/geopsy-spac/src/geopsy-spacVersion.h
 ENDVERSION
 echo "Configure geopsy-spac"
 cd "geopsy-spac"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsy-spac -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsy-spac -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          geopsy-spac \\" >> $BUILD_DIR/geopsypack.pro
@@ -911,15 +909,15 @@ cat <<ENDVERSION > $BUILD_DIR/geopsy-hv/src/geopsy-hvVersion.h
 ENDVERSION
 echo "Configure geopsy-hv"
 cd "geopsy-hv"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsy-hv -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsy-hv -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          geopsy-hv \\" >> $BUILD_DIR/geopsypack.pro
@@ -936,15 +934,15 @@ cat <<ENDVERSION > $BUILD_DIR/geopsy/src/geopsyVersion.h
 ENDVERSION
 echo "Configure geopsy"
 cd "geopsy"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsy -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsy -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          geopsy \\" >> $BUILD_DIR/geopsypack.pro
@@ -961,15 +959,15 @@ cat <<ENDVERSION > $BUILD_DIR/vslarray/src/vslarrayVersion.h
 ENDVERSION
 echo "Configure vslarray"
 cd "vslarray"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir vslarray -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir vslarray -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          vslarray \\" >> $BUILD_DIR/geopsypack.pro
@@ -986,15 +984,15 @@ cat <<ENDVERSION > $BUILD_DIR/dinver/src/dinverVersion.h
 ENDVERSION
 echo "Configure dinver"
 cd "dinver"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir dinver -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir dinver -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          dinver \\" >> $BUILD_DIR/geopsypack.pro
@@ -1011,15 +1009,15 @@ cat <<ENDVERSION > $BUILD_DIR/WaranCore/src/WaranCoreVersion.h
 ENDVERSION
 echo "Configure WaranCore"
 cd "WaranCore"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir WaranCore -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir WaranCore -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          WaranCore \\" >> $BUILD_DIR/geopsypack.pro
@@ -1036,15 +1034,15 @@ cat <<ENDVERSION > $BUILD_DIR/TapePositioningSystem/src/TapePositioningSystemVer
 ENDVERSION
 echo "Configure TapePositioningSystem"
 cd "TapePositioningSystem"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir TapePositioningSystem -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir TapePositioningSystem -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          TapePositioningSystem \\" >> $BUILD_DIR/geopsypack.pro
@@ -1061,15 +1059,15 @@ cat <<ENDVERSION > $BUILD_DIR/waran/src/waranVersion.h
 ENDVERSION
 echo "Configure waran"
 cd "waran"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir waran -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir waran -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          waran \\" >> $BUILD_DIR/geopsypack.pro
@@ -1086,15 +1084,15 @@ cat <<ENDVERSION > $BUILD_DIR/warangps/src/warangpsVersion.h
 ENDVERSION
 echo "Configure warangps"
 cd "warangps"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir warangps -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir warangps -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          warangps \\" >> $BUILD_DIR/geopsypack.pro
@@ -1111,15 +1109,15 @@ cat <<ENDVERSION > $BUILD_DIR/geopsyarray/src/geopsyarrayVersion.h
 ENDVERSION
 echo "Configure geopsyarray"
 cd "geopsyarray"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsyarray -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsyarray -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          geopsyarray \\" >> $BUILD_DIR/geopsypack.pro
@@ -1136,15 +1134,15 @@ cat <<ENDVERSION > $BUILD_DIR/geopsyhv/src/geopsyhvVersion.h
 ENDVERSION
 echo "Configure geopsyhv"
 cd "geopsyhv"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsyhv -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsyhv -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          geopsyhv \\" >> $BUILD_DIR/geopsypack.pro
@@ -1161,15 +1159,15 @@ cat <<ENDVERSION > $BUILD_DIR/geopsydamping/src/geopsydampingVersion.h
 ENDVERSION
 echo "Configure geopsydamping"
 cd "geopsydamping"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsydamping -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsydamping -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          geopsydamping \\" >> $BUILD_DIR/geopsypack.pro
@@ -1186,15 +1184,15 @@ cat <<ENDVERSION > $BUILD_DIR/geopsytfa/src/geopsytfaVersion.h
 ENDVERSION
 echo "Configure geopsytfa"
 cd "geopsytfa"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsytfa -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsytfa -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          geopsytfa \\" >> $BUILD_DIR/geopsypack.pro
@@ -1211,15 +1209,15 @@ cat <<ENDVERSION > $BUILD_DIR/geopsynr/src/geopsynrVersion.h
 ENDVERSION
 echo "Configure geopsynr"
 cd "geopsynr"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsynr -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsynr -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          geopsynr \\" >> $BUILD_DIR/geopsypack.pro
@@ -1236,15 +1234,15 @@ cat <<ENDVERSION > $BUILD_DIR/geopsyptmotion/src/geopsyptmotionVersion.h
 ENDVERSION
 echo "Configure geopsyptmotion"
 cd "geopsyptmotion"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsyptmotion -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsyptmotion -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          geopsyptmotion \\" >> $BUILD_DIR/geopsypack.pro
@@ -1261,15 +1259,15 @@ cat <<ENDVERSION > $BUILD_DIR/geopsyrefra/src/geopsyrefraVersion.h
 ENDVERSION
 echo "Configure geopsyrefra"
 cd "geopsyrefra"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsyrefra -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsyrefra -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          geopsyrefra \\" >> $BUILD_DIR/geopsypack.pro
@@ -1286,15 +1284,15 @@ cat <<ENDVERSION > $BUILD_DIR/hvtfa/src/hvtfaVersion.h
 ENDVERSION
 echo "Configure hvtfa"
 cd "hvtfa"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir hvtfa -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir hvtfa -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          hvtfa \\" >> $BUILD_DIR/geopsypack.pro
@@ -1311,15 +1309,15 @@ cat <<ENDVERSION > $BUILD_DIR/campbelltob3/src/campbelltob3Version.h
 ENDVERSION
 echo "Configure campbelltob3"
 cd "campbelltob3"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir campbelltob3 -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir campbelltob3 -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          campbelltob3 \\" >> $BUILD_DIR/geopsypack.pro
@@ -1336,15 +1334,15 @@ cat <<ENDVERSION > $BUILD_DIR/dinverdc/src/dinverdcVersion.h
 ENDVERSION
 echo "Configure dinverdc"
 cd "dinverdc"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir dinverdc -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir dinverdc -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          dinverdc \\" >> $BUILD_DIR/geopsypack.pro
@@ -1361,15 +1359,15 @@ cat <<ENDVERSION > $BUILD_DIR/dinverext/src/dinverextVersion.h
 ENDVERSION
 echo "Configure dinverext"
 cd "dinverext"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir dinverext -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir dinverext -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          dinverext \\" >> $BUILD_DIR/geopsypack.pro
@@ -1386,15 +1384,15 @@ cat <<ENDVERSION > $BUILD_DIR/spac2disp/src/spac2dispVersion.h
 ENDVERSION
 echo "Configure spac2disp"
 cd "spac2disp"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir spac2disp -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir spac2disp -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          spac2disp \\" >> $BUILD_DIR/geopsypack.pro
@@ -1411,15 +1409,15 @@ cat <<ENDVERSION > $BUILD_DIR/max2curve/src/max2curveVersion.h
 ENDVERSION
 echo "Configure max2curve"
 cd "max2curve"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir max2curve -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir max2curve -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          max2curve \\" >> $BUILD_DIR/geopsypack.pro
@@ -1436,15 +1434,15 @@ cat <<ENDVERSION > $BUILD_DIR/gppoisson/src/gppoissonVersion.h
 ENDVERSION
 echo "Configure gppoisson"
 cd "gppoisson"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gppoisson -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gppoisson -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gppoisson \\" >> $BUILD_DIR/geopsypack.pro
@@ -1461,15 +1459,15 @@ cat <<ENDVERSION > $BUILD_DIR/gpprofile/src/gpprofileVersion.h
 ENDVERSION
 echo "Configure gpprofile"
 cd "gpprofile"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpprofile -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpprofile -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpprofile \\" >> $BUILD_DIR/geopsypack.pro
@@ -1486,15 +1484,15 @@ cat <<ENDVERSION > $BUILD_DIR/gpdc/src/gpdcVersion.h
 ENDVERSION
 echo "Configure gpdc"
 cd "gpdc"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpdc -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpdc -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpdc \\" >> $BUILD_DIR/geopsypack.pro
@@ -1511,15 +1509,15 @@ cat <<ENDVERSION > $BUILD_DIR/gplivemodel/src/gplivemodelVersion.h
 ENDVERSION
 echo "Configure gplivemodel"
 cd "gplivemodel"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gplivemodel -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gplivemodel -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gplivemodel \\" >> $BUILD_DIR/geopsypack.pro
@@ -1536,15 +1534,15 @@ cat <<ENDVERSION > $BUILD_DIR/gpec8/src/gpec8Version.h
 ENDVERSION
 echo "Configure gpec8"
 cd "gpec8"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpec8 -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpec8 -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpec8 \\" >> $BUILD_DIR/geopsypack.pro
@@ -1561,15 +1559,15 @@ cat <<ENDVERSION > $BUILD_DIR/gpdcreport/src/gpdcreportVersion.h
 ENDVERSION
 echo "Configure gpdcreport"
 cd "gpdcreport"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpdcreport -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpdcreport -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpdcreport \\" >> $BUILD_DIR/geopsypack.pro
@@ -1586,15 +1584,15 @@ cat <<ENDVERSION > $BUILD_DIR/gptarget/src/gptargetVersion.h
 ENDVERSION
 echo "Configure gptarget"
 cd "gptarget"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gptarget -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gptarget -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gptarget \\" >> $BUILD_DIR/geopsypack.pro
@@ -1611,15 +1609,15 @@ cat <<ENDVERSION > $BUILD_DIR/gpviewdcreport/src/gpviewdcreportVersion.h
 ENDVERSION
 echo "Configure gpviewdcreport"
 cd "gpviewdcreport"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpviewdcreport -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpviewdcreport -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpviewdcreport \\" >> $BUILD_DIR/geopsypack.pro
@@ -1636,15 +1634,15 @@ cat <<ENDVERSION > $BUILD_DIR/gpdcmisfit/src/gpdcmisfitVersion.h
 ENDVERSION
 echo "Configure gpdcmisfit"
 cd "gpdcmisfit"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpdcmisfit -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpdcmisfit -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpdcmisfit \\" >> $BUILD_DIR/geopsypack.pro
@@ -1661,15 +1659,15 @@ cat <<ENDVERSION > $BUILD_DIR/gpell/src/gpellVersion.h
 ENDVERSION
 echo "Configure gpell"
 cd "gpell"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpell -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpell -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpell \\" >> $BUILD_DIR/geopsypack.pro
@@ -1686,15 +1684,15 @@ cat <<ENDVERSION > $BUILD_DIR/gpgroup2phase/src/gpgroup2phaseVersion.h
 ENDVERSION
 echo "Configure gpgroup2phase"
 cd "gpgroup2phase"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpgroup2phase -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpgroup2phase -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpgroup2phase \\" >> $BUILD_DIR/geopsypack.pro
@@ -1711,15 +1709,15 @@ cat <<ENDVERSION > $BUILD_DIR/gpmodel2param/src/gpmodel2paramVersion.h
 ENDVERSION
 echo "Configure gpmodel2param"
 cd "gpmodel2param"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpmodel2param -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpmodel2param -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpmodel2param \\" >> $BUILD_DIR/geopsypack.pro
@@ -1736,15 +1734,15 @@ cat <<ENDVERSION > $BUILD_DIR/gpparam2model/src/gpparam2modelVersion.h
 ENDVERSION
 echo "Configure gpparam2model"
 cd "gpparam2model"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpparam2model -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpparam2model -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpparam2model \\" >> $BUILD_DIR/geopsypack.pro
@@ -1761,15 +1759,15 @@ cat <<ENDVERSION > $BUILD_DIR/gpdepths/src/gpdepthsVersion.h
 ENDVERSION
 echo "Configure gpdepths"
 cd "gpdepths"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpdepths -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpdepths -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpdepths \\" >> $BUILD_DIR/geopsypack.pro
@@ -1786,15 +1784,15 @@ cat <<ENDVERSION > $BUILD_DIR/gpsort/src/gpsortVersion.h
 ENDVERSION
 echo "Configure gpsort"
 cd "gpsort"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpsort -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpsort -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpsort \\" >> $BUILD_DIR/geopsypack.pro
@@ -1811,15 +1809,15 @@ cat <<ENDVERSION > $BUILD_DIR/gpcurve/src/gpcurveVersion.h
 ENDVERSION
 echo "Configure gpcurve"
 cd "gpcurve"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpcurve -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpcurve -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpcurve \\" >> $BUILD_DIR/geopsypack.pro
@@ -1836,15 +1834,15 @@ cat <<ENDVERSION > $BUILD_DIR/gprandom/src/gprandomVersion.h
 ENDVERSION
 echo "Configure gprandom"
 cd "gprandom"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gprandom -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gprandom -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gprandom \\" >> $BUILD_DIR/geopsypack.pro
@@ -1861,15 +1859,15 @@ cat <<ENDVERSION > $BUILD_DIR/gpspac/src/gpspacVersion.h
 ENDVERSION
 echo "Configure gpspac"
 cd "gpspac"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpspac -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpspac -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpspac \\" >> $BUILD_DIR/geopsypack.pro
@@ -1886,15 +1884,15 @@ cat <<ENDVERSION > $BUILD_DIR/gprefra/src/gprefraVersion.h
 ENDVERSION
 echo "Configure gprefra"
 cd "gprefra"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gprefra -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gprefra -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gprefra \\" >> $BUILD_DIR/geopsypack.pro
@@ -1911,15 +1909,15 @@ cat <<ENDVERSION > $BUILD_DIR/gpsignal/src/gpsignalVersion.h
 ENDVERSION
 echo "Configure gpsignal"
 cd "gpsignal"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpsignal -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpsignal -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpsignal \\" >> $BUILD_DIR/geopsypack.pro
@@ -1936,15 +1934,15 @@ cat <<ENDVERSION > $BUILD_DIR/gphistogram/src/gphistogramVersion.h
 ENDVERSION
 echo "Configure gphistogram"
 cd "gphistogram"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gphistogram -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gphistogram -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gphistogram \\" >> $BUILD_DIR/geopsypack.pro
@@ -1961,15 +1959,15 @@ cat <<ENDVERSION > $BUILD_DIR/gpviewmax/src/gpviewmaxVersion.h
 ENDVERSION
 echo "Configure gpviewmax"
 cd "gpviewmax"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpviewmax -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpviewmax -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpviewmax \\" >> $BUILD_DIR/geopsypack.pro
@@ -1986,15 +1984,15 @@ cat <<ENDVERSION > $BUILD_DIR/gpdistance/src/gpdistanceVersion.h
 ENDVERSION
 echo "Configure gpdistance"
 cd "gpdistance"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpdistance -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpdistance -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpdistance \\" >> $BUILD_DIR/geopsypack.pro
@@ -2011,15 +2009,15 @@ cat <<ENDVERSION > $BUILD_DIR/gptime/src/gptimeVersion.h
 ENDVERSION
 echo "Configure gptime"
 cd "gptime"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gptime -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gptime -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gptime \\" >> $BUILD_DIR/geopsypack.pro
@@ -2036,15 +2034,15 @@ cat <<ENDVERSION > $BUILD_DIR/gpcoord/src/gpcoordVersion.h
 ENDVERSION
 echo "Configure gpcoord"
 cd "gpcoord"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpcoord -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpcoord -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpcoord \\" >> $BUILD_DIR/geopsypack.pro
@@ -2061,15 +2059,15 @@ cat <<ENDVERSION > $BUILD_DIR/gpreplace/src/gpreplaceVersion.h
 ENDVERSION
 echo "Configure gpreplace"
 cd "gpreplace"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpreplace -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpreplace -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpreplace \\" >> $BUILD_DIR/geopsypack.pro
@@ -2086,15 +2084,15 @@ cat <<ENDVERSION > $BUILD_DIR/gpsh/src/gpshVersion.h
 ENDVERSION
 echo "Configure gpsh"
 cd "gpsh"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpsh -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpsh -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpsh \\" >> $BUILD_DIR/geopsypack.pro
@@ -2111,15 +2109,15 @@ cat <<ENDVERSION > $BUILD_DIR/gpmt/src/gpmtVersion.h
 ENDVERSION
 echo "Configure gpmt"
 cd "gpmt"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpmt -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpmt -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpmt \\" >> $BUILD_DIR/geopsypack.pro
@@ -2136,15 +2134,15 @@ cat <<ENDVERSION > $BUILD_DIR/gpgridsearch/src/gpgridsearchVersion.h
 ENDVERSION
 echo "Configure gpgridsearch"
 cd "gpgridsearch"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpgridsearch -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpgridsearch -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpgridsearch \\" >> $BUILD_DIR/geopsypack.pro
@@ -2161,15 +2159,15 @@ cat <<ENDVERSION > $BUILD_DIR/gpfksimulator/src/gpfksimulatorVersion.h
 ENDVERSION
 echo "Configure gpfksimulator"
 cd "gpfksimulator"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpfksimulator -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpfksimulator -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpfksimulator \\" >> $BUILD_DIR/geopsypack.pro
@@ -2186,15 +2184,15 @@ cat <<ENDVERSION > $BUILD_DIR/gpmaplayer/src/gpmaplayerVersion.h
 ENDVERSION
 echo "Configure gpmaplayer"
 cd "gpmaplayer"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpmaplayer -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpmaplayer -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          gpmaplayer \\" >> $BUILD_DIR/geopsypack.pro
@@ -2211,15 +2209,15 @@ cat <<ENDVERSION > $BUILD_DIR/dinvermatlab/src/dinvermatlabVersion.h
 ENDVERSION
 echo "Configure dinvermatlab"
 cd "dinvermatlab"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir dinvermatlab -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir dinvermatlab -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          dinvermatlab \\" >> $BUILD_DIR/geopsypack.pro
@@ -2236,15 +2234,15 @@ cat <<ENDVERSION > $BUILD_DIR/matfiles/src/matfilesVersion.h
 ENDVERSION
 echo "Configure matfiles"
 cd "matfiles"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir matfiles -skip-qt-check $COMMANDLINE 2>$TEMP_FILE 1>/dev/null" > tmp
-if ! $SHELL tmp; then
-  cat $TEMP_FILE
-  rm $TEMP_FILE tmp
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir matfiles -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
+if ! $SHELL $TEMP_SCRIPT; then
+  cat $TEMP_LOG
+  rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
   cat $TEMP_FILE
 fi
-rm -f tmp $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_FILE
 cd ..
 # Add project to main pro file
 echo "          matfiles \\" >> $BUILD_DIR/geopsypack.pro
