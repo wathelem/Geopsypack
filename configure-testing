@@ -265,9 +265,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          mseed \\" >> $BUILD_DIR/geopsypack.pro
@@ -290,9 +290,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          slink \\" >> $BUILD_DIR/geopsypack.pro
@@ -315,9 +315,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          QGpCoreTools \\" >> $BUILD_DIR/geopsypack.pro
@@ -340,9 +340,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          QGpGuiTools \\" >> $BUILD_DIR/geopsypack.pro
@@ -365,9 +365,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          QGpCoreMath \\" >> $BUILD_DIR/geopsypack.pro
@@ -390,9 +390,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          SciFigs \\" >> $BUILD_DIR/geopsypack.pro
@@ -415,9 +415,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          QGpGuiMath \\" >> $BUILD_DIR/geopsypack.pro
@@ -440,9 +440,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          figue \\" >> $BUILD_DIR/geopsypack.pro
@@ -465,9 +465,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          QGpCoreWave \\" >> $BUILD_DIR/geopsypack.pro
@@ -490,9 +490,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          QGpGuiWave \\" >> $BUILD_DIR/geopsypack.pro
@@ -515,9 +515,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          QGpCompatibility \\" >> $BUILD_DIR/geopsypack.pro
@@ -540,9 +540,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          GeopsyCore \\" >> $BUILD_DIR/geopsypack.pro
@@ -565,9 +565,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          GeopsyGui \\" >> $BUILD_DIR/geopsypack.pro
@@ -590,9 +590,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          geopsyfigs \\" >> $BUILD_DIR/geopsypack.pro
@@ -615,9 +615,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          GeopsySLink \\" >> $BUILD_DIR/geopsypack.pro
@@ -640,9 +640,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          GeopsySLinkGui \\" >> $BUILD_DIR/geopsypack.pro
@@ -665,9 +665,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          DinverCore \\" >> $BUILD_DIR/geopsypack.pro
@@ -690,9 +690,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          DinverGui \\" >> $BUILD_DIR/geopsypack.pro
@@ -715,9 +715,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          DinverDCCore \\" >> $BUILD_DIR/geopsypack.pro
@@ -740,9 +740,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          DinverDCGui \\" >> $BUILD_DIR/geopsypack.pro
@@ -765,9 +765,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          QGpCoreStat \\" >> $BUILD_DIR/geopsypack.pro
@@ -790,9 +790,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          ArrayCore \\" >> $BUILD_DIR/geopsypack.pro
@@ -815,9 +815,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          ArrayGui \\" >> $BUILD_DIR/geopsypack.pro
@@ -840,9 +840,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          MonoStation \\" >> $BUILD_DIR/geopsypack.pro
@@ -865,9 +865,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          geopsy-fk \\" >> $BUILD_DIR/geopsypack.pro
@@ -890,9 +890,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          geopsy-spac \\" >> $BUILD_DIR/geopsypack.pro
@@ -915,9 +915,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          geopsy-hv \\" >> $BUILD_DIR/geopsypack.pro
@@ -940,9 +940,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          geopsy \\" >> $BUILD_DIR/geopsypack.pro
@@ -965,9 +965,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          vslarray \\" >> $BUILD_DIR/geopsypack.pro
@@ -990,9 +990,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          dinver \\" >> $BUILD_DIR/geopsypack.pro
@@ -1015,9 +1015,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          WaranCore \\" >> $BUILD_DIR/geopsypack.pro
@@ -1040,9 +1040,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          TapePositioningSystem \\" >> $BUILD_DIR/geopsypack.pro
@@ -1065,9 +1065,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          waran \\" >> $BUILD_DIR/geopsypack.pro
@@ -1090,9 +1090,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          warangps \\" >> $BUILD_DIR/geopsypack.pro
@@ -1115,9 +1115,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          geopsyarray \\" >> $BUILD_DIR/geopsypack.pro
@@ -1140,9 +1140,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          geopsyhv \\" >> $BUILD_DIR/geopsypack.pro
@@ -1165,9 +1165,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          geopsydamping \\" >> $BUILD_DIR/geopsypack.pro
@@ -1190,9 +1190,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          geopsytfa \\" >> $BUILD_DIR/geopsypack.pro
@@ -1215,9 +1215,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          geopsynr \\" >> $BUILD_DIR/geopsypack.pro
@@ -1240,9 +1240,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          geopsyptmotion \\" >> $BUILD_DIR/geopsypack.pro
@@ -1265,9 +1265,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          geopsyrefra \\" >> $BUILD_DIR/geopsypack.pro
@@ -1290,9 +1290,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          hvtfa \\" >> $BUILD_DIR/geopsypack.pro
@@ -1315,9 +1315,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          campbelltob3 \\" >> $BUILD_DIR/geopsypack.pro
@@ -1340,9 +1340,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          dinverdc \\" >> $BUILD_DIR/geopsypack.pro
@@ -1365,9 +1365,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          dinverext \\" >> $BUILD_DIR/geopsypack.pro
@@ -1390,9 +1390,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          spac2disp \\" >> $BUILD_DIR/geopsypack.pro
@@ -1415,9 +1415,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          max2curve \\" >> $BUILD_DIR/geopsypack.pro
@@ -1440,9 +1440,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gppoisson \\" >> $BUILD_DIR/geopsypack.pro
@@ -1465,9 +1465,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpprofile \\" >> $BUILD_DIR/geopsypack.pro
@@ -1490,9 +1490,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpdc \\" >> $BUILD_DIR/geopsypack.pro
@@ -1515,9 +1515,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gplivemodel \\" >> $BUILD_DIR/geopsypack.pro
@@ -1540,9 +1540,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpec8 \\" >> $BUILD_DIR/geopsypack.pro
@@ -1565,9 +1565,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpdcreport \\" >> $BUILD_DIR/geopsypack.pro
@@ -1590,9 +1590,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gptarget \\" >> $BUILD_DIR/geopsypack.pro
@@ -1615,9 +1615,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpviewdcreport \\" >> $BUILD_DIR/geopsypack.pro
@@ -1640,9 +1640,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpdcmisfit \\" >> $BUILD_DIR/geopsypack.pro
@@ -1665,9 +1665,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpell \\" >> $BUILD_DIR/geopsypack.pro
@@ -1690,9 +1690,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpgroup2phase \\" >> $BUILD_DIR/geopsypack.pro
@@ -1715,9 +1715,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpmodel2param \\" >> $BUILD_DIR/geopsypack.pro
@@ -1740,9 +1740,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpparam2model \\" >> $BUILD_DIR/geopsypack.pro
@@ -1765,9 +1765,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpdepths \\" >> $BUILD_DIR/geopsypack.pro
@@ -1790,9 +1790,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpsort \\" >> $BUILD_DIR/geopsypack.pro
@@ -1815,9 +1815,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpcurve \\" >> $BUILD_DIR/geopsypack.pro
@@ -1840,9 +1840,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gprandom \\" >> $BUILD_DIR/geopsypack.pro
@@ -1865,9 +1865,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpspac \\" >> $BUILD_DIR/geopsypack.pro
@@ -1890,9 +1890,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gprefra \\" >> $BUILD_DIR/geopsypack.pro
@@ -1915,9 +1915,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpsignal \\" >> $BUILD_DIR/geopsypack.pro
@@ -1940,9 +1940,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gphistogram \\" >> $BUILD_DIR/geopsypack.pro
@@ -1965,9 +1965,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpviewmax \\" >> $BUILD_DIR/geopsypack.pro
@@ -1990,9 +1990,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpdistance \\" >> $BUILD_DIR/geopsypack.pro
@@ -2015,9 +2015,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gptime \\" >> $BUILD_DIR/geopsypack.pro
@@ -2040,9 +2040,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpcoord \\" >> $BUILD_DIR/geopsypack.pro
@@ -2065,9 +2065,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpreplace \\" >> $BUILD_DIR/geopsypack.pro
@@ -2090,9 +2090,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpsh \\" >> $BUILD_DIR/geopsypack.pro
@@ -2115,9 +2115,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpmt \\" >> $BUILD_DIR/geopsypack.pro
@@ -2140,9 +2140,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpgridsearch \\" >> $BUILD_DIR/geopsypack.pro
@@ -2165,9 +2165,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpfksimulator \\" >> $BUILD_DIR/geopsypack.pro
@@ -2190,9 +2190,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpmaplayer \\" >> $BUILD_DIR/geopsypack.pro
@@ -2215,9 +2215,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          dinvermatlab \\" >> $BUILD_DIR/geopsypack.pro
@@ -2240,9 +2240,9 @@ if ! $SHELL $TEMP_SCRIPT; then
   rm $TEMP_LOG $TEMP_SCRIPT
   exit 2
 else
-  cat $TEMP_FILE
+  cat $TEMP_LOG
 fi
-rm -f $TEMP_SCRIPT $TEMP_FILE
+rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          matfiles \\" >> $BUILD_DIR/geopsypack.pro
