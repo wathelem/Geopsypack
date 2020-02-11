@@ -2204,7 +2204,7 @@ cat <<ENDVERSION > $BUILD_DIR/dinvermatlab/src/dinvermatlabVersion.h
 #define DINVERMATLAB_VERSION_TYPE "testing"
 #define DINVERMATLAB_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define DINVERMATLAB_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define DINVERMATLAB_GIT_COMMIT "0846803fef49510979adf1d35d6a630fcdfb5b61"
+#define DINVERMATLAB_GIT_COMMIT "401462d9ca71832e1cb22a25e231c6f254128ab3"
 #endif // DINVERMATLAB_VERSION
 ENDVERSION
 echo "Configure dinvermatlab"
@@ -2229,7 +2229,7 @@ cat <<ENDVERSION > $BUILD_DIR/matfiles/src/matfilesVersion.h
 #define MATFILES_VERSION_TYPE "testing"
 #define MATFILES_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)"
 #define MATFILES_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define MATFILES_GIT_COMMIT "1b0b3a73bb95fdea9aaff492f87c256234dd5c38"
+#define MATFILES_GIT_COMMIT "282a81ad84e718fc1305f89e2c4876750835a530"
 #endif // MATFILES_VERSION
 ENDVERSION
 echo "Configure matfiles"
