@@ -271,7 +271,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          mseed \" >> $BUILD_DIR/geopsypack.pro
+echo "          mseed \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/slink/src/slinkVersion.h
 #ifndef SLINK_VERSION
 #define SLINK_VERSION "1.6.0"
@@ -295,7 +295,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          slink \" >> $BUILD_DIR/geopsypack.pro
+echo "          slink \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/QGpCoreTools/src/QGpCoreToolsVersion.h
 #ifndef QGPCORETOOLS_VERSION
 #define QGPCORETOOLS_VERSION "2.2.2"
@@ -303,7 +303,7 @@ cat <<ENDVERSION > $BUILD_DIR/QGpCoreTools/src/QGpCoreToolsVersion.h
 #define QGPCORETOOLS_VERSION_TYPE "testing"
 #define QGPCORETOOLS_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define QGPCORETOOLS_DISTRIBUTION "3.2.2"
-#define QGPCORETOOLS_GIT_COMMIT "919a4913a7ec1e98452dc4b95b29a80dc5c70445"
+#define QGPCORETOOLS_GIT_COMMIT "e3dcdb8c97db37824b8f0482c55efaec9c14721b"
 #endif // QGPCORETOOLS_VERSION
 ENDVERSION
 echo "Configure QGpCoreTools"
@@ -319,7 +319,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          QGpCoreTools \" >> $BUILD_DIR/geopsypack.pro
+echo "          QGpCoreTools \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/QGpGuiTools/src/QGpGuiToolsVersion.h
 #ifndef QGPGUITOOLS_VERSION
 #define QGPGUITOOLS_VERSION "2.2.0"
@@ -327,7 +327,7 @@ cat <<ENDVERSION > $BUILD_DIR/QGpGuiTools/src/QGpGuiToolsVersion.h
 #define QGPGUITOOLS_VERSION_TYPE "testing"
 #define QGPGUITOOLS_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define QGPGUITOOLS_DISTRIBUTION "3.2.2"
-#define QGPGUITOOLS_GIT_COMMIT "f9e28777cf141456d6b120688ca2e47f5f5f9da4"
+#define QGPGUITOOLS_GIT_COMMIT "1b8bb57548da06580633f34a0d26797f4a443859"
 #endif // QGPGUITOOLS_VERSION
 ENDVERSION
 echo "Configure QGpGuiTools"
@@ -343,7 +343,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          QGpGuiTools \" >> $BUILD_DIR/geopsypack.pro
+echo "          QGpGuiTools \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/QGpCoreMath/src/QGpCoreMathVersion.h
 #ifndef QGPCOREMATH_VERSION
 #define QGPCOREMATH_VERSION "1.2.1"
@@ -351,7 +351,7 @@ cat <<ENDVERSION > $BUILD_DIR/QGpCoreMath/src/QGpCoreMathVersion.h
 #define QGPCOREMATH_VERSION_TYPE "testing"
 #define QGPCOREMATH_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define QGPCOREMATH_DISTRIBUTION "3.2.2"
-#define QGPCOREMATH_GIT_COMMIT "5961ca3cdcab534caaafb601ca87f8bed525d014"
+#define QGPCOREMATH_GIT_COMMIT "aaa2fa4330ff9aa3e62d5b93bf0d76cf3b5de9da"
 #endif // QGPCOREMATH_VERSION
 ENDVERSION
 echo "Configure QGpCoreMath"
@@ -367,7 +367,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          QGpCoreMath \" >> $BUILD_DIR/geopsypack.pro
+echo "          QGpCoreMath \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/SciFigs/src/SciFigsVersion.h
 #ifndef SCIFIGS_VERSION
 #define SCIFIGS_VERSION "3.1.1"
@@ -375,7 +375,7 @@ cat <<ENDVERSION > $BUILD_DIR/SciFigs/src/SciFigsVersion.h
 #define SCIFIGS_VERSION_TYPE "testing"
 #define SCIFIGS_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define SCIFIGS_DISTRIBUTION "3.2.2"
-#define SCIFIGS_GIT_COMMIT "95b217288543a7c40c996191e82cc501345737ce"
+#define SCIFIGS_GIT_COMMIT "dbf0f0ab157a332c109e3d8d95702209d0743f49"
 #endif // SCIFIGS_VERSION
 ENDVERSION
 echo "Configure SciFigs"
@@ -391,7 +391,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          SciFigs \" >> $BUILD_DIR/geopsypack.pro
+echo "          SciFigs \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/QGpGuiMath/src/QGpGuiMathVersion.h
 #ifndef QGPGUIMATH_VERSION
 #define QGPGUIMATH_VERSION "1.1.2"
@@ -399,7 +399,7 @@ cat <<ENDVERSION > $BUILD_DIR/QGpGuiMath/src/QGpGuiMathVersion.h
 #define QGPGUIMATH_VERSION_TYPE "testing"
 #define QGPGUIMATH_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define QGPGUIMATH_DISTRIBUTION "3.2.2"
-#define QGPGUIMATH_GIT_COMMIT "b8e48958c9d9840c37665d8ce89f89b42a69fc90"
+#define QGPGUIMATH_GIT_COMMIT "db06a6ee87525d3d4b581275b0fddcd3106facf0"
 #endif // QGPGUIMATH_VERSION
 ENDVERSION
 echo "Configure QGpGuiMath"
@@ -415,7 +415,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          QGpGuiMath \" >> $BUILD_DIR/geopsypack.pro
+echo "          QGpGuiMath \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/figue/src/figueVersion.h
 #ifndef FIGUE_VERSION
 #define FIGUE_VERSION "2.0.2"
@@ -423,7 +423,7 @@ cat <<ENDVERSION > $BUILD_DIR/figue/src/figueVersion.h
 #define FIGUE_VERSION_TYPE "testing"
 #define FIGUE_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define FIGUE_DISTRIBUTION "3.2.2"
-#define FIGUE_GIT_COMMIT "99bc4a5fc8b0247d9bc3e4b7f954acfba2ff3538"
+#define FIGUE_GIT_COMMIT "5f0c713a69a254854124833707ed0d44d501b1f5"
 #endif // FIGUE_VERSION
 ENDVERSION
 echo "Configure figue"
@@ -439,7 +439,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          figue \" >> $BUILD_DIR/geopsypack.pro
+echo "          figue \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/QGpCoreWave/src/QGpCoreWaveVersion.h
 #ifndef QGPCOREWAVE_VERSION
 #define QGPCOREWAVE_VERSION "2.0.2"
@@ -447,7 +447,7 @@ cat <<ENDVERSION > $BUILD_DIR/QGpCoreWave/src/QGpCoreWaveVersion.h
 #define QGPCOREWAVE_VERSION_TYPE "testing"
 #define QGPCOREWAVE_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)\nPhil Cummins (RSES, Canberra, Australia)\nRoger Wisen (RAMBOLL, Copenhagen, Denmark)"
 #define QGPCOREWAVE_DISTRIBUTION "3.2.2"
-#define QGPCOREWAVE_GIT_COMMIT "5d46de5dbb824fa17ea0236a87ba511a7f85c1da"
+#define QGPCOREWAVE_GIT_COMMIT "a8a33b2d07af6a9bb4ff97aeca96e9ab563b5213"
 #endif // QGPCOREWAVE_VERSION
 ENDVERSION
 echo "Configure QGpCoreWave"
@@ -463,7 +463,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          QGpCoreWave \" >> $BUILD_DIR/geopsypack.pro
+echo "          QGpCoreWave \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/QGpGuiWave/src/QGpGuiWaveVersion.h
 #ifndef QGPGUIWAVE_VERSION
 #define QGPGUIWAVE_VERSION "1.0.0"
@@ -471,7 +471,7 @@ cat <<ENDVERSION > $BUILD_DIR/QGpGuiWave/src/QGpGuiWaveVersion.h
 #define QGPGUIWAVE_VERSION_TYPE "testing"
 #define QGPGUIWAVE_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)"
 #define QGPGUIWAVE_DISTRIBUTION "3.2.2"
-#define QGPGUIWAVE_GIT_COMMIT "41f314d5b98dc20ba8ea9d7d2ac85467bc7ac384"
+#define QGPGUIWAVE_GIT_COMMIT "82c01d3bda61612be2fca6ed7faa11ab3cd52a0e"
 #endif // QGPGUIWAVE_VERSION
 ENDVERSION
 echo "Configure QGpGuiWave"
@@ -487,7 +487,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          QGpGuiWave \" >> $BUILD_DIR/geopsypack.pro
+echo "          QGpGuiWave \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/QGpCompatibility/src/QGpCompatibilityVersion.h
 #ifndef QGPCOMPATIBILITY_VERSION
 #define QGPCOMPATIBILITY_VERSION "1.0.1"
@@ -495,7 +495,7 @@ cat <<ENDVERSION > $BUILD_DIR/QGpCompatibility/src/QGpCompatibilityVersion.h
 #define QGPCOMPATIBILITY_VERSION_TYPE "testing"
 #define QGPCOMPATIBILITY_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define QGPCOMPATIBILITY_DISTRIBUTION "3.2.2"
-#define QGPCOMPATIBILITY_GIT_COMMIT "cdc8e5aafd559dea9a994bdbcb7ad87ee01e59d8"
+#define QGPCOMPATIBILITY_GIT_COMMIT "a874202a05f3b0c513983f9cb5588527583efc2b"
 #endif // QGPCOMPATIBILITY_VERSION
 ENDVERSION
 echo "Configure QGpCompatibility"
@@ -511,7 +511,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          QGpCompatibility \" >> $BUILD_DIR/geopsypack.pro
+echo "          QGpCompatibility \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/GeopsyCore/src/GeopsyCoreVersion.h
 #ifndef GEOPSYCORE_VERSION
 #define GEOPSYCORE_VERSION "4.2.1"
@@ -519,7 +519,7 @@ cat <<ENDVERSION > $BUILD_DIR/GeopsyCore/src/GeopsyCoreVersion.h
 #define GEOPSYCORE_VERSION_TYPE "testing"
 #define GEOPSYCORE_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define GEOPSYCORE_DISTRIBUTION "3.2.2"
-#define GEOPSYCORE_GIT_COMMIT "2720778c66d88607465f1da4d32aac33eef73d03"
+#define GEOPSYCORE_GIT_COMMIT "4f423329a17d08ae527ef5ea019caf064683355c"
 #endif // GEOPSYCORE_VERSION
 ENDVERSION
 echo "Configure GeopsyCore"
@@ -535,7 +535,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          GeopsyCore \" >> $BUILD_DIR/geopsypack.pro
+echo "          GeopsyCore \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/GeopsyGui/src/GeopsyGuiVersion.h
 #ifndef GEOPSYGUI_VERSION
 #define GEOPSYGUI_VERSION "3.2.1"
@@ -543,7 +543,7 @@ cat <<ENDVERSION > $BUILD_DIR/GeopsyGui/src/GeopsyGuiVersion.h
 #define GEOPSYGUI_VERSION_TYPE "testing"
 #define GEOPSYGUI_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define GEOPSYGUI_DISTRIBUTION "3.2.2"
-#define GEOPSYGUI_GIT_COMMIT "625a28a26ec3111a085c23bb3a2c0a05e5f9295b"
+#define GEOPSYGUI_GIT_COMMIT "73b72d555ca47f849fe86d2c118a9d4a23dd6c4c"
 #endif // GEOPSYGUI_VERSION
 ENDVERSION
 echo "Configure GeopsyGui"
@@ -559,7 +559,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          GeopsyGui \" >> $BUILD_DIR/geopsypack.pro
+echo "          GeopsyGui \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/geopsyfigs/src/geopsyfigsVersion.h
 #ifndef GEOPSYFIGS_VERSION
 #define GEOPSYFIGS_VERSION "1.0.0"
@@ -567,7 +567,7 @@ cat <<ENDVERSION > $BUILD_DIR/geopsyfigs/src/geopsyfigsVersion.h
 #define GEOPSYFIGS_VERSION_TYPE "testing"
 #define GEOPSYFIGS_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GEOPSYFIGS_DISTRIBUTION "3.2.2"
-#define GEOPSYFIGS_GIT_COMMIT "4ad6f32bcd9bd40c83fc140e4d7dd7296f2a46e4"
+#define GEOPSYFIGS_GIT_COMMIT "e50e2f17f119c94378176e9601287bf73159f33f"
 #endif // GEOPSYFIGS_VERSION
 ENDVERSION
 echo "Configure geopsyfigs"
@@ -583,7 +583,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          geopsyfigs \" >> $BUILD_DIR/geopsypack.pro
+echo "          geopsyfigs \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/GeopsySLink/src/GeopsySLinkVersion.h
 #ifndef GEOPSYSLINK_VERSION
 #define GEOPSYSLINK_VERSION "2.0.1"
@@ -591,7 +591,7 @@ cat <<ENDVERSION > $BUILD_DIR/GeopsySLink/src/GeopsySLinkVersion.h
 #define GEOPSYSLINK_VERSION_TYPE "testing"
 #define GEOPSYSLINK_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GEOPSYSLINK_DISTRIBUTION "3.2.2"
-#define GEOPSYSLINK_GIT_COMMIT "c340ac12712fdcd4a9db1dcd78fa70fda19a3125"
+#define GEOPSYSLINK_GIT_COMMIT "6050d8defad86cf3decd4f93eced5aee0a2de624"
 #endif // GEOPSYSLINK_VERSION
 ENDVERSION
 echo "Configure GeopsySLink"
@@ -607,7 +607,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          GeopsySLink \" >> $BUILD_DIR/geopsypack.pro
+echo "          GeopsySLink \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/GeopsySLinkGui/src/GeopsySLinkGuiVersion.h
 #ifndef GEOPSYSLINKGUI_VERSION
 #define GEOPSYSLINKGUI_VERSION "2.0.1"
@@ -615,7 +615,7 @@ cat <<ENDVERSION > $BUILD_DIR/GeopsySLinkGui/src/GeopsySLinkGuiVersion.h
 #define GEOPSYSLINKGUI_VERSION_TYPE "testing"
 #define GEOPSYSLINKGUI_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GEOPSYSLINKGUI_DISTRIBUTION "3.2.2"
-#define GEOPSYSLINKGUI_GIT_COMMIT "463688f0e14f928106f2449720dac19dd56a65ff"
+#define GEOPSYSLINKGUI_GIT_COMMIT "30b964ff9890eb09b70749ecc886558007d9a5f2"
 #endif // GEOPSYSLINKGUI_VERSION
 ENDVERSION
 echo "Configure GeopsySLinkGui"
@@ -631,7 +631,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          GeopsySLinkGui \" >> $BUILD_DIR/geopsypack.pro
+echo "          GeopsySLinkGui \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/DinverCore/src/DinverCoreVersion.h
 #ifndef DINVERCORE_VERSION
 #define DINVERCORE_VERSION "1.1.0"
@@ -639,7 +639,7 @@ cat <<ENDVERSION > $BUILD_DIR/DinverCore/src/DinverCoreVersion.h
 #define DINVERCORE_VERSION_TYPE "testing"
 #define DINVERCORE_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define DINVERCORE_DISTRIBUTION "3.2.2"
-#define DINVERCORE_GIT_COMMIT "e35f80ac8ffa0ad41b5d3c57b1ae58b78651d824"
+#define DINVERCORE_GIT_COMMIT "0bc35e7691ca7c4557817920c01f72ab5154b7ff"
 #endif // DINVERCORE_VERSION
 ENDVERSION
 echo "Configure DinverCore"
@@ -655,7 +655,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          DinverCore \" >> $BUILD_DIR/geopsypack.pro
+echo "          DinverCore \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/DinverGui/src/DinverGuiVersion.h
 #ifndef DINVERGUI_VERSION
 #define DINVERGUI_VERSION "1.0.0"
@@ -663,7 +663,7 @@ cat <<ENDVERSION > $BUILD_DIR/DinverGui/src/DinverGuiVersion.h
 #define DINVERGUI_VERSION_TYPE "testing"
 #define DINVERGUI_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define DINVERGUI_DISTRIBUTION "3.2.2"
-#define DINVERGUI_GIT_COMMIT "5f1e310942b4ca112fc88eca9405f90005abb356"
+#define DINVERGUI_GIT_COMMIT "b0ed53f580d709dc3842f4cc5e70c84c7aacb50f"
 #endif // DINVERGUI_VERSION
 ENDVERSION
 echo "Configure DinverGui"
@@ -679,7 +679,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          DinverGui \" >> $BUILD_DIR/geopsypack.pro
+echo "          DinverGui \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/DinverDCCore/src/DinverDCCoreVersion.h
 #ifndef DINVERDCCORE_VERSION
 #define DINVERDCCORE_VERSION "2.0.2"
@@ -687,7 +687,7 @@ cat <<ENDVERSION > $BUILD_DIR/DinverDCCore/src/DinverDCCoreVersion.h
 #define DINVERDCCORE_VERSION_TYPE "testing"
 #define DINVERDCCORE_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define DINVERDCCORE_DISTRIBUTION "3.2.2"
-#define DINVERDCCORE_GIT_COMMIT "d0c46ed06b04a89f2c2448b875fb14d6534cde92"
+#define DINVERDCCORE_GIT_COMMIT "f509bb9bed611a02917da61a2b0ae46bff05e46d"
 #endif // DINVERDCCORE_VERSION
 ENDVERSION
 echo "Configure DinverDCCore"
@@ -703,7 +703,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          DinverDCCore \" >> $BUILD_DIR/geopsypack.pro
+echo "          DinverDCCore \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/DinverDCGui/src/DinverDCGuiVersion.h
 #ifndef DINVERDCGUI_VERSION
 #define DINVERDCGUI_VERSION "1.0.0"
@@ -711,7 +711,7 @@ cat <<ENDVERSION > $BUILD_DIR/DinverDCGui/src/DinverDCGuiVersion.h
 #define DINVERDCGUI_VERSION_TYPE "testing"
 #define DINVERDCGUI_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define DINVERDCGUI_DISTRIBUTION "3.2.2"
-#define DINVERDCGUI_GIT_COMMIT "d05e12b27f31582f3fa1dc9741cccd73eb7d99ea"
+#define DINVERDCGUI_GIT_COMMIT "7ed17a5c9a6343427efb288045e1f6678e705dcc"
 #endif // DINVERDCGUI_VERSION
 ENDVERSION
 echo "Configure DinverDCGui"
@@ -727,7 +727,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          DinverDCGui \" >> $BUILD_DIR/geopsypack.pro
+echo "          DinverDCGui \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/QGpCoreStat/src/QGpCoreStatVersion.h
 #ifndef QGPCORESTAT_VERSION
 #define QGPCORESTAT_VERSION "1.0.1"
@@ -735,7 +735,7 @@ cat <<ENDVERSION > $BUILD_DIR/QGpCoreStat/src/QGpCoreStatVersion.h
 #define QGPCORESTAT_VERSION_TYPE "testing"
 #define QGPCORESTAT_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)"
 #define QGPCORESTAT_DISTRIBUTION "3.2.2"
-#define QGPCORESTAT_GIT_COMMIT "c776df62c60c1c6ba05ba4666aa5925f275d0dc3"
+#define QGPCORESTAT_GIT_COMMIT "4fcf14b46aed3d12ba66c75c7b921c7b7468caa9"
 #endif // QGPCORESTAT_VERSION
 ENDVERSION
 echo "Configure QGpCoreStat"
@@ -751,7 +751,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          QGpCoreStat \" >> $BUILD_DIR/geopsypack.pro
+echo "          QGpCoreStat \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/ArrayCore/src/ArrayCoreVersion.h
 #ifndef ARRAYCORE_VERSION
 #define ARRAYCORE_VERSION "3.2.0"
@@ -759,7 +759,7 @@ cat <<ENDVERSION > $BUILD_DIR/ArrayCore/src/ArrayCoreVersion.h
 #define ARRAYCORE_VERSION_TYPE "testing"
 #define ARRAYCORE_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define ARRAYCORE_DISTRIBUTION "3.2.2"
-#define ARRAYCORE_GIT_COMMIT "f6db4aa5ca7b44b6098ef7ee18a68612f8251034"
+#define ARRAYCORE_GIT_COMMIT "fc09e2d98da74a0430cd07f168860401995f9531"
 #endif // ARRAYCORE_VERSION
 ENDVERSION
 echo "Configure ArrayCore"
@@ -775,7 +775,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          ArrayCore \" >> $BUILD_DIR/geopsypack.pro
+echo "          ArrayCore \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/ArrayGui/src/ArrayGuiVersion.h
 #ifndef ARRAYGUI_VERSION
 #define ARRAYGUI_VERSION "1.1.0"
@@ -783,7 +783,7 @@ cat <<ENDVERSION > $BUILD_DIR/ArrayGui/src/ArrayGuiVersion.h
 #define ARRAYGUI_VERSION_TYPE "testing"
 #define ARRAYGUI_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define ARRAYGUI_DISTRIBUTION "3.2.2"
-#define ARRAYGUI_GIT_COMMIT "edbe592f01f4c494d5e37a9e9301cef8ca7404b4"
+#define ARRAYGUI_GIT_COMMIT "6900fe7a0dabb0cab49ce03aff17e0985d8a87d5"
 #endif // ARRAYGUI_VERSION
 ENDVERSION
 echo "Configure ArrayGui"
@@ -799,7 +799,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          ArrayGui \" >> $BUILD_DIR/geopsypack.pro
+echo "          ArrayGui \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/MonoStation/src/MonoStationVersion.h
 #ifndef MONOSTATION_VERSION
 #define MONOSTATION_VERSION "2.1.1"
@@ -807,7 +807,7 @@ cat <<ENDVERSION > $BUILD_DIR/MonoStation/src/MonoStationVersion.h
 #define MONOSTATION_VERSION_TYPE "testing"
 #define MONOSTATION_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define MONOSTATION_DISTRIBUTION "3.2.2"
-#define MONOSTATION_GIT_COMMIT "fe9009f16d4bfd566c0d2a367fbda8ff719a4d29"
+#define MONOSTATION_GIT_COMMIT "66c239efe9624f9c92a8b5832f8f6953562ee635"
 #endif // MONOSTATION_VERSION
 ENDVERSION
 echo "Configure MonoStation"
@@ -823,7 +823,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          MonoStation \" >> $BUILD_DIR/geopsypack.pro
+echo "          MonoStation \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/geopsy-fk/src/geopsy-fkVersion.h
 #ifndef GEOPSY_FK_VERSION
 #define GEOPSY_FK_VERSION "1.0.0"
@@ -831,7 +831,7 @@ cat <<ENDVERSION > $BUILD_DIR/geopsy-fk/src/geopsy-fkVersion.h
 #define GEOPSY_FK_VERSION_TYPE "testing"
 #define GEOPSY_FK_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)"
 #define GEOPSY_FK_DISTRIBUTION "3.2.2"
-#define GEOPSY_FK_GIT_COMMIT "77d554275e5ff6e11e272d9503ab0cd74d0d9c7a"
+#define GEOPSY_FK_GIT_COMMIT "25ecdd83d5ec7b4d9c50d1f680b1c72a0dc75a48"
 #endif // GEOPSY_FK_VERSION
 ENDVERSION
 echo "Configure geopsy-fk"
@@ -847,7 +847,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          geopsy-fk \" >> $BUILD_DIR/geopsypack.pro
+echo "          geopsy-fk \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/geopsy-spac/src/geopsy-spacVersion.h
 #ifndef GEOPSY_SPAC_VERSION
 #define GEOPSY_SPAC_VERSION "1.0.0"
@@ -855,7 +855,7 @@ cat <<ENDVERSION > $BUILD_DIR/geopsy-spac/src/geopsy-spacVersion.h
 #define GEOPSY_SPAC_VERSION_TYPE "testing"
 #define GEOPSY_SPAC_AUTHORS ""
 #define GEOPSY_SPAC_DISTRIBUTION "3.2.2"
-#define GEOPSY_SPAC_GIT_COMMIT "58d07c44c7ae161d4168bb4cda6ad1906b3682eb"
+#define GEOPSY_SPAC_GIT_COMMIT "37b72ea9a00fb50b482fe5de4824a16a2fbc5089"
 #endif // GEOPSY_SPAC_VERSION
 ENDVERSION
 echo "Configure geopsy-spac"
@@ -871,7 +871,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          geopsy-spac \" >> $BUILD_DIR/geopsypack.pro
+echo "          geopsy-spac \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/geopsy-hv/src/geopsy-hvVersion.h
 #ifndef GEOPSY_HV_VERSION
 #define GEOPSY_HV_VERSION "0.1.0"
@@ -879,7 +879,7 @@ cat <<ENDVERSION > $BUILD_DIR/geopsy-hv/src/geopsy-hvVersion.h
 #define GEOPSY_HV_VERSION_TYPE "testing"
 #define GEOPSY_HV_AUTHORS ""
 #define GEOPSY_HV_DISTRIBUTION "3.2.2"
-#define GEOPSY_HV_GIT_COMMIT "11c10af3b2e7fc3b4d7c1ac40fad325d118d38f5"
+#define GEOPSY_HV_GIT_COMMIT "f72098d5d71e9f3b36c7ad11f4a9d629d09bfc75"
 #endif // GEOPSY_HV_VERSION
 ENDVERSION
 echo "Configure geopsy-hv"
@@ -895,7 +895,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          geopsy-hv \" >> $BUILD_DIR/geopsypack.pro
+echo "          geopsy-hv \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/geopsy/src/geopsyVersion.h
 #ifndef GEOPSY_VERSION
 #define GEOPSY_VERSION "3.2.0"
@@ -903,7 +903,7 @@ cat <<ENDVERSION > $BUILD_DIR/geopsy/src/geopsyVersion.h
 #define GEOPSY_VERSION_TYPE "testing"
 #define GEOPSY_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define GEOPSY_DISTRIBUTION "3.2.2"
-#define GEOPSY_GIT_COMMIT "610dd86e150c347e86c05f5af6f27105c3960be2"
+#define GEOPSY_GIT_COMMIT "e34ec9ceae103a219e1687ea20d2fb7e68dd5e18"
 #endif // GEOPSY_VERSION
 ENDVERSION
 echo "Configure geopsy"
@@ -919,7 +919,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          geopsy \" >> $BUILD_DIR/geopsypack.pro
+echo "          geopsy \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/vslarray/src/vslarrayVersion.h
 #ifndef VSLARRAY_VERSION
 #define VSLARRAY_VERSION "1.0.0"
@@ -927,7 +927,7 @@ cat <<ENDVERSION > $BUILD_DIR/vslarray/src/vslarrayVersion.h
 #define VSLARRAY_VERSION_TYPE "testing"
 #define VSLARRAY_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define VSLARRAY_DISTRIBUTION "3.2.2"
-#define VSLARRAY_GIT_COMMIT "143c3511de9f8ca94b5e8909e6ebf3b113cc2a35"
+#define VSLARRAY_GIT_COMMIT "d4bc0235a931705a6d5afe8a6b83139fc45aae5d"
 #endif // VSLARRAY_VERSION
 ENDVERSION
 echo "Configure vslarray"
@@ -943,7 +943,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          vslarray \" >> $BUILD_DIR/geopsypack.pro
+echo "          vslarray \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/dinver/src/dinverVersion.h
 #ifndef DINVER_VERSION
 #define DINVER_VERSION "1.0.2"
@@ -951,7 +951,7 @@ cat <<ENDVERSION > $BUILD_DIR/dinver/src/dinverVersion.h
 #define DINVER_VERSION_TYPE "testing"
 #define DINVER_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define DINVER_DISTRIBUTION "3.2.2"
-#define DINVER_GIT_COMMIT "8b528f1058bc78b1959f0057bb7b366ce4aaa69c"
+#define DINVER_GIT_COMMIT "fd8d4b0b2c56653c04eda51922263468031de75c"
 #endif // DINVER_VERSION
 ENDVERSION
 echo "Configure dinver"
@@ -967,7 +967,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          dinver \" >> $BUILD_DIR/geopsypack.pro
+echo "          dinver \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/WaranCore/src/WaranCoreVersion.h
 #ifndef WARANCORE_VERSION
 #define WARANCORE_VERSION "1.0.0"
@@ -991,7 +991,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          WaranCore \" >> $BUILD_DIR/geopsypack.pro
+echo "          WaranCore \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/TapePositioningSystem/src/TapePositioningSystemVersion.h
 #ifndef TAPEPOSITIONINGSYSTEM_VERSION
 #define TAPEPOSITIONINGSYSTEM_VERSION "1.0.0"
@@ -999,7 +999,7 @@ cat <<ENDVERSION > $BUILD_DIR/TapePositioningSystem/src/TapePositioningSystemVer
 #define TAPEPOSITIONINGSYSTEM_VERSION_TYPE "testing"
 #define TAPEPOSITIONINGSYSTEM_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)"
 #define TAPEPOSITIONINGSYSTEM_DISTRIBUTION "3.2.2"
-#define TAPEPOSITIONINGSYSTEM_GIT_COMMIT "57df65737e40283882bf196ca7b129faab2d101b"
+#define TAPEPOSITIONINGSYSTEM_GIT_COMMIT "20164848d21073128079316389701d6cbc7a6127"
 #endif // TAPEPOSITIONINGSYSTEM_VERSION
 ENDVERSION
 echo "Configure TapePositioningSystem"
@@ -1015,7 +1015,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          TapePositioningSystem \" >> $BUILD_DIR/geopsypack.pro
+echo "          TapePositioningSystem \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/waran/src/waranVersion.h
 #ifndef WARAN_VERSION
 #define WARAN_VERSION "1.1.0"
@@ -1023,7 +1023,7 @@ cat <<ENDVERSION > $BUILD_DIR/waran/src/waranVersion.h
 #define WARAN_VERSION_TYPE "testing"
 #define WARAN_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)"
 #define WARAN_DISTRIBUTION "3.2.2"
-#define WARAN_GIT_COMMIT "135f791e4861c867ffd6ef094a648bf4487ea9cf"
+#define WARAN_GIT_COMMIT "98372eb57de636740d71e19ba8a959c42b8d2a53"
 #endif // WARAN_VERSION
 ENDVERSION
 echo "Configure waran"
@@ -1039,7 +1039,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          waran \" >> $BUILD_DIR/geopsypack.pro
+echo "          waran \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/warangps/src/warangpsVersion.h
 #ifndef WARANGPS_VERSION
 #define WARANGPS_VERSION "1.1.0"
@@ -1047,7 +1047,7 @@ cat <<ENDVERSION > $BUILD_DIR/warangps/src/warangpsVersion.h
 #define WARANGPS_VERSION_TYPE "testing"
 #define WARANGPS_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define WARANGPS_DISTRIBUTION "3.2.2"
-#define WARANGPS_GIT_COMMIT "9ac3d6df1339bc57b6e36d3924bdc6044e90af75"
+#define WARANGPS_GIT_COMMIT "ce952ba493127a478708b596e16c96ba03b058d4"
 #endif // WARANGPS_VERSION
 ENDVERSION
 echo "Configure warangps"
@@ -1063,7 +1063,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          warangps \" >> $BUILD_DIR/geopsypack.pro
+echo "          warangps \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/geopsyarray/src/geopsyarrayVersion.h
 #ifndef GEOPSYARRAY_VERSION
 #define GEOPSYARRAY_VERSION "3.1.2"
@@ -1071,7 +1071,7 @@ cat <<ENDVERSION > $BUILD_DIR/geopsyarray/src/geopsyarrayVersion.h
 #define GEOPSYARRAY_VERSION_TYPE "testing"
 #define GEOPSYARRAY_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define GEOPSYARRAY_DISTRIBUTION "3.2.2"
-#define GEOPSYARRAY_GIT_COMMIT "aee3edfba5f057495106769c9e7bccd16c1e0505"
+#define GEOPSYARRAY_GIT_COMMIT "421ffaf3426bfa6d925607a45e95dc233a2ec29b"
 #endif // GEOPSYARRAY_VERSION
 ENDVERSION
 echo "Configure geopsyarray"
@@ -1087,7 +1087,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          geopsyarray \" >> $BUILD_DIR/geopsypack.pro
+echo "          geopsyarray \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/geopsyhv/src/geopsyhvVersion.h
 #ifndef GEOPSYHV_VERSION
 #define GEOPSYHV_VERSION "3.0.2"
@@ -1095,7 +1095,7 @@ cat <<ENDVERSION > $BUILD_DIR/geopsyhv/src/geopsyhvVersion.h
 #define GEOPSYHV_VERSION_TYPE "testing"
 #define GEOPSYHV_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define GEOPSYHV_DISTRIBUTION "3.2.2"
-#define GEOPSYHV_GIT_COMMIT "d77cb535d311e77312c950f520bad925f94f6b47"
+#define GEOPSYHV_GIT_COMMIT "1a0ca603814e150429dc31dbee1b29453dc3384e"
 #endif // GEOPSYHV_VERSION
 ENDVERSION
 echo "Configure geopsyhv"
@@ -1111,7 +1111,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          geopsyhv \" >> $BUILD_DIR/geopsypack.pro
+echo "          geopsyhv \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/geopsydamping/src/geopsydampingVersion.h
 #ifndef GEOPSYDAMPING_VERSION
 #define GEOPSYDAMPING_VERSION "2.0.0"
@@ -1119,7 +1119,7 @@ cat <<ENDVERSION > $BUILD_DIR/geopsydamping/src/geopsydampingVersion.h
 #define GEOPSYDAMPING_VERSION_TYPE "testing"
 #define GEOPSYDAMPING_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define GEOPSYDAMPING_DISTRIBUTION "3.2.2"
-#define GEOPSYDAMPING_GIT_COMMIT "d4667b3c895cb1f471293452537561e428b0da4b"
+#define GEOPSYDAMPING_GIT_COMMIT "29e933b262a0f78b125da42784e312bdb25ea31c"
 #endif // GEOPSYDAMPING_VERSION
 ENDVERSION
 echo "Configure geopsydamping"
@@ -1135,7 +1135,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          geopsydamping \" >> $BUILD_DIR/geopsypack.pro
+echo "          geopsydamping \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/geopsytfa/src/geopsytfaVersion.h
 #ifndef GEOPSYTFA_VERSION
 #define GEOPSYTFA_VERSION "2.0.0"
@@ -1143,7 +1143,7 @@ cat <<ENDVERSION > $BUILD_DIR/geopsytfa/src/geopsytfaVersion.h
 #define GEOPSYTFA_VERSION_TYPE "testing"
 #define GEOPSYTFA_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GEOPSYTFA_DISTRIBUTION "3.2.2"
-#define GEOPSYTFA_GIT_COMMIT "cc9b75add7f85ce6e702c9c8490eac7c6afd0e6c"
+#define GEOPSYTFA_GIT_COMMIT "383ad708829f8548d6a9893251f605f967090642"
 #endif // GEOPSYTFA_VERSION
 ENDVERSION
 echo "Configure geopsytfa"
@@ -1159,7 +1159,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          geopsytfa \" >> $BUILD_DIR/geopsypack.pro
+echo "          geopsytfa \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/geopsynr/src/geopsynrVersion.h
 #ifndef GEOPSYNR_VERSION
 #define GEOPSYNR_VERSION "1.0.0"
@@ -1167,7 +1167,7 @@ cat <<ENDVERSION > $BUILD_DIR/geopsynr/src/geopsynrVersion.h
 #define GEOPSYNR_VERSION_TYPE "testing"
 #define GEOPSYNR_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GEOPSYNR_DISTRIBUTION "3.2.2"
-#define GEOPSYNR_GIT_COMMIT "e0cf331a4ab8aee6bfa9aae10af343ae81cbda65"
+#define GEOPSYNR_GIT_COMMIT "6f4071ecb144aa1bfe37456c67e225c717c71bc4"
 #endif // GEOPSYNR_VERSION
 ENDVERSION
 echo "Configure geopsynr"
@@ -1183,7 +1183,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          geopsynr \" >> $BUILD_DIR/geopsypack.pro
+echo "          geopsynr \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/geopsyptmotion/src/geopsyptmotionVersion.h
 #ifndef GEOPSYPTMOTION_VERSION
 #define GEOPSYPTMOTION_VERSION "2.0.0"
@@ -1191,7 +1191,7 @@ cat <<ENDVERSION > $BUILD_DIR/geopsyptmotion/src/geopsyptmotionVersion.h
 #define GEOPSYPTMOTION_VERSION_TYPE "testing"
 #define GEOPSYPTMOTION_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define GEOPSYPTMOTION_DISTRIBUTION "3.2.2"
-#define GEOPSYPTMOTION_GIT_COMMIT "3bfa6335ff9ddaa7f9a3f90e95eb6f10f1665db4"
+#define GEOPSYPTMOTION_GIT_COMMIT "2794e77a41799a50cfd5d8dd4ffb59600e9f8ed4"
 #endif // GEOPSYPTMOTION_VERSION
 ENDVERSION
 echo "Configure geopsyptmotion"
@@ -1207,7 +1207,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          geopsyptmotion \" >> $BUILD_DIR/geopsypack.pro
+echo "          geopsyptmotion \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/geopsyrefra/src/geopsyrefraVersion.h
 #ifndef GEOPSYREFRA_VERSION
 #define GEOPSYREFRA_VERSION "2.0.0"
@@ -1215,7 +1215,7 @@ cat <<ENDVERSION > $BUILD_DIR/geopsyrefra/src/geopsyrefraVersion.h
 #define GEOPSYREFRA_VERSION_TYPE "testing"
 #define GEOPSYREFRA_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define GEOPSYREFRA_DISTRIBUTION "3.2.2"
-#define GEOPSYREFRA_GIT_COMMIT "93d3047709c0fc26859228e218af6122cd4a6506"
+#define GEOPSYREFRA_GIT_COMMIT "faa02c29558826e19770fb4b9e7c58747ab2e015"
 #endif // GEOPSYREFRA_VERSION
 ENDVERSION
 echo "Configure geopsyrefra"
@@ -1231,7 +1231,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          geopsyrefra \" >> $BUILD_DIR/geopsypack.pro
+echo "          geopsyrefra \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/hvtfa/src/hvtfaVersion.h
 #ifndef HVTFA_VERSION
 #define HVTFA_VERSION "2.0.0"
@@ -1239,7 +1239,7 @@ cat <<ENDVERSION > $BUILD_DIR/hvtfa/src/hvtfaVersion.h
 #define HVTFA_VERSION_TYPE "testing"
 #define HVTFA_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMiriam Kristekova (Geophysical Institute, Academy of Sciences, Bratislava, Slovak Republic)"
 #define HVTFA_DISTRIBUTION "3.2.2"
-#define HVTFA_GIT_COMMIT "cd6e19a0d51de78947b1f438303cde138b9bef2d"
+#define HVTFA_GIT_COMMIT "2e20c406850f1fd82d3f478bfae987dc16dd1855"
 #endif // HVTFA_VERSION
 ENDVERSION
 echo "Configure hvtfa"
@@ -1255,7 +1255,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          hvtfa \" >> $BUILD_DIR/geopsypack.pro
+echo "          hvtfa \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/campbelltob3/src/campbelltob3Version.h
 #ifndef CAMPBELLTOB3_VERSION
 #define CAMPBELLTOB3_VERSION "1.0.0"
@@ -1263,7 +1263,7 @@ cat <<ENDVERSION > $BUILD_DIR/campbelltob3/src/campbelltob3Version.h
 #define CAMPBELLTOB3_VERSION_TYPE "testing"
 #define CAMPBELLTOB3_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)"
 #define CAMPBELLTOB3_DISTRIBUTION "3.2.2"
-#define CAMPBELLTOB3_GIT_COMMIT "7b4d75fd5958c73f24c7c645e24953398d761195"
+#define CAMPBELLTOB3_GIT_COMMIT "b4a487e989584cee92832907e2b4f9a6d1ecb4fd"
 #endif // CAMPBELLTOB3_VERSION
 ENDVERSION
 echo "Configure campbelltob3"
@@ -1279,7 +1279,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          campbelltob3 \" >> $BUILD_DIR/geopsypack.pro
+echo "          campbelltob3 \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/dinverdc/src/dinverdcVersion.h
 #ifndef DINVERDC_VERSION
 #define DINVERDC_VERSION "2.0.0"
@@ -1287,7 +1287,7 @@ cat <<ENDVERSION > $BUILD_DIR/dinverdc/src/dinverdcVersion.h
 #define DINVERDC_VERSION_TYPE "testing"
 #define DINVERDC_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define DINVERDC_DISTRIBUTION "3.2.2"
-#define DINVERDC_GIT_COMMIT "55c86ff188315017650797726177381920b3a300"
+#define DINVERDC_GIT_COMMIT "4d7bd965023a4065119873ab272360521f2c5bd3"
 #endif // DINVERDC_VERSION
 ENDVERSION
 echo "Configure dinverdc"
@@ -1303,7 +1303,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          dinverdc \" >> $BUILD_DIR/geopsypack.pro
+echo "          dinverdc \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/dinverext/src/dinverextVersion.h
 #ifndef DINVEREXT_VERSION
 #define DINVEREXT_VERSION "1.0.2"
@@ -1311,7 +1311,7 @@ cat <<ENDVERSION > $BUILD_DIR/dinverext/src/dinverextVersion.h
 #define DINVEREXT_VERSION_TYPE "testing"
 #define DINVEREXT_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define DINVEREXT_DISTRIBUTION "3.2.2"
-#define DINVEREXT_GIT_COMMIT "97711fdb1310edcec85eb7b0603e1ed9e43e7bd7"
+#define DINVEREXT_GIT_COMMIT "136724fcd471e713b5ec17a96b887342726e884d"
 #endif // DINVEREXT_VERSION
 ENDVERSION
 echo "Configure dinverext"
@@ -1327,7 +1327,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          dinverext \" >> $BUILD_DIR/geopsypack.pro
+echo "          dinverext \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/spac2disp/src/spac2dispVersion.h
 #ifndef SPAC2DISP_VERSION
 #define SPAC2DISP_VERSION "1.0.0"
@@ -1335,7 +1335,7 @@ cat <<ENDVERSION > $BUILD_DIR/spac2disp/src/spac2dispVersion.h
 #define SPAC2DISP_VERSION_TYPE "testing"
 #define SPAC2DISP_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define SPAC2DISP_DISTRIBUTION "3.2.2"
-#define SPAC2DISP_GIT_COMMIT "a2d7f97683496e7e226cdd1eda781f6beab23126"
+#define SPAC2DISP_GIT_COMMIT "48637e6af59b0844670d0bf46d164967ed4db1f1"
 #endif // SPAC2DISP_VERSION
 ENDVERSION
 echo "Configure spac2disp"
@@ -1351,7 +1351,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          spac2disp \" >> $BUILD_DIR/geopsypack.pro
+echo "          spac2disp \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/max2curve/src/max2curveVersion.h
 #ifndef MAX2CURVE_VERSION
 #define MAX2CURVE_VERSION "1.1.0"
@@ -1359,7 +1359,7 @@ cat <<ENDVERSION > $BUILD_DIR/max2curve/src/max2curveVersion.h
 #define MAX2CURVE_VERSION_TYPE "testing"
 #define MAX2CURVE_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define MAX2CURVE_DISTRIBUTION "3.2.2"
-#define MAX2CURVE_GIT_COMMIT "cc04d3d4c74f48d55ec5ed29ac70928aff161733"
+#define MAX2CURVE_GIT_COMMIT "386c0510f9b1250580376210804df012488190a3"
 #endif // MAX2CURVE_VERSION
 ENDVERSION
 echo "Configure max2curve"
@@ -1375,7 +1375,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          max2curve \" >> $BUILD_DIR/geopsypack.pro
+echo "          max2curve \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/gppoisson/src/gppoissonVersion.h
 #ifndef GPPOISSON_VERSION
 #define GPPOISSON_VERSION "2.0.0"
@@ -1383,7 +1383,7 @@ cat <<ENDVERSION > $BUILD_DIR/gppoisson/src/gppoissonVersion.h
 #define GPPOISSON_VERSION_TYPE "testing"
 #define GPPOISSON_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPPOISSON_DISTRIBUTION "3.2.2"
-#define GPPOISSON_GIT_COMMIT "89cdb5bc6f7033b93ceedf0483fdbe8f246d9e7b"
+#define GPPOISSON_GIT_COMMIT "cb762fc1cabaa3ef190b8557e20e006f792174f5"
 #endif // GPPOISSON_VERSION
 ENDVERSION
 echo "Configure gppoisson"
@@ -1399,7 +1399,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          gppoisson \" >> $BUILD_DIR/geopsypack.pro
+echo "          gppoisson \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/gpprofile/src/gpprofileVersion.h
 #ifndef GPPROFILE_VERSION
 #define GPPROFILE_VERSION "1.1.0"
@@ -1407,7 +1407,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpprofile/src/gpprofileVersion.h
 #define GPPROFILE_VERSION_TYPE "testing"
 #define GPPROFILE_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPPROFILE_DISTRIBUTION "3.2.2"
-#define GPPROFILE_GIT_COMMIT "8706e16b02526f6e5bcbe40723eca7077dc118d1"
+#define GPPROFILE_GIT_COMMIT "41371f87db83576b97ace9dee1e4c13389de442a"
 #endif // GPPROFILE_VERSION
 ENDVERSION
 echo "Configure gpprofile"
@@ -1423,7 +1423,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          gpprofile \" >> $BUILD_DIR/geopsypack.pro
+echo "          gpprofile \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/gpdc/src/gpdcVersion.h
 #ifndef GPDC_VERSION
 #define GPDC_VERSION "1.0.1"
@@ -1431,7 +1431,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpdc/src/gpdcVersion.h
 #define GPDC_VERSION_TYPE "testing"
 #define GPDC_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPDC_DISTRIBUTION "3.2.2"
-#define GPDC_GIT_COMMIT "eebb67e2c01e44af0a637144de4b6e767a402f74"
+#define GPDC_GIT_COMMIT "6c786d16f16306b4a46d92df99c34b457c74c9cd"
 #endif // GPDC_VERSION
 ENDVERSION
 echo "Configure gpdc"
@@ -1447,7 +1447,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          gpdc \" >> $BUILD_DIR/geopsypack.pro
+echo "          gpdc \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/gplivemodel/src/gplivemodelVersion.h
 #ifndef GPLIVEMODEL_VERSION
 #define GPLIVEMODEL_VERSION "1.0.1"
@@ -1455,7 +1455,7 @@ cat <<ENDVERSION > $BUILD_DIR/gplivemodel/src/gplivemodelVersion.h
 #define GPLIVEMODEL_VERSION_TYPE "testing"
 #define GPLIVEMODEL_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPLIVEMODEL_DISTRIBUTION "3.2.2"
-#define GPLIVEMODEL_GIT_COMMIT "5684f8a2633be4b013c340a24e36ca36487066df"
+#define GPLIVEMODEL_GIT_COMMIT "13025f241977142a0d3f4b0f6e4759e689a665db"
 #endif // GPLIVEMODEL_VERSION
 ENDVERSION
 echo "Configure gplivemodel"
@@ -1471,7 +1471,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          gplivemodel \" >> $BUILD_DIR/geopsypack.pro
+echo "          gplivemodel \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/gpec8/src/gpec8Version.h
 #ifndef GPEC8_VERSION
 #define GPEC8_VERSION "1.0.0"
@@ -1479,7 +1479,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpec8/src/gpec8Version.h
 #define GPEC8_VERSION_TYPE "testing"
 #define GPEC8_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPEC8_DISTRIBUTION "3.2.2"
-#define GPEC8_GIT_COMMIT "1eee3918edf6eb3a309ea4b208b748987eda2116"
+#define GPEC8_GIT_COMMIT "d8d13d00a41b0b97b38df0c760dd12c3fa14459e"
 #endif // GPEC8_VERSION
 ENDVERSION
 echo "Configure gpec8"
@@ -1495,7 +1495,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          gpec8 \" >> $BUILD_DIR/geopsypack.pro
+echo "          gpec8 \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/gpdcreport/src/gpdcreportVersion.h
 #ifndef GPDCREPORT_VERSION
 #define GPDCREPORT_VERSION "1.0.2"
@@ -1503,7 +1503,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpdcreport/src/gpdcreportVersion.h
 #define GPDCREPORT_VERSION_TYPE "testing"
 #define GPDCREPORT_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPDCREPORT_DISTRIBUTION "3.2.2"
-#define GPDCREPORT_GIT_COMMIT "ab5357a88a2f65e19f3ae10089adb55ec18bab49"
+#define GPDCREPORT_GIT_COMMIT "8e815addccd348876104bc3b3fe7a1334fb6398f"
 #endif // GPDCREPORT_VERSION
 ENDVERSION
 echo "Configure gpdcreport"
@@ -1519,7 +1519,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          gpdcreport \" >> $BUILD_DIR/geopsypack.pro
+echo "          gpdcreport \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/gptarget/src/gptargetVersion.h
 #ifndef GPTARGET_VERSION
 #define GPTARGET_VERSION "1.0.1"
@@ -1527,7 +1527,7 @@ cat <<ENDVERSION > $BUILD_DIR/gptarget/src/gptargetVersion.h
 #define GPTARGET_VERSION_TYPE "testing"
 #define GPTARGET_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPTARGET_DISTRIBUTION "3.2.2"
-#define GPTARGET_GIT_COMMIT "89271cb2bb58ba9037940e675433a6640759b5e5"
+#define GPTARGET_GIT_COMMIT "38d6ae93282ebfc7afacb1c4849cc9288e51c2e6"
 #endif // GPTARGET_VERSION
 ENDVERSION
 echo "Configure gptarget"
@@ -1543,7 +1543,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          gptarget \" >> $BUILD_DIR/geopsypack.pro
+echo "          gptarget \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/gpviewdcreport/src/gpviewdcreportVersion.h
 #ifndef GPVIEWDCREPORT_VERSION
 #define GPVIEWDCREPORT_VERSION "1.0.0"
@@ -1551,7 +1551,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpviewdcreport/src/gpviewdcreportVersion.h
 #define GPVIEWDCREPORT_VERSION_TYPE "testing"
 #define GPVIEWDCREPORT_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPVIEWDCREPORT_DISTRIBUTION "3.2.2"
-#define GPVIEWDCREPORT_GIT_COMMIT "79a5768f5b4e3ab37860532c994df494a8425008"
+#define GPVIEWDCREPORT_GIT_COMMIT "695f1821c3f3f4cba94827c4736bdff250a1ecb8"
 #endif // GPVIEWDCREPORT_VERSION
 ENDVERSION
 echo "Configure gpviewdcreport"
@@ -1567,7 +1567,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          gpviewdcreport \" >> $BUILD_DIR/geopsypack.pro
+echo "          gpviewdcreport \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/gpdcmisfit/src/gpdcmisfitVersion.h
 #ifndef GPDCMISFIT_VERSION
 #define GPDCMISFIT_VERSION "1.0.0"
@@ -1575,7 +1575,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpdcmisfit/src/gpdcmisfitVersion.h
 #define GPDCMISFIT_VERSION_TYPE "testing"
 #define GPDCMISFIT_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPDCMISFIT_DISTRIBUTION "3.2.2"
-#define GPDCMISFIT_GIT_COMMIT "3ab93487dafeccc1f3af5934aaf29ab573b35da1"
+#define GPDCMISFIT_GIT_COMMIT "946887532ef4ebc3f424b25c7328b6379635e119"
 #endif // GPDCMISFIT_VERSION
 ENDVERSION
 echo "Configure gpdcmisfit"
@@ -1591,7 +1591,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          gpdcmisfit \" >> $BUILD_DIR/geopsypack.pro
+echo "          gpdcmisfit \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/gpell/src/gpellVersion.h
 #ifndef GPELL_VERSION
 #define GPELL_VERSION "1.0.0"
@@ -1599,7 +1599,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpell/src/gpellVersion.h
 #define GPELL_VERSION_TYPE "testing"
 #define GPELL_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPELL_DISTRIBUTION "3.2.2"
-#define GPELL_GIT_COMMIT "9c894f2b5477f6f6703c61b3782dadba2832a029"
+#define GPELL_GIT_COMMIT "7043b5e72ed4b1399ddcefd81b6a61adf1656cc9"
 #endif // GPELL_VERSION
 ENDVERSION
 echo "Configure gpell"
@@ -1615,7 +1615,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          gpell \" >> $BUILD_DIR/geopsypack.pro
+echo "          gpell \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/gpgroup2phase/src/gpgroup2phaseVersion.h
 #ifndef GPGROUP2PHASE_VERSION
 #define GPGROUP2PHASE_VERSION "1.0.0"
@@ -1623,7 +1623,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpgroup2phase/src/gpgroup2phaseVersion.h
 #define GPGROUP2PHASE_VERSION_TYPE "testing"
 #define GPGROUP2PHASE_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPGROUP2PHASE_DISTRIBUTION "3.2.2"
-#define GPGROUP2PHASE_GIT_COMMIT "7449a9a27728bdd5df6fe68c271621150d3c02be"
+#define GPGROUP2PHASE_GIT_COMMIT "e12882a22b32ff4407c4cc1205657833222ea5fb"
 #endif // GPGROUP2PHASE_VERSION
 ENDVERSION
 echo "Configure gpgroup2phase"
@@ -1639,7 +1639,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          gpgroup2phase \" >> $BUILD_DIR/geopsypack.pro
+echo "          gpgroup2phase \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/gpmodel2param/src/gpmodel2paramVersion.h
 #ifndef GPMODEL2PARAM_VERSION
 #define GPMODEL2PARAM_VERSION "1.0.0"
@@ -1647,7 +1647,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpmodel2param/src/gpmodel2paramVersion.h
 #define GPMODEL2PARAM_VERSION_TYPE "testing"
 #define GPMODEL2PARAM_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPMODEL2PARAM_DISTRIBUTION "3.2.2"
-#define GPMODEL2PARAM_GIT_COMMIT "2243c8ab2bc6be35fcc0c9070800b4df205a1d9d"
+#define GPMODEL2PARAM_GIT_COMMIT "1802742e4c4c18b4375080d9882f9531979788cf"
 #endif // GPMODEL2PARAM_VERSION
 ENDVERSION
 echo "Configure gpmodel2param"
@@ -1663,7 +1663,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          gpmodel2param \" >> $BUILD_DIR/geopsypack.pro
+echo "          gpmodel2param \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/gpparam2model/src/gpparam2modelVersion.h
 #ifndef GPPARAM2MODEL_VERSION
 #define GPPARAM2MODEL_VERSION "1.0.0"
@@ -1671,7 +1671,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpparam2model/src/gpparam2modelVersion.h
 #define GPPARAM2MODEL_VERSION_TYPE "testing"
 #define GPPARAM2MODEL_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPPARAM2MODEL_DISTRIBUTION "3.2.2"
-#define GPPARAM2MODEL_GIT_COMMIT "b397018b98163f7429b5150c08fa9e67a8842421"
+#define GPPARAM2MODEL_GIT_COMMIT "de5e05d04aa1936518a9b247e3974dffc3e690d7"
 #endif // GPPARAM2MODEL_VERSION
 ENDVERSION
 echo "Configure gpparam2model"
@@ -1687,7 +1687,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          gpparam2model \" >> $BUILD_DIR/geopsypack.pro
+echo "          gpparam2model \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/gpdepths/src/gpdepthsVersion.h
 #ifndef GPDEPTHS_VERSION
 #define GPDEPTHS_VERSION "1.0.0"
@@ -1695,7 +1695,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpdepths/src/gpdepthsVersion.h
 #define GPDEPTHS_VERSION_TYPE "testing"
 #define GPDEPTHS_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPDEPTHS_DISTRIBUTION "3.2.2"
-#define GPDEPTHS_GIT_COMMIT "d9cea46257cd70e8bd188c7a1c33a68cb95648d0"
+#define GPDEPTHS_GIT_COMMIT "9a5fe38f29b05a8920f2390ac4feb1cfa47a2fd5"
 #endif // GPDEPTHS_VERSION
 ENDVERSION
 echo "Configure gpdepths"
@@ -1711,7 +1711,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          gpdepths \" >> $BUILD_DIR/geopsypack.pro
+echo "          gpdepths \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/gpsort/src/gpsortVersion.h
 #ifndef GPSORT_VERSION
 #define GPSORT_VERSION "1.0.0"
@@ -1719,7 +1719,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpsort/src/gpsortVersion.h
 #define GPSORT_VERSION_TYPE "testing"
 #define GPSORT_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPSORT_DISTRIBUTION "3.2.2"
-#define GPSORT_GIT_COMMIT "cd629044af5613eb2600a3c3f217ea6b188a5f60"
+#define GPSORT_GIT_COMMIT "28de64ad878401fc497761b4727cea2c7b0da25f"
 #endif // GPSORT_VERSION
 ENDVERSION
 echo "Configure gpsort"
@@ -1735,7 +1735,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          gpsort \" >> $BUILD_DIR/geopsypack.pro
+echo "          gpsort \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/gpcurve/src/gpcurveVersion.h
 #ifndef GPCURVE_VERSION
 #define GPCURVE_VERSION "1.0.0"
@@ -1743,7 +1743,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpcurve/src/gpcurveVersion.h
 #define GPCURVE_VERSION_TYPE "testing"
 #define GPCURVE_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPCURVE_DISTRIBUTION "3.2.2"
-#define GPCURVE_GIT_COMMIT "3a5fe73166a832b6a7d2506a3721bf41a37f3511"
+#define GPCURVE_GIT_COMMIT "0abe03be10bcb93fe3256b39ac45620d47c1f40d"
 #endif // GPCURVE_VERSION
 ENDVERSION
 echo "Configure gpcurve"
@@ -1759,7 +1759,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          gpcurve \" >> $BUILD_DIR/geopsypack.pro
+echo "          gpcurve \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/gprandom/src/gprandomVersion.h
 #ifndef GPRANDOM_VERSION
 #define GPRANDOM_VERSION "1.0.0"
@@ -1767,7 +1767,7 @@ cat <<ENDVERSION > $BUILD_DIR/gprandom/src/gprandomVersion.h
 #define GPRANDOM_VERSION_TYPE "testing"
 #define GPRANDOM_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPRANDOM_DISTRIBUTION "3.2.2"
-#define GPRANDOM_GIT_COMMIT "6e6d628dc68954d15b798973e1b2fec6d2395c7e"
+#define GPRANDOM_GIT_COMMIT "3fb95ce844545dfdf07e68323bddfc831ea202ad"
 #endif // GPRANDOM_VERSION
 ENDVERSION
 echo "Configure gprandom"
@@ -1783,7 +1783,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          gprandom \" >> $BUILD_DIR/geopsypack.pro
+echo "          gprandom \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/gpspac/src/gpspacVersion.h
 #ifndef GPSPAC_VERSION
 #define GPSPAC_VERSION "1.0.0"
@@ -1791,7 +1791,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpspac/src/gpspacVersion.h
 #define GPSPAC_VERSION_TYPE "testing"
 #define GPSPAC_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPSPAC_DISTRIBUTION "3.2.2"
-#define GPSPAC_GIT_COMMIT "42d7a4760ecf783760e53a2b6b7eeab21e289ee1"
+#define GPSPAC_GIT_COMMIT "5d5098109ca8f9382866ca2c5de283b2da8eaa30"
 #endif // GPSPAC_VERSION
 ENDVERSION
 echo "Configure gpspac"
@@ -1807,7 +1807,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          gpspac \" >> $BUILD_DIR/geopsypack.pro
+echo "          gpspac \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/gprefra/src/gprefraVersion.h
 #ifndef GPREFRA_VERSION
 #define GPREFRA_VERSION "1.0.0"
@@ -1815,7 +1815,7 @@ cat <<ENDVERSION > $BUILD_DIR/gprefra/src/gprefraVersion.h
 #define GPREFRA_VERSION_TYPE "testing"
 #define GPREFRA_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPREFRA_DISTRIBUTION "3.2.2"
-#define GPREFRA_GIT_COMMIT "269c635fe950f86b3fb1fe1fe75d1e3461aa9b58"
+#define GPREFRA_GIT_COMMIT "b9b61eb7d81dbad0a079083ee134ee84ee920469"
 #endif // GPREFRA_VERSION
 ENDVERSION
 echo "Configure gprefra"
@@ -1831,7 +1831,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          gprefra \" >> $BUILD_DIR/geopsypack.pro
+echo "          gprefra \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/gpsignal/src/gpsignalVersion.h
 #ifndef GPSIGNAL_VERSION
 #define GPSIGNAL_VERSION "2.0.0"
@@ -1839,7 +1839,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpsignal/src/gpsignalVersion.h
 #define GPSIGNAL_VERSION_TYPE "testing"
 #define GPSIGNAL_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPSIGNAL_DISTRIBUTION "3.2.2"
-#define GPSIGNAL_GIT_COMMIT "6355860f05c3138b5d9bafa16b4a52380f973188"
+#define GPSIGNAL_GIT_COMMIT "fb4304ef0db239e02b0d031db6c9137e61cd85ad"
 #endif // GPSIGNAL_VERSION
 ENDVERSION
 echo "Configure gpsignal"
@@ -1855,7 +1855,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          gpsignal \" >> $BUILD_DIR/geopsypack.pro
+echo "          gpsignal \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/gphistogram/src/gphistogramVersion.h
 #ifndef GPHISTOGRAM_VERSION
 #define GPHISTOGRAM_VERSION "1.1.0"
@@ -1863,7 +1863,7 @@ cat <<ENDVERSION > $BUILD_DIR/gphistogram/src/gphistogramVersion.h
 #define GPHISTOGRAM_VERSION_TYPE "testing"
 #define GPHISTOGRAM_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPHISTOGRAM_DISTRIBUTION "3.2.2"
-#define GPHISTOGRAM_GIT_COMMIT "98f039bfaf94364a677dc711931b1078fe3d5c13"
+#define GPHISTOGRAM_GIT_COMMIT "8719627314c072d23f3427505cee2fd9e60c6ae0"
 #endif // GPHISTOGRAM_VERSION
 ENDVERSION
 echo "Configure gphistogram"
@@ -1879,7 +1879,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          gphistogram \" >> $BUILD_DIR/geopsypack.pro
+echo "          gphistogram \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/gpviewmax/src/gpviewmaxVersion.h
 #ifndef GPVIEWMAX_VERSION
 #define GPVIEWMAX_VERSION "1.0.1"
@@ -1887,7 +1887,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpviewmax/src/gpviewmaxVersion.h
 #define GPVIEWMAX_VERSION_TYPE "testing"
 #define GPVIEWMAX_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)"
 #define GPVIEWMAX_DISTRIBUTION "3.2.2"
-#define GPVIEWMAX_GIT_COMMIT "7ebf1dc498254be5299abd368a53d8c7704ec827"
+#define GPVIEWMAX_GIT_COMMIT "610eeec27498e76b9a1c10729a9dbc479221bd86"
 #endif // GPVIEWMAX_VERSION
 ENDVERSION
 echo "Configure gpviewmax"
@@ -1903,7 +1903,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          gpviewmax \" >> $BUILD_DIR/geopsypack.pro
+echo "          gpviewmax \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/gpdistance/src/gpdistanceVersion.h
 #ifndef GPDISTANCE_VERSION
 #define GPDISTANCE_VERSION "1.0.0"
@@ -1911,7 +1911,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpdistance/src/gpdistanceVersion.h
 #define GPDISTANCE_VERSION_TYPE "testing"
 #define GPDISTANCE_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPDISTANCE_DISTRIBUTION "3.2.2"
-#define GPDISTANCE_GIT_COMMIT "347749f9a863c549e0905f8a96635663403938c5"
+#define GPDISTANCE_GIT_COMMIT "218b50bbc18fb153f4c7da6cd3e8cffa40217e9a"
 #endif // GPDISTANCE_VERSION
 ENDVERSION
 echo "Configure gpdistance"
@@ -1927,7 +1927,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          gpdistance \" >> $BUILD_DIR/geopsypack.pro
+echo "          gpdistance \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/gptime/src/gptimeVersion.h
 #ifndef GPTIME_VERSION
 #define GPTIME_VERSION "1.0.0"
@@ -1935,7 +1935,7 @@ cat <<ENDVERSION > $BUILD_DIR/gptime/src/gptimeVersion.h
 #define GPTIME_VERSION_TYPE "testing"
 #define GPTIME_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPTIME_DISTRIBUTION "3.2.2"
-#define GPTIME_GIT_COMMIT "87a3c4dc9629b7e9ba4a37a00d80a1754afa7ba0"
+#define GPTIME_GIT_COMMIT "5d29853d2f7f94a64a28b4339b7d648294e94688"
 #endif // GPTIME_VERSION
 ENDVERSION
 echo "Configure gptime"
@@ -1951,7 +1951,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          gptime \" >> $BUILD_DIR/geopsypack.pro
+echo "          gptime \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/gpcoord/src/gpcoordVersion.h
 #ifndef GPCOORD_VERSION
 #define GPCOORD_VERSION "1.0.0"
@@ -1959,7 +1959,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpcoord/src/gpcoordVersion.h
 #define GPCOORD_VERSION_TYPE "testing"
 #define GPCOORD_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPCOORD_DISTRIBUTION "3.2.2"
-#define GPCOORD_GIT_COMMIT "f2898e042a841e3e7c397b53f5dec817262e0ebe"
+#define GPCOORD_GIT_COMMIT "730e2945deeb118fb2211e7b99066564c8944736"
 #endif // GPCOORD_VERSION
 ENDVERSION
 echo "Configure gpcoord"
@@ -1975,7 +1975,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          gpcoord \" >> $BUILD_DIR/geopsypack.pro
+echo "          gpcoord \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/gpreplace/src/gpreplaceVersion.h
 #ifndef GPREPLACE_VERSION
 #define GPREPLACE_VERSION "1.0.0"
@@ -1999,7 +1999,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          gpreplace \" >> $BUILD_DIR/geopsypack.pro
+echo "          gpreplace \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/gpsh/src/gpshVersion.h
 #ifndef GPSH_VERSION
 #define GPSH_VERSION "1.0.0"
@@ -2007,7 +2007,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpsh/src/gpshVersion.h
 #define GPSH_VERSION_TYPE "testing"
 #define GPSH_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPSH_DISTRIBUTION "3.2.2"
-#define GPSH_GIT_COMMIT "2620a0958207c8329c22a549ff762624556eaa6c"
+#define GPSH_GIT_COMMIT "9044a40fd9c3155116632ed52421828550417a48"
 #endif // GPSH_VERSION
 ENDVERSION
 echo "Configure gpsh"
@@ -2023,7 +2023,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          gpsh \" >> $BUILD_DIR/geopsypack.pro
+echo "          gpsh \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/gpmt/src/gpmtVersion.h
 #ifndef GPMT_VERSION
 #define GPMT_VERSION "1.0.0"
@@ -2031,7 +2031,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpmt/src/gpmtVersion.h
 #define GPMT_VERSION_TYPE "testing"
 #define GPMT_AUTHORS "Marc Wathelet (LGIT, Grenoble, France)"
 #define GPMT_DISTRIBUTION "3.2.2"
-#define GPMT_GIT_COMMIT "f3a3a05860abef4e64d7fc6f047ef7361e89021e"
+#define GPMT_GIT_COMMIT "aa86cc1319b7f0c28f93d7ae1dcb0c8f03619a30"
 #endif // GPMT_VERSION
 ENDVERSION
 echo "Configure gpmt"
@@ -2047,7 +2047,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          gpmt \" >> $BUILD_DIR/geopsypack.pro
+echo "          gpmt \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/gpgridsearch/src/gpgridsearchVersion.h
 #ifndef GPGRIDSEARCH_VERSION
 #define GPGRIDSEARCH_VERSION "1.0.0"
@@ -2055,7 +2055,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpgridsearch/src/gpgridsearchVersion.h
 #define GPGRIDSEARCH_VERSION_TYPE "testing"
 #define GPGRIDSEARCH_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)"
 #define GPGRIDSEARCH_DISTRIBUTION "3.2.2"
-#define GPGRIDSEARCH_GIT_COMMIT "2694a15baaded4fdbd3ddabd59d8f628bfeffddf"
+#define GPGRIDSEARCH_GIT_COMMIT "98179b2dc0fc82e954bec91792f487627bedbc62"
 #endif // GPGRIDSEARCH_VERSION
 ENDVERSION
 echo "Configure gpgridsearch"
@@ -2071,7 +2071,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          gpgridsearch \" >> $BUILD_DIR/geopsypack.pro
+echo "          gpgridsearch \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/gpfksimulator/src/gpfksimulatorVersion.h
 #ifndef GPFKSIMULATOR_VERSION
 #define GPFKSIMULATOR_VERSION "1.0.2"
@@ -2079,7 +2079,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpfksimulator/src/gpfksimulatorVersion.h
 #define GPFKSIMULATOR_VERSION_TYPE "testing"
 #define GPFKSIMULATOR_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPFKSIMULATOR_DISTRIBUTION "3.2.2"
-#define GPFKSIMULATOR_GIT_COMMIT "42dfe01349433776d8db02240bfaf06fa275dd4f"
+#define GPFKSIMULATOR_GIT_COMMIT "8b4e56b6091b81086ce9d78877865f63e6fc14c1"
 #endif // GPFKSIMULATOR_VERSION
 ENDVERSION
 echo "Configure gpfksimulator"
@@ -2095,7 +2095,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          gpfksimulator \" >> $BUILD_DIR/geopsypack.pro
+echo "          gpfksimulator \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/gpmaplayer/src/gpmaplayerVersion.h
 #ifndef GPMAPLAYER_VERSION
 #define GPMAPLAYER_VERSION "1.0.0"
@@ -2103,7 +2103,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpmaplayer/src/gpmaplayerVersion.h
 #define GPMAPLAYER_VERSION_TYPE "testing"
 #define GPMAPLAYER_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)"
 #define GPMAPLAYER_DISTRIBUTION "3.2.2"
-#define GPMAPLAYER_GIT_COMMIT "e8069904bc50f3b56d57b7a5dfa97b04536daf2a"
+#define GPMAPLAYER_GIT_COMMIT "f0ae156f13f008b0de0243b7493b0121f1cb954d"
 #endif // GPMAPLAYER_VERSION
 ENDVERSION
 echo "Configure gpmaplayer"
@@ -2119,7 +2119,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          gpmaplayer \" >> $BUILD_DIR/geopsypack.pro
+echo "          gpmaplayer \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/dinvermatlab/src/dinvermatlabVersion.h
 #ifndef DINVERMATLAB_VERSION
 #define DINVERMATLAB_VERSION "1.0.1"
@@ -2127,7 +2127,7 @@ cat <<ENDVERSION > $BUILD_DIR/dinvermatlab/src/dinvermatlabVersion.h
 #define DINVERMATLAB_VERSION_TYPE "testing"
 #define DINVERMATLAB_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define DINVERMATLAB_DISTRIBUTION "3.2.2"
-#define DINVERMATLAB_GIT_COMMIT "09c7d0e2b6cd7e5accd2b5aa9444e613ba563195"
+#define DINVERMATLAB_GIT_COMMIT "2b3ac21ffd6a156f80d36cf61b502a4b7620b53c"
 #endif // DINVERMATLAB_VERSION
 ENDVERSION
 echo "Configure dinvermatlab"
@@ -2143,7 +2143,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          dinvermatlab \" >> $BUILD_DIR/geopsypack.pro
+echo "          dinvermatlab \\" >> $BUILD_DIR/geopsypack.pro
 cat <<ENDVERSION > $BUILD_DIR/matfiles/src/matfilesVersion.h
 #ifndef MATFILES_VERSION
 #define MATFILES_VERSION "1.0.1"
@@ -2151,7 +2151,7 @@ cat <<ENDVERSION > $BUILD_DIR/matfiles/src/matfilesVersion.h
 #define MATFILES_VERSION_TYPE "testing"
 #define MATFILES_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)"
 #define MATFILES_DISTRIBUTION "3.2.2"
-#define MATFILES_GIT_COMMIT "e272f92905b0969f8bb5c83180babd65d235dffd"
+#define MATFILES_GIT_COMMIT "8120a42d54e20c4d2198217f5ce48d9859abb50a"
 #endif // MATFILES_VERSION
 ENDVERSION
 echo "Configure matfiles"
@@ -2167,7 +2167,7 @@ fi
 rm -f tmp $TEMP_FILE
 cd ..
 # Add project to main pro file
-echo "          matfiles \" >> $BUILD_DIR/geopsypack.pro
+echo "          matfiles \\" >> $BUILD_DIR/geopsypack.pro
 # Generate make file
 if [ "$BUILD_DIR" = "$SOURCE_DIR" ]; then
   qmake geopsypack.pro
