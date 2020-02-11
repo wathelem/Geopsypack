@@ -254,7 +254,7 @@ cat <<ENDVERSION > $BUILD_DIR/mseed/src/mseedVersion.h
 #define MSEED_VERSION_TYPE "testing"
 #define MSEED_AUTHORS ""
 #define MSEED_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define MSEED_GIT_COMMIT "80dcb88ac25814841efbb9a19c2ba3d94ef3d948"
+#define MSEED_GIT_COMMIT "82fe3f82e9639bc01accf622744c7d86d94963aa"
 #endif // MSEED_VERSION
 ENDVERSION
 echo "Configure mseed"
@@ -279,7 +279,7 @@ cat <<ENDVERSION > $BUILD_DIR/slink/src/slinkVersion.h
 #define SLINK_VERSION_TYPE "testing"
 #define SLINK_AUTHORS ""
 #define SLINK_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define SLINK_GIT_COMMIT "4f04f9af21ae555ad490f25dd36dbd0b5b0490f9"
+#define SLINK_GIT_COMMIT "18b23fa324595f3d752864bcc5bf4430a4f47102"
 #endif // SLINK_VERSION
 ENDVERSION
 echo "Configure slink"
@@ -304,7 +304,7 @@ cat <<ENDVERSION > $BUILD_DIR/QGpCoreTools/src/QGpCoreToolsVersion.h
 #define QGPCORETOOLS_VERSION_TYPE "testing"
 #define QGPCORETOOLS_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define QGPCORETOOLS_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define QGPCORETOOLS_GIT_COMMIT "6a3a1e0b07637af0ca121231429d1c6f7a1f6abb"
+#define QGPCORETOOLS_GIT_COMMIT "dfbeac4693bfa13ed2e712c8dad621b0ec7a4c60"
 #endif // QGPCORETOOLS_VERSION
 ENDVERSION
 echo "Configure QGpCoreTools"
@@ -329,7 +329,7 @@ cat <<ENDVERSION > $BUILD_DIR/QGpGuiTools/src/QGpGuiToolsVersion.h
 #define QGPGUITOOLS_VERSION_TYPE "testing"
 #define QGPGUITOOLS_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define QGPGUITOOLS_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define QGPGUITOOLS_GIT_COMMIT "a8070a6c02ad90bbba4d9e89c6637590b9641fdc"
+#define QGPGUITOOLS_GIT_COMMIT "02b9524f07567ef332760d00f973b2931f4c2b25"
 #endif // QGPGUITOOLS_VERSION
 ENDVERSION
 echo "Configure QGpGuiTools"
@@ -354,7 +354,7 @@ cat <<ENDVERSION > $BUILD_DIR/QGpCoreMath/src/QGpCoreMathVersion.h
 #define QGPCOREMATH_VERSION_TYPE "testing"
 #define QGPCOREMATH_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define QGPCOREMATH_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define QGPCOREMATH_GIT_COMMIT "ea02d99b76efdbb190af891d0e6adc0c6aa9ffaa"
+#define QGPCOREMATH_GIT_COMMIT "a01b49f60186cd765fa698d9f276449351035d61"
 #endif // QGPCOREMATH_VERSION
 ENDVERSION
 echo "Configure QGpCoreMath"
@@ -379,7 +379,7 @@ cat <<ENDVERSION > $BUILD_DIR/SciFigs/src/SciFigsVersion.h
 #define SCIFIGS_VERSION_TYPE "testing"
 #define SCIFIGS_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define SCIFIGS_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define SCIFIGS_GIT_COMMIT "8ed4cbfac0f38b9f7bffdbce1140b0b69ea0fb93"
+#define SCIFIGS_GIT_COMMIT "bf412b9b1723a9cbf204cc713d6a2daaa634712e"
 #endif // SCIFIGS_VERSION
 ENDVERSION
 echo "Configure SciFigs"
@@ -404,7 +404,7 @@ cat <<ENDVERSION > $BUILD_DIR/QGpGuiMath/src/QGpGuiMathVersion.h
 #define QGPGUIMATH_VERSION_TYPE "testing"
 #define QGPGUIMATH_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define QGPGUIMATH_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define QGPGUIMATH_GIT_COMMIT "d095769136106872e3d2b119c2fed4cde57b7d22"
+#define QGPGUIMATH_GIT_COMMIT "d88ae60e5f594d1ebfc011a35d2fd46a98769589"
 #endif // QGPGUIMATH_VERSION
 ENDVERSION
 echo "Configure QGpGuiMath"
@@ -429,7 +429,7 @@ cat <<ENDVERSION > $BUILD_DIR/figue/src/figueVersion.h
 #define FIGUE_VERSION_TYPE "testing"
 #define FIGUE_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define FIGUE_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define FIGUE_GIT_COMMIT "65c77fd1e0de180ecf705bfcb613c17c3d62a52f"
+#define FIGUE_GIT_COMMIT "9b894ae383e9b262c263b315f7b224f6cfd7ac69"
 #endif // FIGUE_VERSION
 ENDVERSION
 echo "Configure figue"
@@ -454,7 +454,7 @@ cat <<ENDVERSION > $BUILD_DIR/QGpCoreWave/src/QGpCoreWaveVersion.h
 #define QGPCOREWAVE_VERSION_TYPE "testing"
 #define QGPCOREWAVE_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)\nPhil Cummins (RSES, Canberra, Australia)\nRoger Wisen (RAMBOLL, Copenhagen, Denmark)"
 #define QGPCOREWAVE_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define QGPCOREWAVE_GIT_COMMIT "94bf6f6ac777224fb43469c52bb5a905861848e7"
+#define QGPCOREWAVE_GIT_COMMIT "602744df5155089f768f871d080b3a5d947661ea"
 #endif // QGPCOREWAVE_VERSION
 ENDVERSION
 echo "Configure QGpCoreWave"
@@ -479,7 +479,7 @@ cat <<ENDVERSION > $BUILD_DIR/QGpGuiWave/src/QGpGuiWaveVersion.h
 #define QGPGUIWAVE_VERSION_TYPE "testing"
 #define QGPGUIWAVE_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)"
 #define QGPGUIWAVE_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define QGPGUIWAVE_GIT_COMMIT "9dd1ed4ff16b0c6311532c0c87db92321330624a"
+#define QGPGUIWAVE_GIT_COMMIT "63106f67f99890c605276feef64f652f6f06f9a0"
 #endif // QGPGUIWAVE_VERSION
 ENDVERSION
 echo "Configure QGpGuiWave"
@@ -504,7 +504,7 @@ cat <<ENDVERSION > $BUILD_DIR/QGpCompatibility/src/QGpCompatibilityVersion.h
 #define QGPCOMPATIBILITY_VERSION_TYPE "testing"
 #define QGPCOMPATIBILITY_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define QGPCOMPATIBILITY_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define QGPCOMPATIBILITY_GIT_COMMIT "6c987c4c6fc66e3c735b7e96266045769a4f3ebf"
+#define QGPCOMPATIBILITY_GIT_COMMIT "20ed5224a2224fc69ab897156dac9c0b04f1b445"
 #endif // QGPCOMPATIBILITY_VERSION
 ENDVERSION
 echo "Configure QGpCompatibility"
@@ -529,7 +529,7 @@ cat <<ENDVERSION > $BUILD_DIR/GeopsyCore/src/GeopsyCoreVersion.h
 #define GEOPSYCORE_VERSION_TYPE "testing"
 #define GEOPSYCORE_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define GEOPSYCORE_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GEOPSYCORE_GIT_COMMIT "1c0a4f9048147af0e61b8e715ca2f82ef3b4e3b6"
+#define GEOPSYCORE_GIT_COMMIT "e28b47f9836b9e68c2748b8e4db8217c5b4fec28"
 #endif // GEOPSYCORE_VERSION
 ENDVERSION
 echo "Configure GeopsyCore"
@@ -554,7 +554,7 @@ cat <<ENDVERSION > $BUILD_DIR/GeopsyGui/src/GeopsyGuiVersion.h
 #define GEOPSYGUI_VERSION_TYPE "testing"
 #define GEOPSYGUI_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define GEOPSYGUI_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GEOPSYGUI_GIT_COMMIT "78c58233f592e81c956c030236ef1a9c7528038e"
+#define GEOPSYGUI_GIT_COMMIT "b3331837aad15240ab0669ff9f70d0cc88684cc6"
 #endif // GEOPSYGUI_VERSION
 ENDVERSION
 echo "Configure GeopsyGui"
@@ -579,7 +579,7 @@ cat <<ENDVERSION > $BUILD_DIR/geopsyfigs/src/geopsyfigsVersion.h
 #define GEOPSYFIGS_VERSION_TYPE "testing"
 #define GEOPSYFIGS_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GEOPSYFIGS_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GEOPSYFIGS_GIT_COMMIT "97314fc27262864670af3ad9257d17d1150525c7"
+#define GEOPSYFIGS_GIT_COMMIT "71ab6a037dbf5a14e011de75b912a216e004e5e4"
 #endif // GEOPSYFIGS_VERSION
 ENDVERSION
 echo "Configure geopsyfigs"
@@ -604,7 +604,7 @@ cat <<ENDVERSION > $BUILD_DIR/GeopsySLink/src/GeopsySLinkVersion.h
 #define GEOPSYSLINK_VERSION_TYPE "testing"
 #define GEOPSYSLINK_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GEOPSYSLINK_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GEOPSYSLINK_GIT_COMMIT "4367737781e3e12715fbd55855ad07a7cd64f092"
+#define GEOPSYSLINK_GIT_COMMIT "c31cc522bf1c635cab28d09eade4bea1787b6019"
 #endif // GEOPSYSLINK_VERSION
 ENDVERSION
 echo "Configure GeopsySLink"
@@ -629,7 +629,7 @@ cat <<ENDVERSION > $BUILD_DIR/GeopsySLinkGui/src/GeopsySLinkGuiVersion.h
 #define GEOPSYSLINKGUI_VERSION_TYPE "testing"
 #define GEOPSYSLINKGUI_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GEOPSYSLINKGUI_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GEOPSYSLINKGUI_GIT_COMMIT "773505c4e329f4edf1298280c0b47fe5ce359d01"
+#define GEOPSYSLINKGUI_GIT_COMMIT "ab57dd376308b7a554b384c3f3f716d3299f6138"
 #endif // GEOPSYSLINKGUI_VERSION
 ENDVERSION
 echo "Configure GeopsySLinkGui"
@@ -654,7 +654,7 @@ cat <<ENDVERSION > $BUILD_DIR/DinverCore/src/DinverCoreVersion.h
 #define DINVERCORE_VERSION_TYPE "testing"
 #define DINVERCORE_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define DINVERCORE_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define DINVERCORE_GIT_COMMIT "92d0181482111a09de5a285a8a7e667e7e51b68d"
+#define DINVERCORE_GIT_COMMIT "44c7f17202ae6d46befaee5ffb4c8437c520b4f3"
 #endif // DINVERCORE_VERSION
 ENDVERSION
 echo "Configure DinverCore"
@@ -679,7 +679,7 @@ cat <<ENDVERSION > $BUILD_DIR/DinverGui/src/DinverGuiVersion.h
 #define DINVERGUI_VERSION_TYPE "testing"
 #define DINVERGUI_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define DINVERGUI_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define DINVERGUI_GIT_COMMIT "2afb11f0c19c70be540ccf9a9786b84bc4ca7ed0"
+#define DINVERGUI_GIT_COMMIT "b3c2c34f157928e840eb2250b02e955b7448fb5e"
 #endif // DINVERGUI_VERSION
 ENDVERSION
 echo "Configure DinverGui"
@@ -704,7 +704,7 @@ cat <<ENDVERSION > $BUILD_DIR/DinverDCCore/src/DinverDCCoreVersion.h
 #define DINVERDCCORE_VERSION_TYPE "testing"
 #define DINVERDCCORE_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define DINVERDCCORE_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define DINVERDCCORE_GIT_COMMIT "6fc39e676df791b6b151d2575aa0a6c4ed1907a5"
+#define DINVERDCCORE_GIT_COMMIT "4d5abb84ca2def1294ec4fddaff0c26f8ce377ad"
 #endif // DINVERDCCORE_VERSION
 ENDVERSION
 echo "Configure DinverDCCore"
@@ -729,7 +729,7 @@ cat <<ENDVERSION > $BUILD_DIR/DinverDCGui/src/DinverDCGuiVersion.h
 #define DINVERDCGUI_VERSION_TYPE "testing"
 #define DINVERDCGUI_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define DINVERDCGUI_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define DINVERDCGUI_GIT_COMMIT "0678a199a6cea32c2f065bbc8d0aab7967261ff7"
+#define DINVERDCGUI_GIT_COMMIT "b7ae2d94ef4e5321f176ca8f24654d84b5c597d6"
 #endif // DINVERDCGUI_VERSION
 ENDVERSION
 echo "Configure DinverDCGui"
@@ -754,7 +754,7 @@ cat <<ENDVERSION > $BUILD_DIR/QGpCoreStat/src/QGpCoreStatVersion.h
 #define QGPCORESTAT_VERSION_TYPE "testing"
 #define QGPCORESTAT_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)"
 #define QGPCORESTAT_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define QGPCORESTAT_GIT_COMMIT "c272d29a7b90448396c367ece2c2f9d826061762"
+#define QGPCORESTAT_GIT_COMMIT "60fdd221a2e30ee9e476a484edaad85fdc2af81b"
 #endif // QGPCORESTAT_VERSION
 ENDVERSION
 echo "Configure QGpCoreStat"
@@ -779,7 +779,7 @@ cat <<ENDVERSION > $BUILD_DIR/ArrayCore/src/ArrayCoreVersion.h
 #define ARRAYCORE_VERSION_TYPE "testing"
 #define ARRAYCORE_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define ARRAYCORE_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define ARRAYCORE_GIT_COMMIT "1265e760c6b3678b107aa3821eebd1ac7e013bfe"
+#define ARRAYCORE_GIT_COMMIT "6b76f159945a2fb1a1e33e7a0bc605d5ac6da79b"
 #endif // ARRAYCORE_VERSION
 ENDVERSION
 echo "Configure ArrayCore"
@@ -804,7 +804,7 @@ cat <<ENDVERSION > $BUILD_DIR/ArrayGui/src/ArrayGuiVersion.h
 #define ARRAYGUI_VERSION_TYPE "testing"
 #define ARRAYGUI_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define ARRAYGUI_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define ARRAYGUI_GIT_COMMIT "4afe225ecc49298fa4eda0f75cc692258fab8039"
+#define ARRAYGUI_GIT_COMMIT "8a12e43002694258578ada46fb7d8a3c8a085182"
 #endif // ARRAYGUI_VERSION
 ENDVERSION
 echo "Configure ArrayGui"
@@ -829,7 +829,7 @@ cat <<ENDVERSION > $BUILD_DIR/MonoStation/src/MonoStationVersion.h
 #define MONOSTATION_VERSION_TYPE "testing"
 #define MONOSTATION_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define MONOSTATION_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define MONOSTATION_GIT_COMMIT "c162cba47bf493d4df727e4165b2e8bccbf14453"
+#define MONOSTATION_GIT_COMMIT "6d59804a82df230bc687b7bcc539c09307ce83d7"
 #endif // MONOSTATION_VERSION
 ENDVERSION
 echo "Configure MonoStation"
@@ -854,7 +854,7 @@ cat <<ENDVERSION > $BUILD_DIR/geopsy-fk/src/geopsy-fkVersion.h
 #define GEOPSY_FK_VERSION_TYPE "testing"
 #define GEOPSY_FK_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)"
 #define GEOPSY_FK_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GEOPSY_FK_GIT_COMMIT "aff5839ddf1626405c1f2c82d0184e9ff24629dd"
+#define GEOPSY_FK_GIT_COMMIT "50eac8b790aeb9a56be8af65fa55464036988a49"
 #endif // GEOPSY_FK_VERSION
 ENDVERSION
 echo "Configure geopsy-fk"
@@ -879,7 +879,7 @@ cat <<ENDVERSION > $BUILD_DIR/geopsy-spac/src/geopsy-spacVersion.h
 #define GEOPSY_SPAC_VERSION_TYPE "testing"
 #define GEOPSY_SPAC_AUTHORS ""
 #define GEOPSY_SPAC_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GEOPSY_SPAC_GIT_COMMIT "665503baf6192605a4d1d9af4e26e2ce38b8a5c9"
+#define GEOPSY_SPAC_GIT_COMMIT "368c566daa3108f7c332111e78622d3d6d2b08c3"
 #endif // GEOPSY_SPAC_VERSION
 ENDVERSION
 echo "Configure geopsy-spac"
@@ -904,7 +904,7 @@ cat <<ENDVERSION > $BUILD_DIR/geopsy-hv/src/geopsy-hvVersion.h
 #define GEOPSY_HV_VERSION_TYPE "testing"
 #define GEOPSY_HV_AUTHORS ""
 #define GEOPSY_HV_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GEOPSY_HV_GIT_COMMIT "1e1df496c7586e1e7811dade2ba00f907fa9c478"
+#define GEOPSY_HV_GIT_COMMIT "f52521e1c1265d3f74ee6e9c479e72469b908cc5"
 #endif // GEOPSY_HV_VERSION
 ENDVERSION
 echo "Configure geopsy-hv"
@@ -929,7 +929,7 @@ cat <<ENDVERSION > $BUILD_DIR/geopsy/src/geopsyVersion.h
 #define GEOPSY_VERSION_TYPE "testing"
 #define GEOPSY_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define GEOPSY_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GEOPSY_GIT_COMMIT "61988efeef2de2439439ddeef77e75f194cebdf5"
+#define GEOPSY_GIT_COMMIT "0bc9f2c716d88c704bf09d21bcfeb3c55a858538"
 #endif // GEOPSY_VERSION
 ENDVERSION
 echo "Configure geopsy"
@@ -954,7 +954,7 @@ cat <<ENDVERSION > $BUILD_DIR/vslarray/src/vslarrayVersion.h
 #define VSLARRAY_VERSION_TYPE "testing"
 #define VSLARRAY_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define VSLARRAY_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define VSLARRAY_GIT_COMMIT "a08d067c79dcfbc5cf2e9de83367cc3fef760120"
+#define VSLARRAY_GIT_COMMIT "5b966bab3a37dc385218124a26975f890592bd61"
 #endif // VSLARRAY_VERSION
 ENDVERSION
 echo "Configure vslarray"
@@ -979,7 +979,7 @@ cat <<ENDVERSION > $BUILD_DIR/dinver/src/dinverVersion.h
 #define DINVER_VERSION_TYPE "testing"
 #define DINVER_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define DINVER_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define DINVER_GIT_COMMIT "38f54eebc53f27c7fad4fd43df2a55a3b2bb12ab"
+#define DINVER_GIT_COMMIT "c4211c6f9a3403a91c35e47d4fb92b6637b02005"
 #endif // DINVER_VERSION
 ENDVERSION
 echo "Configure dinver"
@@ -1004,7 +1004,7 @@ cat <<ENDVERSION > $BUILD_DIR/WaranCore/src/WaranCoreVersion.h
 #define WARANCORE_VERSION_TYPE "testing"
 #define WARANCORE_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define WARANCORE_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define WARANCORE_GIT_COMMIT "b7035d3ec1c5d29c3a3fd20b426733c11b195105"
+#define WARANCORE_GIT_COMMIT "1bc824265d6d4cd1654f7dc18aefccd0238ae0c1"
 #endif // WARANCORE_VERSION
 ENDVERSION
 echo "Configure WaranCore"
@@ -1029,7 +1029,7 @@ cat <<ENDVERSION > $BUILD_DIR/TapePositioningSystem/src/TapePositioningSystemVer
 #define TAPEPOSITIONINGSYSTEM_VERSION_TYPE "testing"
 #define TAPEPOSITIONINGSYSTEM_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)"
 #define TAPEPOSITIONINGSYSTEM_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define TAPEPOSITIONINGSYSTEM_GIT_COMMIT "83d6a1c6f25419c99ecffb9e61c89904b8614b6a"
+#define TAPEPOSITIONINGSYSTEM_GIT_COMMIT "8f259a0b13b351b8b29ac26ced2e9064975cbf08"
 #endif // TAPEPOSITIONINGSYSTEM_VERSION
 ENDVERSION
 echo "Configure TapePositioningSystem"
@@ -1054,7 +1054,7 @@ cat <<ENDVERSION > $BUILD_DIR/waran/src/waranVersion.h
 #define WARAN_VERSION_TYPE "testing"
 #define WARAN_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)"
 #define WARAN_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define WARAN_GIT_COMMIT "1e5192f53c496382ce8e6db3bd9d0e8a7b547ce1"
+#define WARAN_GIT_COMMIT "6ea089c734dd6b38e22c11090c0196276d409eb3"
 #endif // WARAN_VERSION
 ENDVERSION
 echo "Configure waran"
@@ -1079,7 +1079,7 @@ cat <<ENDVERSION > $BUILD_DIR/warangps/src/warangpsVersion.h
 #define WARANGPS_VERSION_TYPE "testing"
 #define WARANGPS_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define WARANGPS_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define WARANGPS_GIT_COMMIT "a7fd206c3c564d928d94abe749e4423f4aa524ce"
+#define WARANGPS_GIT_COMMIT "cb699232cc1d9586588700f52a287555ff683b05"
 #endif // WARANGPS_VERSION
 ENDVERSION
 echo "Configure warangps"
@@ -1104,7 +1104,7 @@ cat <<ENDVERSION > $BUILD_DIR/geopsyarray/src/geopsyarrayVersion.h
 #define GEOPSYARRAY_VERSION_TYPE "testing"
 #define GEOPSYARRAY_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define GEOPSYARRAY_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GEOPSYARRAY_GIT_COMMIT "62483bf3aa369988b2923d0067b4a78bf7dacf0b"
+#define GEOPSYARRAY_GIT_COMMIT "4559f8ff9be8e3c4a95b5e9b9fc77e1460b5b0a1"
 #endif // GEOPSYARRAY_VERSION
 ENDVERSION
 echo "Configure geopsyarray"
@@ -1129,7 +1129,7 @@ cat <<ENDVERSION > $BUILD_DIR/geopsyhv/src/geopsyhvVersion.h
 #define GEOPSYHV_VERSION_TYPE "testing"
 #define GEOPSYHV_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define GEOPSYHV_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GEOPSYHV_GIT_COMMIT "d42d3489cde29d5c62980660150e96ed04773a8b"
+#define GEOPSYHV_GIT_COMMIT "25e2d6eb15c053b639f9cffdf8cd879388483525"
 #endif // GEOPSYHV_VERSION
 ENDVERSION
 echo "Configure geopsyhv"
@@ -1154,7 +1154,7 @@ cat <<ENDVERSION > $BUILD_DIR/geopsydamping/src/geopsydampingVersion.h
 #define GEOPSYDAMPING_VERSION_TYPE "testing"
 #define GEOPSYDAMPING_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define GEOPSYDAMPING_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GEOPSYDAMPING_GIT_COMMIT "1e24f23adf74778018b67529ef4969e400c2bba5"
+#define GEOPSYDAMPING_GIT_COMMIT "54fe770ba8bcaf79d5793a7f6b154904716cc0a6"
 #endif // GEOPSYDAMPING_VERSION
 ENDVERSION
 echo "Configure geopsydamping"
@@ -1179,7 +1179,7 @@ cat <<ENDVERSION > $BUILD_DIR/geopsytfa/src/geopsytfaVersion.h
 #define GEOPSYTFA_VERSION_TYPE "testing"
 #define GEOPSYTFA_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GEOPSYTFA_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GEOPSYTFA_GIT_COMMIT "d6cf403b37940e0c0ca1a7a1ea4ba6b034544753"
+#define GEOPSYTFA_GIT_COMMIT "b91e0e14eebd3c155d010114fa6df0ab50b23283"
 #endif // GEOPSYTFA_VERSION
 ENDVERSION
 echo "Configure geopsytfa"
@@ -1204,7 +1204,7 @@ cat <<ENDVERSION > $BUILD_DIR/geopsynr/src/geopsynrVersion.h
 #define GEOPSYNR_VERSION_TYPE "testing"
 #define GEOPSYNR_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GEOPSYNR_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GEOPSYNR_GIT_COMMIT "ab84f7d0805a7f7573f42563dc6ea118e9834af1"
+#define GEOPSYNR_GIT_COMMIT "1904c2ea8f0f71b9e0424dbf501adfd773147a24"
 #endif // GEOPSYNR_VERSION
 ENDVERSION
 echo "Configure geopsynr"
@@ -1229,7 +1229,7 @@ cat <<ENDVERSION > $BUILD_DIR/geopsyptmotion/src/geopsyptmotionVersion.h
 #define GEOPSYPTMOTION_VERSION_TYPE "testing"
 #define GEOPSYPTMOTION_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define GEOPSYPTMOTION_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GEOPSYPTMOTION_GIT_COMMIT "e63ffad46ff34aedef0d987116a588daef9aaf2d"
+#define GEOPSYPTMOTION_GIT_COMMIT "88d6f76f527d5ea363fe7eeda51dc209cf3daab5"
 #endif // GEOPSYPTMOTION_VERSION
 ENDVERSION
 echo "Configure geopsyptmotion"
@@ -1254,7 +1254,7 @@ cat <<ENDVERSION > $BUILD_DIR/geopsyrefra/src/geopsyrefraVersion.h
 #define GEOPSYREFRA_VERSION_TYPE "testing"
 #define GEOPSYREFRA_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define GEOPSYREFRA_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GEOPSYREFRA_GIT_COMMIT "c8042e4d1f7968a8b5dbc89b1c1233a84a85e437"
+#define GEOPSYREFRA_GIT_COMMIT "ac9bc7dbb12769844433a0c79bb6388815a4b59b"
 #endif // GEOPSYREFRA_VERSION
 ENDVERSION
 echo "Configure geopsyrefra"
@@ -1279,7 +1279,7 @@ cat <<ENDVERSION > $BUILD_DIR/hvtfa/src/hvtfaVersion.h
 #define HVTFA_VERSION_TYPE "testing"
 #define HVTFA_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMiriam Kristekova (Geophysical Institute, Academy of Sciences, Bratislava, Slovak Republic)"
 #define HVTFA_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define HVTFA_GIT_COMMIT "f655753bd11657d1409d24abf9dd6248a2d52bbd"
+#define HVTFA_GIT_COMMIT "acf5e6cc4a0b04f11c359d8afa2fa0d9ad022456"
 #endif // HVTFA_VERSION
 ENDVERSION
 echo "Configure hvtfa"
@@ -1304,7 +1304,7 @@ cat <<ENDVERSION > $BUILD_DIR/campbelltob3/src/campbelltob3Version.h
 #define CAMPBELLTOB3_VERSION_TYPE "testing"
 #define CAMPBELLTOB3_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)"
 #define CAMPBELLTOB3_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define CAMPBELLTOB3_GIT_COMMIT "fb8d284c03aac5f62a5bc222cf9887f4bc56fcd0"
+#define CAMPBELLTOB3_GIT_COMMIT "a3009ac37f6a49986b5e562a98d3bb67edc1bf17"
 #endif // CAMPBELLTOB3_VERSION
 ENDVERSION
 echo "Configure campbelltob3"
@@ -1329,7 +1329,7 @@ cat <<ENDVERSION > $BUILD_DIR/dinverdc/src/dinverdcVersion.h
 #define DINVERDC_VERSION_TYPE "testing"
 #define DINVERDC_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define DINVERDC_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define DINVERDC_GIT_COMMIT "38b7d88b1e4a06960dfc4aca2acb155abb0e37de"
+#define DINVERDC_GIT_COMMIT "d27b7a32adba6680c3de21e69d4f9d07ebf9bb30"
 #endif // DINVERDC_VERSION
 ENDVERSION
 echo "Configure dinverdc"
@@ -1354,7 +1354,7 @@ cat <<ENDVERSION > $BUILD_DIR/dinverext/src/dinverextVersion.h
 #define DINVEREXT_VERSION_TYPE "testing"
 #define DINVEREXT_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define DINVEREXT_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define DINVEREXT_GIT_COMMIT "262c33bac653a2d18625c944b4ccc38f53f10dd8"
+#define DINVEREXT_GIT_COMMIT "17d6189aeb340fc852a609f9114de3c22d2dd2b1"
 #endif // DINVEREXT_VERSION
 ENDVERSION
 echo "Configure dinverext"
@@ -1379,7 +1379,7 @@ cat <<ENDVERSION > $BUILD_DIR/spac2disp/src/spac2dispVersion.h
 #define SPAC2DISP_VERSION_TYPE "testing"
 #define SPAC2DISP_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define SPAC2DISP_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define SPAC2DISP_GIT_COMMIT "c8cdd9022ae2cc692176c7b282d816c4bb8be059"
+#define SPAC2DISP_GIT_COMMIT "f49c81fc0a95380e408843196ce3245537e8186f"
 #endif // SPAC2DISP_VERSION
 ENDVERSION
 echo "Configure spac2disp"
@@ -1404,7 +1404,7 @@ cat <<ENDVERSION > $BUILD_DIR/max2curve/src/max2curveVersion.h
 #define MAX2CURVE_VERSION_TYPE "testing"
 #define MAX2CURVE_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define MAX2CURVE_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define MAX2CURVE_GIT_COMMIT "c05df034386e62aa00e8eeb3c34a2ce5c23a0840"
+#define MAX2CURVE_GIT_COMMIT "27dcc8745974d5da33108717158318a72c29be8c"
 #endif // MAX2CURVE_VERSION
 ENDVERSION
 echo "Configure max2curve"
@@ -1429,7 +1429,7 @@ cat <<ENDVERSION > $BUILD_DIR/gppoisson/src/gppoissonVersion.h
 #define GPPOISSON_VERSION_TYPE "testing"
 #define GPPOISSON_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPPOISSON_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPPOISSON_GIT_COMMIT "9969f21b2718f01594413960d6ce7a219328cef1"
+#define GPPOISSON_GIT_COMMIT "cacc7eb24c6c07f1b87f0787c8c6d840297670d8"
 #endif // GPPOISSON_VERSION
 ENDVERSION
 echo "Configure gppoisson"
@@ -1454,7 +1454,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpprofile/src/gpprofileVersion.h
 #define GPPROFILE_VERSION_TYPE "testing"
 #define GPPROFILE_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPPROFILE_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPPROFILE_GIT_COMMIT "0d2a473fdc3c44c8e2bd4453855e6ffe7d3454cc"
+#define GPPROFILE_GIT_COMMIT "a2e693e5b3393834f17d1723ab9cba765aead5b8"
 #endif // GPPROFILE_VERSION
 ENDVERSION
 echo "Configure gpprofile"
@@ -1479,7 +1479,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpdc/src/gpdcVersion.h
 #define GPDC_VERSION_TYPE "testing"
 #define GPDC_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPDC_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPDC_GIT_COMMIT "0d88f99dd9c1a7caf85502286bd25ddd37a2ec98"
+#define GPDC_GIT_COMMIT "e8038fdb69dbdabc552c15cb2321c9a5b71a4a28"
 #endif // GPDC_VERSION
 ENDVERSION
 echo "Configure gpdc"
@@ -1504,7 +1504,7 @@ cat <<ENDVERSION > $BUILD_DIR/gplivemodel/src/gplivemodelVersion.h
 #define GPLIVEMODEL_VERSION_TYPE "testing"
 #define GPLIVEMODEL_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPLIVEMODEL_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPLIVEMODEL_GIT_COMMIT "dbd9597cdd76d1d72d67b754dd5b09f61d49aeda"
+#define GPLIVEMODEL_GIT_COMMIT "cc028b2ef05145053a1042158239450210c36840"
 #endif // GPLIVEMODEL_VERSION
 ENDVERSION
 echo "Configure gplivemodel"
@@ -1529,7 +1529,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpec8/src/gpec8Version.h
 #define GPEC8_VERSION_TYPE "testing"
 #define GPEC8_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPEC8_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPEC8_GIT_COMMIT "1a17ba19e515af6ef0c5911eb3adf2756ca7a3b7"
+#define GPEC8_GIT_COMMIT "27f6b4176cb668db6ede419335768ac92d55b518"
 #endif // GPEC8_VERSION
 ENDVERSION
 echo "Configure gpec8"
@@ -1554,7 +1554,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpdcreport/src/gpdcreportVersion.h
 #define GPDCREPORT_VERSION_TYPE "testing"
 #define GPDCREPORT_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPDCREPORT_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPDCREPORT_GIT_COMMIT "fe3c2e9fc9048e1d6d5e5d6fa2d6819bd42eed61"
+#define GPDCREPORT_GIT_COMMIT "e9872c4c66884009b757d0370dd5081a3a20627f"
 #endif // GPDCREPORT_VERSION
 ENDVERSION
 echo "Configure gpdcreport"
@@ -1579,7 +1579,7 @@ cat <<ENDVERSION > $BUILD_DIR/gptarget/src/gptargetVersion.h
 #define GPTARGET_VERSION_TYPE "testing"
 #define GPTARGET_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPTARGET_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPTARGET_GIT_COMMIT "fb372403bf5ef68428b474800aabf9a22e8f7e24"
+#define GPTARGET_GIT_COMMIT "31ad53c25b00c857f5bf8d5212cd1e388e233d5d"
 #endif // GPTARGET_VERSION
 ENDVERSION
 echo "Configure gptarget"
@@ -1604,7 +1604,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpviewdcreport/src/gpviewdcreportVersion.h
 #define GPVIEWDCREPORT_VERSION_TYPE "testing"
 #define GPVIEWDCREPORT_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPVIEWDCREPORT_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPVIEWDCREPORT_GIT_COMMIT "68c7390ed17a0a3cb079c3da2a413b4d4495533d"
+#define GPVIEWDCREPORT_GIT_COMMIT "d679872c830f23472cc38732a8e6725d572ac592"
 #endif // GPVIEWDCREPORT_VERSION
 ENDVERSION
 echo "Configure gpviewdcreport"
@@ -1629,7 +1629,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpdcmisfit/src/gpdcmisfitVersion.h
 #define GPDCMISFIT_VERSION_TYPE "testing"
 #define GPDCMISFIT_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPDCMISFIT_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPDCMISFIT_GIT_COMMIT "603c6ce9b5b5633e74ec00f3069f16c17ef5763b"
+#define GPDCMISFIT_GIT_COMMIT "4b228c5a8d3a6be4b7ce46483c92bf39d0d316fb"
 #endif // GPDCMISFIT_VERSION
 ENDVERSION
 echo "Configure gpdcmisfit"
@@ -1654,7 +1654,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpell/src/gpellVersion.h
 #define GPELL_VERSION_TYPE "testing"
 #define GPELL_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPELL_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPELL_GIT_COMMIT "4852c5726cd1cf51c88b05f738b9d0fce7bde8cf"
+#define GPELL_GIT_COMMIT "d95c10b0e280f2675478c749ef25509f67102f75"
 #endif // GPELL_VERSION
 ENDVERSION
 echo "Configure gpell"
@@ -1679,7 +1679,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpgroup2phase/src/gpgroup2phaseVersion.h
 #define GPGROUP2PHASE_VERSION_TYPE "testing"
 #define GPGROUP2PHASE_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPGROUP2PHASE_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPGROUP2PHASE_GIT_COMMIT "089ad880b4bcfd7475996d9d9f454fcf633d8d65"
+#define GPGROUP2PHASE_GIT_COMMIT "37a7600c131d6d09f5a95cecde802c8d1253b050"
 #endif // GPGROUP2PHASE_VERSION
 ENDVERSION
 echo "Configure gpgroup2phase"
@@ -1704,7 +1704,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpmodel2param/src/gpmodel2paramVersion.h
 #define GPMODEL2PARAM_VERSION_TYPE "testing"
 #define GPMODEL2PARAM_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPMODEL2PARAM_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPMODEL2PARAM_GIT_COMMIT "aa820faea7c810f2ab2006b063d770be41f7ffc3"
+#define GPMODEL2PARAM_GIT_COMMIT "5ba21f44a491995fcd6008508d47ff5733bb3af0"
 #endif // GPMODEL2PARAM_VERSION
 ENDVERSION
 echo "Configure gpmodel2param"
@@ -1729,7 +1729,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpparam2model/src/gpparam2modelVersion.h
 #define GPPARAM2MODEL_VERSION_TYPE "testing"
 #define GPPARAM2MODEL_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPPARAM2MODEL_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPPARAM2MODEL_GIT_COMMIT "40f9695c1b82c3f93c609fec1f1bd20e94cf5112"
+#define GPPARAM2MODEL_GIT_COMMIT "a9f4694cfbb3a9e5c2274a65704df099ba4d2a2a"
 #endif // GPPARAM2MODEL_VERSION
 ENDVERSION
 echo "Configure gpparam2model"
@@ -1754,7 +1754,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpdepths/src/gpdepthsVersion.h
 #define GPDEPTHS_VERSION_TYPE "testing"
 #define GPDEPTHS_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPDEPTHS_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPDEPTHS_GIT_COMMIT "874514db3c70143dd03ba469589c172b28b00b7a"
+#define GPDEPTHS_GIT_COMMIT "a8225125b1a184f17b8f53406ad3905a3815b7e4"
 #endif // GPDEPTHS_VERSION
 ENDVERSION
 echo "Configure gpdepths"
@@ -1779,7 +1779,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpsort/src/gpsortVersion.h
 #define GPSORT_VERSION_TYPE "testing"
 #define GPSORT_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPSORT_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPSORT_GIT_COMMIT "72c7e5f3df2b9600cc7e6b92f71c57c1a49da8d7"
+#define GPSORT_GIT_COMMIT "0b4f7ce9416e296498f26e3b8949e33843d272f2"
 #endif // GPSORT_VERSION
 ENDVERSION
 echo "Configure gpsort"
@@ -1804,7 +1804,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpcurve/src/gpcurveVersion.h
 #define GPCURVE_VERSION_TYPE "testing"
 #define GPCURVE_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPCURVE_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPCURVE_GIT_COMMIT "0aa260201218549dd66a5ef5691df9bf04f4dc4e"
+#define GPCURVE_GIT_COMMIT "0c8ebe77ad7aee9bf6e11faf90972629fc2929f7"
 #endif // GPCURVE_VERSION
 ENDVERSION
 echo "Configure gpcurve"
@@ -1829,7 +1829,7 @@ cat <<ENDVERSION > $BUILD_DIR/gprandom/src/gprandomVersion.h
 #define GPRANDOM_VERSION_TYPE "testing"
 #define GPRANDOM_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPRANDOM_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPRANDOM_GIT_COMMIT "29c6031daffd19f88fdafe0297dbc6e5e28ddd5a"
+#define GPRANDOM_GIT_COMMIT "78353b51889df78584c3d37fba80ba4fabe36112"
 #endif // GPRANDOM_VERSION
 ENDVERSION
 echo "Configure gprandom"
@@ -1854,7 +1854,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpspac/src/gpspacVersion.h
 #define GPSPAC_VERSION_TYPE "testing"
 #define GPSPAC_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPSPAC_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPSPAC_GIT_COMMIT "9c24353d3f319548c8f82e44ef05b35f3bcb84bc"
+#define GPSPAC_GIT_COMMIT "b7ab007b3b97a5b47a15ab4e1beb891e840ed1a1"
 #endif // GPSPAC_VERSION
 ENDVERSION
 echo "Configure gpspac"
@@ -1879,7 +1879,7 @@ cat <<ENDVERSION > $BUILD_DIR/gprefra/src/gprefraVersion.h
 #define GPREFRA_VERSION_TYPE "testing"
 #define GPREFRA_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPREFRA_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPREFRA_GIT_COMMIT "2b2f62b1c066e5abc2624dbe2290cbfd20802bf9"
+#define GPREFRA_GIT_COMMIT "c06a9eb01e08c8abbc862d6ce02fa320d5e9e5c6"
 #endif // GPREFRA_VERSION
 ENDVERSION
 echo "Configure gprefra"
@@ -1904,7 +1904,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpsignal/src/gpsignalVersion.h
 #define GPSIGNAL_VERSION_TYPE "testing"
 #define GPSIGNAL_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPSIGNAL_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPSIGNAL_GIT_COMMIT "b6fae29e14ecb8684515399c77c05ae38917249a"
+#define GPSIGNAL_GIT_COMMIT "9759163475dbe1dad2b7b23fa6515cb5f5e3ed31"
 #endif // GPSIGNAL_VERSION
 ENDVERSION
 echo "Configure gpsignal"
@@ -1929,7 +1929,7 @@ cat <<ENDVERSION > $BUILD_DIR/gphistogram/src/gphistogramVersion.h
 #define GPHISTOGRAM_VERSION_TYPE "testing"
 #define GPHISTOGRAM_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPHISTOGRAM_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPHISTOGRAM_GIT_COMMIT "76fd75d1e197cb20b036947f3a43a68cad715f57"
+#define GPHISTOGRAM_GIT_COMMIT "7bf6f6e83efa53e8910e5f6abe75e177dfde9a9c"
 #endif // GPHISTOGRAM_VERSION
 ENDVERSION
 echo "Configure gphistogram"
@@ -1954,7 +1954,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpviewmax/src/gpviewmaxVersion.h
 #define GPVIEWMAX_VERSION_TYPE "testing"
 #define GPVIEWMAX_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)"
 #define GPVIEWMAX_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPVIEWMAX_GIT_COMMIT "d07e7d3c75be3e5663d2ebcf209a8527718a459f"
+#define GPVIEWMAX_GIT_COMMIT "ad35a6bae3775162077183c8fa3221146a509d3a"
 #endif // GPVIEWMAX_VERSION
 ENDVERSION
 echo "Configure gpviewmax"
@@ -1979,7 +1979,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpdistance/src/gpdistanceVersion.h
 #define GPDISTANCE_VERSION_TYPE "testing"
 #define GPDISTANCE_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPDISTANCE_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPDISTANCE_GIT_COMMIT "1951e5ec9fa84ca8de32e49a3581370fa719836c"
+#define GPDISTANCE_GIT_COMMIT "e8742d92dde21ac98ef30f7074e6827014a75c8e"
 #endif // GPDISTANCE_VERSION
 ENDVERSION
 echo "Configure gpdistance"
@@ -2004,7 +2004,7 @@ cat <<ENDVERSION > $BUILD_DIR/gptime/src/gptimeVersion.h
 #define GPTIME_VERSION_TYPE "testing"
 #define GPTIME_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPTIME_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPTIME_GIT_COMMIT "a5cd459966cfb0fd4e68822649ca36326692fc4c"
+#define GPTIME_GIT_COMMIT "f5ba92d077a5eed2cfd3731ae333bc7457f81276"
 #endif // GPTIME_VERSION
 ENDVERSION
 echo "Configure gptime"
@@ -2029,7 +2029,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpcoord/src/gpcoordVersion.h
 #define GPCOORD_VERSION_TYPE "testing"
 #define GPCOORD_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPCOORD_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPCOORD_GIT_COMMIT "ae7ec2e3e1b097c4c5d99caf54c0f2479e088502"
+#define GPCOORD_GIT_COMMIT "d975343811274b50f8225280699af5bbf6d44d02"
 #endif // GPCOORD_VERSION
 ENDVERSION
 echo "Configure gpcoord"
@@ -2054,7 +2054,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpreplace/src/gpreplaceVersion.h
 #define GPREPLACE_VERSION_TYPE "testing"
 #define GPREPLACE_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPREPLACE_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPREPLACE_GIT_COMMIT "d7023f104dfcad482b00b46c6fb9b11f59888c8c"
+#define GPREPLACE_GIT_COMMIT "99570df13fdccb66da170dea459c48d61fce2ab3"
 #endif // GPREPLACE_VERSION
 ENDVERSION
 echo "Configure gpreplace"
@@ -2079,7 +2079,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpsh/src/gpshVersion.h
 #define GPSH_VERSION_TYPE "testing"
 #define GPSH_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPSH_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPSH_GIT_COMMIT "766605e2afda446d458fcf80cba332c277c82e4f"
+#define GPSH_GIT_COMMIT "e53bcb35160db2b78aa14d2464aa1bd00c68001a"
 #endif // GPSH_VERSION
 ENDVERSION
 echo "Configure gpsh"
@@ -2104,7 +2104,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpmt/src/gpmtVersion.h
 #define GPMT_VERSION_TYPE "testing"
 #define GPMT_AUTHORS "Marc Wathelet (LGIT, Grenoble, France)"
 #define GPMT_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPMT_GIT_COMMIT "b79ea5bc081a072a69c0d39703e1c9a79d8c1c56"
+#define GPMT_GIT_COMMIT "5a68868d87a9b37df15ff1e93ba13d30f8947ba8"
 #endif // GPMT_VERSION
 ENDVERSION
 echo "Configure gpmt"
@@ -2129,7 +2129,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpgridsearch/src/gpgridsearchVersion.h
 #define GPGRIDSEARCH_VERSION_TYPE "testing"
 #define GPGRIDSEARCH_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)"
 #define GPGRIDSEARCH_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPGRIDSEARCH_GIT_COMMIT "61bdf59c355b72ae1c655b2e7f094ed3a2f034e6"
+#define GPGRIDSEARCH_GIT_COMMIT "0a5cb0412c5563e81760e2fa932fcc6a7d3e9bb8"
 #endif // GPGRIDSEARCH_VERSION
 ENDVERSION
 echo "Configure gpgridsearch"
@@ -2154,7 +2154,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpfksimulator/src/gpfksimulatorVersion.h
 #define GPFKSIMULATOR_VERSION_TYPE "testing"
 #define GPFKSIMULATOR_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPFKSIMULATOR_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPFKSIMULATOR_GIT_COMMIT "ee4fcfa9e717f75bcf37f2dcb759c2e6096f89e6"
+#define GPFKSIMULATOR_GIT_COMMIT "7f625f1db0e2766f3a12acd108b6371d451f821c"
 #endif // GPFKSIMULATOR_VERSION
 ENDVERSION
 echo "Configure gpfksimulator"
@@ -2179,7 +2179,7 @@ cat <<ENDVERSION > $BUILD_DIR/gpmaplayer/src/gpmaplayerVersion.h
 #define GPMAPLAYER_VERSION_TYPE "testing"
 #define GPMAPLAYER_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)"
 #define GPMAPLAYER_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPMAPLAYER_GIT_COMMIT "8252f2026655dc81c0ff8fe29598ec6da81c8f5c"
+#define GPMAPLAYER_GIT_COMMIT "d283e23a7e4bebdd2595528a991ce78682d4494f"
 #endif // GPMAPLAYER_VERSION
 ENDVERSION
 echo "Configure gpmaplayer"
@@ -2204,7 +2204,7 @@ cat <<ENDVERSION > $BUILD_DIR/dinvermatlab/src/dinvermatlabVersion.h
 #define DINVERMATLAB_VERSION_TYPE "testing"
 #define DINVERMATLAB_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define DINVERMATLAB_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define DINVERMATLAB_GIT_COMMIT "553839456c2072c5bf948b6c10fe9a6c189e4a3c"
+#define DINVERMATLAB_GIT_COMMIT "0846803fef49510979adf1d35d6a630fcdfb5b61"
 #endif // DINVERMATLAB_VERSION
 ENDVERSION
 echo "Configure dinvermatlab"
@@ -2229,7 +2229,7 @@ cat <<ENDVERSION > $BUILD_DIR/matfiles/src/matfilesVersion.h
 #define MATFILES_VERSION_TYPE "testing"
 #define MATFILES_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)"
 #define MATFILES_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define MATFILES_GIT_COMMIT "24733a5db375233fec09a562cd79b2b840741635"
+#define MATFILES_GIT_COMMIT "1b0b3a73bb95fdea9aaff492f87c256234dd5c38"
 #endif // MATFILES_VERSION
 ENDVERSION
 echo "Configure matfiles"
