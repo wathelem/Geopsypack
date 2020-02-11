@@ -256,7 +256,7 @@ cat <<ENDVERSION > $BUILD_DIR/mseed/src/mseedVersion.h
 #define MSEED_VERSION_TYPE "testing"
 #define MSEED_AUTHORS ""
 #define MSEED_DISTRIBUTION "3.2.2"
-#define MSEED_GIT_COMMIT "701b3cc5ef0aebb19f4a114a6436e27662c4f9f5"
+#define MSEED_GIT_COMMIT "589fd3c3448b80a1f37a09115653933157fbfd11"
 #endif // MSEED_VERSION
 ENDVERSION
 echo "Configure mseed"
@@ -281,7 +281,7 @@ cat <<ENDVERSION > $BUILD_DIR/slink/src/slinkVersion.h
 #define SLINK_VERSION_TYPE "testing"
 #define SLINK_AUTHORS ""
 #define SLINK_DISTRIBUTION "3.2.2"
-#define SLINK_GIT_COMMIT "baba851223bcaf68a39b8f234a0912db4954181e"
+#define SLINK_GIT_COMMIT "115d9a1d66d7eef556edbd925c9cff6c1cb6c6b9"
 #endif // SLINK_VERSION
 ENDVERSION
 echo "Configure slink"
