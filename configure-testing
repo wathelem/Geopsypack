@@ -152,16 +152,23 @@ while [ "$1" ]; do
   esac
   shift
 done
+
+# Ensure that BUILD_DIR exists
+test -d $BUILD_DIR || mkdir -p $BUILD_DIR
+
 # If configure called from ./configure.cache, do not overwrite
 if [ "$SAVE_CONFIGURE_OPTIONS_IN_CACHE" != "no" ]; then
   (
   cat << END
 export SAVE_CONFIGURE_OPTIONS_IN_CACHE="no"
-$SHELL configure $COMMANDLINE
+cd $SOURCE_DIR
+echo "$SHELL $0 ${COMMANDLINE//\"/\\\"}"
+$SHELL $0 $COMMANDLINE
 END
-  ) > configure.cache
-  chmod a+x configure.cache
+  ) > $BUILD_DIR/configure.cache
+  chmod a+x $BUILD_DIR/configure.cache
 fi
+
 #Check that Qt is correctly installed
 if [ "$SKIP_QT_CHECK" = "no" ]; then
   if qmake -v > /dev/null 2>&1; then
