@@ -244,8 +244,8 @@ echo "SUBDIRS=\\"
 ) > $BUILD_DIR/geopsypack.pro
 
 # Temporary file for configure output of individual projects
-TEMP_LOG=$(mktmp /tmp/devpro-)
-TEMP_SCRIPT=$(mktmp /tmp/devpro-)
+TEMP_LOG=$(mktemp /tmp/devpro-)
+TEMP_SCRIPT=$(mktemp /tmp/devpro-)
 test -d $BUILD_DIR/mseed/src || mkdir -p $BUILD_DIR/mseed/src
 cat <<ENDVERSION > $BUILD_DIR/mseed/src/mseedVersion.h
 #ifndef MSEED_VERSION
