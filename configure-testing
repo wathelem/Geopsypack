@@ -2253,8 +2253,7 @@ if [ "$BUILD_DIR" = "$SOURCE_DIR" ]; then
   qmake geopsypack.pro
 else
   cd $BUILD_DIR
-  qmake $SOURCE_DIR/geopsypack.pro
-  cd $SOURCE_DIR
+  qmake geopsypack.pro
 fi
 ###############################################################
 # Final user message
