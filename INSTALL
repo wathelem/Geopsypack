@@ -5,7 +5,7 @@ Start configure script. To get the list of available options add option "-h".
 For instance you can change the base directory for installation with "-prefix".
 Use "-builddir" option to generate binaries outside the source directory.
 
-  $ ./configure -builddir /path/where/you/want/to/build -pch
+  $ ./configure -builddir /path/where/you/want/to/build -prefix /usr/local/Geopsy.org
 
 When done, build package
 
