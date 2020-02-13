@@ -294,7 +294,7 @@ cat <<ENDVERSION > $BUILD_DIR/slink/src/slinkVersion.h
 #define SLINK_VERSION_TYPE "testing"
 #define SLINK_AUTHORS ""
 #define SLINK_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define SLINK_GIT_COMMIT "18b23fa324595f3d752864bcc5bf4430a4f47102"
+#define SLINK_GIT_COMMIT "16d5099ba8cefb639b0387373db0e907767ede70"
 #endif // SLINK_VERSION
 ENDVERSION
 echo "Configure slink"
@@ -319,7 +319,7 @@ cat <<ENDVERSION > $BUILD_DIR/QGpCoreTools/src/QGpCoreToolsVersion.h
 #define QGPCORETOOLS_VERSION_TYPE "testing"
 #define QGPCORETOOLS_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define QGPCORETOOLS_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define QGPCORETOOLS_GIT_COMMIT "3ff6bdf87ed8a979753a1d8e21f8a9324529df7c"
+#define QGPCORETOOLS_GIT_COMMIT "f247b6f98813a3d35f13585d4e5726065d45a6f1"
 #endif // QGPCORETOOLS_VERSION
 ENDVERSION
 echo "Configure QGpCoreTools"
@@ -344,7 +344,7 @@ cat <<ENDVERSION > $BUILD_DIR/QGpGuiTools/src/QGpGuiToolsVersion.h
 #define QGPGUITOOLS_VERSION_TYPE "testing"
 #define QGPGUITOOLS_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define QGPGUITOOLS_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define QGPGUITOOLS_GIT_COMMIT "0cfc97eb7b0e98b841cd5dc24520e7eb305cda74"
+#define QGPGUITOOLS_GIT_COMMIT "00b5445e38b5773ee3847c2802700bafd389f54f"
 #endif // QGPGUITOOLS_VERSION
 ENDVERSION
 echo "Configure QGpGuiTools"
@@ -944,7 +944,7 @@ cat <<ENDVERSION > $BUILD_DIR/geopsy/src/geopsyVersion.h
 #define GEOPSY_VERSION_TYPE "testing"
 #define GEOPSY_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define GEOPSY_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GEOPSY_GIT_COMMIT "265122f21295cc740476b9f237e82a0252cd37ef"
+#define GEOPSY_GIT_COMMIT "8f150586ebd9368593f7887dd47e305bbbea25bf"
 #endif // GEOPSY_VERSION
 ENDVERSION
 echo "Configure geopsy"
@@ -1369,7 +1369,7 @@ cat <<ENDVERSION > $BUILD_DIR/dinverext/src/dinverextVersion.h
 #define DINVEREXT_VERSION_TYPE "testing"
 #define DINVEREXT_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define DINVEREXT_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define DINVEREXT_GIT_COMMIT "0b87fcea92a4789c02063834d594c484cfef240d"
+#define DINVEREXT_GIT_COMMIT "c92ff344d174fc873a0d64fd08c566d8b55dbac9"
 #endif // DINVEREXT_VERSION
 ENDVERSION
 echo "Configure dinverext"
@@ -2219,7 +2219,7 @@ cat <<ENDVERSION > $BUILD_DIR/dinvermatlab/src/dinvermatlabVersion.h
 #define DINVERMATLAB_VERSION_TYPE "testing"
 #define DINVERMATLAB_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define DINVERMATLAB_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define DINVERMATLAB_GIT_COMMIT "2ab82cf053c25e091b5722a4ac82831c0e0fabeb"
+#define DINVERMATLAB_GIT_COMMIT "55f04197294e3d15e8212fedfc914b0d3320418d"
 #endif // DINVERMATLAB_VERSION
 ENDVERSION
 echo "Configure dinvermatlab"
