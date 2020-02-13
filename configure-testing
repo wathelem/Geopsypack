@@ -54,7 +54,7 @@ while [ "$1" ]; do
     "-I" | \
     "-L" | \
     "-D" | \
-    "-qt-bin-path" | "--qt-bin-path" | \
+    "-qt-bin-path" | "--qt-bin-path")
       COMMANDLINE="$COMMANDLINE $1"
       shift
       COMMANDLINE="$COMMANDLINE \"$(absolutePath $1)\""
