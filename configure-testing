@@ -27,15 +27,20 @@ absolutePath()
   fi
 }
 
-cleanup()
+cleanexit()
 {
-  if [ "$TEMP_LOG" ] || [ "$TEMP_SCRIPT" ]; then
-    rm -f $TEMP_LOG $TEMP_SCRIPT
+  rm -rf $TEMP_DIR
+  if [ $# = 1 ]; then
+    exit $1
+  else
+    echo
+    echo "Aborting..." 1>&2
+    exit 2
   fi
-  rm -f $SOURCE_DIR/configure.new $SOURCE_DIR/configure.old
 }
 
-trap cleanup INT QUIT
+trap cleanexit INT QUIT
+TEMP_DIR=$(mktemp -d /tmp/configure_XXXXXXXXX)
 
 # Platform options
 case "$(uname)" in
@@ -45,7 +50,7 @@ case "$(uname)" in
   MINGW*) PLATFORM=MINGW ;;
   *)
     echo "Unknown platform $(uname)"
-    exit 2
+    cleanexit 2
   ;;
 esac
 # Current shell
@@ -174,11 +179,11 @@ while [ "$1" ]; do
       echo " -L dir              Add dir to the list of directories to be"
       echo "                     searched for libraries"
       echo
-      exit
+      cleanexit 0
     ;;
     *)
       echo "Bad option $1, see './configure -h' for help"
-      exit 2
+      cleanexit 2
     ;;
   esac
   shift
@@ -210,13 +215,13 @@ if [ "$SKIP_QT_CHECK" = "no" ]; then
       echo "                At least version 5.12.0 is recommended."
       echo "                If you want to skip this version check,"
       echo "                add option -skip-qt-check."
-      exit 2
+      cleanexit 2
     fi
   else
     echo "*** ERROR *** : qmake command is not available."
     echo "                Either Qt is not correctly installed"
     echo "                or PATH does not point to Qt binaries."
-    exit 2
+    cleanexit 2
   fi
 fi
 # Show license if Makefile does not exist
@@ -253,7 +258,7 @@ if [ ! -e $BUILD_DIR/Makefile ] && [ "$LICENSE_ACCEPTED" = "no" ]; then
   done
   if [ "$LICENSE_ACCEPT" = "no" ]; then
     echo "You are not allowed to use this package."
-    exit 2
+    cleanexit 2
   fi
 fi
 echo
@@ -273,10 +278,6 @@ echo "TEMPLATE=subdirs"
 echo "CONFIG += ordered"
 echo "SUBDIRS=\\"
 ) > $BUILD_DIR/geopsypack.pro
-
-# Temporary file for configure output of individual projects
-TEMP_LOG=$(mktemp /tmp/geopsypack-configure-XXXXXXXXXX)
-TEMP_SCRIPT=$(mktemp /tmp/geopsypack-configure-XXXXXXXXXX)
 test -d $BUILD_DIR/mseed/src || mkdir -p $BUILD_DIR/mseed/src
 cat <<ENDVERSION > $BUILD_DIR/mseed/src/mseedVersion.h
 #ifndef MSEED_VERSION
@@ -284,21 +285,19 @@ cat <<ENDVERSION > $BUILD_DIR/mseed/src/mseedVersion.h
 #define MSEED_VERSION_TIME "201908122143"
 #define MSEED_VERSION_TYPE "testing"
 #define MSEED_AUTHORS ""
-#define MSEED_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
+#define MSEED_DISTRIBUTION "3.2.2"
 #define MSEED_GIT_COMMIT "82fe3f82e9639bc01accf622744c7d86d94963aa"
 #endif // MSEED_VERSION
 ENDVERSION
 echo "Configure mseed"
 cd "mseed"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir mseed -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir mseed -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          mseed \\" >> $BUILD_DIR/geopsypack.pro
@@ -309,21 +308,19 @@ cat <<ENDVERSION > $BUILD_DIR/slink/src/slinkVersion.h
 #define SLINK_VERSION_TIME "201908122143"
 #define SLINK_VERSION_TYPE "testing"
 #define SLINK_AUTHORS ""
-#define SLINK_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
+#define SLINK_DISTRIBUTION "3.2.2"
 #define SLINK_GIT_COMMIT "16d5099ba8cefb639b0387373db0e907767ede70"
 #endif // SLINK_VERSION
 ENDVERSION
 echo "Configure slink"
 cd "slink"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir slink -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir slink -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          slink \\" >> $BUILD_DIR/geopsypack.pro
@@ -334,21 +331,19 @@ cat <<ENDVERSION > $BUILD_DIR/QGpCoreTools/src/QGpCoreToolsVersion.h
 #define QGPCORETOOLS_VERSION_TIME "201911191229"
 #define QGPCORETOOLS_VERSION_TYPE "testing"
 #define QGPCORETOOLS_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
-#define QGPCORETOOLS_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define QGPCORETOOLS_GIT_COMMIT "710c76664d1fc08d0fc363bb6404bfa609a10602"
+#define QGPCORETOOLS_DISTRIBUTION "3.2.2"
+#define QGPCORETOOLS_GIT_COMMIT "8b04d3316ad9f1027174e79a28faf78096cc8bad"
 #endif // QGPCORETOOLS_VERSION
 ENDVERSION
 echo "Configure QGpCoreTools"
 cd "QGpCoreTools"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir QGpCoreTools -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir QGpCoreTools -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          QGpCoreTools \\" >> $BUILD_DIR/geopsypack.pro
@@ -359,21 +354,19 @@ cat <<ENDVERSION > $BUILD_DIR/QGpGuiTools/src/QGpGuiToolsVersion.h
 #define QGPGUITOOLS_VERSION_TIME "201910010814"
 #define QGPGUITOOLS_VERSION_TYPE "testing"
 #define QGPGUITOOLS_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
-#define QGPGUITOOLS_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define QGPGUITOOLS_GIT_COMMIT "e42c5365ee461dd82b10b484fad1c1dc34076d1c"
+#define QGPGUITOOLS_DISTRIBUTION "3.2.2"
+#define QGPGUITOOLS_GIT_COMMIT "7715bbbb0368161a828f80521e2c43ac68e13475"
 #endif // QGPGUITOOLS_VERSION
 ENDVERSION
 echo "Configure QGpGuiTools"
 cd "QGpGuiTools"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir QGpGuiTools -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir QGpGuiTools -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          QGpGuiTools \\" >> $BUILD_DIR/geopsypack.pro
@@ -384,21 +377,19 @@ cat <<ENDVERSION > $BUILD_DIR/QGpCoreMath/src/QGpCoreMathVersion.h
 #define QGPCOREMATH_VERSION_TIME "201911191229"
 #define QGPCOREMATH_VERSION_TYPE "testing"
 #define QGPCOREMATH_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
-#define QGPCOREMATH_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define QGPCOREMATH_GIT_COMMIT "5e67d48cdd884bab2e18a1806ededac153d4b009"
+#define QGPCOREMATH_DISTRIBUTION "3.2.2"
+#define QGPCOREMATH_GIT_COMMIT "955c07863730194060ebf15e1014fe5e5dea32f7"
 #endif // QGPCOREMATH_VERSION
 ENDVERSION
 echo "Configure QGpCoreMath"
 cd "QGpCoreMath"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir QGpCoreMath -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir QGpCoreMath -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          QGpCoreMath \\" >> $BUILD_DIR/geopsypack.pro
@@ -409,21 +400,19 @@ cat <<ENDVERSION > $BUILD_DIR/SciFigs/src/SciFigsVersion.h
 #define SCIFIGS_VERSION_TIME "201911191229"
 #define SCIFIGS_VERSION_TYPE "testing"
 #define SCIFIGS_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
-#define SCIFIGS_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define SCIFIGS_GIT_COMMIT "9b6bf158dbc6c5a664b03de8783b53f196a2b1ae"
+#define SCIFIGS_DISTRIBUTION "3.2.2"
+#define SCIFIGS_GIT_COMMIT "e317ba779bc7ced26c74d193a51767f10b2fb9b7"
 #endif // SCIFIGS_VERSION
 ENDVERSION
 echo "Configure SciFigs"
 cd "SciFigs"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir SciFigs -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir SciFigs -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          SciFigs \\" >> $BUILD_DIR/geopsypack.pro
@@ -434,21 +423,19 @@ cat <<ENDVERSION > $BUILD_DIR/QGpGuiMath/src/QGpGuiMathVersion.h
 #define QGPGUIMATH_VERSION_TIME "201911191229"
 #define QGPGUIMATH_VERSION_TYPE "testing"
 #define QGPGUIMATH_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
-#define QGPGUIMATH_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define QGPGUIMATH_GIT_COMMIT "717747685cbb2c02d60edb87d535934f9ffb7af2"
+#define QGPGUIMATH_DISTRIBUTION "3.2.2"
+#define QGPGUIMATH_GIT_COMMIT "699b568408bdd8d0f98537efeb7fdcbc60b0445c"
 #endif // QGPGUIMATH_VERSION
 ENDVERSION
 echo "Configure QGpGuiMath"
 cd "QGpGuiMath"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir QGpGuiMath -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir QGpGuiMath -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          QGpGuiMath \\" >> $BUILD_DIR/geopsypack.pro
@@ -459,21 +446,19 @@ cat <<ENDVERSION > $BUILD_DIR/figue/src/figueVersion.h
 #define FIGUE_VERSION_TIME "201911191229"
 #define FIGUE_VERSION_TYPE "testing"
 #define FIGUE_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
-#define FIGUE_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define FIGUE_GIT_COMMIT "d28a0793611961356d4552404ecbc2a71a0b9e69"
+#define FIGUE_DISTRIBUTION "3.2.2"
+#define FIGUE_GIT_COMMIT "58409bb24d151153d9d68fac697eca3421ad03da"
 #endif // FIGUE_VERSION
 ENDVERSION
 echo "Configure figue"
 cd "figue"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir figue -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir figue -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          figue \\" >> $BUILD_DIR/geopsypack.pro
@@ -484,21 +469,19 @@ cat <<ENDVERSION > $BUILD_DIR/QGpCoreWave/src/QGpCoreWaveVersion.h
 #define QGPCOREWAVE_VERSION_TIME "201910010814"
 #define QGPCOREWAVE_VERSION_TYPE "testing"
 #define QGPCOREWAVE_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)\nPhil Cummins (RSES, Canberra, Australia)\nRoger Wisen (RAMBOLL, Copenhagen, Denmark)"
-#define QGPCOREWAVE_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define QGPCOREWAVE_GIT_COMMIT "6c74c836390b534c2fb4e426714f839e438a3247"
+#define QGPCOREWAVE_DISTRIBUTION "3.2.2"
+#define QGPCOREWAVE_GIT_COMMIT "f8b8aa9f1fc41cb69ced045c1352d5d4f9baf762"
 #endif // QGPCOREWAVE_VERSION
 ENDVERSION
 echo "Configure QGpCoreWave"
 cd "QGpCoreWave"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir QGpCoreWave -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir QGpCoreWave -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          QGpCoreWave \\" >> $BUILD_DIR/geopsypack.pro
@@ -509,21 +492,19 @@ cat <<ENDVERSION > $BUILD_DIR/QGpGuiWave/src/QGpGuiWaveVersion.h
 #define QGPGUIWAVE_VERSION_TIME "201908261420"
 #define QGPGUIWAVE_VERSION_TYPE "testing"
 #define QGPGUIWAVE_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)"
-#define QGPGUIWAVE_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define QGPGUIWAVE_GIT_COMMIT "07a6eafda78bdba2fdd291a98a9e8f9c9a354d1d"
+#define QGPGUIWAVE_DISTRIBUTION "3.2.2"
+#define QGPGUIWAVE_GIT_COMMIT "a50e25c69841ef10ef004281797c3b46781ee6bb"
 #endif // QGPGUIWAVE_VERSION
 ENDVERSION
 echo "Configure QGpGuiWave"
 cd "QGpGuiWave"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir QGpGuiWave -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir QGpGuiWave -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          QGpGuiWave \\" >> $BUILD_DIR/geopsypack.pro
@@ -534,21 +515,19 @@ cat <<ENDVERSION > $BUILD_DIR/QGpCompatibility/src/QGpCompatibilityVersion.h
 #define QGPCOMPATIBILITY_VERSION_TIME "201910010814"
 #define QGPCOMPATIBILITY_VERSION_TYPE "testing"
 #define QGPCOMPATIBILITY_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
-#define QGPCOMPATIBILITY_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define QGPCOMPATIBILITY_GIT_COMMIT "ce7f33cdb5d13a6e312892503bd64226f2895f12"
+#define QGPCOMPATIBILITY_DISTRIBUTION "3.2.2"
+#define QGPCOMPATIBILITY_GIT_COMMIT "5a6565e2e03eb4741d9abeab7544ecaee0fb9120"
 #endif // QGPCOMPATIBILITY_VERSION
 ENDVERSION
 echo "Configure QGpCompatibility"
 cd "QGpCompatibility"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir QGpCompatibility -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir QGpCompatibility -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          QGpCompatibility \\" >> $BUILD_DIR/geopsypack.pro
@@ -559,21 +538,19 @@ cat <<ENDVERSION > $BUILD_DIR/GeopsyCore/src/GeopsyCoreVersion.h
 #define GEOPSYCORE_VERSION_TIME "201911191229"
 #define GEOPSYCORE_VERSION_TYPE "testing"
 #define GEOPSYCORE_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
-#define GEOPSYCORE_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GEOPSYCORE_GIT_COMMIT "4100fca39942bae38d05219c9de6e0699ef705e3"
+#define GEOPSYCORE_DISTRIBUTION "3.2.2"
+#define GEOPSYCORE_GIT_COMMIT "35e4e07f262de4b339d7c427e6be3bd8d6de57d0"
 #endif // GEOPSYCORE_VERSION
 ENDVERSION
 echo "Configure GeopsyCore"
 cd "GeopsyCore"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir GeopsyCore -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir GeopsyCore -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          GeopsyCore \\" >> $BUILD_DIR/geopsypack.pro
@@ -584,21 +561,19 @@ cat <<ENDVERSION > $BUILD_DIR/GeopsyGui/src/GeopsyGuiVersion.h
 #define GEOPSYGUI_VERSION_TIME "201911191229"
 #define GEOPSYGUI_VERSION_TYPE "testing"
 #define GEOPSYGUI_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
-#define GEOPSYGUI_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GEOPSYGUI_GIT_COMMIT "a6eea222d2777eb6f275cb4f3b8ff2bd2686403b"
+#define GEOPSYGUI_DISTRIBUTION "3.2.2"
+#define GEOPSYGUI_GIT_COMMIT "d2705e513cd5aba20c57896b5a870220c67071ca"
 #endif // GEOPSYGUI_VERSION
 ENDVERSION
 echo "Configure GeopsyGui"
 cd "GeopsyGui"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir GeopsyGui -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir GeopsyGui -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          GeopsyGui \\" >> $BUILD_DIR/geopsypack.pro
@@ -609,21 +584,19 @@ cat <<ENDVERSION > $BUILD_DIR/geopsyfigs/src/geopsyfigsVersion.h
 #define GEOPSYFIGS_VERSION_TIME "201908261420"
 #define GEOPSYFIGS_VERSION_TYPE "testing"
 #define GEOPSYFIGS_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define GEOPSYFIGS_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GEOPSYFIGS_GIT_COMMIT "ea255b760cda4e6793b27f822198f91522eff33e"
+#define GEOPSYFIGS_DISTRIBUTION "3.2.2"
+#define GEOPSYFIGS_GIT_COMMIT "e52528cf83d290ec0cf3c2990e4fc6612656bad5"
 #endif // GEOPSYFIGS_VERSION
 ENDVERSION
 echo "Configure geopsyfigs"
 cd "geopsyfigs"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsyfigs -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsyfigs -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          geopsyfigs \\" >> $BUILD_DIR/geopsypack.pro
@@ -634,21 +607,19 @@ cat <<ENDVERSION > $BUILD_DIR/GeopsySLink/src/GeopsySLinkVersion.h
 #define GEOPSYSLINK_VERSION_TIME "201910010814"
 #define GEOPSYSLINK_VERSION_TYPE "testing"
 #define GEOPSYSLINK_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define GEOPSYSLINK_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GEOPSYSLINK_GIT_COMMIT "357f3d01eec05153ead65a5308cf0f792c7b6549"
+#define GEOPSYSLINK_DISTRIBUTION "3.2.2"
+#define GEOPSYSLINK_GIT_COMMIT "ef8bc89481a6745ee6b86c03c0a99a759a659f14"
 #endif // GEOPSYSLINK_VERSION
 ENDVERSION
 echo "Configure GeopsySLink"
 cd "GeopsySLink"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir GeopsySLink -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir GeopsySLink -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          GeopsySLink \\" >> $BUILD_DIR/geopsypack.pro
@@ -659,21 +630,19 @@ cat <<ENDVERSION > $BUILD_DIR/GeopsySLinkGui/src/GeopsySLinkGuiVersion.h
 #define GEOPSYSLINKGUI_VERSION_TIME "201911191229"
 #define GEOPSYSLINKGUI_VERSION_TYPE "testing"
 #define GEOPSYSLINKGUI_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define GEOPSYSLINKGUI_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GEOPSYSLINKGUI_GIT_COMMIT "99cbeaf19181116cf2ce2986ebbb3854e3983671"
+#define GEOPSYSLINKGUI_DISTRIBUTION "3.2.2"
+#define GEOPSYSLINKGUI_GIT_COMMIT "f93a830a0e9ffcad4ac272eeb792e7a4e753f520"
 #endif // GEOPSYSLINKGUI_VERSION
 ENDVERSION
 echo "Configure GeopsySLinkGui"
 cd "GeopsySLinkGui"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir GeopsySLinkGui -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir GeopsySLinkGui -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          GeopsySLinkGui \\" >> $BUILD_DIR/geopsypack.pro
@@ -684,21 +653,19 @@ cat <<ENDVERSION > $BUILD_DIR/DinverCore/src/DinverCoreVersion.h
 #define DINVERCORE_VERSION_TIME "201910010814"
 #define DINVERCORE_VERSION_TYPE "testing"
 #define DINVERCORE_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
-#define DINVERCORE_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define DINVERCORE_GIT_COMMIT "17ee1a2a62c4005ca585783e7523a4b41c6d558c"
+#define DINVERCORE_DISTRIBUTION "3.2.2"
+#define DINVERCORE_GIT_COMMIT "8efffd93a2b11426516c8b262a7814badfeb676f"
 #endif // DINVERCORE_VERSION
 ENDVERSION
 echo "Configure DinverCore"
 cd "DinverCore"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir DinverCore -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir DinverCore -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          DinverCore \\" >> $BUILD_DIR/geopsypack.pro
@@ -709,21 +676,19 @@ cat <<ENDVERSION > $BUILD_DIR/DinverGui/src/DinverGuiVersion.h
 #define DINVERGUI_VERSION_TIME "201908261420"
 #define DINVERGUI_VERSION_TYPE "testing"
 #define DINVERGUI_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define DINVERGUI_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define DINVERGUI_GIT_COMMIT "d40c77c8e271d41a505d96ba2a21ce5b37232972"
+#define DINVERGUI_DISTRIBUTION "3.2.2"
+#define DINVERGUI_GIT_COMMIT "2897a996a032776b1a1689eb629aa94636e16ee7"
 #endif // DINVERGUI_VERSION
 ENDVERSION
 echo "Configure DinverGui"
 cd "DinverGui"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir DinverGui -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir DinverGui -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          DinverGui \\" >> $BUILD_DIR/geopsypack.pro
@@ -734,21 +699,19 @@ cat <<ENDVERSION > $BUILD_DIR/DinverDCCore/src/DinverDCCoreVersion.h
 #define DINVERDCCORE_VERSION_TIME "201910010814"
 #define DINVERDCCORE_VERSION_TYPE "testing"
 #define DINVERDCCORE_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
-#define DINVERDCCORE_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define DINVERDCCORE_GIT_COMMIT "0c5a94860d4baa5ecdec786d0682f74f8f127d3b"
+#define DINVERDCCORE_DISTRIBUTION "3.2.2"
+#define DINVERDCCORE_GIT_COMMIT "98727c9c9886e26a4bc77fc18ed807b0212b3529"
 #endif // DINVERDCCORE_VERSION
 ENDVERSION
 echo "Configure DinverDCCore"
 cd "DinverDCCore"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir DinverDCCore -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir DinverDCCore -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          DinverDCCore \\" >> $BUILD_DIR/geopsypack.pro
@@ -759,21 +722,19 @@ cat <<ENDVERSION > $BUILD_DIR/DinverDCGui/src/DinverDCGuiVersion.h
 #define DINVERDCGUI_VERSION_TIME "201908261420"
 #define DINVERDCGUI_VERSION_TYPE "testing"
 #define DINVERDCGUI_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define DINVERDCGUI_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define DINVERDCGUI_GIT_COMMIT "3decab96cd2672d7366942b3e7c86fd88d17514f"
+#define DINVERDCGUI_DISTRIBUTION "3.2.2"
+#define DINVERDCGUI_GIT_COMMIT "a8856ce8845c89a9e66d93cc81fff080f230dbca"
 #endif // DINVERDCGUI_VERSION
 ENDVERSION
 echo "Configure DinverDCGui"
 cd "DinverDCGui"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir DinverDCGui -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir DinverDCGui -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          DinverDCGui \\" >> $BUILD_DIR/geopsypack.pro
@@ -784,21 +745,19 @@ cat <<ENDVERSION > $BUILD_DIR/QGpCoreStat/src/QGpCoreStatVersion.h
 #define QGPCORESTAT_VERSION_TIME "201909191926"
 #define QGPCORESTAT_VERSION_TYPE "testing"
 #define QGPCORESTAT_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)"
-#define QGPCORESTAT_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define QGPCORESTAT_GIT_COMMIT "3dd744d3cb5b262eced8d18dec4ff53739f76170"
+#define QGPCORESTAT_DISTRIBUTION "3.2.2"
+#define QGPCORESTAT_GIT_COMMIT "b8ca10c01ed0b4dfd99d36348e9077dfb9b8a30c"
 #endif // QGPCORESTAT_VERSION
 ENDVERSION
 echo "Configure QGpCoreStat"
 cd "QGpCoreStat"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir QGpCoreStat -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir QGpCoreStat -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          QGpCoreStat \\" >> $BUILD_DIR/geopsypack.pro
@@ -809,21 +768,19 @@ cat <<ENDVERSION > $BUILD_DIR/ArrayCore/src/ArrayCoreVersion.h
 #define ARRAYCORE_VERSION_TIME "201910010814"
 #define ARRAYCORE_VERSION_TYPE "testing"
 #define ARRAYCORE_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
-#define ARRAYCORE_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define ARRAYCORE_GIT_COMMIT "5e7264a9e7e873d1b80c4b88cfb015ec23d873e3"
+#define ARRAYCORE_DISTRIBUTION "3.2.2"
+#define ARRAYCORE_GIT_COMMIT "25c6d912adc1b006036a6bbf9b2fef2bb768eee4"
 #endif // ARRAYCORE_VERSION
 ENDVERSION
 echo "Configure ArrayCore"
 cd "ArrayCore"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir ArrayCore -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir ArrayCore -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          ArrayCore \\" >> $BUILD_DIR/geopsypack.pro
@@ -834,21 +791,19 @@ cat <<ENDVERSION > $BUILD_DIR/ArrayGui/src/ArrayGuiVersion.h
 #define ARRAYGUI_VERSION_TIME "201909230925"
 #define ARRAYGUI_VERSION_TYPE "testing"
 #define ARRAYGUI_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
-#define ARRAYGUI_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define ARRAYGUI_GIT_COMMIT "7f9a67ea315e5f188088c0f386327734fce9c3b3"
+#define ARRAYGUI_DISTRIBUTION "3.2.2"
+#define ARRAYGUI_GIT_COMMIT "385e7c693f61385e60fee8027ad4910665791f8a"
 #endif // ARRAYGUI_VERSION
 ENDVERSION
 echo "Configure ArrayGui"
 cd "ArrayGui"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir ArrayGui -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir ArrayGui -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          ArrayGui \\" >> $BUILD_DIR/geopsypack.pro
@@ -859,21 +814,19 @@ cat <<ENDVERSION > $BUILD_DIR/MonoStation/src/MonoStationVersion.h
 #define MONOSTATION_VERSION_TIME "201910010814"
 #define MONOSTATION_VERSION_TYPE "testing"
 #define MONOSTATION_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
-#define MONOSTATION_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define MONOSTATION_GIT_COMMIT "5e80e240aa04b0d70a748c41e4bc50ba5bd13fd4"
+#define MONOSTATION_DISTRIBUTION "3.2.2"
+#define MONOSTATION_GIT_COMMIT "2a3236ec9b983d63263bac856f7502da3020b834"
 #endif // MONOSTATION_VERSION
 ENDVERSION
 echo "Configure MonoStation"
 cd "MonoStation"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir MonoStation -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir MonoStation -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          MonoStation \\" >> $BUILD_DIR/geopsypack.pro
@@ -884,21 +837,19 @@ cat <<ENDVERSION > $BUILD_DIR/geopsy-fk/src/geopsy-fkVersion.h
 #define GEOPSY_FK_VERSION_TIME "201908261420"
 #define GEOPSY_FK_VERSION_TYPE "testing"
 #define GEOPSY_FK_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)"
-#define GEOPSY_FK_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GEOPSY_FK_GIT_COMMIT "6d4f248f023e988a409b354fb9dc99898437e866"
+#define GEOPSY_FK_DISTRIBUTION "3.2.2"
+#define GEOPSY_FK_GIT_COMMIT "c106cd95f45a0ef386bd59bb448d6b79abed74bd"
 #endif // GEOPSY_FK_VERSION
 ENDVERSION
 echo "Configure geopsy-fk"
 cd "geopsy-fk"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsy-fk -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsy-fk -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          geopsy-fk \\" >> $BUILD_DIR/geopsypack.pro
@@ -909,21 +860,19 @@ cat <<ENDVERSION > $BUILD_DIR/geopsy-spac/src/geopsy-spacVersion.h
 #define GEOPSY_SPAC_VERSION_TIME "201908261420"
 #define GEOPSY_SPAC_VERSION_TYPE "testing"
 #define GEOPSY_SPAC_AUTHORS ""
-#define GEOPSY_SPAC_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GEOPSY_SPAC_GIT_COMMIT "d9d085275795b6265a67d3febe5d52042c4e5bd3"
+#define GEOPSY_SPAC_DISTRIBUTION "3.2.2"
+#define GEOPSY_SPAC_GIT_COMMIT "8f23203b24f1dbbcef0942bd169619ea1d9352ba"
 #endif // GEOPSY_SPAC_VERSION
 ENDVERSION
 echo "Configure geopsy-spac"
 cd "geopsy-spac"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsy-spac -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsy-spac -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          geopsy-spac \\" >> $BUILD_DIR/geopsypack.pro
@@ -934,21 +883,19 @@ cat <<ENDVERSION > $BUILD_DIR/geopsy-hv/src/geopsy-hvVersion.h
 #define GEOPSY_HV_VERSION_TIME ""
 #define GEOPSY_HV_VERSION_TYPE "testing"
 #define GEOPSY_HV_AUTHORS ""
-#define GEOPSY_HV_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GEOPSY_HV_GIT_COMMIT "d5fbe73ef0251417c9bc0be05f3dd07e0dfa2bcd"
+#define GEOPSY_HV_DISTRIBUTION "3.2.2"
+#define GEOPSY_HV_GIT_COMMIT "476ef08532e2c35ce58a6c493368e1b6a7ea1325"
 #endif // GEOPSY_HV_VERSION
 ENDVERSION
 echo "Configure geopsy-hv"
 cd "geopsy-hv"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsy-hv -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsy-hv -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          geopsy-hv \\" >> $BUILD_DIR/geopsypack.pro
@@ -959,21 +906,19 @@ cat <<ENDVERSION > $BUILD_DIR/geopsy/src/geopsyVersion.h
 #define GEOPSY_VERSION_TIME "201911191229"
 #define GEOPSY_VERSION_TYPE "testing"
 #define GEOPSY_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
-#define GEOPSY_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GEOPSY_GIT_COMMIT "950a0d037f6ba2afdf7b72d676ebf30e7d3ba28e"
+#define GEOPSY_DISTRIBUTION "3.2.2"
+#define GEOPSY_GIT_COMMIT "d2ebde016e4ff92882630efa634f6c7e6a112f9c"
 #endif // GEOPSY_VERSION
 ENDVERSION
 echo "Configure geopsy"
 cd "geopsy"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsy -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsy -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          geopsy \\" >> $BUILD_DIR/geopsypack.pro
@@ -984,21 +929,19 @@ cat <<ENDVERSION > $BUILD_DIR/vslarray/src/vslarrayVersion.h
 #define VSLARRAY_VERSION_TIME "201908261420"
 #define VSLARRAY_VERSION_TYPE "testing"
 #define VSLARRAY_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define VSLARRAY_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define VSLARRAY_GIT_COMMIT "5a8e2a2d70ea98640e53c60c2131400de888bad9"
+#define VSLARRAY_DISTRIBUTION "3.2.2"
+#define VSLARRAY_GIT_COMMIT "238eaaf4cee0927b97f3dd77c5882470d0a8ad25"
 #endif // VSLARRAY_VERSION
 ENDVERSION
 echo "Configure vslarray"
 cd "vslarray"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir vslarray -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir vslarray -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          vslarray \\" >> $BUILD_DIR/geopsypack.pro
@@ -1009,21 +952,19 @@ cat <<ENDVERSION > $BUILD_DIR/dinver/src/dinverVersion.h
 #define DINVER_VERSION_TIME "201910010814"
 #define DINVER_VERSION_TYPE "testing"
 #define DINVER_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
-#define DINVER_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define DINVER_GIT_COMMIT "dc02c447c9b49bc186cb42e65eb13ba2f51dd5a6"
+#define DINVER_DISTRIBUTION "3.2.2"
+#define DINVER_GIT_COMMIT "cbb46d11e0b3e259aa388768f29dd58016cd3185"
 #endif // DINVER_VERSION
 ENDVERSION
 echo "Configure dinver"
 cd "dinver"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir dinver -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir dinver -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          dinver \\" >> $BUILD_DIR/geopsypack.pro
@@ -1034,21 +975,19 @@ cat <<ENDVERSION > $BUILD_DIR/WaranCore/src/WaranCoreVersion.h
 #define WARANCORE_VERSION_TIME "201908261420"
 #define WARANCORE_VERSION_TYPE "testing"
 #define WARANCORE_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define WARANCORE_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define WARANCORE_GIT_COMMIT "df7ed62ebb2a5f35c6069f84839c585fc3105a0e"
+#define WARANCORE_DISTRIBUTION "3.2.2"
+#define WARANCORE_GIT_COMMIT "f579f59e06311c283a4101632b91d109ed566121"
 #endif // WARANCORE_VERSION
 ENDVERSION
 echo "Configure WaranCore"
 cd "WaranCore"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir WaranCore -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir WaranCore -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          WaranCore \\" >> $BUILD_DIR/geopsypack.pro
@@ -1059,21 +998,19 @@ cat <<ENDVERSION > $BUILD_DIR/TapePositioningSystem/src/TapePositioningSystemVer
 #define TAPEPOSITIONINGSYSTEM_VERSION_TIME "201908261420"
 #define TAPEPOSITIONINGSYSTEM_VERSION_TYPE "testing"
 #define TAPEPOSITIONINGSYSTEM_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)"
-#define TAPEPOSITIONINGSYSTEM_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define TAPEPOSITIONINGSYSTEM_GIT_COMMIT "3a8ad039c104c8c1777676cd7be8bc3f9a668e80"
+#define TAPEPOSITIONINGSYSTEM_DISTRIBUTION "3.2.2"
+#define TAPEPOSITIONINGSYSTEM_GIT_COMMIT "a345e6cc21743725e37b9ff736d29f13c6bfdd35"
 #endif // TAPEPOSITIONINGSYSTEM_VERSION
 ENDVERSION
 echo "Configure TapePositioningSystem"
 cd "TapePositioningSystem"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir TapePositioningSystem -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir TapePositioningSystem -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          TapePositioningSystem \\" >> $BUILD_DIR/geopsypack.pro
@@ -1084,21 +1021,19 @@ cat <<ENDVERSION > $BUILD_DIR/waran/src/waranVersion.h
 #define WARAN_VERSION_TIME "201909191926"
 #define WARAN_VERSION_TYPE "testing"
 #define WARAN_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)"
-#define WARAN_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define WARAN_GIT_COMMIT "79e1266954c08ff172beb0986bb5a831ecb9e51b"
+#define WARAN_DISTRIBUTION "3.2.2"
+#define WARAN_GIT_COMMIT "d6beec7d75af3418ec5657da8ad68a8f2942004f"
 #endif // WARAN_VERSION
 ENDVERSION
 echo "Configure waran"
 cd "waran"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir waran -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir waran -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          waran \\" >> $BUILD_DIR/geopsypack.pro
@@ -1109,21 +1044,19 @@ cat <<ENDVERSION > $BUILD_DIR/warangps/src/warangpsVersion.h
 #define WARANGPS_VERSION_TIME "201909230925"
 #define WARANGPS_VERSION_TYPE "testing"
 #define WARANGPS_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define WARANGPS_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define WARANGPS_GIT_COMMIT "881a331181dbaf8b47d19a42b4d1a9c1ed49ddeb"
+#define WARANGPS_DISTRIBUTION "3.2.2"
+#define WARANGPS_GIT_COMMIT "c7971feba58edde28daebdbb6f813b266872e215"
 #endif // WARANGPS_VERSION
 ENDVERSION
 echo "Configure warangps"
 cd "warangps"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir warangps -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir warangps -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          warangps \\" >> $BUILD_DIR/geopsypack.pro
@@ -1134,21 +1067,19 @@ cat <<ENDVERSION > $BUILD_DIR/geopsyarray/src/geopsyarrayVersion.h
 #define GEOPSYARRAY_VERSION_TIME "201911191229"
 #define GEOPSYARRAY_VERSION_TYPE "testing"
 #define GEOPSYARRAY_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
-#define GEOPSYARRAY_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GEOPSYARRAY_GIT_COMMIT "6fd124df8ee4aca08332221cb30a311a07b3bb36"
+#define GEOPSYARRAY_DISTRIBUTION "3.2.2"
+#define GEOPSYARRAY_GIT_COMMIT "26f15cb94925a37c94fd779568119c5da4f9a2b1"
 #endif // GEOPSYARRAY_VERSION
 ENDVERSION
 echo "Configure geopsyarray"
 cd "geopsyarray"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsyarray -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsyarray -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          geopsyarray \\" >> $BUILD_DIR/geopsypack.pro
@@ -1159,21 +1090,19 @@ cat <<ENDVERSION > $BUILD_DIR/geopsyhv/src/geopsyhvVersion.h
 #define GEOPSYHV_VERSION_TIME "201911191229"
 #define GEOPSYHV_VERSION_TYPE "testing"
 #define GEOPSYHV_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
-#define GEOPSYHV_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GEOPSYHV_GIT_COMMIT "53a566b96365b19d3e8f6efea7d8ee74462405e0"
+#define GEOPSYHV_DISTRIBUTION "3.2.2"
+#define GEOPSYHV_GIT_COMMIT "37d7d410bdd1abaf391e827734a334b3d5e14f6c"
 #endif // GEOPSYHV_VERSION
 ENDVERSION
 echo "Configure geopsyhv"
 cd "geopsyhv"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsyhv -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsyhv -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          geopsyhv \\" >> $BUILD_DIR/geopsypack.pro
@@ -1184,21 +1113,19 @@ cat <<ENDVERSION > $BUILD_DIR/geopsydamping/src/geopsydampingVersion.h
 #define GEOPSYDAMPING_VERSION_TIME "201908261420"
 #define GEOPSYDAMPING_VERSION_TYPE "testing"
 #define GEOPSYDAMPING_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
-#define GEOPSYDAMPING_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GEOPSYDAMPING_GIT_COMMIT "8c4052ff841fc4d6c73c40612c97b21bc1309ce1"
+#define GEOPSYDAMPING_DISTRIBUTION "3.2.2"
+#define GEOPSYDAMPING_GIT_COMMIT "e92e6d1459aa0af92ebce1bbd222c72ff869f1eb"
 #endif // GEOPSYDAMPING_VERSION
 ENDVERSION
 echo "Configure geopsydamping"
 cd "geopsydamping"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsydamping -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsydamping -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          geopsydamping \\" >> $BUILD_DIR/geopsypack.pro
@@ -1209,21 +1136,19 @@ cat <<ENDVERSION > $BUILD_DIR/geopsytfa/src/geopsytfaVersion.h
 #define GEOPSYTFA_VERSION_TIME "201908261420"
 #define GEOPSYTFA_VERSION_TYPE "testing"
 #define GEOPSYTFA_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define GEOPSYTFA_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GEOPSYTFA_GIT_COMMIT "c12fcdbe2ae6ef38c947da67b94fc784eb9dfbe9"
+#define GEOPSYTFA_DISTRIBUTION "3.2.2"
+#define GEOPSYTFA_GIT_COMMIT "f40ce7dcb81e6bfd3a66d0b2bab815c3401a9377"
 #endif // GEOPSYTFA_VERSION
 ENDVERSION
 echo "Configure geopsytfa"
 cd "geopsytfa"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsytfa -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsytfa -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          geopsytfa \\" >> $BUILD_DIR/geopsypack.pro
@@ -1234,21 +1159,19 @@ cat <<ENDVERSION > $BUILD_DIR/geopsynr/src/geopsynrVersion.h
 #define GEOPSYNR_VERSION_TIME "201908261420"
 #define GEOPSYNR_VERSION_TYPE "testing"
 #define GEOPSYNR_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define GEOPSYNR_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GEOPSYNR_GIT_COMMIT "c79498c87a175c08d20096f04f13bea0e299add5"
+#define GEOPSYNR_DISTRIBUTION "3.2.2"
+#define GEOPSYNR_GIT_COMMIT "9c4405f04a70c5bfcad3a993ce6203b509885d98"
 #endif // GEOPSYNR_VERSION
 ENDVERSION
 echo "Configure geopsynr"
 cd "geopsynr"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsynr -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsynr -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          geopsynr \\" >> $BUILD_DIR/geopsypack.pro
@@ -1259,21 +1182,19 @@ cat <<ENDVERSION > $BUILD_DIR/geopsyptmotion/src/geopsyptmotionVersion.h
 #define GEOPSYPTMOTION_VERSION_TIME "201908261420"
 #define GEOPSYPTMOTION_VERSION_TYPE "testing"
 #define GEOPSYPTMOTION_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
-#define GEOPSYPTMOTION_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GEOPSYPTMOTION_GIT_COMMIT "71b2a9c77105e57bf3c6971c98f1c8e9f6709ce9"
+#define GEOPSYPTMOTION_DISTRIBUTION "3.2.2"
+#define GEOPSYPTMOTION_GIT_COMMIT "7cd5c15e247d9a3820c8f081e2ad57805aa96bf7"
 #endif // GEOPSYPTMOTION_VERSION
 ENDVERSION
 echo "Configure geopsyptmotion"
 cd "geopsyptmotion"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsyptmotion -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsyptmotion -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          geopsyptmotion \\" >> $BUILD_DIR/geopsypack.pro
@@ -1284,21 +1205,19 @@ cat <<ENDVERSION > $BUILD_DIR/geopsyrefra/src/geopsyrefraVersion.h
 #define GEOPSYREFRA_VERSION_TIME "201908261420"
 #define GEOPSYREFRA_VERSION_TYPE "testing"
 #define GEOPSYREFRA_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
-#define GEOPSYREFRA_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GEOPSYREFRA_GIT_COMMIT "8abd24e10a3a528fb21cea82d12e5a018024971c"
+#define GEOPSYREFRA_DISTRIBUTION "3.2.2"
+#define GEOPSYREFRA_GIT_COMMIT "d73321cb13db443f0ad3516098a5f85c4d4d95d5"
 #endif // GEOPSYREFRA_VERSION
 ENDVERSION
 echo "Configure geopsyrefra"
 cd "geopsyrefra"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsyrefra -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsyrefra -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          geopsyrefra \\" >> $BUILD_DIR/geopsypack.pro
@@ -1309,21 +1228,19 @@ cat <<ENDVERSION > $BUILD_DIR/hvtfa/src/hvtfaVersion.h
 #define HVTFA_VERSION_TIME "201908261420"
 #define HVTFA_VERSION_TYPE "testing"
 #define HVTFA_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMiriam Kristekova (Geophysical Institute, Academy of Sciences, Bratislava, Slovak Republic)"
-#define HVTFA_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define HVTFA_GIT_COMMIT "f8f5f19bce053f463f51928cb31e2fb96f64cbaf"
+#define HVTFA_DISTRIBUTION "3.2.2"
+#define HVTFA_GIT_COMMIT "e42036e6787e885d125caa02982a9867c8b2d3e7"
 #endif // HVTFA_VERSION
 ENDVERSION
 echo "Configure hvtfa"
 cd "hvtfa"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir hvtfa -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir hvtfa -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          hvtfa \\" >> $BUILD_DIR/geopsypack.pro
@@ -1334,21 +1251,19 @@ cat <<ENDVERSION > $BUILD_DIR/campbelltob3/src/campbelltob3Version.h
 #define CAMPBELLTOB3_VERSION_TIME "201908261420"
 #define CAMPBELLTOB3_VERSION_TYPE "testing"
 #define CAMPBELLTOB3_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)"
-#define CAMPBELLTOB3_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define CAMPBELLTOB3_GIT_COMMIT "d3942332cb80d0cba918b7f7865f30e247c7c45b"
+#define CAMPBELLTOB3_DISTRIBUTION "3.2.2"
+#define CAMPBELLTOB3_GIT_COMMIT "3b4a6cca42ed5f115d1f102a79319f64cc6210c0"
 #endif // CAMPBELLTOB3_VERSION
 ENDVERSION
 echo "Configure campbelltob3"
 cd "campbelltob3"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir campbelltob3 -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir campbelltob3 -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          campbelltob3 \\" >> $BUILD_DIR/geopsypack.pro
@@ -1359,21 +1274,19 @@ cat <<ENDVERSION > $BUILD_DIR/dinverdc/src/dinverdcVersion.h
 #define DINVERDC_VERSION_TIME "201908261420"
 #define DINVERDC_VERSION_TYPE "testing"
 #define DINVERDC_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define DINVERDC_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define DINVERDC_GIT_COMMIT "904f2f1bfa0c1e8a277b37c4cdf30c6df00c5c76"
+#define DINVERDC_DISTRIBUTION "3.2.2"
+#define DINVERDC_GIT_COMMIT "bceb3699f77b6350a5ef0cc71ae31be131d56c87"
 #endif // DINVERDC_VERSION
 ENDVERSION
 echo "Configure dinverdc"
 cd "dinverdc"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir dinverdc -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir dinverdc -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          dinverdc \\" >> $BUILD_DIR/geopsypack.pro
@@ -1384,21 +1297,19 @@ cat <<ENDVERSION > $BUILD_DIR/dinverext/src/dinverextVersion.h
 #define DINVEREXT_VERSION_TIME "201910010814"
 #define DINVEREXT_VERSION_TYPE "testing"
 #define DINVEREXT_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define DINVEREXT_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define DINVEREXT_GIT_COMMIT "d888e2a89f390a75733bbae5f5cfeb2278e0607e"
+#define DINVEREXT_DISTRIBUTION "3.2.2"
+#define DINVEREXT_GIT_COMMIT "7096e60d95715b1eaa8c7be79f43b4051ece0c31"
 #endif // DINVEREXT_VERSION
 ENDVERSION
 echo "Configure dinverext"
 cd "dinverext"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir dinverext -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir dinverext -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          dinverext \\" >> $BUILD_DIR/geopsypack.pro
@@ -1409,21 +1320,19 @@ cat <<ENDVERSION > $BUILD_DIR/spac2disp/src/spac2dispVersion.h
 #define SPAC2DISP_VERSION_TIME "201908261420"
 #define SPAC2DISP_VERSION_TYPE "testing"
 #define SPAC2DISP_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
-#define SPAC2DISP_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define SPAC2DISP_GIT_COMMIT "65d3d42e49fb01ec87f073bce92222683ddde900"
+#define SPAC2DISP_DISTRIBUTION "3.2.2"
+#define SPAC2DISP_GIT_COMMIT "3bf99c3a8690d04b51ac86a2b15e116fe98fb9fb"
 #endif // SPAC2DISP_VERSION
 ENDVERSION
 echo "Configure spac2disp"
 cd "spac2disp"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir spac2disp -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir spac2disp -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          spac2disp \\" >> $BUILD_DIR/geopsypack.pro
@@ -1434,21 +1343,19 @@ cat <<ENDVERSION > $BUILD_DIR/max2curve/src/max2curveVersion.h
 #define MAX2CURVE_VERSION_TIME "201909230925"
 #define MAX2CURVE_VERSION_TYPE "testing"
 #define MAX2CURVE_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define MAX2CURVE_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define MAX2CURVE_GIT_COMMIT "fbe9904f04c91446c5b0e0e58f1c370af4b98671"
+#define MAX2CURVE_DISTRIBUTION "3.2.2"
+#define MAX2CURVE_GIT_COMMIT "0446dd42d23e393c589f5c1892fb6b2aee7c6fd3"
 #endif // MAX2CURVE_VERSION
 ENDVERSION
 echo "Configure max2curve"
 cd "max2curve"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir max2curve -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir max2curve -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          max2curve \\" >> $BUILD_DIR/geopsypack.pro
@@ -1459,21 +1366,19 @@ cat <<ENDVERSION > $BUILD_DIR/gppoisson/src/gppoissonVersion.h
 #define GPPOISSON_VERSION_TIME "201908261420"
 #define GPPOISSON_VERSION_TYPE "testing"
 #define GPPOISSON_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define GPPOISSON_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPPOISSON_GIT_COMMIT "f0894167e23b4060df9e40d9e8fbaef77eaf19f9"
+#define GPPOISSON_DISTRIBUTION "3.2.2"
+#define GPPOISSON_GIT_COMMIT "c7eb8659369c5fbaec7640653bcfc0f3f5b66dca"
 #endif // GPPOISSON_VERSION
 ENDVERSION
 echo "Configure gppoisson"
 cd "gppoisson"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gppoisson -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gppoisson -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gppoisson \\" >> $BUILD_DIR/geopsypack.pro
@@ -1484,21 +1389,19 @@ cat <<ENDVERSION > $BUILD_DIR/gpprofile/src/gpprofileVersion.h
 #define GPPROFILE_VERSION_TIME "201911191229"
 #define GPPROFILE_VERSION_TYPE "testing"
 #define GPPROFILE_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define GPPROFILE_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPPROFILE_GIT_COMMIT "3ffc342195c921a9020e950df898bc8616058536"
+#define GPPROFILE_DISTRIBUTION "3.2.2"
+#define GPPROFILE_GIT_COMMIT "80b0911eb3d4968750553610d1ed8a3f4533b2e1"
 #endif // GPPROFILE_VERSION
 ENDVERSION
 echo "Configure gpprofile"
 cd "gpprofile"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpprofile -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpprofile -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpprofile \\" >> $BUILD_DIR/geopsypack.pro
@@ -1509,21 +1412,19 @@ cat <<ENDVERSION > $BUILD_DIR/gpdc/src/gpdcVersion.h
 #define GPDC_VERSION_TIME "201911191229"
 #define GPDC_VERSION_TYPE "testing"
 #define GPDC_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define GPDC_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPDC_GIT_COMMIT "54e6fe0853bfe37fd06805d4462247e47cf8f552"
+#define GPDC_DISTRIBUTION "3.2.2"
+#define GPDC_GIT_COMMIT "1c81cab5704b9f2fae72e7cef1b390a2189e70e8"
 #endif // GPDC_VERSION
 ENDVERSION
 echo "Configure gpdc"
 cd "gpdc"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpdc -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpdc -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpdc \\" >> $BUILD_DIR/geopsypack.pro
@@ -1534,21 +1435,19 @@ cat <<ENDVERSION > $BUILD_DIR/gplivemodel/src/gplivemodelVersion.h
 #define GPLIVEMODEL_VERSION_TIME "201910010814"
 #define GPLIVEMODEL_VERSION_TYPE "testing"
 #define GPLIVEMODEL_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define GPLIVEMODEL_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPLIVEMODEL_GIT_COMMIT "20b92679c04c1188d48f9b1ad4a6d3bd30785076"
+#define GPLIVEMODEL_DISTRIBUTION "3.2.2"
+#define GPLIVEMODEL_GIT_COMMIT "8a4a16462452a6bed9101639cf04b098a3b9a5c6"
 #endif // GPLIVEMODEL_VERSION
 ENDVERSION
 echo "Configure gplivemodel"
 cd "gplivemodel"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gplivemodel -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gplivemodel -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gplivemodel \\" >> $BUILD_DIR/geopsypack.pro
@@ -1559,21 +1458,19 @@ cat <<ENDVERSION > $BUILD_DIR/gpec8/src/gpec8Version.h
 #define GPEC8_VERSION_TIME "201908261420"
 #define GPEC8_VERSION_TYPE "testing"
 #define GPEC8_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define GPEC8_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPEC8_GIT_COMMIT "3a048ba1261d6b8237085377bc7742ccb072bacd"
+#define GPEC8_DISTRIBUTION "3.2.2"
+#define GPEC8_GIT_COMMIT "4498dac06888b534c14556b3019ebe21b96fe3c8"
 #endif // GPEC8_VERSION
 ENDVERSION
 echo "Configure gpec8"
 cd "gpec8"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpec8 -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpec8 -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpec8 \\" >> $BUILD_DIR/geopsypack.pro
@@ -1584,21 +1481,19 @@ cat <<ENDVERSION > $BUILD_DIR/gpdcreport/src/gpdcreportVersion.h
 #define GPDCREPORT_VERSION_TIME "201911191229"
 #define GPDCREPORT_VERSION_TYPE "testing"
 #define GPDCREPORT_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define GPDCREPORT_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPDCREPORT_GIT_COMMIT "83a4f4c74f7876c9ef96c2750035127d6bda1d3e"
+#define GPDCREPORT_DISTRIBUTION "3.2.2"
+#define GPDCREPORT_GIT_COMMIT "daf657eb95574a028e877a8d9015f5569721fb4f"
 #endif // GPDCREPORT_VERSION
 ENDVERSION
 echo "Configure gpdcreport"
 cd "gpdcreport"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpdcreport -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpdcreport -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpdcreport \\" >> $BUILD_DIR/geopsypack.pro
@@ -1609,21 +1504,19 @@ cat <<ENDVERSION > $BUILD_DIR/gptarget/src/gptargetVersion.h
 #define GPTARGET_VERSION_TIME "201909191926"
 #define GPTARGET_VERSION_TYPE "testing"
 #define GPTARGET_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define GPTARGET_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPTARGET_GIT_COMMIT "040c195e7bfd78780ebc9115bc434b6af4cad9e2"
+#define GPTARGET_DISTRIBUTION "3.2.2"
+#define GPTARGET_GIT_COMMIT "56fd541a198a708a18dc4f0add56f2947e006fbc"
 #endif // GPTARGET_VERSION
 ENDVERSION
 echo "Configure gptarget"
 cd "gptarget"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gptarget -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gptarget -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gptarget \\" >> $BUILD_DIR/geopsypack.pro
@@ -1634,21 +1527,19 @@ cat <<ENDVERSION > $BUILD_DIR/gpviewdcreport/src/gpviewdcreportVersion.h
 #define GPVIEWDCREPORT_VERSION_TIME "201908261420"
 #define GPVIEWDCREPORT_VERSION_TYPE "testing"
 #define GPVIEWDCREPORT_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define GPVIEWDCREPORT_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPVIEWDCREPORT_GIT_COMMIT "a03b229212cf0bd6439dc6ff601d1d04019b06c0"
+#define GPVIEWDCREPORT_DISTRIBUTION "3.2.2"
+#define GPVIEWDCREPORT_GIT_COMMIT "1fb5e512e1f2c70ba7820de3927ec6356274665a"
 #endif // GPVIEWDCREPORT_VERSION
 ENDVERSION
 echo "Configure gpviewdcreport"
 cd "gpviewdcreport"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpviewdcreport -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpviewdcreport -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpviewdcreport \\" >> $BUILD_DIR/geopsypack.pro
@@ -1659,21 +1550,19 @@ cat <<ENDVERSION > $BUILD_DIR/gpdcmisfit/src/gpdcmisfitVersion.h
 #define GPDCMISFIT_VERSION_TIME "201908261420"
 #define GPDCMISFIT_VERSION_TYPE "testing"
 #define GPDCMISFIT_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define GPDCMISFIT_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPDCMISFIT_GIT_COMMIT "b04bfa686e3046e5ff73c5569b817738d176f7bf"
+#define GPDCMISFIT_DISTRIBUTION "3.2.2"
+#define GPDCMISFIT_GIT_COMMIT "d7ff85e8615135629d4eb52cb5cde6d5a3f687a1"
 #endif // GPDCMISFIT_VERSION
 ENDVERSION
 echo "Configure gpdcmisfit"
 cd "gpdcmisfit"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpdcmisfit -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpdcmisfit -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpdcmisfit \\" >> $BUILD_DIR/geopsypack.pro
@@ -1684,21 +1573,19 @@ cat <<ENDVERSION > $BUILD_DIR/gpell/src/gpellVersion.h
 #define GPELL_VERSION_TIME "201908261420"
 #define GPELL_VERSION_TYPE "testing"
 #define GPELL_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define GPELL_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPELL_GIT_COMMIT "38d0d85d5c6b00a07f2c0894906a2f1bd58ed7aa"
+#define GPELL_DISTRIBUTION "3.2.2"
+#define GPELL_GIT_COMMIT "271e0ae3cc58a58848715cfe69daa0ece0dd45dc"
 #endif // GPELL_VERSION
 ENDVERSION
 echo "Configure gpell"
 cd "gpell"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpell -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpell -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpell \\" >> $BUILD_DIR/geopsypack.pro
@@ -1709,21 +1596,19 @@ cat <<ENDVERSION > $BUILD_DIR/gpgroup2phase/src/gpgroup2phaseVersion.h
 #define GPGROUP2PHASE_VERSION_TIME "201908261420"
 #define GPGROUP2PHASE_VERSION_TYPE "testing"
 #define GPGROUP2PHASE_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define GPGROUP2PHASE_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPGROUP2PHASE_GIT_COMMIT "bb5ed2809017969a656b6d9aba1f502ad5404d6b"
+#define GPGROUP2PHASE_DISTRIBUTION "3.2.2"
+#define GPGROUP2PHASE_GIT_COMMIT "0bd930ae44954344000da362962f9b3441edfab7"
 #endif // GPGROUP2PHASE_VERSION
 ENDVERSION
 echo "Configure gpgroup2phase"
 cd "gpgroup2phase"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpgroup2phase -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpgroup2phase -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpgroup2phase \\" >> $BUILD_DIR/geopsypack.pro
@@ -1734,21 +1619,19 @@ cat <<ENDVERSION > $BUILD_DIR/gpmodel2param/src/gpmodel2paramVersion.h
 #define GPMODEL2PARAM_VERSION_TIME "201908261420"
 #define GPMODEL2PARAM_VERSION_TYPE "testing"
 #define GPMODEL2PARAM_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define GPMODEL2PARAM_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPMODEL2PARAM_GIT_COMMIT "638b37be28288cc8a1dc56e00fc31165ed43ed14"
+#define GPMODEL2PARAM_DISTRIBUTION "3.2.2"
+#define GPMODEL2PARAM_GIT_COMMIT "ee2ecc640722bea91f374aff6732742476eaaaa1"
 #endif // GPMODEL2PARAM_VERSION
 ENDVERSION
 echo "Configure gpmodel2param"
 cd "gpmodel2param"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpmodel2param -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpmodel2param -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpmodel2param \\" >> $BUILD_DIR/geopsypack.pro
@@ -1759,21 +1642,19 @@ cat <<ENDVERSION > $BUILD_DIR/gpparam2model/src/gpparam2modelVersion.h
 #define GPPARAM2MODEL_VERSION_TIME "201908261420"
 #define GPPARAM2MODEL_VERSION_TYPE "testing"
 #define GPPARAM2MODEL_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define GPPARAM2MODEL_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPPARAM2MODEL_GIT_COMMIT "5927f341e5098b991a2001e7682706f29b323350"
+#define GPPARAM2MODEL_DISTRIBUTION "3.2.2"
+#define GPPARAM2MODEL_GIT_COMMIT "648a8661a592b426df5b804ec7db12bb5fd3638e"
 #endif // GPPARAM2MODEL_VERSION
 ENDVERSION
 echo "Configure gpparam2model"
 cd "gpparam2model"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpparam2model -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpparam2model -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpparam2model \\" >> $BUILD_DIR/geopsypack.pro
@@ -1784,21 +1665,19 @@ cat <<ENDVERSION > $BUILD_DIR/gpdepths/src/gpdepthsVersion.h
 #define GPDEPTHS_VERSION_TIME "201908261420"
 #define GPDEPTHS_VERSION_TYPE "testing"
 #define GPDEPTHS_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define GPDEPTHS_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPDEPTHS_GIT_COMMIT "e116a742436cec04a8e62931319514fae150c6af"
+#define GPDEPTHS_DISTRIBUTION "3.2.2"
+#define GPDEPTHS_GIT_COMMIT "7da430fe88f95bdff5df69af76c9f1fc2ddaffaf"
 #endif // GPDEPTHS_VERSION
 ENDVERSION
 echo "Configure gpdepths"
 cd "gpdepths"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpdepths -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpdepths -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpdepths \\" >> $BUILD_DIR/geopsypack.pro
@@ -1809,21 +1688,19 @@ cat <<ENDVERSION > $BUILD_DIR/gpsort/src/gpsortVersion.h
 #define GPSORT_VERSION_TIME "201908261420"
 #define GPSORT_VERSION_TYPE "testing"
 #define GPSORT_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define GPSORT_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPSORT_GIT_COMMIT "2ceb1c6d8ccb42b4148a75eb4fd30b8bbfa61037"
+#define GPSORT_DISTRIBUTION "3.2.2"
+#define GPSORT_GIT_COMMIT "73f82db0023d9d520619a9438da156ba29c572e3"
 #endif // GPSORT_VERSION
 ENDVERSION
 echo "Configure gpsort"
 cd "gpsort"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpsort -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpsort -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpsort \\" >> $BUILD_DIR/geopsypack.pro
@@ -1834,21 +1711,19 @@ cat <<ENDVERSION > $BUILD_DIR/gpcurve/src/gpcurveVersion.h
 #define GPCURVE_VERSION_TIME "201908261420"
 #define GPCURVE_VERSION_TYPE "testing"
 #define GPCURVE_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define GPCURVE_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPCURVE_GIT_COMMIT "bd8aeb63fd923d507d7d1a00bbd6c29e2527806e"
+#define GPCURVE_DISTRIBUTION "3.2.2"
+#define GPCURVE_GIT_COMMIT "364490713394aa5388f00b5cfd0ecb6a85252ee4"
 #endif // GPCURVE_VERSION
 ENDVERSION
 echo "Configure gpcurve"
 cd "gpcurve"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpcurve -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpcurve -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpcurve \\" >> $BUILD_DIR/geopsypack.pro
@@ -1859,21 +1734,19 @@ cat <<ENDVERSION > $BUILD_DIR/gprandom/src/gprandomVersion.h
 #define GPRANDOM_VERSION_TIME "201908261420"
 #define GPRANDOM_VERSION_TYPE "testing"
 #define GPRANDOM_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define GPRANDOM_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPRANDOM_GIT_COMMIT "6845cc37d1064eb5f474a0cdf25fc54b4d908628"
+#define GPRANDOM_DISTRIBUTION "3.2.2"
+#define GPRANDOM_GIT_COMMIT "c4bc8b3519fe456055f1592095edd562fb86b9a2"
 #endif // GPRANDOM_VERSION
 ENDVERSION
 echo "Configure gprandom"
 cd "gprandom"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gprandom -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gprandom -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gprandom \\" >> $BUILD_DIR/geopsypack.pro
@@ -1884,21 +1757,19 @@ cat <<ENDVERSION > $BUILD_DIR/gpspac/src/gpspacVersion.h
 #define GPSPAC_VERSION_TIME "201908261420"
 #define GPSPAC_VERSION_TYPE "testing"
 #define GPSPAC_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define GPSPAC_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPSPAC_GIT_COMMIT "17827280d44d0e9501f88b6b532ab6cf4fd4afdc"
+#define GPSPAC_DISTRIBUTION "3.2.2"
+#define GPSPAC_GIT_COMMIT "56296f4eb345c7aec899bfd07012d408fa6402dd"
 #endif // GPSPAC_VERSION
 ENDVERSION
 echo "Configure gpspac"
 cd "gpspac"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpspac -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpspac -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpspac \\" >> $BUILD_DIR/geopsypack.pro
@@ -1909,21 +1780,19 @@ cat <<ENDVERSION > $BUILD_DIR/gprefra/src/gprefraVersion.h
 #define GPREFRA_VERSION_TIME "201908261420"
 #define GPREFRA_VERSION_TYPE "testing"
 #define GPREFRA_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define GPREFRA_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPREFRA_GIT_COMMIT "6c2f26129dd2a6708ff6fde0d93562bf4a5d4dab"
+#define GPREFRA_DISTRIBUTION "3.2.2"
+#define GPREFRA_GIT_COMMIT "f8bbaa9dfe0c2b7849416e4994d7239c651812f9"
 #endif // GPREFRA_VERSION
 ENDVERSION
 echo "Configure gprefra"
 cd "gprefra"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gprefra -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gprefra -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gprefra \\" >> $BUILD_DIR/geopsypack.pro
@@ -1934,21 +1803,19 @@ cat <<ENDVERSION > $BUILD_DIR/gpsignal/src/gpsignalVersion.h
 #define GPSIGNAL_VERSION_TIME "201908261420"
 #define GPSIGNAL_VERSION_TYPE "testing"
 #define GPSIGNAL_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define GPSIGNAL_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPSIGNAL_GIT_COMMIT "e521f97c9397f72aacad0d7956815f700db245fd"
+#define GPSIGNAL_DISTRIBUTION "3.2.2"
+#define GPSIGNAL_GIT_COMMIT "8ef5053327b4341d1d58f7619d56e27e7e8aeff1"
 #endif // GPSIGNAL_VERSION
 ENDVERSION
 echo "Configure gpsignal"
 cd "gpsignal"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpsignal -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpsignal -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpsignal \\" >> $BUILD_DIR/geopsypack.pro
@@ -1959,21 +1826,19 @@ cat <<ENDVERSION > $BUILD_DIR/gphistogram/src/gphistogramVersion.h
 #define GPHISTOGRAM_VERSION_TIME "201909230925"
 #define GPHISTOGRAM_VERSION_TYPE "testing"
 #define GPHISTOGRAM_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)"
-#define GPHISTOGRAM_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPHISTOGRAM_GIT_COMMIT "fb4098ea3ff8c05fbcbde43dcf0535d237f7bb10"
+#define GPHISTOGRAM_DISTRIBUTION "3.2.2"
+#define GPHISTOGRAM_GIT_COMMIT "950d9295cb751a6a70e4dfa9ddbca16061e54cd3"
 #endif // GPHISTOGRAM_VERSION
 ENDVERSION
 echo "Configure gphistogram"
 cd "gphistogram"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gphistogram -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gphistogram -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gphistogram \\" >> $BUILD_DIR/geopsypack.pro
@@ -1984,21 +1849,19 @@ cat <<ENDVERSION > $BUILD_DIR/gpviewmax/src/gpviewmaxVersion.h
 #define GPVIEWMAX_VERSION_TIME "201909191926"
 #define GPVIEWMAX_VERSION_TYPE "testing"
 #define GPVIEWMAX_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)"
-#define GPVIEWMAX_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPVIEWMAX_GIT_COMMIT "33b6b0b53d1e51affe9afd6ffd2494274e2752a1"
+#define GPVIEWMAX_DISTRIBUTION "3.2.2"
+#define GPVIEWMAX_GIT_COMMIT "ccc2132a971774f57384187f56cbbd3fbe0e20b2"
 #endif // GPVIEWMAX_VERSION
 ENDVERSION
 echo "Configure gpviewmax"
 cd "gpviewmax"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpviewmax -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpviewmax -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpviewmax \\" >> $BUILD_DIR/geopsypack.pro
@@ -2009,21 +1872,19 @@ cat <<ENDVERSION > $BUILD_DIR/gpdistance/src/gpdistanceVersion.h
 #define GPDISTANCE_VERSION_TIME "201908261420"
 #define GPDISTANCE_VERSION_TYPE "testing"
 #define GPDISTANCE_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define GPDISTANCE_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPDISTANCE_GIT_COMMIT "c66f7278f10f26b5ccb89577cc406a0176c2ba58"
+#define GPDISTANCE_DISTRIBUTION "3.2.2"
+#define GPDISTANCE_GIT_COMMIT "66cdb747eefe3b8d7a88de6d1a6e6e3a0d1019a0"
 #endif // GPDISTANCE_VERSION
 ENDVERSION
 echo "Configure gpdistance"
 cd "gpdistance"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpdistance -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpdistance -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpdistance \\" >> $BUILD_DIR/geopsypack.pro
@@ -2034,21 +1895,19 @@ cat <<ENDVERSION > $BUILD_DIR/gptime/src/gptimeVersion.h
 #define GPTIME_VERSION_TIME "201908261420"
 #define GPTIME_VERSION_TYPE "testing"
 #define GPTIME_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define GPTIME_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPTIME_GIT_COMMIT "f43dfadebe9c2ebd3f5facc52708a411718de6a2"
+#define GPTIME_DISTRIBUTION "3.2.2"
+#define GPTIME_GIT_COMMIT "c84853e76c4d1db514cfbbe599b6b482fbb1c501"
 #endif // GPTIME_VERSION
 ENDVERSION
 echo "Configure gptime"
 cd "gptime"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gptime -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gptime -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gptime \\" >> $BUILD_DIR/geopsypack.pro
@@ -2059,21 +1918,19 @@ cat <<ENDVERSION > $BUILD_DIR/gpcoord/src/gpcoordVersion.h
 #define GPCOORD_VERSION_TIME "201908261420"
 #define GPCOORD_VERSION_TYPE "testing"
 #define GPCOORD_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define GPCOORD_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPCOORD_GIT_COMMIT "2656297ed453216bc077537d3083b2fba5240dda"
+#define GPCOORD_DISTRIBUTION "3.2.2"
+#define GPCOORD_GIT_COMMIT "60d8e7c7be9f017e5f6cdf8eb6387b47c6dc3c9e"
 #endif // GPCOORD_VERSION
 ENDVERSION
 echo "Configure gpcoord"
 cd "gpcoord"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpcoord -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpcoord -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpcoord \\" >> $BUILD_DIR/geopsypack.pro
@@ -2084,21 +1941,19 @@ cat <<ENDVERSION > $BUILD_DIR/gpreplace/src/gpreplaceVersion.h
 #define GPREPLACE_VERSION_TIME "201908261420"
 #define GPREPLACE_VERSION_TYPE "testing"
 #define GPREPLACE_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define GPREPLACE_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPREPLACE_GIT_COMMIT "2d7ee02985de74fa4fa0ad8b65328b8fdc0f392a"
+#define GPREPLACE_DISTRIBUTION "3.2.2"
+#define GPREPLACE_GIT_COMMIT "9c47561c4dc6a40abae7d75572707b00e0e492d5"
 #endif // GPREPLACE_VERSION
 ENDVERSION
 echo "Configure gpreplace"
 cd "gpreplace"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpreplace -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpreplace -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpreplace \\" >> $BUILD_DIR/geopsypack.pro
@@ -2109,21 +1964,19 @@ cat <<ENDVERSION > $BUILD_DIR/gpsh/src/gpshVersion.h
 #define GPSH_VERSION_TIME "201908261420"
 #define GPSH_VERSION_TYPE "testing"
 #define GPSH_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)"
-#define GPSH_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPSH_GIT_COMMIT "d1e30fbf3b6c9d7a05e11c275889aadcf0f64a68"
+#define GPSH_DISTRIBUTION "3.2.2"
+#define GPSH_GIT_COMMIT "a42705e6b6bbbc2959858add0893c8dc8cce5a3f"
 #endif // GPSH_VERSION
 ENDVERSION
 echo "Configure gpsh"
 cd "gpsh"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpsh -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpsh -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpsh \\" >> $BUILD_DIR/geopsypack.pro
@@ -2134,21 +1987,19 @@ cat <<ENDVERSION > $BUILD_DIR/gpmt/src/gpmtVersion.h
 #define GPMT_VERSION_TIME "201908261420"
 #define GPMT_VERSION_TYPE "testing"
 #define GPMT_AUTHORS "Marc Wathelet (LGIT, Grenoble, France)"
-#define GPMT_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPMT_GIT_COMMIT "dc1239bdce3936640e3abc326fe3c3f70028bb24"
+#define GPMT_DISTRIBUTION "3.2.2"
+#define GPMT_GIT_COMMIT "d1fd602daa69532320b338099b5fa0ee9920505c"
 #endif // GPMT_VERSION
 ENDVERSION
 echo "Configure gpmt"
 cd "gpmt"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpmt -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpmt -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpmt \\" >> $BUILD_DIR/geopsypack.pro
@@ -2159,21 +2010,19 @@ cat <<ENDVERSION > $BUILD_DIR/gpgridsearch/src/gpgridsearchVersion.h
 #define GPGRIDSEARCH_VERSION_TIME "201908261420"
 #define GPGRIDSEARCH_VERSION_TYPE "testing"
 #define GPGRIDSEARCH_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)"
-#define GPGRIDSEARCH_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPGRIDSEARCH_GIT_COMMIT "36b75c3ad31c02708e7a0207a05295ace9256643"
+#define GPGRIDSEARCH_DISTRIBUTION "3.2.2"
+#define GPGRIDSEARCH_GIT_COMMIT "775904fe797973d9700a72d3654194959298f31e"
 #endif // GPGRIDSEARCH_VERSION
 ENDVERSION
 echo "Configure gpgridsearch"
 cd "gpgridsearch"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpgridsearch -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpgridsearch -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpgridsearch \\" >> $BUILD_DIR/geopsypack.pro
@@ -2184,21 +2033,19 @@ cat <<ENDVERSION > $BUILD_DIR/gpfksimulator/src/gpfksimulatorVersion.h
 #define GPFKSIMULATOR_VERSION_TIME "201910010814"
 #define GPFKSIMULATOR_VERSION_TYPE "testing"
 #define GPFKSIMULATOR_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)"
-#define GPFKSIMULATOR_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPFKSIMULATOR_GIT_COMMIT "caca71f5a22a893f718284feb2f38f507a4c78b2"
+#define GPFKSIMULATOR_DISTRIBUTION "3.2.2"
+#define GPFKSIMULATOR_GIT_COMMIT "e3dbc2e9d4c0980936c887d3b7ed24fa823b3a54"
 #endif // GPFKSIMULATOR_VERSION
 ENDVERSION
 echo "Configure gpfksimulator"
 cd "gpfksimulator"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpfksimulator -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpfksimulator -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpfksimulator \\" >> $BUILD_DIR/geopsypack.pro
@@ -2209,21 +2056,19 @@ cat <<ENDVERSION > $BUILD_DIR/gpmaplayer/src/gpmaplayerVersion.h
 #define GPMAPLAYER_VERSION_TIME "201908261420"
 #define GPMAPLAYER_VERSION_TYPE "testing"
 #define GPMAPLAYER_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)"
-#define GPMAPLAYER_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define GPMAPLAYER_GIT_COMMIT "cf1d290a245af0d96205a8a8c8c1528705616060"
+#define GPMAPLAYER_DISTRIBUTION "3.2.2"
+#define GPMAPLAYER_GIT_COMMIT "fe869bb92e7a594df38113b78e12ef784bb042b7"
 #endif // GPMAPLAYER_VERSION
 ENDVERSION
 echo "Configure gpmaplayer"
 cd "gpmaplayer"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpmaplayer -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir gpmaplayer -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          gpmaplayer \\" >> $BUILD_DIR/geopsypack.pro
@@ -2234,21 +2079,19 @@ cat <<ENDVERSION > $BUILD_DIR/dinvermatlab/src/dinvermatlabVersion.h
 #define DINVERMATLAB_VERSION_TIME "201910010814"
 #define DINVERMATLAB_VERSION_TYPE "testing"
 #define DINVERMATLAB_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
-#define DINVERMATLAB_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define DINVERMATLAB_GIT_COMMIT "8e06b704a52464c021504de6c4a3d936047c9ab1"
+#define DINVERMATLAB_DISTRIBUTION "3.2.2"
+#define DINVERMATLAB_GIT_COMMIT "bb6b6951f19044e9ae735c0e7aece83004932df7"
 #endif // DINVERMATLAB_VERSION
 ENDVERSION
 echo "Configure dinvermatlab"
 cd "dinvermatlab"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir dinvermatlab -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir dinvermatlab -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          dinvermatlab \\" >> $BUILD_DIR/geopsypack.pro
@@ -2259,21 +2102,19 @@ cat <<ENDVERSION > $BUILD_DIR/matfiles/src/matfilesVersion.h
 #define MATFILES_VERSION_TIME "201910010814"
 #define MATFILES_VERSION_TYPE "testing"
 #define MATFILES_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)"
-#define MATFILES_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
-#define MATFILES_GIT_COMMIT "b7136b9ac656f8125e4c891f72b0a32001b0c643"
+#define MATFILES_DISTRIBUTION "3.2.2"
+#define MATFILES_GIT_COMMIT "5308aada11252c7d8cf61dbef5f4605ab6b11cdf"
 #endif // MATFILES_VERSION
 ENDVERSION
 echo "Configure matfiles"
 cd "matfiles"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir matfiles -skip-qt-check $COMMANDLINE 2>$TEMP_LOG 1>/dev/null" > $TEMP_SCRIPT
-if ! $SHELL $TEMP_SCRIPT; then
-  cat $TEMP_LOG
-  rm $TEMP_LOG $TEMP_SCRIPT
-  exit 2
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir matfiles -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
 else
-  cat $TEMP_LOG
+  cat $TEMP_DIR/log
 fi
-rm -f $TEMP_SCRIPT $TEMP_LOG
 cd ..
 # Add project to main pro file
 echo "          matfiles \\" >> $BUILD_DIR/geopsypack.pro
@@ -2312,3 +2153,4 @@ echo
 echo "  The current configuration options are stored in 'configure.cache'."
 echo "  To change the configuration, run '$CONFIGURE_COMMAND [options]'."
 echo
+cleanexit 0
