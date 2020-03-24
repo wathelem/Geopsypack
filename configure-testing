@@ -2185,6 +2185,30 @@ fi
 cd ..
 # Add project to main pro file
 echo "          matfiles \\" >> $BUILD_DIR/geopsypack.pro
+test -d $BUILD_DIR/HVCore/src || mkdir -p $BUILD_DIR/HVCore/src
+cat <<ENDVERSION > $TEMP_DIR/HVCoreVersion.h
+#ifndef HVCORE_VERSION
+#define HVCORE_VERSION "0.1.0"
+#define HVCORE_VERSION_TIME "202002171443"
+#define HVCORE_VERSION_TYPE "testing"
+#define HVCORE_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)"
+#define HVCORE_DISTRIBUTION "BUILD_DIR must be defined. Invoke commands from build directory"
+#define HVCORE_GIT_COMMIT "1df8d6a367057c030ef5c9c79a2f3d8ac15aee88"
+#endif // HVCORE_VERSION
+ENDVERSION
+replaceFile $BUILD_DIR/HVCore/src HVCoreVersion.h
+echo "Configure HVCore"
+cd "HVCore"
+echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir HVCore -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/log
+  cleanexit 2
+else
+  cat $TEMP_DIR/log
+fi
+cd ..
+# Add project to main pro file
+echo "          HVCore \\" >> $BUILD_DIR/geopsypack.pro
 # Generate make file
 if [ "$BUILD_DIR" = "$SOURCE_DIR" ]; then
   qmake geopsypack.pro
