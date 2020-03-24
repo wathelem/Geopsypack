@@ -67,9 +67,6 @@
 [submodule "ArrayGui"]
 	path = ArrayGui
 	url = git://geopsy.org/ArrayGui
-[submodule "MonoStation"]
-	path = MonoStation
-	url = git://geopsy.org/MonoStation
 [submodule "geopsy-fk"]
 	path = geopsy-fk
 	url = git://geopsy.org/geopsy-fk
