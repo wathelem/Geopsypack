@@ -238,3 +238,6 @@
 [submodule "matfiles"]
 	path = matfiles
 	url = git://geopsy.org/matfiles
+[submodule "GeopsyLand"]
+	path = GeopsyLand
+	url = git://geopsy.org/GeopsyLand
