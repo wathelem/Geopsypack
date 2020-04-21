@@ -103,9 +103,6 @@
 [submodule "geopsyarray"]
 	path = geopsyarray
 	url = git://geopsy.org/geopsyarray
-[submodule "geopsyhv"]
-	path = geopsyhv
-	url = git://geopsy.org/geopsyhv
 [submodule "geopsydamping"]
 	path = geopsydamping
 	url = git://geopsy.org/geopsydamping
