@@ -1129,30 +1129,6 @@ fi
 cd ..
 # Add project to main pro file
 echo "          geopsyarray \\" >> $BUILD_DIR/geopsypack.pro
-test -d $BUILD_DIR/geopsyhv/src || mkdir -p $BUILD_DIR/geopsyhv/src
-cat <<ENDVERSION > $TEMP_DIR/geopsyhvVersion.h
-#ifndef GEOPSYHV_VERSION
-#define GEOPSYHV_VERSION "3.0.2"
-#define GEOPSYHV_VERSION_TIME "201911191229"
-#define GEOPSYHV_VERSION_TYPE "testing"
-#define GEOPSYHV_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
-#define GEOPSYHV_DISTRIBUTION "3.3.0-preview"
-#define GEOPSYHV_GIT_COMMIT "b843a39891e1c5e64e33a57078440b36089f1eca"
-#endif // GEOPSYHV_VERSION
-ENDVERSION
-replaceFile $BUILD_DIR/geopsyhv/src geopsyhvVersion.h
-echo "Configure geopsyhv"
-cd "geopsyhv"
-echo "$SHELL configure-testing -accept-license -sourcedir $SOURCE_DIR -builddir $BUILD_DIR -buildsubdir geopsyhv -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/log 1>/dev/null" > $TEMP_DIR/configure
-if ! $SHELL $TEMP_DIR/configure; then
-  cat $TEMP_DIR/log
-  cleanexit 2
-else
-  cat $TEMP_DIR/log
-fi
-cd ..
-# Add project to main pro file
-echo "          geopsyhv \\" >> $BUILD_DIR/geopsypack.pro
 test -d $BUILD_DIR/geopsydamping/src || mkdir -p $BUILD_DIR/geopsydamping/src
 cat <<ENDVERSION > $TEMP_DIR/geopsydampingVersion.h
 #ifndef GEOPSYDAMPING_VERSION
