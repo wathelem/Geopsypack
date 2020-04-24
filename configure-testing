@@ -321,7 +321,7 @@ cat <<ENDVERSION > $TEMP_DIR/slinkVersion.h
 #define SLINK_VERSION_TYPE "testing"
 #define SLINK_AUTHORS ""
 #define SLINK_DISTRIBUTION "3.3.0-preview"
-#define SLINK_GIT_COMMIT "3b4071f20b71d8c5812e3d4d974f1016e85eaad7"
+#define SLINK_GIT_COMMIT "77b4781ffe3f5934cb40be9f9b07c4c1c5b03c9f"
 #endif // SLINK_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/slink/src slinkVersion.h
