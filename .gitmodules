@@ -64,6 +64,9 @@
 [submodule "HVCore"]
 	path = HVCore
 	url = git://geopsy.org/HVCore
+[submodule "HVGui"]
+	path = HVGui
+	url = git://geopsy.org/HVGui
 [submodule "ArrayCore"]
 	path = ArrayCore
 	url = git://geopsy.org/ArrayCore
@@ -103,6 +106,9 @@
 [submodule "geopsyarray"]
 	path = geopsyarray
 	url = git://geopsy.org/geopsyarray
+[submodule "geopsyhv"]
+	path = geopsyhv
+	url = git://geopsy.org/geopsyhv
 [submodule "geopsydamping"]
 	path = geopsydamping
 	url = git://geopsy.org/geopsydamping
