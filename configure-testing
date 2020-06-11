@@ -405,7 +405,7 @@ cat <<ENDVERSION > $TEMP_DIR/QGpCoreMathVersion.h
 #define QGPCOREMATH_VERSION_TYPE "testing"
 #define QGPCOREMATH_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define QGPCOREMATH_DISTRIBUTION "3.3.0-preview"
-#define QGPCOREMATH_GIT_COMMIT "9f76f8b6ecd772cc4d11339b7d658a5eb3235148"
+#define QGPCOREMATH_GIT_COMMIT "12d0c34120fc7f7a45b6295990e675325e19995a"
 #endif // QGPCOREMATH_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/QGpCoreMath/src QGpCoreMathVersion.h
@@ -429,7 +429,7 @@ cat <<ENDVERSION > $TEMP_DIR/SciFigsVersion.h
 #define SCIFIGS_VERSION_TYPE "testing"
 #define SCIFIGS_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define SCIFIGS_DISTRIBUTION "3.3.0-preview"
-#define SCIFIGS_GIT_COMMIT "e5a3434c5e809fb019ca3f3b47796de750f5cb34"
+#define SCIFIGS_GIT_COMMIT "c1e44cb108aea62f998e0e1d17caac5e87b33dc5"
 #endif // SCIFIGS_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/SciFigs/src SciFigsVersion.h
@@ -453,7 +453,7 @@ cat <<ENDVERSION > $TEMP_DIR/QGpGuiMathVersion.h
 #define QGPGUIMATH_VERSION_TYPE "testing"
 #define QGPGUIMATH_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define QGPGUIMATH_DISTRIBUTION "3.3.0-preview"
-#define QGPGUIMATH_GIT_COMMIT "ff8827e93f77cf64b50ed875123325220f72289b"
+#define QGPGUIMATH_GIT_COMMIT "164652f01d2918efde2b248c7ff4c7a73b6a568d"
 #endif // QGPGUIMATH_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/QGpGuiMath/src QGpGuiMathVersion.h
