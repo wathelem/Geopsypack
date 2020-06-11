@@ -309,7 +309,7 @@ cat <<ENDVERSION > $TEMP_DIR/mseedVersion.h
 #define MSEED_VERSION_TYPE "testing"
 #define MSEED_AUTHORS ""
 #define MSEED_DISTRIBUTION "3.3.0-preview"
-#define MSEED_GIT_COMMIT "562e133ee07c11acf808b6a7483e4d0956fe0066"
+#define MSEED_GIT_COMMIT "36ef1679bc6e6b38782245b714a6fa705b48d95a"
 #endif // MSEED_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/mseed/src mseedVersion.h
@@ -333,7 +333,7 @@ cat <<ENDVERSION > $TEMP_DIR/slinkVersion.h
 #define SLINK_VERSION_TYPE "testing"
 #define SLINK_AUTHORS ""
 #define SLINK_DISTRIBUTION "3.3.0-preview"
-#define SLINK_GIT_COMMIT "77b4781ffe3f5934cb40be9f9b07c4c1c5b03c9f"
+#define SLINK_GIT_COMMIT "2f5d1388706d9a315c068c3597c1198686d90558"
 #endif // SLINK_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/slink/src slinkVersion.h
