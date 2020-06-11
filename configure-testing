@@ -309,7 +309,7 @@ cat <<ENDVERSION > $TEMP_DIR/mseedVersion.h
 #define MSEED_VERSION_TYPE "testing"
 #define MSEED_AUTHORS ""
 #define MSEED_DISTRIBUTION "3.3.0-preview"
-#define MSEED_GIT_COMMIT "36ef1679bc6e6b38782245b714a6fa705b48d95a"
+#define MSEED_GIT_COMMIT "5e7bedb680c6a2564ae975adcea60bf5fc17e5ef"
 #endif // MSEED_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/mseed/src mseedVersion.h
@@ -333,7 +333,7 @@ cat <<ENDVERSION > $TEMP_DIR/slinkVersion.h
 #define SLINK_VERSION_TYPE "testing"
 #define SLINK_AUTHORS ""
 #define SLINK_DISTRIBUTION "3.3.0-preview"
-#define SLINK_GIT_COMMIT "2f5d1388706d9a315c068c3597c1198686d90558"
+#define SLINK_GIT_COMMIT "ec1d67fd4b33d657793231bd159d4120e5f447ad"
 #endif // SLINK_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/slink/src slinkVersion.h
@@ -357,7 +357,7 @@ cat <<ENDVERSION > $TEMP_DIR/QGpCoreToolsVersion.h
 #define QGPCORETOOLS_VERSION_TYPE "testing"
 #define QGPCORETOOLS_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define QGPCORETOOLS_DISTRIBUTION "3.3.0-preview"
-#define QGPCORETOOLS_GIT_COMMIT "1f79d1dfc0d38ab393a7eefbfee3d5d2b1773de3"
+#define QGPCORETOOLS_GIT_COMMIT "58fc9b04562fdbc01c89122994586ddbf112a2f5"
 #endif // QGPCORETOOLS_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/QGpCoreTools/src QGpCoreToolsVersion.h
@@ -381,7 +381,7 @@ cat <<ENDVERSION > $TEMP_DIR/QGpGuiToolsVersion.h
 #define QGPGUITOOLS_VERSION_TYPE "testing"
 #define QGPGUITOOLS_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define QGPGUITOOLS_DISTRIBUTION "3.3.0-preview"
-#define QGPGUITOOLS_GIT_COMMIT "f98faf9aea36644a100e712fe3a40124907d290a"
+#define QGPGUITOOLS_GIT_COMMIT "9afc3daf3b26989dfeec0aeb280c7dceff97ccf7"
 #endif // QGPGUITOOLS_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/QGpGuiTools/src QGpGuiToolsVersion.h
@@ -405,7 +405,7 @@ cat <<ENDVERSION > $TEMP_DIR/QGpCoreMathVersion.h
 #define QGPCOREMATH_VERSION_TYPE "testing"
 #define QGPCOREMATH_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define QGPCOREMATH_DISTRIBUTION "3.3.0-preview"
-#define QGPCOREMATH_GIT_COMMIT "648c96a659204b2317dedb6e517064b91429cef4"
+#define QGPCOREMATH_GIT_COMMIT "9f76f8b6ecd772cc4d11339b7d658a5eb3235148"
 #endif // QGPCOREMATH_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/QGpCoreMath/src QGpCoreMathVersion.h
@@ -429,7 +429,7 @@ cat <<ENDVERSION > $TEMP_DIR/SciFigsVersion.h
 #define SCIFIGS_VERSION_TYPE "testing"
 #define SCIFIGS_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define SCIFIGS_DISTRIBUTION "3.3.0-preview"
-#define SCIFIGS_GIT_COMMIT "c8f0a851a1e26ed1a1d6e459f575ee74c6519d90"
+#define SCIFIGS_GIT_COMMIT "518b8799ef46f4b1ab8643bc48009209dce728ae"
 #endif // SCIFIGS_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/SciFigs/src SciFigsVersion.h
@@ -453,7 +453,7 @@ cat <<ENDVERSION > $TEMP_DIR/QGpGuiMathVersion.h
 #define QGPGUIMATH_VERSION_TYPE "testing"
 #define QGPGUIMATH_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define QGPGUIMATH_DISTRIBUTION "3.3.0-preview"
-#define QGPGUIMATH_GIT_COMMIT "c2465b80bd2aaeaef06bb98018ad644498d10ab0"
+#define QGPGUIMATH_GIT_COMMIT "253e5bcf7ec79e8afe2ce3d99cc7cd8f02bd542d"
 #endif // QGPGUIMATH_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/QGpGuiMath/src QGpGuiMathVersion.h
@@ -477,7 +477,7 @@ cat <<ENDVERSION > $TEMP_DIR/figueVersion.h
 #define FIGUE_VERSION_TYPE "testing"
 #define FIGUE_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define FIGUE_DISTRIBUTION "3.3.0-preview"
-#define FIGUE_GIT_COMMIT "408581f8e83a10039b7eef8380e2372b53dc7921"
+#define FIGUE_GIT_COMMIT "ceb5f375e3e0493598eb6fab7669ba381945591d"
 #endif // FIGUE_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/figue/src figueVersion.h
@@ -525,7 +525,7 @@ cat <<ENDVERSION > $TEMP_DIR/QGpGuiWaveVersion.h
 #define QGPGUIWAVE_VERSION_TYPE "testing"
 #define QGPGUIWAVE_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)"
 #define QGPGUIWAVE_DISTRIBUTION "3.3.0-preview"
-#define QGPGUIWAVE_GIT_COMMIT "744e25cb994b453098c3eef3199142b5d3185ab3"
+#define QGPGUIWAVE_GIT_COMMIT "b9076647cabde1a4c9332b599f5503b22e601556"
 #endif // QGPGUIWAVE_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/QGpGuiWave/src QGpGuiWaveVersion.h
@@ -573,7 +573,7 @@ cat <<ENDVERSION > $TEMP_DIR/GeopsyCoreVersion.h
 #define GEOPSYCORE_VERSION_TYPE "testing"
 #define GEOPSYCORE_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define GEOPSYCORE_DISTRIBUTION "3.3.0-preview"
-#define GEOPSYCORE_GIT_COMMIT "be5c681621e218b2f412c51538176ad5db9c6e13"
+#define GEOPSYCORE_GIT_COMMIT "997b684eefc5791731f13469fbfc5d39197c6830"
 #endif // GEOPSYCORE_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/GeopsyCore/src GeopsyCoreVersion.h
@@ -597,7 +597,7 @@ cat <<ENDVERSION > $TEMP_DIR/GeopsyGuiVersion.h
 #define GEOPSYGUI_VERSION_TYPE "testing"
 #define GEOPSYGUI_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define GEOPSYGUI_DISTRIBUTION "3.3.0-preview"
-#define GEOPSYGUI_GIT_COMMIT "20e1f174e24324a32839eecba9f546bb69ed5ce6"
+#define GEOPSYGUI_GIT_COMMIT "c8ef28dd824b43a7d679b5212561c96602e5685a"
 #endif // GEOPSYGUI_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/GeopsyGui/src GeopsyGuiVersion.h
@@ -813,7 +813,7 @@ cat <<ENDVERSION > $TEMP_DIR/HVCoreVersion.h
 #define HVCORE_VERSION_TYPE "testing"
 #define HVCORE_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)"
 #define HVCORE_DISTRIBUTION "3.3.0-preview"
-#define HVCORE_GIT_COMMIT "8a266be802617e5bfd1e134b9d598fd9ea3be3a2"
+#define HVCORE_GIT_COMMIT "6e8c9b6458c0b34aea122ac94a2c82725ca059ae"
 #endif // HVCORE_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/HVCore/src HVCoreVersion.h
@@ -837,7 +837,7 @@ cat <<ENDVERSION > $TEMP_DIR/HVGuiVersion.h
 #define HVGUI_VERSION_TYPE "testing"
 #define HVGUI_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define HVGUI_DISTRIBUTION "3.3.0-preview"
-#define HVGUI_GIT_COMMIT "63c1d8e36d33f1e0c0706866872a3c97391ee7a1"
+#define HVGUI_GIT_COMMIT "b83a62cf707af1c75ca9d6c3688dd3d969f1bed2"
 #endif // HVGUI_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/HVGui/src HVGuiVersion.h
@@ -861,7 +861,7 @@ cat <<ENDVERSION > $TEMP_DIR/ArrayCoreVersion.h
 #define ARRAYCORE_VERSION_TYPE "testing"
 #define ARRAYCORE_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define ARRAYCORE_DISTRIBUTION "3.3.0-preview"
-#define ARRAYCORE_GIT_COMMIT "4f07b0405488450cad6922535047b002ffd66418"
+#define ARRAYCORE_GIT_COMMIT "36849aea53a4a79f6ca09365fd746f25e661856a"
 #endif // ARRAYCORE_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/ArrayCore/src ArrayCoreVersion.h
@@ -981,7 +981,7 @@ cat <<ENDVERSION > $TEMP_DIR/geopsyVersion.h
 #define GEOPSY_VERSION_TYPE "testing"
 #define GEOPSY_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define GEOPSY_DISTRIBUTION "3.3.0-preview"
-#define GEOPSY_GIT_COMMIT "76c6a8131128ed384828cab82e88a006d93f62e1"
+#define GEOPSY_GIT_COMMIT "4766887093d830e81a26ef1fa008c95d2c985840"
 #endif // GEOPSY_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/geopsy/src geopsyVersion.h
@@ -1029,7 +1029,7 @@ cat <<ENDVERSION > $TEMP_DIR/dinverVersion.h
 #define DINVER_VERSION_TYPE "testing"
 #define DINVER_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define DINVER_DISTRIBUTION "3.3.0-preview"
-#define DINVER_GIT_COMMIT "6c4b28d5614df480ba8294bd88b8d5ba45503036"
+#define DINVER_GIT_COMMIT "e2c81049776637931aec5bfecde021b346b859d4"
 #endif // DINVER_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/dinver/src dinverVersion.h
@@ -1101,7 +1101,7 @@ cat <<ENDVERSION > $TEMP_DIR/waranVersion.h
 #define WARAN_VERSION_TYPE "testing"
 #define WARAN_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)"
 #define WARAN_DISTRIBUTION "3.3.0-preview"
-#define WARAN_GIT_COMMIT "dfb172f3df8f221d0d52c581ef32779c7e08edad"
+#define WARAN_GIT_COMMIT "f6f1c962a270fc91bdd5f6c45533f5296b89058b"
 #endif // WARAN_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/waran/src waranVersion.h
@@ -1149,7 +1149,7 @@ cat <<ENDVERSION > $TEMP_DIR/geopsyarrayVersion.h
 #define GEOPSYARRAY_VERSION_TYPE "testing"
 #define GEOPSYARRAY_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define GEOPSYARRAY_DISTRIBUTION "3.3.0-preview"
-#define GEOPSYARRAY_GIT_COMMIT "86842ef94534b31356b66f6d1bb55859a027e1e7"
+#define GEOPSYARRAY_GIT_COMMIT "917d94f5a4546f575175c76a20660e2a4604c903"
 #endif // GEOPSYARRAY_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/geopsyarray/src geopsyarrayVersion.h
@@ -1173,7 +1173,7 @@ cat <<ENDVERSION > $TEMP_DIR/geopsyhvVersion.h
 #define GEOPSYHV_VERSION_TYPE "testing"
 #define GEOPSYHV_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define GEOPSYHV_DISTRIBUTION "3.3.0-preview"
-#define GEOPSYHV_GIT_COMMIT "aa0048a878b1b2545584f6fc609e7efe9af1b056"
+#define GEOPSYHV_GIT_COMMIT "f1f3679b269b0d51c5d4122a9153bc13706c79b5"
 #endif // GEOPSYHV_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/geopsyhv/src geopsyhvVersion.h
@@ -1197,7 +1197,7 @@ cat <<ENDVERSION > $TEMP_DIR/geopsydampingVersion.h
 #define GEOPSYDAMPING_VERSION_TYPE "testing"
 #define GEOPSYDAMPING_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define GEOPSYDAMPING_DISTRIBUTION "3.3.0-preview"
-#define GEOPSYDAMPING_GIT_COMMIT "3929cd37791bc307a959466f92957f8472f65710"
+#define GEOPSYDAMPING_GIT_COMMIT "6e3488a83eefa4114b5e200f6acb0ba4d546b6b7"
 #endif // GEOPSYDAMPING_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/geopsydamping/src geopsydampingVersion.h
@@ -1221,7 +1221,7 @@ cat <<ENDVERSION > $TEMP_DIR/geopsytfaVersion.h
 #define GEOPSYTFA_VERSION_TYPE "testing"
 #define GEOPSYTFA_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GEOPSYTFA_DISTRIBUTION "3.3.0-preview"
-#define GEOPSYTFA_GIT_COMMIT "028a7c4544415c4feb7e52081b7a12c0692176a0"
+#define GEOPSYTFA_GIT_COMMIT "5ef1c9f99a97cd387af3eb22f142dff97b85a14f"
 #endif // GEOPSYTFA_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/geopsytfa/src geopsytfaVersion.h
@@ -1245,7 +1245,7 @@ cat <<ENDVERSION > $TEMP_DIR/geopsynrVersion.h
 #define GEOPSYNR_VERSION_TYPE "testing"
 #define GEOPSYNR_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GEOPSYNR_DISTRIBUTION "3.3.0-preview"
-#define GEOPSYNR_GIT_COMMIT "e3d911d4e80404a96caa8a790bb4b45e9a220bb7"
+#define GEOPSYNR_GIT_COMMIT "2820719649ba953002e36126d265e34772e8e03a"
 #endif // GEOPSYNR_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/geopsynr/src geopsynrVersion.h
@@ -1269,7 +1269,7 @@ cat <<ENDVERSION > $TEMP_DIR/geopsyptmotionVersion.h
 #define GEOPSYPTMOTION_VERSION_TYPE "testing"
 #define GEOPSYPTMOTION_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define GEOPSYPTMOTION_DISTRIBUTION "3.3.0-preview"
-#define GEOPSYPTMOTION_GIT_COMMIT "933080ba861fa14721744a5cd3147154d0dfaaae"
+#define GEOPSYPTMOTION_GIT_COMMIT "c08a335d4ced690104790b093c44ce3b228f20fb"
 #endif // GEOPSYPTMOTION_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/geopsyptmotion/src geopsyptmotionVersion.h
@@ -1293,7 +1293,7 @@ cat <<ENDVERSION > $TEMP_DIR/geopsyrefraVersion.h
 #define GEOPSYREFRA_VERSION_TYPE "testing"
 #define GEOPSYREFRA_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define GEOPSYREFRA_DISTRIBUTION "3.3.0-preview"
-#define GEOPSYREFRA_GIT_COMMIT "84321b9b7b01cc45f3fd05ed01ab9ed3e5bc3d8f"
+#define GEOPSYREFRA_GIT_COMMIT "84f4ba487fc18e137edf9851bf460beabd8403d8"
 #endif // GEOPSYREFRA_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/geopsyrefra/src geopsyrefraVersion.h
@@ -1317,7 +1317,7 @@ cat <<ENDVERSION > $TEMP_DIR/hvtfaVersion.h
 #define HVTFA_VERSION_TYPE "testing"
 #define HVTFA_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMiriam Kristekova (Geophysical Institute, Academy of Sciences, Bratislava, Slovak Republic)"
 #define HVTFA_DISTRIBUTION "3.3.0-preview"
-#define HVTFA_GIT_COMMIT "7ea74adae56971d0e2219ea4d2dc1c41bcd530bc"
+#define HVTFA_GIT_COMMIT "c3e96a2992756fd25c88a6325f6c8a9e30a32e0b"
 #endif // HVTFA_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/hvtfa/src hvtfaVersion.h
@@ -1365,7 +1365,7 @@ cat <<ENDVERSION > $TEMP_DIR/dinverdcVersion.h
 #define DINVERDC_VERSION_TYPE "testing"
 #define DINVERDC_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define DINVERDC_DISTRIBUTION "3.3.0-preview"
-#define DINVERDC_GIT_COMMIT "995c7c54f0e1ea9231b60f238a0a477e4d0111bd"
+#define DINVERDC_GIT_COMMIT "98fce375b1da97b37c0a8d5282793a4d09e82742"
 #endif // DINVERDC_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/dinverdc/src dinverdcVersion.h
@@ -1437,7 +1437,7 @@ cat <<ENDVERSION > $TEMP_DIR/max2curveVersion.h
 #define MAX2CURVE_VERSION_TYPE "testing"
 #define MAX2CURVE_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define MAX2CURVE_DISTRIBUTION "3.3.0-preview"
-#define MAX2CURVE_GIT_COMMIT "534a50abe15d4be82a923858992cdbf9bcd8b85a"
+#define MAX2CURVE_GIT_COMMIT "82255bb1e245713c628bb3734c34661a91d222db"
 #endif // MAX2CURVE_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/max2curve/src max2curveVersion.h
@@ -2253,7 +2253,7 @@ cat <<ENDVERSION > $TEMP_DIR/GeopsyLandVersion.h
 #define GEOPSYLAND_VERSION_TYPE "testing"
 #define GEOPSYLAND_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)"
 #define GEOPSYLAND_DISTRIBUTION "3.3.0-preview"
-#define GEOPSYLAND_GIT_COMMIT "8dfc7f1757041e98b1a71f91df9eabfbe367473d"
+#define GEOPSYLAND_GIT_COMMIT "7b6d37d34aa92ef78a05d12cd0890ac4e4fd388d"
 #endif // GEOPSYLAND_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/GeopsyLand/src GeopsyLandVersion.h
