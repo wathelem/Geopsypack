@@ -381,7 +381,7 @@ cat <<ENDVERSION > $TEMP_DIR/QGpGuiToolsVersion.h
 #define QGPGUITOOLS_VERSION_TYPE "testing"
 #define QGPGUITOOLS_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define QGPGUITOOLS_DISTRIBUTION "3.3.0-preview"
-#define QGPGUITOOLS_GIT_COMMIT "6f7ef025cb3c0815cbd5ea7bc4c7f5067c0a53fa"
+#define QGPGUITOOLS_GIT_COMMIT "9dfdf4fc3a7f321b176b666294e8fe65a0891465"
 #endif // QGPGUITOOLS_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/QGpGuiTools/src QGpGuiToolsVersion.h
