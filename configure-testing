@@ -837,7 +837,7 @@ cat <<ENDVERSION > $TEMP_DIR/HVGuiVersion.h
 #define HVGUI_VERSION_TYPE "testing"
 #define HVGUI_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define HVGUI_DISTRIBUTION "3.3.0-preview"
-#define HVGUI_GIT_COMMIT "62d5316fabbd732704cad78300a08093fb4d1570"
+#define HVGUI_GIT_COMMIT "d69f383479e01b8dbf65e6c7cc160210d218067d"
 #endif // HVGUI_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/HVGui/src HVGuiVersion.h
