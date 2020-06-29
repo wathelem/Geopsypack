@@ -316,13 +316,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/mseed/src mseedVersion.h
 echo "Configure mseed"
 cd "mseed"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir mseed -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -345,13 +346,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/slink/src slinkVersion.h
 echo "Configure slink"
 cd "slink"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir slink -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -374,13 +376,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/QGpCoreTools/src QGpCoreToolsVersion.h
 echo "Configure QGpCoreTools"
 cd "QGpCoreTools"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir QGpCoreTools -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -403,13 +406,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/QGpGuiTools/src QGpGuiToolsVersion.h
 echo "Configure QGpGuiTools"
 cd "QGpGuiTools"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir QGpGuiTools -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -432,13 +436,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/QGpCoreMath/src QGpCoreMathVersion.h
 echo "Configure QGpCoreMath"
 cd "QGpCoreMath"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir QGpCoreMath -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -461,13 +466,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/SciFigs/src SciFigsVersion.h
 echo "Configure SciFigs"
 cd "SciFigs"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir SciFigs -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -490,13 +496,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/QGpGuiMath/src QGpGuiMathVersion.h
 echo "Configure QGpGuiMath"
 cd "QGpGuiMath"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir QGpGuiMath -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -519,13 +526,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/figue/src figueVersion.h
 echo "Configure figue"
 cd "figue"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir figue -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -548,13 +556,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/QGpCoreWave/src QGpCoreWaveVersion.h
 echo "Configure QGpCoreWave"
 cd "QGpCoreWave"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir QGpCoreWave -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -577,13 +586,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/QGpGuiWave/src QGpGuiWaveVersion.h
 echo "Configure QGpGuiWave"
 cd "QGpGuiWave"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir QGpGuiWave -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -606,13 +616,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/QGpCompatibility/src QGpCompatibilityVersion.h
 echo "Configure QGpCompatibility"
 cd "QGpCompatibility"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir QGpCompatibility -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -635,13 +646,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/GeopsyCore/src GeopsyCoreVersion.h
 echo "Configure GeopsyCore"
 cd "GeopsyCore"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir GeopsyCore -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -664,13 +676,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/GeopsyGui/src GeopsyGuiVersion.h
 echo "Configure GeopsyGui"
 cd "GeopsyGui"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir GeopsyGui -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -693,13 +706,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/geopsyfigs/src geopsyfigsVersion.h
 echo "Configure geopsyfigs"
 cd "geopsyfigs"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir geopsyfigs -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -722,13 +736,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/GeopsySLink/src GeopsySLinkVersion.h
 echo "Configure GeopsySLink"
 cd "GeopsySLink"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir GeopsySLink -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -751,13 +766,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/GeopsySLinkGui/src GeopsySLinkGuiVersion.h
 echo "Configure GeopsySLinkGui"
 cd "GeopsySLinkGui"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir GeopsySLinkGui -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -780,13 +796,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/DinverCore/src DinverCoreVersion.h
 echo "Configure DinverCore"
 cd "DinverCore"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir DinverCore -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -809,13 +826,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/DinverGui/src DinverGuiVersion.h
 echo "Configure DinverGui"
 cd "DinverGui"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir DinverGui -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -838,13 +856,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/DinverDCCore/src DinverDCCoreVersion.h
 echo "Configure DinverDCCore"
 cd "DinverDCCore"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir DinverDCCore -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -867,13 +886,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/DinverDCGui/src DinverDCGuiVersion.h
 echo "Configure DinverDCGui"
 cd "DinverDCGui"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir DinverDCGui -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -896,13 +916,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/QGpCoreStat/src QGpCoreStatVersion.h
 echo "Configure QGpCoreStat"
 cd "QGpCoreStat"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir QGpCoreStat -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -925,13 +946,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/HVCore/src HVCoreVersion.h
 echo "Configure HVCore"
 cd "HVCore"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir HVCore -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -954,13 +976,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/HVGui/src HVGuiVersion.h
 echo "Configure HVGui"
 cd "HVGui"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir HVGui -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -983,13 +1006,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/ArrayCore/src ArrayCoreVersion.h
 echo "Configure ArrayCore"
 cd "ArrayCore"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir ArrayCore -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -1012,13 +1036,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/ArrayGui/src ArrayGuiVersion.h
 echo "Configure ArrayGui"
 cd "ArrayGui"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir ArrayGui -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -1041,13 +1066,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/geopsy-fk/src geopsy-fkVersion.h
 echo "Configure geopsy-fk"
 cd "geopsy-fk"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir geopsy-fk -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -1070,13 +1096,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/geopsy-spac/src geopsy-spacVersion.h
 echo "Configure geopsy-spac"
 cd "geopsy-spac"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir geopsy-spac -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -1099,13 +1126,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/geopsy-hv/src geopsy-hvVersion.h
 echo "Configure geopsy-hv"
 cd "geopsy-hv"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir geopsy-hv -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -1128,13 +1156,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/geopsy/src geopsyVersion.h
 echo "Configure geopsy"
 cd "geopsy"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir geopsy -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -1157,13 +1186,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/vslarray/src vslarrayVersion.h
 echo "Configure vslarray"
 cd "vslarray"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir vslarray -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -1186,13 +1216,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/dinver/src dinverVersion.h
 echo "Configure dinver"
 cd "dinver"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir dinver -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -1215,13 +1246,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/WaranCore/src WaranCoreVersion.h
 echo "Configure WaranCore"
 cd "WaranCore"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir WaranCore -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -1244,13 +1276,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/TapePositioningSystem/src TapePositioningSystemVersion.h
 echo "Configure TapePositioningSystem"
 cd "TapePositioningSystem"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir TapePositioningSystem -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -1273,13 +1306,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/waran/src waranVersion.h
 echo "Configure waran"
 cd "waran"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir waran -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -1302,13 +1336,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/warangps/src warangpsVersion.h
 echo "Configure warangps"
 cd "warangps"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir warangps -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -1331,13 +1366,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/geopsyarray/src geopsyarrayVersion.h
 echo "Configure geopsyarray"
 cd "geopsyarray"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir geopsyarray -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -1360,13 +1396,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/geopsyhv/src geopsyhvVersion.h
 echo "Configure geopsyhv"
 cd "geopsyhv"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir geopsyhv -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -1389,13 +1426,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/geopsydamping/src geopsydampingVersion.h
 echo "Configure geopsydamping"
 cd "geopsydamping"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir geopsydamping -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -1418,13 +1456,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/geopsytfa/src geopsytfaVersion.h
 echo "Configure geopsytfa"
 cd "geopsytfa"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir geopsytfa -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -1447,13 +1486,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/geopsynr/src geopsynrVersion.h
 echo "Configure geopsynr"
 cd "geopsynr"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir geopsynr -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -1476,13 +1516,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/geopsyptmotion/src geopsyptmotionVersion.h
 echo "Configure geopsyptmotion"
 cd "geopsyptmotion"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir geopsyptmotion -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -1505,13 +1546,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/geopsyrefra/src geopsyrefraVersion.h
 echo "Configure geopsyrefra"
 cd "geopsyrefra"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir geopsyrefra -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -1534,13 +1576,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/hvtfa/src hvtfaVersion.h
 echo "Configure hvtfa"
 cd "hvtfa"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir hvtfa -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -1563,13 +1606,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/campbelltob3/src campbelltob3Version.h
 echo "Configure campbelltob3"
 cd "campbelltob3"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir campbelltob3 -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -1592,13 +1636,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/dinverdc/src dinverdcVersion.h
 echo "Configure dinverdc"
 cd "dinverdc"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir dinverdc -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -1621,13 +1666,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/dinverext/src dinverextVersion.h
 echo "Configure dinverext"
 cd "dinverext"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir dinverext -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -1650,13 +1696,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/spac2disp/src spac2dispVersion.h
 echo "Configure spac2disp"
 cd "spac2disp"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir spac2disp -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -1679,13 +1726,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/max2curve/src max2curveVersion.h
 echo "Configure max2curve"
 cd "max2curve"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir max2curve -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -1708,13 +1756,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/gppoisson/src gppoissonVersion.h
 echo "Configure gppoisson"
 cd "gppoisson"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gppoisson -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -1737,13 +1786,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpprofile/src gpprofileVersion.h
 echo "Configure gpprofile"
 cd "gpprofile"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpprofile -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -1766,13 +1816,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpdc/src gpdcVersion.h
 echo "Configure gpdc"
 cd "gpdc"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpdc -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -1795,13 +1846,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/gplivemodel/src gplivemodelVersion.h
 echo "Configure gplivemodel"
 cd "gplivemodel"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gplivemodel -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -1824,13 +1876,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpec8/src gpec8Version.h
 echo "Configure gpec8"
 cd "gpec8"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpec8 -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -1853,13 +1906,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpdcreport/src gpdcreportVersion.h
 echo "Configure gpdcreport"
 cd "gpdcreport"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpdcreport -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -1882,13 +1936,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/gptarget/src gptargetVersion.h
 echo "Configure gptarget"
 cd "gptarget"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gptarget -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -1911,13 +1966,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpviewdcreport/src gpviewdcreportVersion.h
 echo "Configure gpviewdcreport"
 cd "gpviewdcreport"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpviewdcreport -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -1940,13 +1996,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpdcmisfit/src gpdcmisfitVersion.h
 echo "Configure gpdcmisfit"
 cd "gpdcmisfit"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpdcmisfit -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -1969,13 +2026,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpell/src gpellVersion.h
 echo "Configure gpell"
 cd "gpell"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpell -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -1998,13 +2056,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpgroup2phase/src gpgroup2phaseVersion.h
 echo "Configure gpgroup2phase"
 cd "gpgroup2phase"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpgroup2phase -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -2027,13 +2086,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpmodel2param/src gpmodel2paramVersion.h
 echo "Configure gpmodel2param"
 cd "gpmodel2param"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpmodel2param -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -2056,13 +2116,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpparam2model/src gpparam2modelVersion.h
 echo "Configure gpparam2model"
 cd "gpparam2model"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpparam2model -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -2085,13 +2146,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpdepths/src gpdepthsVersion.h
 echo "Configure gpdepths"
 cd "gpdepths"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpdepths -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -2114,13 +2176,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpsort/src gpsortVersion.h
 echo "Configure gpsort"
 cd "gpsort"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpsort -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -2143,13 +2206,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpcurve/src gpcurveVersion.h
 echo "Configure gpcurve"
 cd "gpcurve"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpcurve -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -2172,13 +2236,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/gprandom/src gprandomVersion.h
 echo "Configure gprandom"
 cd "gprandom"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gprandom -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -2201,13 +2266,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpspac/src gpspacVersion.h
 echo "Configure gpspac"
 cd "gpspac"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpspac -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -2230,13 +2296,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/gprefra/src gprefraVersion.h
 echo "Configure gprefra"
 cd "gprefra"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gprefra -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -2259,13 +2326,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpsignal/src gpsignalVersion.h
 echo "Configure gpsignal"
 cd "gpsignal"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpsignal -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -2288,13 +2356,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/gphistogram/src gphistogramVersion.h
 echo "Configure gphistogram"
 cd "gphistogram"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gphistogram -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -2317,13 +2386,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpviewmax/src gpviewmaxVersion.h
 echo "Configure gpviewmax"
 cd "gpviewmax"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpviewmax -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -2346,13 +2416,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpdistance/src gpdistanceVersion.h
 echo "Configure gpdistance"
 cd "gpdistance"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpdistance -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -2375,13 +2446,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/gptime/src gptimeVersion.h
 echo "Configure gptime"
 cd "gptime"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gptime -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -2404,13 +2476,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpcoord/src gpcoordVersion.h
 echo "Configure gpcoord"
 cd "gpcoord"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpcoord -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -2433,13 +2506,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpreplace/src gpreplaceVersion.h
 echo "Configure gpreplace"
 cd "gpreplace"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpreplace -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -2462,13 +2536,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpsh/src gpshVersion.h
 echo "Configure gpsh"
 cd "gpsh"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpsh -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -2491,13 +2566,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpmt/src gpmtVersion.h
 echo "Configure gpmt"
 cd "gpmt"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpmt -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -2520,13 +2596,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpgridsearch/src gpgridsearchVersion.h
 echo "Configure gpgridsearch"
 cd "gpgridsearch"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpgridsearch -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -2549,13 +2626,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpfksimulator/src gpfksimulatorVersion.h
 echo "Configure gpfksimulator"
 cd "gpfksimulator"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpfksimulator -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -2578,13 +2656,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpmaplayer/src gpmaplayerVersion.h
 echo "Configure gpmaplayer"
 cd "gpmaplayer"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpmaplayer -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -2607,13 +2686,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/dinvermatlab/src dinvermatlabVersion.h
 echo "Configure dinvermatlab"
 cd "dinvermatlab"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir dinvermatlab -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -2636,13 +2716,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/matfiles/src matfilesVersion.h
 echo "Configure matfiles"
 cd "matfiles"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir matfiles -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
@@ -2665,13 +2746,14 @@ ENDVERSION
 replaceFile $BUILD_DIR/GeopsyLand/src GeopsyLandVersion.h
 echo "Configure GeopsyLand"
 cd "GeopsyLand"
-if [ -e configure-$BRANCH ]; then
-  CONFIGURE_SCRIPT=configure-$BRANCH
+if [ -e configure-testing ]; then
+  CONFIGURE_SCRIPT=configure-testing
 else
   CONFIGURE_SCRIPT=configure
 fi
 echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir GeopsyLand -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
   cleanexit 2
 else
