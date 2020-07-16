@@ -430,7 +430,7 @@ cat <<ENDVERSION > $TEMP_DIR/QGpCoreMathVersion.h
 #define QGPCOREMATH_VERSION_TYPE "testing"
 #define QGPCOREMATH_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define QGPCOREMATH_DISTRIBUTION "3.3.2-preview"
-#define QGPCOREMATH_GIT_COMMIT "b8bd25a2b9e468c55f72c2c10586d80b65978e4c"
+#define QGPCOREMATH_GIT_COMMIT "9c734617a4d9600ba9dbf4a502caa249757fd725"
 #endif // QGPCOREMATH_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/QGpCoreMath/src QGpCoreMathVersion.h
@@ -910,7 +910,7 @@ cat <<ENDVERSION > $TEMP_DIR/QGpCoreStatVersion.h
 #define QGPCORESTAT_VERSION_TYPE "testing"
 #define QGPCORESTAT_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)"
 #define QGPCORESTAT_DISTRIBUTION "3.3.2-preview"
-#define QGPCORESTAT_GIT_COMMIT "f8b4fa2ca04a4864359128bca2cfa2845830ca01"
+#define QGPCORESTAT_GIT_COMMIT "9850c4421427aac1f907616d7e2367b34291dcc5"
 #endif // QGPCORESTAT_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/QGpCoreStat/src QGpCoreStatVersion.h
@@ -940,7 +940,7 @@ cat <<ENDVERSION > $TEMP_DIR/HVCoreVersion.h
 #define HVCORE_VERSION_TYPE "testing"
 #define HVCORE_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)"
 #define HVCORE_DISTRIBUTION "3.3.2-preview"
-#define HVCORE_GIT_COMMIT "3fd71a34776c4360165f5d55bff20c0fcb017c64"
+#define HVCORE_GIT_COMMIT "995dffbd19794c972dffe94a8643220ab102cb67"
 #endif // HVCORE_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/HVCore/src HVCoreVersion.h
@@ -970,7 +970,7 @@ cat <<ENDVERSION > $TEMP_DIR/HVGuiVersion.h
 #define HVGUI_VERSION_TYPE "testing"
 #define HVGUI_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define HVGUI_DISTRIBUTION "3.3.2-preview"
-#define HVGUI_GIT_COMMIT "c51a4ac7380ea06936a4f3a9d18af0fa053fed8b"
+#define HVGUI_GIT_COMMIT "d061797eae971b25630be068fc34c0fa1415d932"
 #endif // HVGUI_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/HVGui/src HVGuiVersion.h
@@ -1000,7 +1000,7 @@ cat <<ENDVERSION > $TEMP_DIR/ArrayCoreVersion.h
 #define ARRAYCORE_VERSION_TYPE "testing"
 #define ARRAYCORE_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define ARRAYCORE_DISTRIBUTION "3.3.2-preview"
-#define ARRAYCORE_GIT_COMMIT "0a355add14b2723cb8efb933b208ee469ac30540"
+#define ARRAYCORE_GIT_COMMIT "f38a2a80dab09945d9be8d64101395917e441ab2"
 #endif // ARRAYCORE_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/ArrayCore/src ArrayCoreVersion.h
@@ -1060,7 +1060,7 @@ cat <<ENDVERSION > $TEMP_DIR/geopsy-fkVersion.h
 #define GEOPSY_FK_VERSION_TYPE "testing"
 #define GEOPSY_FK_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)"
 #define GEOPSY_FK_DISTRIBUTION "3.3.2-preview"
-#define GEOPSY_FK_GIT_COMMIT "5ba9ff0995a76f3f026f12cca7de6ac8f9e51ab8"
+#define GEOPSY_FK_GIT_COMMIT "58aab78191ff9b2c414789271df348839a2b37c2"
 #endif // GEOPSY_FK_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/geopsy-fk/src geopsy-fkVersion.h
@@ -1360,7 +1360,7 @@ cat <<ENDVERSION > $TEMP_DIR/geopsyarrayVersion.h
 #define GEOPSYARRAY_VERSION_TYPE "testing"
 #define GEOPSYARRAY_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define GEOPSYARRAY_DISTRIBUTION "3.3.2-preview"
-#define GEOPSYARRAY_GIT_COMMIT "dae2d11b35c67bcb0d638eb7578a5d5899749fad"
+#define GEOPSYARRAY_GIT_COMMIT "d56baf24b4fae1eb60881624a3e607649ed0e574"
 #endif // GEOPSYARRAY_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/geopsyarray/src geopsyarrayVersion.h
