@@ -316,8 +316,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/mseed/src mseedVersion.h
 echo "Configure mseed"
 cd "mseed"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -346,8 +346,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/slink/src slinkVersion.h
 echo "Configure slink"
 cd "slink"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -376,8 +376,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/QGpCoreTools/src QGpCoreToolsVersion.h
 echo "Configure QGpCoreTools"
 cd "QGpCoreTools"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -406,8 +406,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/QGpGuiTools/src QGpGuiToolsVersion.h
 echo "Configure QGpGuiTools"
 cd "QGpGuiTools"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -425,19 +425,19 @@ echo "          QGpGuiTools \\" >> $BUILD_DIR/geopsypack.pro
 test -d $BUILD_DIR/QGpCoreMath/src || mkdir -p $BUILD_DIR/QGpCoreMath/src
 cat <<ENDVERSION > $TEMP_DIR/QGpCoreMathVersion.h
 #ifndef QGPCOREMATH_VERSION
-#define QGPCOREMATH_VERSION "1.3.0"
-#define QGPCOREMATH_VERSION_TIME "202006291322"
-#define QGPCOREMATH_VERSION_TYPE "testing"
-#define QGPCOREMATH_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
+#define QGPCOREMATH_VERSION ".."
+#define QGPCOREMATH_VERSION_TIME ""
+#define QGPCOREMATH_VERSION_TYPE "(HEAD"
+#define QGPCOREMATH_AUTHORS "WARNING: no admin/version-(HEAD\nMarc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define QGPCOREMATH_DISTRIBUTION "3.3.2-preview"
-#define QGPCOREMATH_GIT_COMMIT "523876f49d75142d4f3f2d50a9a8af26fb8d3cb9"
+#define QGPCOREMATH_GIT_COMMIT "9c734617a4d9600ba9dbf4a502caa249757fd725"
 #endif // QGPCOREMATH_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/QGpCoreMath/src QGpCoreMathVersion.h
 echo "Configure QGpCoreMath"
 cd "QGpCoreMath"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -466,8 +466,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/SciFigs/src SciFigsVersion.h
 echo "Configure SciFigs"
 cd "SciFigs"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -496,8 +496,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/QGpGuiMath/src QGpGuiMathVersion.h
 echo "Configure QGpGuiMath"
 cd "QGpGuiMath"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -526,8 +526,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/figue/src figueVersion.h
 echo "Configure figue"
 cd "figue"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -556,8 +556,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/QGpCoreWave/src QGpCoreWaveVersion.h
 echo "Configure QGpCoreWave"
 cd "QGpCoreWave"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -586,8 +586,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/QGpGuiWave/src QGpGuiWaveVersion.h
 echo "Configure QGpGuiWave"
 cd "QGpGuiWave"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -616,8 +616,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/QGpCompatibility/src QGpCompatibilityVersion.h
 echo "Configure QGpCompatibility"
 cd "QGpCompatibility"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -646,8 +646,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/GeopsyCore/src GeopsyCoreVersion.h
 echo "Configure GeopsyCore"
 cd "GeopsyCore"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -676,8 +676,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/GeopsyGui/src GeopsyGuiVersion.h
 echo "Configure GeopsyGui"
 cd "GeopsyGui"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -706,8 +706,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/geopsyfigs/src geopsyfigsVersion.h
 echo "Configure geopsyfigs"
 cd "geopsyfigs"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -736,8 +736,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/GeopsySLink/src GeopsySLinkVersion.h
 echo "Configure GeopsySLink"
 cd "GeopsySLink"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -766,8 +766,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/GeopsySLinkGui/src GeopsySLinkGuiVersion.h
 echo "Configure GeopsySLinkGui"
 cd "GeopsySLinkGui"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -796,8 +796,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/DinverCore/src DinverCoreVersion.h
 echo "Configure DinverCore"
 cd "DinverCore"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -826,8 +826,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/DinverGui/src DinverGuiVersion.h
 echo "Configure DinverGui"
 cd "DinverGui"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -856,8 +856,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/DinverDCCore/src DinverDCCoreVersion.h
 echo "Configure DinverDCCore"
 cd "DinverDCCore"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -886,8 +886,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/DinverDCGui/src DinverDCGuiVersion.h
 echo "Configure DinverDCGui"
 cd "DinverDCGui"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -916,8 +916,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/QGpCoreStat/src QGpCoreStatVersion.h
 echo "Configure QGpCoreStat"
 cd "QGpCoreStat"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -946,8 +946,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/HVCore/src HVCoreVersion.h
 echo "Configure HVCore"
 cd "HVCore"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -976,8 +976,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/HVGui/src HVGuiVersion.h
 echo "Configure HVGui"
 cd "HVGui"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -1006,8 +1006,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/ArrayCore/src ArrayCoreVersion.h
 echo "Configure ArrayCore"
 cd "ArrayCore"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -1036,8 +1036,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/ArrayGui/src ArrayGuiVersion.h
 echo "Configure ArrayGui"
 cd "ArrayGui"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -1066,8 +1066,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/geopsy-fk/src geopsy-fkVersion.h
 echo "Configure geopsy-fk"
 cd "geopsy-fk"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -1096,8 +1096,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/geopsy-spac/src geopsy-spacVersion.h
 echo "Configure geopsy-spac"
 cd "geopsy-spac"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -1126,8 +1126,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/geopsy-hv/src geopsy-hvVersion.h
 echo "Configure geopsy-hv"
 cd "geopsy-hv"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -1156,8 +1156,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/geopsy/src geopsyVersion.h
 echo "Configure geopsy"
 cd "geopsy"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -1186,8 +1186,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/vslarray/src vslarrayVersion.h
 echo "Configure vslarray"
 cd "vslarray"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -1216,8 +1216,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/dinver/src dinverVersion.h
 echo "Configure dinver"
 cd "dinver"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -1246,8 +1246,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/WaranCore/src WaranCoreVersion.h
 echo "Configure WaranCore"
 cd "WaranCore"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -1276,8 +1276,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/TapePositioningSystem/src TapePositioningSystemVersion.h
 echo "Configure TapePositioningSystem"
 cd "TapePositioningSystem"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -1306,8 +1306,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/waran/src waranVersion.h
 echo "Configure waran"
 cd "waran"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -1336,8 +1336,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/warangps/src warangpsVersion.h
 echo "Configure warangps"
 cd "warangps"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -1366,8 +1366,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/geopsyarray/src geopsyarrayVersion.h
 echo "Configure geopsyarray"
 cd "geopsyarray"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -1396,8 +1396,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/geopsyhv/src geopsyhvVersion.h
 echo "Configure geopsyhv"
 cd "geopsyhv"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -1426,8 +1426,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/geopsydamping/src geopsydampingVersion.h
 echo "Configure geopsydamping"
 cd "geopsydamping"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -1456,8 +1456,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/geopsytfa/src geopsytfaVersion.h
 echo "Configure geopsytfa"
 cd "geopsytfa"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -1486,8 +1486,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/geopsynr/src geopsynrVersion.h
 echo "Configure geopsynr"
 cd "geopsynr"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -1516,8 +1516,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/geopsyptmotion/src geopsyptmotionVersion.h
 echo "Configure geopsyptmotion"
 cd "geopsyptmotion"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -1546,8 +1546,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/geopsyrefra/src geopsyrefraVersion.h
 echo "Configure geopsyrefra"
 cd "geopsyrefra"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -1576,8 +1576,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/hvtfa/src hvtfaVersion.h
 echo "Configure hvtfa"
 cd "hvtfa"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -1606,8 +1606,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/campbelltob3/src campbelltob3Version.h
 echo "Configure campbelltob3"
 cd "campbelltob3"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -1636,8 +1636,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/dinverdc/src dinverdcVersion.h
 echo "Configure dinverdc"
 cd "dinverdc"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -1666,8 +1666,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/dinverext/src dinverextVersion.h
 echo "Configure dinverext"
 cd "dinverext"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -1696,8 +1696,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/spac2disp/src spac2dispVersion.h
 echo "Configure spac2disp"
 cd "spac2disp"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -1726,8 +1726,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/max2curve/src max2curveVersion.h
 echo "Configure max2curve"
 cd "max2curve"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -1756,8 +1756,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/gppoisson/src gppoissonVersion.h
 echo "Configure gppoisson"
 cd "gppoisson"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -1786,8 +1786,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpprofile/src gpprofileVersion.h
 echo "Configure gpprofile"
 cd "gpprofile"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -1816,8 +1816,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpdc/src gpdcVersion.h
 echo "Configure gpdc"
 cd "gpdc"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -1846,8 +1846,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/gplivemodel/src gplivemodelVersion.h
 echo "Configure gplivemodel"
 cd "gplivemodel"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -1876,8 +1876,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpec8/src gpec8Version.h
 echo "Configure gpec8"
 cd "gpec8"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -1906,8 +1906,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpdcreport/src gpdcreportVersion.h
 echo "Configure gpdcreport"
 cd "gpdcreport"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -1936,8 +1936,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/gptarget/src gptargetVersion.h
 echo "Configure gptarget"
 cd "gptarget"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -1966,8 +1966,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpviewdcreport/src gpviewdcreportVersion.h
 echo "Configure gpviewdcreport"
 cd "gpviewdcreport"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -1996,8 +1996,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpdcmisfit/src gpdcmisfitVersion.h
 echo "Configure gpdcmisfit"
 cd "gpdcmisfit"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -2026,8 +2026,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpell/src gpellVersion.h
 echo "Configure gpell"
 cd "gpell"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -2056,8 +2056,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpgroup2phase/src gpgroup2phaseVersion.h
 echo "Configure gpgroup2phase"
 cd "gpgroup2phase"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -2086,8 +2086,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpmodel2param/src gpmodel2paramVersion.h
 echo "Configure gpmodel2param"
 cd "gpmodel2param"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -2116,8 +2116,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpparam2model/src gpparam2modelVersion.h
 echo "Configure gpparam2model"
 cd "gpparam2model"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -2146,8 +2146,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpdepths/src gpdepthsVersion.h
 echo "Configure gpdepths"
 cd "gpdepths"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -2176,8 +2176,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpsort/src gpsortVersion.h
 echo "Configure gpsort"
 cd "gpsort"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -2206,8 +2206,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpcurve/src gpcurveVersion.h
 echo "Configure gpcurve"
 cd "gpcurve"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -2236,8 +2236,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/gprandom/src gprandomVersion.h
 echo "Configure gprandom"
 cd "gprandom"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -2266,8 +2266,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpspac/src gpspacVersion.h
 echo "Configure gpspac"
 cd "gpspac"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -2296,8 +2296,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/gprefra/src gprefraVersion.h
 echo "Configure gprefra"
 cd "gprefra"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -2326,8 +2326,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpsignal/src gpsignalVersion.h
 echo "Configure gpsignal"
 cd "gpsignal"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -2356,8 +2356,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/gphistogram/src gphistogramVersion.h
 echo "Configure gphistogram"
 cd "gphistogram"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -2386,8 +2386,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpviewmax/src gpviewmaxVersion.h
 echo "Configure gpviewmax"
 cd "gpviewmax"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -2416,8 +2416,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpdistance/src gpdistanceVersion.h
 echo "Configure gpdistance"
 cd "gpdistance"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -2446,8 +2446,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/gptime/src gptimeVersion.h
 echo "Configure gptime"
 cd "gptime"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -2476,8 +2476,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpcoord/src gpcoordVersion.h
 echo "Configure gpcoord"
 cd "gpcoord"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -2506,8 +2506,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpreplace/src gpreplaceVersion.h
 echo "Configure gpreplace"
 cd "gpreplace"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -2536,8 +2536,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpsh/src gpshVersion.h
 echo "Configure gpsh"
 cd "gpsh"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -2566,8 +2566,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpmt/src gpmtVersion.h
 echo "Configure gpmt"
 cd "gpmt"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -2596,8 +2596,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpgridsearch/src gpgridsearchVersion.h
 echo "Configure gpgridsearch"
 cd "gpgridsearch"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -2626,8 +2626,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpfksimulator/src gpfksimulatorVersion.h
 echo "Configure gpfksimulator"
 cd "gpfksimulator"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -2656,8 +2656,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/gpmaplayer/src gpmaplayerVersion.h
 echo "Configure gpmaplayer"
 cd "gpmaplayer"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -2686,8 +2686,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/dinvermatlab/src dinvermatlabVersion.h
 echo "Configure dinvermatlab"
 cd "dinvermatlab"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -2716,8 +2716,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/matfiles/src matfilesVersion.h
 echo "Configure matfiles"
 cd "matfiles"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
@@ -2746,8 +2746,8 @@ ENDVERSION
 replaceFile $BUILD_DIR/GeopsyLand/src GeopsyLandVersion.h
 echo "Configure GeopsyLand"
 cd "GeopsyLand"
-if [ -e configure-testing ]; then
-  CONFIGURE_SCRIPT=configure-testing
+if [ -e configure-3.3 ]; then
+  CONFIGURE_SCRIPT=configure-3.3
 else
   CONFIGURE_SCRIPT=configure
 fi
