@@ -1,5 +1,5 @@
 
-For more information visit http://www.geopsy.org
+For more information visit http://www.geopsy.org/wiki
 
 Start configure script. To get the list of available options add option "-h".
 For instance you can change the base directory for installation with "-prefix".

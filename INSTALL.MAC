@@ -1,0 +1,27 @@
+Geopsy pack install instruction for Mac OS
+------------------------------------------
+
+For more information visit http://www.geopsy.org/wiki
+
+* Remove previously installed releases by cleaning
+
+    /Applications/Geopsy.org
+    /Library/Geopsy.org
+
+* Copy Applications/Geopsy.org to /Applications
+* Copy Library/Geopsy.org to /Library
+
+Be careful, copy the entire directory Geopsy.org to /Application or /Library. For instance, the final path to geopsy.app should be:
+
+    /Applications/Geopsy.org/3.3/geopsy.app
+
+To use the terminal utilities:
+
+* Open a terminal
+* Edit your ~/.zshrc or run
+
+    echo "export PATH=/Applications/Geopsy.org/3.3/Utilities:\$PATH" >> ~/.zshrc
+
+Notes:
+ * Replace "3.3" by the actual branch number.
+ * .zshrc is a startup script for zsh, an extension of bash found on Catalina.
