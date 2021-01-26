@@ -244,3 +244,9 @@
 [submodule "GeopsyLand"]
 	path = GeopsyLand
 	url = git://geopsy.org/GeopsyLand
+[submodule "gpvoronoi"]
+	path = gpvoronoi
+	url = git://geopsy.org/gpvoronoi
+[submodule "screenpicker"]
+	path = screenpicker
+	url = git://geopsy.org/screenpicker
