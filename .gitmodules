@@ -250,3 +250,6 @@
 [submodule "screenpicker"]
 	path = screenpicker
 	url = git://geopsy.org/screenpicker
+[submodule "phaseit"]
+	path = phaseit
+	url = git://geopsy.org/phaseit
