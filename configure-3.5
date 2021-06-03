@@ -364,6 +364,14 @@ cd ..
 echo "          slink \\" >> $BUILD_DIR/geopsypack.pro
 test -d $BUILD_DIR/QGpCoreTools/src || mkdir -p $BUILD_DIR/QGpCoreTools/src
 cat <<ENDVERSION > $TEMP_DIR/QGpCoreToolsVersion.h
+#ifndef QGPCORETOOLS_VERSION
+#define QGPCORETOOLS_VERSION "2.4.0"
+#define QGPCORETOOLS_VERSION_TIME "202104261710"
+#define QGPCORETOOLS_VERSION_TYPE "3.5"
+#define QGPCORETOOLS_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
+#define QGPCORETOOLS_DISTRIBUTION "3.5.0-preview"
+#define QGPCORETOOLS_GIT_COMMIT "de9ed20a6ec3bbb2749dc1dde768cf95a7d89469"
+#endif // QGPCORETOOLS_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/QGpCoreTools/src QGpCoreToolsVersion.h
 echo "Configure QGpCoreTools"
@@ -416,6 +424,14 @@ cd ..
 echo "          QGpGuiTools \\" >> $BUILD_DIR/geopsypack.pro
 test -d $BUILD_DIR/QGpCoreMath/src || mkdir -p $BUILD_DIR/QGpCoreMath/src
 cat <<ENDVERSION > $TEMP_DIR/QGpCoreMathVersion.h
+#ifndef QGPCOREMATH_VERSION
+#define QGPCOREMATH_VERSION "1.4.0"
+#define QGPCOREMATH_VERSION_TIME "202104261710"
+#define QGPCOREMATH_VERSION_TYPE "3.5"
+#define QGPCOREMATH_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
+#define QGPCOREMATH_DISTRIBUTION "3.5.0-preview"
+#define QGPCOREMATH_GIT_COMMIT "64515daa35f88a521b6db1fe2bce8cc5d1e9a245"
+#endif // QGPCOREMATH_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/QGpCoreMath/src QGpCoreMathVersion.h
 echo "Configure QGpCoreMath"
