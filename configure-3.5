@@ -944,6 +944,36 @@ fi
 cd ..
 # Add project to main pro file
 echo "          QGpCoreStat \\" >> $BUILD_DIR/geopsypack.pro
+test -d $BUILD_DIR/QGpGuiStat/src || mkdir -p $BUILD_DIR/QGpGuiStat/src
+cat <<ENDVERSION > $TEMP_DIR/QGpGuiStatVersion.h
+#ifndef QGPGUISTAT_VERSION
+#define QGPGUISTAT_VERSION "0.0.0"
+#define QGPGUISTAT_VERSION_TIME ""
+#define QGPGUISTAT_VERSION_TYPE "3.5"
+#define QGPGUISTAT_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
+#define QGPGUISTAT_DISTRIBUTION "3.5.0-preview"
+#define QGPGUISTAT_GIT_COMMIT "ae7a3bfbd24f06c601f5632c7ac243631bd3dd61"
+#endif // QGPGUISTAT_VERSION
+ENDVERSION
+replaceFile $BUILD_DIR/QGpGuiStat/src QGpGuiStatVersion.h
+echo "Configure QGpGuiStat"
+cd "QGpGuiStat"
+if [ -e configure-3.5 ]; then
+  CONFIGURE_SCRIPT=configure-3.5
+else
+  CONFIGURE_SCRIPT=configure
+fi
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir QGpGuiStat -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+if ! $SHELL $TEMP_DIR/configure; then
+  cat $TEMP_DIR/error.log
+  cat $TEMP_DIR/info.log
+  cleanexit 2
+else
+  cat $TEMP_DIR/error.log
+fi
+cd ..
+# Add project to main pro file
+echo "          QGpGuiStat \\" >> $BUILD_DIR/geopsypack.pro
 test -d $BUILD_DIR/HVCore/src || mkdir -p $BUILD_DIR/HVCore/src
 cat <<ENDVERSION > $TEMP_DIR/HVCoreVersion.h
 #ifndef HVCORE_VERSION

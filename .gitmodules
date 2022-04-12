@@ -61,6 +61,9 @@
 [submodule "QGpCoreStat"]
 	path = QGpCoreStat
 	url = git://geopsy.org/QGpCoreStat
+[submodule "QGpGuiStat"]
+	path = QGpGuiStat
+	url = git://geopsy.org/QGpGuiStat
 [submodule "HVCore"]
 	path = HVCore
 	url = git://geopsy.org/HVCore
