@@ -317,6 +317,7 @@ echo "TEMPLATE=subdirs"
 echo "CONFIG += ordered"
 echo "SUBDIRS=\\"
 ) > $BUILD_DIR/geopsypack.pro
+find . -name "admin" -not -path "./.git" | sed "s/\/admin$//" | sed "s/^\.\///" > $TEMP_DIR/projectlist
 test -d $BUILD_DIR/mseed/src || mkdir -p $BUILD_DIR/mseed/src
 cat <<ENDVERSION > $TEMP_DIR/mseedVersion.h
 #ifndef MSEED_VERSION
@@ -336,7 +337,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir mseed -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir mseed -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -366,7 +367,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir slink -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir slink -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -385,7 +386,7 @@ cat <<ENDVERSION > $TEMP_DIR/QGpCoreToolsVersion.h
 #define QGPCORETOOLS_VERSION_TYPE "3.5"
 #define QGPCORETOOLS_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define QGPCORETOOLS_DISTRIBUTION "3.5.0-preview"
-#define QGPCORETOOLS_GIT_COMMIT "624f375f31c0482ffe9203a366d78450e58d765d"
+#define QGPCORETOOLS_GIT_COMMIT "0d904b1308ce78ae3c630547a10ff6b8fa3d3228"
 #endif // QGPCORETOOLS_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/QGpCoreTools/src QGpCoreToolsVersion.h
@@ -396,7 +397,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir QGpCoreTools -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir QGpCoreTools -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -415,7 +416,7 @@ cat <<ENDVERSION > $TEMP_DIR/QGpGuiToolsVersion.h
 #define QGPGUITOOLS_VERSION_TYPE "3.5"
 #define QGPGUITOOLS_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define QGPGUITOOLS_DISTRIBUTION "3.5.0-preview"
-#define QGPGUITOOLS_GIT_COMMIT "7bbf1378b80aa0b3da9f6f0acc8277c888147097"
+#define QGPGUITOOLS_GIT_COMMIT "1001a67930f5f15245de241bcb3ec9e6aad0665e"
 #endif // QGPGUITOOLS_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/QGpGuiTools/src QGpGuiToolsVersion.h
@@ -426,7 +427,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir QGpGuiTools -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir QGpGuiTools -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -445,7 +446,7 @@ cat <<ENDVERSION > $TEMP_DIR/QGpCoreMathVersion.h
 #define QGPCOREMATH_VERSION_TYPE "3.5"
 #define QGPCOREMATH_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define QGPCOREMATH_DISTRIBUTION "3.5.0-preview"
-#define QGPCOREMATH_GIT_COMMIT "0ad0e58fb9c91aaabb6f596c77689c767b6d07ae"
+#define QGPCOREMATH_GIT_COMMIT "5c2b2ac7d484d7468486bdb90c0ee63f109fee5e"
 #endif // QGPCOREMATH_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/QGpCoreMath/src QGpCoreMathVersion.h
@@ -456,7 +457,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir QGpCoreMath -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir QGpCoreMath -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -475,7 +476,7 @@ cat <<ENDVERSION > $TEMP_DIR/SciFigsVersion.h
 #define SCIFIGS_VERSION_TYPE "3.5"
 #define SCIFIGS_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define SCIFIGS_DISTRIBUTION "3.5.0-preview"
-#define SCIFIGS_GIT_COMMIT "6513a6f4377bb3a93746b26d87712865031a786f"
+#define SCIFIGS_GIT_COMMIT "5a4506ed6b7feb6230a1e8e4d8f22fa3125cea15"
 #endif // SCIFIGS_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/SciFigs/src SciFigsVersion.h
@@ -486,7 +487,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir SciFigs -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir SciFigs -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -505,7 +506,7 @@ cat <<ENDVERSION > $TEMP_DIR/QGpGuiMathVersion.h
 #define QGPGUIMATH_VERSION_TYPE "3.5"
 #define QGPGUIMATH_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define QGPGUIMATH_DISTRIBUTION "3.5.0-preview"
-#define QGPGUIMATH_GIT_COMMIT "742a682a46e31a5aa2451047529ed0bf98d85501"
+#define QGPGUIMATH_GIT_COMMIT "3fef3b5c6520802c3577f412435b6cc9e092a9fb"
 #endif // QGPGUIMATH_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/QGpGuiMath/src QGpGuiMathVersion.h
@@ -516,7 +517,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir QGpGuiMath -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir QGpGuiMath -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -535,7 +536,7 @@ cat <<ENDVERSION > $TEMP_DIR/figueVersion.h
 #define FIGUE_VERSION_TYPE "3.5"
 #define FIGUE_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define FIGUE_DISTRIBUTION "3.5.0-preview"
-#define FIGUE_GIT_COMMIT "91aa3f2e429623cc1870cbc384dad24e9ef16488"
+#define FIGUE_GIT_COMMIT "2d23966af4aa5d5eb608ea50df61375f76e84032"
 #endif // FIGUE_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/figue/src figueVersion.h
@@ -546,7 +547,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir figue -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir figue -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -565,7 +566,7 @@ cat <<ENDVERSION > $TEMP_DIR/QGpCoreWaveVersion.h
 #define QGPCOREWAVE_VERSION_TYPE "3.5"
 #define QGPCOREWAVE_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)\nPhil Cummins (RSES, Canberra, Australia)\nRoger Wisen (RAMBOLL, Copenhagen, Denmark)"
 #define QGPCOREWAVE_DISTRIBUTION "3.5.0-preview"
-#define QGPCOREWAVE_GIT_COMMIT "d9755132d6da4eed3871ce0b0d0cb613a517df2a"
+#define QGPCOREWAVE_GIT_COMMIT "349a8bf725d6a4a47d464ff2324c3ab88471c0d6"
 #endif // QGPCOREWAVE_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/QGpCoreWave/src QGpCoreWaveVersion.h
@@ -576,7 +577,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir QGpCoreWave -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir QGpCoreWave -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -595,7 +596,7 @@ cat <<ENDVERSION > $TEMP_DIR/QGpGuiWaveVersion.h
 #define QGPGUIWAVE_VERSION_TYPE "3.5"
 #define QGPGUIWAVE_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)"
 #define QGPGUIWAVE_DISTRIBUTION "3.5.0-preview"
-#define QGPGUIWAVE_GIT_COMMIT "6f8cfb275e19ad9c66c2ee936cc84d2cde202b19"
+#define QGPGUIWAVE_GIT_COMMIT "c140a14c1d5273c93e3f94e91daf90b6d20ad5b7"
 #endif // QGPGUIWAVE_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/QGpGuiWave/src QGpGuiWaveVersion.h
@@ -606,7 +607,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir QGpGuiWave -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir QGpGuiWave -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -625,7 +626,7 @@ cat <<ENDVERSION > $TEMP_DIR/QGpCompatibilityVersion.h
 #define QGPCOMPATIBILITY_VERSION_TYPE "3.5"
 #define QGPCOMPATIBILITY_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define QGPCOMPATIBILITY_DISTRIBUTION "3.5.0-preview"
-#define QGPCOMPATIBILITY_GIT_COMMIT "18800f165a96a9aecc5942d3d0118242357a1d3c"
+#define QGPCOMPATIBILITY_GIT_COMMIT "c01aa1ada55d36af8ddaf094a9c4eca6b704a904"
 #endif // QGPCOMPATIBILITY_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/QGpCompatibility/src QGpCompatibilityVersion.h
@@ -636,7 +637,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir QGpCompatibility -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir QGpCompatibility -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -655,7 +656,7 @@ cat <<ENDVERSION > $TEMP_DIR/GeopsyCoreVersion.h
 #define GEOPSYCORE_VERSION_TYPE "3.5"
 #define GEOPSYCORE_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define GEOPSYCORE_DISTRIBUTION "3.5.0-preview"
-#define GEOPSYCORE_GIT_COMMIT "a19679a570533f44c3080e6ebbb6cd79c4d2f1f6"
+#define GEOPSYCORE_GIT_COMMIT "c752700c7dd85898876ce50ea0a17ebf905529e7"
 #endif // GEOPSYCORE_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/GeopsyCore/src GeopsyCoreVersion.h
@@ -666,7 +667,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir GeopsyCore -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir GeopsyCore -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -685,7 +686,7 @@ cat <<ENDVERSION > $TEMP_DIR/GeopsyGuiVersion.h
 #define GEOPSYGUI_VERSION_TYPE "3.5"
 #define GEOPSYGUI_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define GEOPSYGUI_DISTRIBUTION "3.5.0-preview"
-#define GEOPSYGUI_GIT_COMMIT "164880442d43cd829cfe7bd421e396b9727662e1"
+#define GEOPSYGUI_GIT_COMMIT "9120860a91b3f4ea450ebe73e063345278929716"
 #endif // GEOPSYGUI_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/GeopsyGui/src GeopsyGuiVersion.h
@@ -696,7 +697,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir GeopsyGui -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir GeopsyGui -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -715,7 +716,7 @@ cat <<ENDVERSION > $TEMP_DIR/geopsyfigsVersion.h
 #define GEOPSYFIGS_VERSION_TYPE "3.5"
 #define GEOPSYFIGS_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GEOPSYFIGS_DISTRIBUTION "3.5.0-preview"
-#define GEOPSYFIGS_GIT_COMMIT "ba36f29c639198ab728e2bd31593ac09e016858f"
+#define GEOPSYFIGS_GIT_COMMIT "76b189f110d2b0c43ac8e57cc88d30fc0b0b64a5"
 #endif // GEOPSYFIGS_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/geopsyfigs/src geopsyfigsVersion.h
@@ -726,7 +727,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir geopsyfigs -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir geopsyfigs -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -745,7 +746,7 @@ cat <<ENDVERSION > $TEMP_DIR/GeopsySLinkVersion.h
 #define GEOPSYSLINK_VERSION_TYPE "3.5"
 #define GEOPSYSLINK_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GEOPSYSLINK_DISTRIBUTION "3.5.0-preview"
-#define GEOPSYSLINK_GIT_COMMIT "51a5171603eb916975ae52f2363040ce0c36b6c9"
+#define GEOPSYSLINK_GIT_COMMIT "fc5f9ee20d8f2627e905a9f30afbb6c62cc2071e"
 #endif // GEOPSYSLINK_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/GeopsySLink/src GeopsySLinkVersion.h
@@ -756,7 +757,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir GeopsySLink -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir GeopsySLink -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -775,7 +776,7 @@ cat <<ENDVERSION > $TEMP_DIR/GeopsySLinkGuiVersion.h
 #define GEOPSYSLINKGUI_VERSION_TYPE "3.5"
 #define GEOPSYSLINKGUI_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GEOPSYSLINKGUI_DISTRIBUTION "3.5.0-preview"
-#define GEOPSYSLINKGUI_GIT_COMMIT "5924b2c7b2bee5eccd6f01646370029d28e26190"
+#define GEOPSYSLINKGUI_GIT_COMMIT "a188a5ba2b80bb9cc9badda503d9c4336562313d"
 #endif // GEOPSYSLINKGUI_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/GeopsySLinkGui/src GeopsySLinkGuiVersion.h
@@ -786,7 +787,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir GeopsySLinkGui -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir GeopsySLinkGui -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -805,7 +806,7 @@ cat <<ENDVERSION > $TEMP_DIR/DinverCoreVersion.h
 #define DINVERCORE_VERSION_TYPE "3.5"
 #define DINVERCORE_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define DINVERCORE_DISTRIBUTION "3.5.0-preview"
-#define DINVERCORE_GIT_COMMIT "6c75de4a429e865fbf44c381c670bdaebaac1323"
+#define DINVERCORE_GIT_COMMIT "803eda148723b085b7da12feb4ef124a3e59cd0b"
 #endif // DINVERCORE_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/DinverCore/src DinverCoreVersion.h
@@ -816,7 +817,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir DinverCore -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir DinverCore -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -835,7 +836,7 @@ cat <<ENDVERSION > $TEMP_DIR/DinverGuiVersion.h
 #define DINVERGUI_VERSION_TYPE "3.5"
 #define DINVERGUI_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define DINVERGUI_DISTRIBUTION "3.5.0-preview"
-#define DINVERGUI_GIT_COMMIT "8e018169472b61fd7b8c847298d91bc310596409"
+#define DINVERGUI_GIT_COMMIT "50b774b4dbd2b86f765b44c4d87699297af186ef"
 #endif // DINVERGUI_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/DinverGui/src DinverGuiVersion.h
@@ -846,7 +847,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir DinverGui -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir DinverGui -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -865,7 +866,7 @@ cat <<ENDVERSION > $TEMP_DIR/DinverDCCoreVersion.h
 #define DINVERDCCORE_VERSION_TYPE "3.5"
 #define DINVERDCCORE_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define DINVERDCCORE_DISTRIBUTION "3.5.0-preview"
-#define DINVERDCCORE_GIT_COMMIT "8a4098cd6fb6cd0d33a5ac5a7aa9d41f7d213137"
+#define DINVERDCCORE_GIT_COMMIT "c88a24e7fa29bdabd797c41de7a6e19edb4c188e"
 #endif // DINVERDCCORE_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/DinverDCCore/src DinverDCCoreVersion.h
@@ -876,7 +877,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir DinverDCCore -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir DinverDCCore -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -895,7 +896,7 @@ cat <<ENDVERSION > $TEMP_DIR/DinverDCGuiVersion.h
 #define DINVERDCGUI_VERSION_TYPE "3.5"
 #define DINVERDCGUI_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define DINVERDCGUI_DISTRIBUTION "3.5.0-preview"
-#define DINVERDCGUI_GIT_COMMIT "3bfbe62c52739de38d73252bb0383c8c710cd38b"
+#define DINVERDCGUI_GIT_COMMIT "9e93e996961fa9889af4a5e158aa00c68dbeb5ac"
 #endif // DINVERDCGUI_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/DinverDCGui/src DinverDCGuiVersion.h
@@ -906,7 +907,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir DinverDCGui -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir DinverDCGui -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -925,7 +926,7 @@ cat <<ENDVERSION > $TEMP_DIR/QGpCoreStatVersion.h
 #define QGPCORESTAT_VERSION_TYPE "3.5"
 #define QGPCORESTAT_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)"
 #define QGPCORESTAT_DISTRIBUTION "3.5.0-preview"
-#define QGPCORESTAT_GIT_COMMIT "6a69c0b330df513cd8a4fa309c97ee224a90b670"
+#define QGPCORESTAT_GIT_COMMIT "36412ea4906076cc021e6ddae629c8298712f731"
 #endif // QGPCORESTAT_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/QGpCoreStat/src QGpCoreStatVersion.h
@@ -936,7 +937,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir QGpCoreStat -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir QGpCoreStat -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -955,7 +956,7 @@ cat <<ENDVERSION > $TEMP_DIR/QGpGuiStatVersion.h
 #define QGPGUISTAT_VERSION_TYPE "3.5"
 #define QGPGUISTAT_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)"
 #define QGPGUISTAT_DISTRIBUTION "3.5.0-preview"
-#define QGPGUISTAT_GIT_COMMIT "2845b2806f529a16487b976d977e724818b83b4f"
+#define QGPGUISTAT_GIT_COMMIT "1aa2d9ced2375ef5c4e023866c105013f92a6f07"
 #endif // QGPGUISTAT_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/QGpGuiStat/src QGpGuiStatVersion.h
@@ -966,7 +967,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir QGpGuiStat -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir QGpGuiStat -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -985,7 +986,7 @@ cat <<ENDVERSION > $TEMP_DIR/HVCoreVersion.h
 #define HVCORE_VERSION_TYPE "3.5"
 #define HVCORE_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)"
 #define HVCORE_DISTRIBUTION "3.5.0-preview"
-#define HVCORE_GIT_COMMIT "acb049ad6dc80169528f71c81f71b0369710ca79"
+#define HVCORE_GIT_COMMIT "10139a2ea570215b1a95e31901ac8cbebc11d2ae"
 #endif // HVCORE_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/HVCore/src HVCoreVersion.h
@@ -996,7 +997,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir HVCore -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir HVCore -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -1015,7 +1016,7 @@ cat <<ENDVERSION > $TEMP_DIR/HVGuiVersion.h
 #define HVGUI_VERSION_TYPE "3.5"
 #define HVGUI_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define HVGUI_DISTRIBUTION "3.5.0-preview"
-#define HVGUI_GIT_COMMIT "2baf58344dca4d80446b5d8f7f873f344c20f6ac"
+#define HVGUI_GIT_COMMIT "59b3d2394645b7007edac7902f9e98bb9a2c3c5e"
 #endif // HVGUI_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/HVGui/src HVGuiVersion.h
@@ -1026,7 +1027,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir HVGui -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir HVGui -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -1045,7 +1046,7 @@ cat <<ENDVERSION > $TEMP_DIR/ArrayCoreVersion.h
 #define ARRAYCORE_VERSION_TYPE "3.5"
 #define ARRAYCORE_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define ARRAYCORE_DISTRIBUTION "3.5.0-preview"
-#define ARRAYCORE_GIT_COMMIT "7b7810306a52d161da1c09d8f0b1b3ba9bc33b95"
+#define ARRAYCORE_GIT_COMMIT "c5a2411e895a34809aa27c877f0cb263ea1355d6"
 #endif // ARRAYCORE_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/ArrayCore/src ArrayCoreVersion.h
@@ -1056,7 +1057,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir ArrayCore -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir ArrayCore -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -1075,7 +1076,7 @@ cat <<ENDVERSION > $TEMP_DIR/ArrayGuiVersion.h
 #define ARRAYGUI_VERSION_TYPE "3.5"
 #define ARRAYGUI_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define ARRAYGUI_DISTRIBUTION "3.5.0-preview"
-#define ARRAYGUI_GIT_COMMIT "0377b4db804f12dc6309de99365b1c47669e7e8b"
+#define ARRAYGUI_GIT_COMMIT "9a689c29fd25c502776be285ee1445d3b862f4cf"
 #endif // ARRAYGUI_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/ArrayGui/src ArrayGuiVersion.h
@@ -1086,7 +1087,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir ArrayGui -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir ArrayGui -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -1105,7 +1106,7 @@ cat <<ENDVERSION > $TEMP_DIR/geopsy-fkVersion.h
 #define GEOPSY_FK_VERSION_TYPE "3.5"
 #define GEOPSY_FK_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)"
 #define GEOPSY_FK_DISTRIBUTION "3.5.0-preview"
-#define GEOPSY_FK_GIT_COMMIT "87114f28b458feb8cd229a815aea3c98829d9ead"
+#define GEOPSY_FK_GIT_COMMIT "264cdc47b9bcdcee4b4e82e05eca8718cd830cfd"
 #endif // GEOPSY_FK_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/geopsy-fk/src geopsy-fkVersion.h
@@ -1116,7 +1117,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir geopsy-fk -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir geopsy-fk -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -1135,7 +1136,7 @@ cat <<ENDVERSION > $TEMP_DIR/geopsy-spacVersion.h
 #define GEOPSY_SPAC_VERSION_TYPE "3.5"
 #define GEOPSY_SPAC_AUTHORS ""
 #define GEOPSY_SPAC_DISTRIBUTION "3.5.0-preview"
-#define GEOPSY_SPAC_GIT_COMMIT "1c1e380d734f5a00f12d83206d590c0357689d4d"
+#define GEOPSY_SPAC_GIT_COMMIT "cb0d3ab6aacacb8db3d4cf8b20c366fdc1cd40f4"
 #endif // GEOPSY_SPAC_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/geopsy-spac/src geopsy-spacVersion.h
@@ -1146,7 +1147,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir geopsy-spac -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir geopsy-spac -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -1165,7 +1166,7 @@ cat <<ENDVERSION > $TEMP_DIR/geopsy-hvVersion.h
 #define GEOPSY_HV_VERSION_TYPE "3.5"
 #define GEOPSY_HV_AUTHORS ""
 #define GEOPSY_HV_DISTRIBUTION "3.5.0-preview"
-#define GEOPSY_HV_GIT_COMMIT "f1516c71939080917bebbeadc69ccb8b55df92ca"
+#define GEOPSY_HV_GIT_COMMIT "273b4e340b6576e4cac0e1f85fabe10c02a7cf8d"
 #endif // GEOPSY_HV_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/geopsy-hv/src geopsy-hvVersion.h
@@ -1176,7 +1177,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir geopsy-hv -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir geopsy-hv -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -1195,7 +1196,7 @@ cat <<ENDVERSION > $TEMP_DIR/geopsyVersion.h
 #define GEOPSY_VERSION_TYPE "3.5"
 #define GEOPSY_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define GEOPSY_DISTRIBUTION "3.5.0-preview"
-#define GEOPSY_GIT_COMMIT "795968fd0e724173c46cfbb4aedceb3fbc841083"
+#define GEOPSY_GIT_COMMIT "6bdd62f1a87df7e4cf38f647b7127b9cea01d855"
 #endif // GEOPSY_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/geopsy/src geopsyVersion.h
@@ -1206,7 +1207,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir geopsy -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir geopsy -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -1225,7 +1226,7 @@ cat <<ENDVERSION > $TEMP_DIR/vslarrayVersion.h
 #define VSLARRAY_VERSION_TYPE "3.5"
 #define VSLARRAY_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define VSLARRAY_DISTRIBUTION "3.5.0-preview"
-#define VSLARRAY_GIT_COMMIT "57657742abe472f7723138935b9b255b5e64c7fc"
+#define VSLARRAY_GIT_COMMIT "228bb1278e7c32a7da8a7573f6fd69b248c771d2"
 #endif // VSLARRAY_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/vslarray/src vslarrayVersion.h
@@ -1236,7 +1237,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir vslarray -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir vslarray -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -1255,7 +1256,7 @@ cat <<ENDVERSION > $TEMP_DIR/dinverVersion.h
 #define DINVER_VERSION_TYPE "3.5"
 #define DINVER_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define DINVER_DISTRIBUTION "3.5.0-preview"
-#define DINVER_GIT_COMMIT "8cb370d5642a02c04d7cbff8db7f9af350a85795"
+#define DINVER_GIT_COMMIT "2b5b476f00471205189b3139b0d2f70b343d35ad"
 #endif // DINVER_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/dinver/src dinverVersion.h
@@ -1266,7 +1267,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir dinver -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir dinver -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -1296,7 +1297,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir WaranCore -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir WaranCore -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -1315,7 +1316,7 @@ cat <<ENDVERSION > $TEMP_DIR/TapePositioningSystemVersion.h
 #define TAPEPOSITIONINGSYSTEM_VERSION_TYPE "3.5"
 #define TAPEPOSITIONINGSYSTEM_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)"
 #define TAPEPOSITIONINGSYSTEM_DISTRIBUTION "3.5.0-preview"
-#define TAPEPOSITIONINGSYSTEM_GIT_COMMIT "d69ddede9473b4a00adb13243715d6ba07964e60"
+#define TAPEPOSITIONINGSYSTEM_GIT_COMMIT "942d6df4e80476ad5148adcbf8d97168fc1b0ddf"
 #endif // TAPEPOSITIONINGSYSTEM_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/TapePositioningSystem/src TapePositioningSystemVersion.h
@@ -1326,7 +1327,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir TapePositioningSystem -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir TapePositioningSystem -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -1345,7 +1346,7 @@ cat <<ENDVERSION > $TEMP_DIR/waranVersion.h
 #define WARAN_VERSION_TYPE "3.5"
 #define WARAN_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)"
 #define WARAN_DISTRIBUTION "3.5.0-preview"
-#define WARAN_GIT_COMMIT "2b4a3c1c3c042daaebf2f7db20483864cd1067d5"
+#define WARAN_GIT_COMMIT "219db78bc6312a9cc30fc00647ade57b0c9ece01"
 #endif // WARAN_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/waran/src waranVersion.h
@@ -1356,7 +1357,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir waran -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir waran -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -1375,7 +1376,7 @@ cat <<ENDVERSION > $TEMP_DIR/warangpsVersion.h
 #define WARANGPS_VERSION_TYPE "3.5"
 #define WARANGPS_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define WARANGPS_DISTRIBUTION "3.5.0-preview"
-#define WARANGPS_GIT_COMMIT "de3553b808394f924a9c7a73f5d6a0b6102c4817"
+#define WARANGPS_GIT_COMMIT "1af6b32e1064d85cbd7edf18ba03951b47d10f69"
 #endif // WARANGPS_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/warangps/src warangpsVersion.h
@@ -1386,7 +1387,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir warangps -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir warangps -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -1405,7 +1406,7 @@ cat <<ENDVERSION > $TEMP_DIR/geopsyarrayVersion.h
 #define GEOPSYARRAY_VERSION_TYPE "3.5"
 #define GEOPSYARRAY_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define GEOPSYARRAY_DISTRIBUTION "3.5.0-preview"
-#define GEOPSYARRAY_GIT_COMMIT "1a4978f96975c4ad181fc702213325950043c3b1"
+#define GEOPSYARRAY_GIT_COMMIT "0f496ffc34f8860e423d6fdb51a4a000488159c3"
 #endif // GEOPSYARRAY_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/geopsyarray/src geopsyarrayVersion.h
@@ -1416,7 +1417,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir geopsyarray -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir geopsyarray -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -1435,7 +1436,7 @@ cat <<ENDVERSION > $TEMP_DIR/geopsyhvVersion.h
 #define GEOPSYHV_VERSION_TYPE "3.5"
 #define GEOPSYHV_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define GEOPSYHV_DISTRIBUTION "3.5.0-preview"
-#define GEOPSYHV_GIT_COMMIT "01526467d439b1b03fd899aecbac8b0822e77cbc"
+#define GEOPSYHV_GIT_COMMIT "b3107d7e2c7f558441ebf51d4fc95998e1fe24b2"
 #endif // GEOPSYHV_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/geopsyhv/src geopsyhvVersion.h
@@ -1446,7 +1447,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir geopsyhv -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir geopsyhv -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -1465,7 +1466,7 @@ cat <<ENDVERSION > $TEMP_DIR/geopsydampingVersion.h
 #define GEOPSYDAMPING_VERSION_TYPE "3.5"
 #define GEOPSYDAMPING_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define GEOPSYDAMPING_DISTRIBUTION "3.5.0-preview"
-#define GEOPSYDAMPING_GIT_COMMIT "6e71ea07696d9868110b1aa2ad4d9cd6b6989008"
+#define GEOPSYDAMPING_GIT_COMMIT "6a9f05d4a97edffa8631a3850f21a1f961e5fb1c"
 #endif // GEOPSYDAMPING_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/geopsydamping/src geopsydampingVersion.h
@@ -1476,7 +1477,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir geopsydamping -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir geopsydamping -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -1495,7 +1496,7 @@ cat <<ENDVERSION > $TEMP_DIR/geopsytfaVersion.h
 #define GEOPSYTFA_VERSION_TYPE "3.5"
 #define GEOPSYTFA_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GEOPSYTFA_DISTRIBUTION "3.5.0-preview"
-#define GEOPSYTFA_GIT_COMMIT "793b88b4200ac9fee3305f5d1f8d324c1fd4b053"
+#define GEOPSYTFA_GIT_COMMIT "0358e78e323fcc0dac4184660a7bf26909f39636"
 #endif // GEOPSYTFA_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/geopsytfa/src geopsytfaVersion.h
@@ -1506,7 +1507,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir geopsytfa -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir geopsytfa -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -1525,7 +1526,7 @@ cat <<ENDVERSION > $TEMP_DIR/geopsynrVersion.h
 #define GEOPSYNR_VERSION_TYPE "3.5"
 #define GEOPSYNR_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GEOPSYNR_DISTRIBUTION "3.5.0-preview"
-#define GEOPSYNR_GIT_COMMIT "05c97e26a70afca2a360ba621e30b27e3306278a"
+#define GEOPSYNR_GIT_COMMIT "bf49a7ed359976e4009f2c636df1a72d72fafaae"
 #endif // GEOPSYNR_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/geopsynr/src geopsynrVersion.h
@@ -1536,7 +1537,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir geopsynr -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir geopsynr -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -1555,7 +1556,7 @@ cat <<ENDVERSION > $TEMP_DIR/geopsyptmotionVersion.h
 #define GEOPSYPTMOTION_VERSION_TYPE "3.5"
 #define GEOPSYPTMOTION_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define GEOPSYPTMOTION_DISTRIBUTION "3.5.0-preview"
-#define GEOPSYPTMOTION_GIT_COMMIT "8813139648c43833baf47f4d7e0e1bf9fd5dcd38"
+#define GEOPSYPTMOTION_GIT_COMMIT "8659931bf8053b06f342992306a7d0aa570803c9"
 #endif // GEOPSYPTMOTION_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/geopsyptmotion/src geopsyptmotionVersion.h
@@ -1566,7 +1567,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir geopsyptmotion -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir geopsyptmotion -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -1585,7 +1586,7 @@ cat <<ENDVERSION > $TEMP_DIR/geopsyrefraVersion.h
 #define GEOPSYREFRA_VERSION_TYPE "3.5"
 #define GEOPSYREFRA_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define GEOPSYREFRA_DISTRIBUTION "3.5.0-preview"
-#define GEOPSYREFRA_GIT_COMMIT "b68bf110bad2af5fcb31dcc0f3109c6ae72a892d"
+#define GEOPSYREFRA_GIT_COMMIT "bda92e5ad152fe28c2a5fce3e070659e600c76d1"
 #endif // GEOPSYREFRA_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/geopsyrefra/src geopsyrefraVersion.h
@@ -1596,7 +1597,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir geopsyrefra -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir geopsyrefra -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -1615,7 +1616,7 @@ cat <<ENDVERSION > $TEMP_DIR/hvtfaVersion.h
 #define HVTFA_VERSION_TYPE "3.5"
 #define HVTFA_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMiriam Kristekova (Geophysical Institute, Academy of Sciences, Bratislava, Slovak Republic)"
 #define HVTFA_DISTRIBUTION "3.5.0-preview"
-#define HVTFA_GIT_COMMIT "96acb586def8c22a13452b5a4f006651b3dcbcaa"
+#define HVTFA_GIT_COMMIT "6c1d6ee77e2fff515f4873678895840af66de1d2"
 #endif // HVTFA_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/hvtfa/src hvtfaVersion.h
@@ -1626,7 +1627,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir hvtfa -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir hvtfa -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -1645,7 +1646,7 @@ cat <<ENDVERSION > $TEMP_DIR/campbelltob3Version.h
 #define CAMPBELLTOB3_VERSION_TYPE "3.5"
 #define CAMPBELLTOB3_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)"
 #define CAMPBELLTOB3_DISTRIBUTION "3.5.0-preview"
-#define CAMPBELLTOB3_GIT_COMMIT "f43ff2d31312862e32ff588aa4350ea0dab39f88"
+#define CAMPBELLTOB3_GIT_COMMIT "06ad407a0a04945e9fb57c4af03b98eb7e565491"
 #endif // CAMPBELLTOB3_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/campbelltob3/src campbelltob3Version.h
@@ -1656,7 +1657,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir campbelltob3 -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir campbelltob3 -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -1675,7 +1676,7 @@ cat <<ENDVERSION > $TEMP_DIR/dinverdcVersion.h
 #define DINVERDC_VERSION_TYPE "3.5"
 #define DINVERDC_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define DINVERDC_DISTRIBUTION "3.5.0-preview"
-#define DINVERDC_GIT_COMMIT "157981f7f8478b013b26e24ea4094cf1f7dcb623"
+#define DINVERDC_GIT_COMMIT "256d2a891fd388cdc9163c5d08bfa34d9dec0b93"
 #endif // DINVERDC_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/dinverdc/src dinverdcVersion.h
@@ -1686,7 +1687,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir dinverdc -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir dinverdc -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -1705,7 +1706,7 @@ cat <<ENDVERSION > $TEMP_DIR/dinverextVersion.h
 #define DINVEREXT_VERSION_TYPE "3.5"
 #define DINVEREXT_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define DINVEREXT_DISTRIBUTION "3.5.0-preview"
-#define DINVEREXT_GIT_COMMIT "c3b96c4d332b998c1bc49822390f3507588bba32"
+#define DINVEREXT_GIT_COMMIT "ed542eaec2243bed3d5c233c0806d4e8f566d180"
 #endif // DINVEREXT_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/dinverext/src dinverextVersion.h
@@ -1716,7 +1717,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir dinverext -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir dinverext -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -1735,7 +1736,7 @@ cat <<ENDVERSION > $TEMP_DIR/spac2dispVersion.h
 #define SPAC2DISP_VERSION_TYPE "3.5"
 #define SPAC2DISP_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)\nMarc Wathelet (ULg, Liège, Belgium)"
 #define SPAC2DISP_DISTRIBUTION "3.5.0-preview"
-#define SPAC2DISP_GIT_COMMIT "245575e86fe474ea40e65bd4dd8f7450847de936"
+#define SPAC2DISP_GIT_COMMIT "51dd07257c699bc51011f3e35779d8e1c70303ab"
 #endif // SPAC2DISP_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/spac2disp/src spac2dispVersion.h
@@ -1746,7 +1747,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir spac2disp -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir spac2disp -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -1765,7 +1766,7 @@ cat <<ENDVERSION > $TEMP_DIR/max2curveVersion.h
 #define MAX2CURVE_VERSION_TYPE "3.5"
 #define MAX2CURVE_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define MAX2CURVE_DISTRIBUTION "3.5.0-preview"
-#define MAX2CURVE_GIT_COMMIT "c2ec6482483299638451baa52dddfe10ace3028d"
+#define MAX2CURVE_GIT_COMMIT "fd76aa0af8609ed15914f97ae3ff12d1e9b4c40c"
 #endif // MAX2CURVE_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/max2curve/src max2curveVersion.h
@@ -1776,7 +1777,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir max2curve -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir max2curve -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -1795,7 +1796,7 @@ cat <<ENDVERSION > $TEMP_DIR/gppoissonVersion.h
 #define GPPOISSON_VERSION_TYPE "3.5"
 #define GPPOISSON_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPPOISSON_DISTRIBUTION "3.5.0-preview"
-#define GPPOISSON_GIT_COMMIT "e1fc4d3d9e148d0c880137070cfc6f1576fca8d5"
+#define GPPOISSON_GIT_COMMIT "7f91fba9011b873a8918f41fa2d7ef95c0d61b05"
 #endif // GPPOISSON_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/gppoisson/src gppoissonVersion.h
@@ -1806,7 +1807,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gppoisson -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gppoisson -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -1825,7 +1826,7 @@ cat <<ENDVERSION > $TEMP_DIR/gpprofileVersion.h
 #define GPPROFILE_VERSION_TYPE "3.5"
 #define GPPROFILE_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPPROFILE_DISTRIBUTION "3.5.0-preview"
-#define GPPROFILE_GIT_COMMIT "6a7bca88abbb7c3d40eb332edee9c2fc2563ee54"
+#define GPPROFILE_GIT_COMMIT "6ac463caebd8ea39619b81e20929459b9f0f2401"
 #endif // GPPROFILE_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/gpprofile/src gpprofileVersion.h
@@ -1836,7 +1837,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpprofile -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpprofile -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -1855,7 +1856,7 @@ cat <<ENDVERSION > $TEMP_DIR/gpdcVersion.h
 #define GPDC_VERSION_TYPE "3.5"
 #define GPDC_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPDC_DISTRIBUTION "3.5.0-preview"
-#define GPDC_GIT_COMMIT "b4cc2908eb6899e72b17995e2baee3c02f9f367b"
+#define GPDC_GIT_COMMIT "a9585df398e4ce2ac918b6750055f11116e64304"
 #endif // GPDC_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/gpdc/src gpdcVersion.h
@@ -1866,7 +1867,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpdc -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpdc -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -1885,7 +1886,7 @@ cat <<ENDVERSION > $TEMP_DIR/gplivemodelVersion.h
 #define GPLIVEMODEL_VERSION_TYPE "3.5"
 #define GPLIVEMODEL_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPLIVEMODEL_DISTRIBUTION "3.5.0-preview"
-#define GPLIVEMODEL_GIT_COMMIT "9c5a9f5129d0f951a58e2ff62671bd2a38182dd8"
+#define GPLIVEMODEL_GIT_COMMIT "f88bc79f5553055a529603ff0ec854dc1fa428f2"
 #endif // GPLIVEMODEL_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/gplivemodel/src gplivemodelVersion.h
@@ -1896,7 +1897,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gplivemodel -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gplivemodel -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -1915,7 +1916,7 @@ cat <<ENDVERSION > $TEMP_DIR/gpec8Version.h
 #define GPEC8_VERSION_TYPE "3.5"
 #define GPEC8_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPEC8_DISTRIBUTION "3.5.0-preview"
-#define GPEC8_GIT_COMMIT "e26ba61b655251bce75f9c4b81970aa9623d0d6a"
+#define GPEC8_GIT_COMMIT "90b193e418e51458ca3fc0e2b3624b133aae14cd"
 #endif // GPEC8_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/gpec8/src gpec8Version.h
@@ -1926,7 +1927,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpec8 -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpec8 -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -1945,7 +1946,7 @@ cat <<ENDVERSION > $TEMP_DIR/gpdcreportVersion.h
 #define GPDCREPORT_VERSION_TYPE "3.5"
 #define GPDCREPORT_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPDCREPORT_DISTRIBUTION "3.5.0-preview"
-#define GPDCREPORT_GIT_COMMIT "1f1a784e4ffff98daf1a6035f0a2f17bf8315a36"
+#define GPDCREPORT_GIT_COMMIT "18ed03f9b3a7994da5f9b9a215a65367c1389756"
 #endif // GPDCREPORT_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/gpdcreport/src gpdcreportVersion.h
@@ -1956,7 +1957,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpdcreport -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpdcreport -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -1975,7 +1976,7 @@ cat <<ENDVERSION > $TEMP_DIR/gptargetVersion.h
 #define GPTARGET_VERSION_TYPE "3.5"
 #define GPTARGET_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPTARGET_DISTRIBUTION "3.5.0-preview"
-#define GPTARGET_GIT_COMMIT "0292e114c3ecdfcb024f4edd43e1f5731a3d9613"
+#define GPTARGET_GIT_COMMIT "83345ba19889da605f11e938a7a9b271e0bc0707"
 #endif // GPTARGET_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/gptarget/src gptargetVersion.h
@@ -1986,7 +1987,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gptarget -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gptarget -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -2005,7 +2006,7 @@ cat <<ENDVERSION > $TEMP_DIR/gpviewdcreportVersion.h
 #define GPVIEWDCREPORT_VERSION_TYPE "3.5"
 #define GPVIEWDCREPORT_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPVIEWDCREPORT_DISTRIBUTION "3.5.0-preview"
-#define GPVIEWDCREPORT_GIT_COMMIT "adf64d94ff497cb00a7ab30d3323b1cbb1b63b37"
+#define GPVIEWDCREPORT_GIT_COMMIT "3c95749bc0d36dbba99a2c968dd87938244c31a4"
 #endif // GPVIEWDCREPORT_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/gpviewdcreport/src gpviewdcreportVersion.h
@@ -2016,7 +2017,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpviewdcreport -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpviewdcreport -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -2035,7 +2036,7 @@ cat <<ENDVERSION > $TEMP_DIR/gpdcmisfitVersion.h
 #define GPDCMISFIT_VERSION_TYPE "3.5"
 #define GPDCMISFIT_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPDCMISFIT_DISTRIBUTION "3.5.0-preview"
-#define GPDCMISFIT_GIT_COMMIT "5cc8544fcf6f573f763bf8adfc7520de374f1088"
+#define GPDCMISFIT_GIT_COMMIT "58b70cfd31e599906ef242b0cc53a02f739f7550"
 #endif // GPDCMISFIT_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/gpdcmisfit/src gpdcmisfitVersion.h
@@ -2046,7 +2047,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpdcmisfit -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpdcmisfit -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -2065,7 +2066,7 @@ cat <<ENDVERSION > $TEMP_DIR/gpellVersion.h
 #define GPELL_VERSION_TYPE "3.5"
 #define GPELL_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPELL_DISTRIBUTION "3.5.0-preview"
-#define GPELL_GIT_COMMIT "14527f1fbae2e447d6beffeb0cb9e71554e77a09"
+#define GPELL_GIT_COMMIT "555d5d903dadd557348179b5a769d7d72be6fd0b"
 #endif // GPELL_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/gpell/src gpellVersion.h
@@ -2076,7 +2077,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpell -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpell -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -2095,7 +2096,7 @@ cat <<ENDVERSION > $TEMP_DIR/gpgroup2phaseVersion.h
 #define GPGROUP2PHASE_VERSION_TYPE "3.5"
 #define GPGROUP2PHASE_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPGROUP2PHASE_DISTRIBUTION "3.5.0-preview"
-#define GPGROUP2PHASE_GIT_COMMIT "c1878b8aabd96e930b1871f533ffac2afdf29d82"
+#define GPGROUP2PHASE_GIT_COMMIT "cb9fe1829d628f7d30eba2d9f8470097878f1509"
 #endif // GPGROUP2PHASE_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/gpgroup2phase/src gpgroup2phaseVersion.h
@@ -2106,7 +2107,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpgroup2phase -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpgroup2phase -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -2125,7 +2126,7 @@ cat <<ENDVERSION > $TEMP_DIR/gpmodel2paramVersion.h
 #define GPMODEL2PARAM_VERSION_TYPE "3.5"
 #define GPMODEL2PARAM_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPMODEL2PARAM_DISTRIBUTION "3.5.0-preview"
-#define GPMODEL2PARAM_GIT_COMMIT "48db1c8d4e63f6cb24887365b7051c5865ffd1ee"
+#define GPMODEL2PARAM_GIT_COMMIT "20dfaf14ccb9577905c2a4bb46f63d9ec805588e"
 #endif // GPMODEL2PARAM_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/gpmodel2param/src gpmodel2paramVersion.h
@@ -2136,7 +2137,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpmodel2param -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpmodel2param -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -2155,7 +2156,7 @@ cat <<ENDVERSION > $TEMP_DIR/gpparam2modelVersion.h
 #define GPPARAM2MODEL_VERSION_TYPE "3.5"
 #define GPPARAM2MODEL_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPPARAM2MODEL_DISTRIBUTION "3.5.0-preview"
-#define GPPARAM2MODEL_GIT_COMMIT "1fa0bc9edd79ee0c75b3680267d4e240ae2a6596"
+#define GPPARAM2MODEL_GIT_COMMIT "abb1135e8084c9e8676d002e23e15e231b98cb1a"
 #endif // GPPARAM2MODEL_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/gpparam2model/src gpparam2modelVersion.h
@@ -2166,7 +2167,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpparam2model -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpparam2model -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -2185,7 +2186,7 @@ cat <<ENDVERSION > $TEMP_DIR/gpdepthsVersion.h
 #define GPDEPTHS_VERSION_TYPE "3.5"
 #define GPDEPTHS_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPDEPTHS_DISTRIBUTION "3.5.0-preview"
-#define GPDEPTHS_GIT_COMMIT "c6084849bc1474cb7b600d442d6712fd044bb195"
+#define GPDEPTHS_GIT_COMMIT "06ddee8a0584b9039a3719bc124b30b43279d936"
 #endif // GPDEPTHS_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/gpdepths/src gpdepthsVersion.h
@@ -2196,7 +2197,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpdepths -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpdepths -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -2215,7 +2216,7 @@ cat <<ENDVERSION > $TEMP_DIR/gpsortVersion.h
 #define GPSORT_VERSION_TYPE "3.5"
 #define GPSORT_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPSORT_DISTRIBUTION "3.5.0-preview"
-#define GPSORT_GIT_COMMIT "cf10fca96609dea609ee74c61865e8790024df78"
+#define GPSORT_GIT_COMMIT "c824d6ca94f5c5f71ac4d5eb8985331b21162bbc"
 #endif // GPSORT_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/gpsort/src gpsortVersion.h
@@ -2226,7 +2227,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpsort -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpsort -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -2245,7 +2246,7 @@ cat <<ENDVERSION > $TEMP_DIR/gpcurveVersion.h
 #define GPCURVE_VERSION_TYPE "3.5"
 #define GPCURVE_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPCURVE_DISTRIBUTION "3.5.0-preview"
-#define GPCURVE_GIT_COMMIT "8648c0c6f3263b13b90e5f779dcdb70138f9ea32"
+#define GPCURVE_GIT_COMMIT "ec5b4b9074451788d425f5bb5a3961d2089af3db"
 #endif // GPCURVE_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/gpcurve/src gpcurveVersion.h
@@ -2256,7 +2257,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpcurve -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpcurve -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -2275,7 +2276,7 @@ cat <<ENDVERSION > $TEMP_DIR/gprandomVersion.h
 #define GPRANDOM_VERSION_TYPE "3.5"
 #define GPRANDOM_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPRANDOM_DISTRIBUTION "3.5.0-preview"
-#define GPRANDOM_GIT_COMMIT "b4b39b29cef34d4a81b4b789f36cb7b87af1ea93"
+#define GPRANDOM_GIT_COMMIT "16f6eb998b0135d192b37bca352efdf39b5ed841"
 #endif // GPRANDOM_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/gprandom/src gprandomVersion.h
@@ -2286,7 +2287,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gprandom -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gprandom -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -2305,7 +2306,7 @@ cat <<ENDVERSION > $TEMP_DIR/gpspacVersion.h
 #define GPSPAC_VERSION_TYPE "3.5"
 #define GPSPAC_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPSPAC_DISTRIBUTION "3.5.0-preview"
-#define GPSPAC_GIT_COMMIT "d1fbcf4fdf51db0a8a83e6775b0cd3cb5d4eed83"
+#define GPSPAC_GIT_COMMIT "cc8a4bcba178e739484731ee553d285fa26c7700"
 #endif // GPSPAC_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/gpspac/src gpspacVersion.h
@@ -2316,7 +2317,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpspac -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpspac -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -2335,7 +2336,7 @@ cat <<ENDVERSION > $TEMP_DIR/gprefraVersion.h
 #define GPREFRA_VERSION_TYPE "3.5"
 #define GPREFRA_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPREFRA_DISTRIBUTION "3.5.0-preview"
-#define GPREFRA_GIT_COMMIT "56549ad3b05dcd49c4e541f9da784f39df18ff72"
+#define GPREFRA_GIT_COMMIT "427b9fa6fe68844485ddade23a47b6cb782f4fa3"
 #endif // GPREFRA_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/gprefra/src gprefraVersion.h
@@ -2346,7 +2347,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gprefra -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gprefra -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -2365,7 +2366,7 @@ cat <<ENDVERSION > $TEMP_DIR/gpsignalVersion.h
 #define GPSIGNAL_VERSION_TYPE "3.5"
 #define GPSIGNAL_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPSIGNAL_DISTRIBUTION "3.5.0-preview"
-#define GPSIGNAL_GIT_COMMIT "d3b0991e83fea52cfa7c85c20b1d96bbe17a98bc"
+#define GPSIGNAL_GIT_COMMIT "7b4a89230a1e69fd7ce11c526211a00a0428bddf"
 #endif // GPSIGNAL_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/gpsignal/src gpsignalVersion.h
@@ -2376,7 +2377,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpsignal -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpsignal -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -2395,7 +2396,7 @@ cat <<ENDVERSION > $TEMP_DIR/gphistogramVersion.h
 #define GPHISTOGRAM_VERSION_TYPE "3.5"
 #define GPHISTOGRAM_AUTHORS "Marc Wathelet\nMarc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPHISTOGRAM_DISTRIBUTION "3.5.0-preview"
-#define GPHISTOGRAM_GIT_COMMIT "c45e4ef3002db764e803601995fea33714d443db"
+#define GPHISTOGRAM_GIT_COMMIT "285e6b336611764d98ac3ffa2ea7fde787c285cd"
 #endif // GPHISTOGRAM_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/gphistogram/src gphistogramVersion.h
@@ -2406,7 +2407,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gphistogram -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gphistogram -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -2425,7 +2426,7 @@ cat <<ENDVERSION > $TEMP_DIR/gpviewmaxVersion.h
 #define GPVIEWMAX_VERSION_TYPE "3.5"
 #define GPVIEWMAX_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)"
 #define GPVIEWMAX_DISTRIBUTION "3.5.0-preview"
-#define GPVIEWMAX_GIT_COMMIT "1db56c359c0d285286010d073bf23bacb0b01343"
+#define GPVIEWMAX_GIT_COMMIT "7eaff7ac377e9e0ebcb340b6daf7356597c538c2"
 #endif // GPVIEWMAX_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/gpviewmax/src gpviewmaxVersion.h
@@ -2436,7 +2437,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpviewmax -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpviewmax -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -2455,7 +2456,7 @@ cat <<ENDVERSION > $TEMP_DIR/gpdistanceVersion.h
 #define GPDISTANCE_VERSION_TYPE "3.5"
 #define GPDISTANCE_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPDISTANCE_DISTRIBUTION "3.5.0-preview"
-#define GPDISTANCE_GIT_COMMIT "a73e9a7de3a15ac207d59bb0e6a08cd5a13aa7ff"
+#define GPDISTANCE_GIT_COMMIT "e3889a26f6826a44c5345653ecb56db75b6cbeb2"
 #endif // GPDISTANCE_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/gpdistance/src gpdistanceVersion.h
@@ -2466,7 +2467,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpdistance -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpdistance -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -2485,7 +2486,7 @@ cat <<ENDVERSION > $TEMP_DIR/gptimeVersion.h
 #define GPTIME_VERSION_TYPE "3.5"
 #define GPTIME_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPTIME_DISTRIBUTION "3.5.0-preview"
-#define GPTIME_GIT_COMMIT "84db04d56d850e3b44d310e515487525f8767ee3"
+#define GPTIME_GIT_COMMIT "7d6e15ba2ff3444415e4271a9b5b9bbb086da74d"
 #endif // GPTIME_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/gptime/src gptimeVersion.h
@@ -2496,7 +2497,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gptime -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gptime -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -2515,7 +2516,7 @@ cat <<ENDVERSION > $TEMP_DIR/gpcoordVersion.h
 #define GPCOORD_VERSION_TYPE "3.5"
 #define GPCOORD_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPCOORD_DISTRIBUTION "3.5.0-preview"
-#define GPCOORD_GIT_COMMIT "9986071f50ada3712c8c0d18987198ff1c18f023"
+#define GPCOORD_GIT_COMMIT "fc001073afa74c9abce88ac1a11080522d265204"
 #endif // GPCOORD_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/gpcoord/src gpcoordVersion.h
@@ -2526,7 +2527,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpcoord -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpcoord -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -2545,7 +2546,7 @@ cat <<ENDVERSION > $TEMP_DIR/gpreplaceVersion.h
 #define GPREPLACE_VERSION_TYPE "3.5"
 #define GPREPLACE_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPREPLACE_DISTRIBUTION "3.5.0-preview"
-#define GPREPLACE_GIT_COMMIT "00f110ab225286df34a33e0d32bbc1215ae9741c"
+#define GPREPLACE_GIT_COMMIT "f4e35de19244dca07e9fb3ced565f7a88a5b294d"
 #endif // GPREPLACE_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/gpreplace/src gpreplaceVersion.h
@@ -2556,7 +2557,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpreplace -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpreplace -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -2575,7 +2576,7 @@ cat <<ENDVERSION > $TEMP_DIR/gpshVersion.h
 #define GPSH_VERSION_TYPE "3.5"
 #define GPSH_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPSH_DISTRIBUTION "3.5.0-preview"
-#define GPSH_GIT_COMMIT "2396572ca436563ed32a8ae73496982c871c3fdf"
+#define GPSH_GIT_COMMIT "213d180b48b92501b1ef368c3d42d0dc04bd7526"
 #endif // GPSH_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/gpsh/src gpshVersion.h
@@ -2586,7 +2587,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpsh -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpsh -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -2605,7 +2606,7 @@ cat <<ENDVERSION > $TEMP_DIR/gpmtVersion.h
 #define GPMT_VERSION_TYPE "3.5"
 #define GPMT_AUTHORS "Marc Wathelet (LGIT, Grenoble, France)"
 #define GPMT_DISTRIBUTION "3.5.0-preview"
-#define GPMT_GIT_COMMIT "cd4c0d40685b9e17690aa67996e485988e0d28c6"
+#define GPMT_GIT_COMMIT "21b53c48abbce16e7b8c50b4fe2ae8385b31b207"
 #endif // GPMT_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/gpmt/src gpmtVersion.h
@@ -2616,7 +2617,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpmt -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpmt -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -2635,7 +2636,7 @@ cat <<ENDVERSION > $TEMP_DIR/gpgridsearchVersion.h
 #define GPGRIDSEARCH_VERSION_TYPE "3.5"
 #define GPGRIDSEARCH_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)"
 #define GPGRIDSEARCH_DISTRIBUTION "3.5.0-preview"
-#define GPGRIDSEARCH_GIT_COMMIT "230f13d2aafed887be1f2cab55d21bff38167b7b"
+#define GPGRIDSEARCH_GIT_COMMIT "474883b6bdc53909c9fe47c942865b00d8c7d4f5"
 #endif // GPGRIDSEARCH_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/gpgridsearch/src gpgridsearchVersion.h
@@ -2646,7 +2647,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpgridsearch -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpgridsearch -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -2665,7 +2666,7 @@ cat <<ENDVERSION > $TEMP_DIR/gpfksimulatorVersion.h
 #define GPFKSIMULATOR_VERSION_TYPE "3.5"
 #define GPFKSIMULATOR_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)"
 #define GPFKSIMULATOR_DISTRIBUTION "3.5.0-preview"
-#define GPFKSIMULATOR_GIT_COMMIT "25310f6ff1a5bc8a8ee74104a30ebe6e679e88ce"
+#define GPFKSIMULATOR_GIT_COMMIT "397de76ba6cc6cc471700186698e1b83df32cd27"
 #endif // GPFKSIMULATOR_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/gpfksimulator/src gpfksimulatorVersion.h
@@ -2676,7 +2677,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpfksimulator -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpfksimulator -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -2695,7 +2696,7 @@ cat <<ENDVERSION > $TEMP_DIR/gpmaplayerVersion.h
 #define GPMAPLAYER_VERSION_TYPE "3.5"
 #define GPMAPLAYER_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)"
 #define GPMAPLAYER_DISTRIBUTION "3.5.0-preview"
-#define GPMAPLAYER_GIT_COMMIT "55ca8dd7728412706adeba44bf5448abfccd8356"
+#define GPMAPLAYER_GIT_COMMIT "1ee9444e159113461aa2213f9ac37b2b6d1a0590"
 #endif // GPMAPLAYER_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/gpmaplayer/src gpmaplayerVersion.h
@@ -2706,7 +2707,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpmaplayer -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpmaplayer -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -2725,7 +2726,7 @@ cat <<ENDVERSION > $TEMP_DIR/dinvermatlabVersion.h
 #define DINVERMATLAB_VERSION_TYPE "3.5"
 #define DINVERMATLAB_AUTHORS "Marc Wathelet\nMarc Wathelet (LGIT, Grenoble, France)"
 #define DINVERMATLAB_DISTRIBUTION "3.5.0-preview"
-#define DINVERMATLAB_GIT_COMMIT "b443f3ac08d5b2defe7b0378b4f337b4bc90a129"
+#define DINVERMATLAB_GIT_COMMIT "bf81b828e5c6adb7d874af5e3dac993ee7b0d6b0"
 #endif // DINVERMATLAB_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/dinvermatlab/src dinvermatlabVersion.h
@@ -2736,7 +2737,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir dinvermatlab -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir dinvermatlab -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -2755,7 +2756,7 @@ cat <<ENDVERSION > $TEMP_DIR/matfilesVersion.h
 #define MATFILES_VERSION_TYPE "3.5"
 #define MATFILES_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)\nMarc Wathelet (LGIT, Grenoble, France)"
 #define MATFILES_DISTRIBUTION "3.5.0-preview"
-#define MATFILES_GIT_COMMIT "a5a1e930bfa5660f4ac8dfe599435d8ba4d11e11"
+#define MATFILES_GIT_COMMIT "193d80aec24cbc9ce253c90d994353f783249612"
 #endif // MATFILES_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/matfiles/src matfilesVersion.h
@@ -2766,7 +2767,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir matfiles -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir matfiles -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -2785,7 +2786,7 @@ cat <<ENDVERSION > $TEMP_DIR/GeopsyLandVersion.h
 #define GEOPSYLAND_VERSION_TYPE "3.5"
 #define GEOPSYLAND_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)"
 #define GEOPSYLAND_DISTRIBUTION "3.5.0-preview"
-#define GEOPSYLAND_GIT_COMMIT "87d1e435cd57f48f2333493ca0a1889ab89f2db8"
+#define GEOPSYLAND_GIT_COMMIT "82bea0dc9b8307de982ff4a1136f7385b011b250"
 #endif // GEOPSYLAND_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/GeopsyLand/src GeopsyLandVersion.h
@@ -2796,7 +2797,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir GeopsyLand -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir GeopsyLand -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -2815,7 +2816,7 @@ cat <<ENDVERSION > $TEMP_DIR/gpvoronoiVersion.h
 #define GPVORONOI_VERSION_TYPE "3.5"
 #define GPVORONOI_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)"
 #define GPVORONOI_DISTRIBUTION "3.5.0-preview"
-#define GPVORONOI_GIT_COMMIT "4f5a7d7cccad021060cb047b6ae34be29e5a0971"
+#define GPVORONOI_GIT_COMMIT "5e7f61732db1579886204cdf851198d29550d743"
 #endif // GPVORONOI_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/gpvoronoi/src gpvoronoiVersion.h
@@ -2826,7 +2827,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpvoronoi -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir gpvoronoi -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -2845,7 +2846,7 @@ cat <<ENDVERSION > $TEMP_DIR/screenpickerVersion.h
 #define SCREENPICKER_VERSION_TYPE "3.5"
 #define SCREENPICKER_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)"
 #define SCREENPICKER_DISTRIBUTION "3.5.0-preview"
-#define SCREENPICKER_GIT_COMMIT "06f78a2a5e0760ca4f1d767e5db0fd71cea859e9"
+#define SCREENPICKER_GIT_COMMIT "468af65680243706d879197f0b3ca995768b7ab0"
 #endif // SCREENPICKER_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/screenpicker/src screenpickerVersion.h
@@ -2856,7 +2857,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir screenpicker -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir screenpicker -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
@@ -2875,7 +2876,7 @@ cat <<ENDVERSION > $TEMP_DIR/phaseitVersion.h
 #define PHASEIT_VERSION_TYPE "3.5"
 #define PHASEIT_AUTHORS "Marc Wathelet (ISTerre, Grenoble, France)"
 #define PHASEIT_DISTRIBUTION "3.5.0-preview"
-#define PHASEIT_GIT_COMMIT "69171c689b9ecaf8d329bd66391f8c9fef688bc3"
+#define PHASEIT_GIT_COMMIT "6c6a291e6851d4960705bdeedef82715e4bd05af"
 #endif // PHASEIT_VERSION
 ENDVERSION
 replaceFile $BUILD_DIR/phaseit/src phaseitVersion.h
@@ -2886,7 +2887,7 @@ if [ -e configure-3.5 ]; then
 else
   CONFIGURE_SCRIPT=configure
 fi
-echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir phaseit -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
+echo "$SHELL $CONFIGURE_SCRIPT -accept-license -sourcedir $SOURCE_DIR -dest-prefix $BUILD_DIR -builddir $BUILD_DIR -buildsubdir phaseit -project-list $TEMP_DIR/projectlist -skip-qt-check $COMMANDLINE 2>$TEMP_DIR/error.log 1>$TEMP_DIR/info.log" > $TEMP_DIR/configure
 if ! $SHELL $TEMP_DIR/configure; then
   cat $TEMP_DIR/error.log
   cat $TEMP_DIR/info.log
