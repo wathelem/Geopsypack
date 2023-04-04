@@ -1,4 +1,5 @@
 #!/bin/bash
 
 BRANCH="$(git name-rev HEAD | awk '{print $2}')"
+BRANCH=$(basename $BRANCH)
 /bin/bash ./configure-${BRANCH} $*
