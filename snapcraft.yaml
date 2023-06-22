@@ -1,0 +1,21 @@
+name: geopsypack
+summary: Tools for passive and active seismic signals
+description: |
+      Import, process seismic data, inversion of dispersion, ellipticity and autocorr curves.
+version: 3.4
+grade: stable
+confinement: strict
+base: core22
+
+apps:
+  geopsy:
+    command: bin/geopsy
+    plugs: [home removable-media]
+  dinver:
+    command: bin/dinver
+    plugs: [home removable-media]
+
+parts:
+  geopsypack:
+    plugin: make
+    source: https://github.com/wathelem/geopsypack.git
