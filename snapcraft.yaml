@@ -1,8 +1,11 @@
 name: geopsypack
 summary: Tools for passive and active seismic signals
 description: |
-      Import, process seismic data, inversion of dispersion, ellipticity and autocorr curves.
-version: 3.4
+  Exclusively written in C++ the software suite is composed of 41 applications, 14 plugin libraries and 22 core libraries. It runs under Linux, Windows and MacOSX ( Wathelet et al., 2020 in SRL). Made of a number of graphical interactive tools and of command line tools, its structure is mainly organized around two aspects:
+  * a database to import, sort and archive seismic records with one or three components (from a few seconds to several month, with a usual sampling frequency around 100 Hz). Basic tools in signal processing are available inside this environment. In addition several plugin libraries offer more specific processing tools for ambient vibration and active source recordings (HVSR, array processing, MASW,...).
+  * An inversion tool (Wathelet, 2008 in GRL) is used to analyze the results produced by the tools of the first part. For instance, dispersion curves from Rayleigh waves can be inverted to assess the variation of shear wave velocity (Vs) in the ground as a function of the depth. The plots produced by these applications can be saved, gathered and further edited by the user to deliver figures ready to be published in scientific papers or reports. 
+icon: geopsy/images/logo-128x128.png
+version: "3.4"
 grade: stable
 confinement: strict
 base: core22
